@@ -216,6 +216,23 @@
                     <attribute id="UUID" type="guid" value="ae652c3b-f9e1-4ff7-9419-344e8d9f922d"/>
                 </node>
 
+                <!-- Druid - Default to Circle of Spores -->
+                <node id="ClassDescription"> <!-- Circle of Dreams by Kingdomyoshi -->
+                    <attribute id="CharacterCreationPose" type="guid" value="0f07ec6e-4ef0-434e-9a51-1353260ccff8"/>
+                    <attribute id="Description" type="TranslatedString" handle="hddbd86d1gefdbg49dfg87b7gb957d757f6f2" version="3"/>
+                    <attribute id="DisplayName" type="TranslatedString" handle="he8f84494gddd2g43bcg9783gc8f47d31ea52" version="2"/>
+                    <attribute id="LearningStrategy" type="uint8" value="1"/>
+                    <attribute id="MustPrepareSpells" type="bool" value="true"/>
+                    <attribute id="Name" type="FixedString" value="CircleofDreams"/>
+                    <attribute id="ParentGuid" type="guid" value="457d0a6e-9da8-4f95-a225-18382f0e94b5"/>
+                    <attribute id="PrimaryAbility" type="uint8" value="5"/>
+                    <attribute id="ProgressionTableUUID" type="guid" value="288c9d1e-ab18-46dd-8fa3-d4fcfa44147a"/>
+                    <attribute id="SoundClassType" type="FixedString" value="Druid"/>
+                    <attribute id="SpellCastingAbility" type="uint8" value="5"/>
+                    <attribute id="SpellList" type="guid" value="877f8053-b97f-4b75-99e2-6e6834a11e87"/>
+                    <attribute id="UUID" type="guid" value="0e4f565b-1970-4ee5-9a1e-5020ff62cfdd"/>
+                </node>
+
                 <!-- Monk Dummies - Default to Four Elements -->
                 <node id="ClassDescription"> <!-- Kensei by YuukaYunna-->
                     <attribute id="CharacterCreationPose" type="guid" value="0f07ec6e-4ef0-434e-9a51-1353260ccff8"/>
@@ -256,7 +273,7 @@
                     <attribute id="SpellCastingAbility" type="uint8" value="5"/>
                     <attribute id="UUID" type="guid" value="54bdda89-b5a1-4f4e-9366-3057b079613f"/>
                 </node>
-				<node id="ClassDescription"> <!-- Drunken Master by Johnny -->
+				        <node id="ClassDescription"> <!-- Drunken Master by Johnny -->
                     <attribute id="CharacterCreationPose" type="guid" value="0f07ec6e-4ef0-434e-9a51-1353260ccff8"/>
                     <attribute id="Description" type="TranslatedString" handle="h318b4596g805eg465bg9cfbgdb9a59dc284d" version="1"/>
                     <attribute id="DisplayName" type="TranslatedString" handle="h5f0aee46gdd6bg40f0g8052g824079615ccf" version="1"/>

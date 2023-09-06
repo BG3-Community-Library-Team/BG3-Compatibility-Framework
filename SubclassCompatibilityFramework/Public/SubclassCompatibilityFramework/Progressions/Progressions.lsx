@@ -4,7 +4,7 @@
   <region id="Progressions">
     <node id="root">
       <children>
-      <!-- Barbarian -->
+        <!-- Barbarian -->
         <node id="Progression">
           <attribute id="Boosts" type="LSString" value="ActionResource(Rage,1,0)"/>
           <attribute id="Level" type="uint8" value="3"/>
@@ -95,7 +95,7 @@
                 <node id="SubClass">
                   <attribute id="Object" type="guid" value="b9ccf90e-b35b-4b73-b896-8ed2d32ae8c6"/>
                 </node>
-				<node id="SubClass"> <!-- Death Domain by CrackerJackGCO -->
+				        <node id="SubClass"> <!-- Death Domain by CrackerJackGCO -->
                   <attribute id="Object" type="guid" value="e64c5974-b64b-42b7-b86d-2fb368ae9d33"/>
                 </node>             
                 <node id="SubClass"> <!-- Death Domain by baltavi -->
@@ -157,7 +157,7 @@
                 <node id="SubClass">
                   <attribute id="Object" type="guid" value="b9ccf90e-b35b-4b73-b896-8ed2d32ae8c6"/>
                 </node>
-				<node id="SubClass"> <!-- Death Domain by CrackerJackGCO -->
+                <node id="SubClass"> <!-- Death Domain by CrackerJackGCO -->
                   <attribute id="Object" type="guid" value="e64c5974-b64b-42b7-b86d-2fb368ae9d33"/>
                 </node>             
                 <node id="SubClass"> <!-- Death Domain by baltavi -->
@@ -207,6 +207,9 @@
                   <attribute id="Object" type="guid" value="4b61af6c-4a44-436e-aa0a-0d11a2d6b8ee"/>
                 </node>
                 <!-- Place Mod-added Subclass Nodes here --> 
+                <node id="SubClass"> <!-- Circle of Dreams by Kingdomyoshi -->
+                  <attribute id="Object" type="guid" value="0e4f565b-1970-4ee5-9a1e-5020ff62cfdd"/>
+                </node>
               </children>
             </node>
           </children>
@@ -284,8 +287,8 @@
                   <node id="SubClass"> <!-- Mercy by PlatypusVenom -->
                     <attribute id="Object" type="guid" value="54bdda89-b5a1-4f4e-9366-3057b079613f"/>
                   </node>
-				  <node id="SubClass"> <!-- Drunken Master by Johnny -->
-					<attribute id="Object" type="guid" value="bbd5e265-82f5-403f-8141-887480d41bba"/>
+                  <node id="SubClass"> <!-- Drunken Master by Johnny -->
+                    <attribute id="Object" type="guid" value="bbd5e265-82f5-403f-8141-887480d41bba"/>
                   </node>
                 </children>
               </node>
