@@ -3,6 +3,10 @@
   <content contentuid="hddbd86d1gefdbg49dfg87b7gb957d757f6f2" version="1">The Circle of Dreams is not currently installed. To be part of this Circle, you must download the mod Circle of Dreams (Druid Subclass), by Kingdomyoshi, which can be found here: https://www.nexusmods.com/baldursgate3/mods/1844?tab=files.
   
   If you select this Circle without the subclass mod installed, you will use the progressions from the Circle of Spores.</content>
+  <content contentuid="h16a083efg45f1g4e7cg9873g955bab04f32f" version="1">(Not Installed) Circle of Wildfire</content>
+  <content contentuid="he476b5c3g1a3eg4570gaf46g6353a3cece1c" version="1">The Circle of Wildfire is not currently installed. To be part of this Circle, you must download the mod Circle of Wildfire (Druid Subclass), by Kingdomyoshi, which can be found here: https://www.nexusmods.com/baldursgate3/mods/2044.
+  
+  If you select this Circle without the subclass mod installed, you will use the progressions from the Circle of Spores.</content>
   <content contentuid="hb16578b7ge970g45degb107g46f8f4488855" version="1">This subclass mod is not currently installed.</content>
   <content contentuid="h0a60522cg4df1g47e3gaf11g0f209b12b678" version="1">(Not Installed) Shadow Sorcery</content>
   <content contentuid="h40ecdc98g4ff4g4e02g8559g01351c20ca6d" version="1">The Shadow Sorcery subclass is not currently installed. To use this Subclass, you must download the mod Shadow Sorcerer - Subclass, by Baaleos, which can be found here: https://www.nexusmods.com/baldursgate3/mods/923.
@@ -24,8 +28,16 @@
   <content contentuid="h84944469gb472g4e9dgb58cg2d5a25576822" version="1">The Arcane Archer subclass is not currently installed. To use this Subclass, you must download the mod Arcane Archer - Fighter Subclass, by ShivasShadow, which can be found here: https://www.nexusmods.com/baldursgate3/mods/1747?tab=posts.
   
   If you select this Subclass without the subclass mod installed, you will use the progressions from the Champion Subclass.</content>
+  <content contentuid="h61c5d56ag3c22g4d39g9905gc373c43e0dc2" version="1">(Not Installed) Rune Knight</content>
+  <content contentuid="hf2fabdadgda3fg40b5g8677gf465656d17f8" version="1">The Rune Knight subclass is not currently installed. To use this Subclass, you must download the mod Rune Knight - Fighter Subclass, by ShivasShadow, which can be found here: https://www.nexusmods.com/baldursgate3/mods/2029.
+  
+  If you select this Subclass without the subclass mod installed, you will use the progressions from the Champion Subclass.</content>
   <content contentuid="h25a51619g25b9g410ag8298g9032b6fe012b" version="1">(Not Installed) The Hexblade</content>
-  <content contentuid="h3fcd1570g96f4g4098g8679g137efa0c1459" version="1">The Hexblade pact is not currently installed. To use this Pact, you must download the mod Hexblade Subclass, by Feriat111, which can be found here: https://www.nexusmods.com/baldursgate3/mods/1100.
+  <content contentuid="h3fcd1570g96f4g4098g8679g137efa0c1459" version="1">The Hexblade Pact is not currently installed. To use this Pact, you must download the mod Hexblade Subclass, by Feriat111, which can be found here: https://www.nexusmods.com/baldursgate3/mods/1100.
+  
+  If you select this Subclass without the subclass mod installed, you will use the progressions from the Archfey pact.</content>
+  <content contentuid="h8d0a155eg5a03g405eg852dgbf9c6a159c73" version="1">(Not Installed) The Raven Queen</content>
+  <content contentuid="h6144cfe1gc6bfg48bcgaff2g1f0927cd65a6" version="1">The Raven Queen Pact is not currently installed. To use this Pact, you must download the mod The Raven Queen Patron for Warlock, by GladoffelLp, which can be found here: https://www.nexusmods.com/baldursgate3/mods/1895.
   
   If you select this Subclass without the subclass mod installed, you will use the progressions from the Archfey pact.</content>
   <content contentuid="h5564be94g9389g4238g9ad2g1d13c55c707d" version="1">(Not Installed) Way of Kensei</content>
@@ -70,6 +82,10 @@
   If you select this Subclass without the subclass mod installed, you will use the progressions from the Enchanting Tradition.</content>
   <content contentuid="h3af1dfe2gb90ag421agbf03g4d994f95848e" version="1">(Not Installed) College of Glamour</content>
   <content contentuid="h50b24231g8b37g4761g8f9cg3d2818fda432" version="1">The College of Glamour is not currently installed. To use this College, you must download the mod Bard Subclass - College of Glamour by Bonebreaker687, which can be found here: https://www.nexusmods.com/baldursgate3/mods/741.
+  
+  If you select this College without the subclass mod installed, you will use the progressions from the College of Swords.</content>
+  <content contentuid="hc696b301g3ab8g4afdg8f45g070806b63d6d" version="1">(Not Installed) College of Players</content>
+  <content contentuid="h5163c49dg449ag4a6bg838cg05477adfd3ce" version="1">The College of Players is not currently installed. To use this College, you must download the mod Bard Subclass - College of Players by DroZzhat, which can be found here: https://www.nexusmods.com/baldursgate3/mods/909.
   
   If you select this College without the subclass mod installed, you will use the progressions from the College of Swords.</content>
   <content contentuid="h50c9a8dbg11bfg47d8g8a63gd6ab278e98f2" version="1">(Not Installed) Death Domain</content>
@@ -144,5 +160,9 @@
   <content contentuid="h21217429gf936g4f00g8d6egba6c2bf26894" version="1">The Death Domain is not currently installed. To use this Domain, you must download the mod Death Domain Subclass for Cleric by CrackerJackGCO, which can be found here: https://www.nexusmods.com/baldursgate3/mods/1552.
   
   If you select this Domain without the subclass mod installed, you will use the progressions from the Knowledge Domain.</content>
+  <content contentuid="h2ad6f9e1g87d2g43cdg883fg96929b52995f" version="1">(Not Installed) Oath of Conquest</content>
+  <content contentuid="ha7f673c8g262ag432ag8dabg55006113490f" version="1">The Oath of Conquest is not currently installed. To use this Oath, you must download the mod Oath of Conquest Paladin Subclass by havsglimt, which can be found here: https://www.nexusmods.com/baldursgate3/mods/477.
+  
+  If you select this Oath without the subclass mod installed, you will use the progressions from the Oath of Ancients.</content>
 
 </contentList>
