@@ -212,6 +212,9 @@
                 <node id="SubClass"> <!-- (VANILLA) Circle of Spores by Larian Studios -->
                   <attribute id="Object" type="guid" value="4b61af6c-4a44-436e-aa0a-0d11a2d6b8ee"/>
                 </node>
+                <node id="SubClass"> <!-- Circle of Stars by havsglimt -->
+                  <attribute id="Object" type="guid" value="5ef8c19d-cb24-4192-83bf-5db9593c7fde"/>
+                </node>
                 <node id="SubClass"> <!-- Circle of Wildfire by Kingdomyoshi -->
                   <attribute id="Object" type="guid" value="d06c070d-43c9-4bfe-b68e-7fe6e2ec10c5"/>
                 </node>
