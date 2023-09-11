@@ -273,6 +273,21 @@
                     <attribute id="SpellList" type="guid" value="877f8053-b97f-4b75-99e2-6e6834a11e87"/>
                     <attribute id="UUID" type="guid" value="d06c070d-43c9-4bfe-b68e-7fe6e2ec10c5"/>
                 </node>
+                <node id="ClassDescription"> <!-- Circle of Stars by havsglimt -->
+                    <attribute id="CharacterCreationPose" type="guid" value="0f07ec6e-4ef0-434e-9a51-1353260ccff8"/>
+                    <attribute id="Description" type="TranslatedString" handle="h02376850g9740g46fega60bg3b88ff18454a" version="3"/>
+                    <attribute id="DisplayName" type="TranslatedString" handle="h27c1cb98gd2c3g46e5g9ed3gb17b26ca15ae" version="2"/>
+                    <attribute id="LearningStrategy" type="uint8" value="1"/>
+                    <attribute id="MustPrepareSpells" type="bool" value="true"/>
+                    <attribute id="Name" type="FixedString" value="CircleofStars"/>
+                    <attribute id="ParentGuid" type="guid" value="457d0a6e-9da8-4f95-a225-18382f0e94b5"/>
+                    <attribute id="PrimaryAbility" type="uint8" value="5"/>
+                    <attribute id="ProgressionTableUUID" type="guid" value="288c9d1e-ab18-46dd-8fa3-d4fcfa44147a"/>
+                    <attribute id="SoundClassType" type="FixedString" value="Druid"/>
+                    <attribute id="SpellCastingAbility" type="uint8" value="5"/>
+                    <attribute id="SpellList" type="guid" value="877f8053-b97f-4b75-99e2-6e6834a11e87"/>
+                    <attribute id="UUID" type="guid" value="5ef8c19d-cb24-4192-83bf-5db9593c7fde"/>
+                </node>
 
                 <!-- Monk Dummies - Default to Four Elements -->
                 <node id="ClassDescription"> <!-- Kensei by YuukaYunna-->
