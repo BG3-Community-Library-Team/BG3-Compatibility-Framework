@@ -2,7 +2,7 @@ Ext.Require("SubclassSupport/_SCF_Globals.lua")
 
 -- Subclass Definitions
 local subClasses = {
-  FeriatHexBlade = { -- HexBlade by Feriat111
+  FeriatHexBlade = { -- Hexblade by Feriat111
       modGuid = "e1eb6d1a-5922-4964-bfd7-c971e71e351a",
       subClassGuid = "95f27fb1-7e7d-4ae3-ba42-17c2f11b4bc3",
       class = "warlock",
@@ -13,6 +13,18 @@ local subClasses = {
       subClassGuid = "41297931-500e-4179-93b9-8c9754de424a",
       class = "warlock",
       subClassName = "Dread Overlord"
+  },
+  FluffyDragonCelestial = { -- Celestial by FluffyDragon24
+      modGuid = "1d7bb32c-396d-11ee-be56-0242ac120002",
+      subClassGuid = "1d7bb4b2-396d-11ee-be56-0242ac120002",
+      class = "warlock",
+      subClassName = "Celestial"
+  },
+  GladoffelLpRavenQueen = { -- The Raven Queen by GladoffelLp
+      modGuid = "9d5e409f-5c4e-4c14-b1f3-6fd47c9359bf",
+      subClassGuid = "7842f798-5354-4285-906f-ea2d4202aeff",
+      class = "warlock",
+      subClassName = "Raven Queen"
   }
 }
 
