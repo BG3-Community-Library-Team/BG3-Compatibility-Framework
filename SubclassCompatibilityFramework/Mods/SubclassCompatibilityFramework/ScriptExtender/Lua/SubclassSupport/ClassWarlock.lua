@@ -22,13 +22,5 @@ if subClasses ~= nil then
     end
 end
 
-local mainClass = {
-    warlock = {
-      guid = "a7767dc5-e6ab-4e05-96fd-f0424256121c"
-    },
-    mc_warlock = {
-      guid = "20015e25-8aa9-41bf-b959-aa587ba0aa27"
-    }
-}
-
-table.insert(SCF_SupportedClassDict, mainClass)
+SCF_SupportedClassDict['warlock'] = "a7767dc5-e6ab-4e05-96fd-f0424256121c"
+SCF_SupportedClassDict['mc_warlock'] = "20015e25-8aa9-41bf-b959-aa587ba0aa27"

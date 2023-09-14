@@ -15,14 +15,5 @@ if subClasses ~= nil then
     end
 end
 
-local mainClass = {
-    sorcerer = {
-      guid = "42af9bda-9ac0-4564-920b-f9ca1588d6ee",
-      
-    },
-    mc_sorcerer = {
-      guid = "e115c732-80b1-4ae1-bf04-cee44660d64f"
-    }
-}
-
-table.insert(SCF_SupportedClassDict, mainClass)
+SCF_SupportedClassDict['sorcerer'] = "42af9bda-9ac0-4564-920b-f9ca1588d6ee"
+SCF_SupportedClassDict['mc_sorcerer'] = "e115c732-80b1-4ae1-bf04-cee44660d64f"
