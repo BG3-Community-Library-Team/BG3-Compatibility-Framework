@@ -49,7 +49,15 @@ local subClasses = {
       subClassGuid = "828350d9-d916-48fa-ad87-a531c03099cc",
       class = "cleric",
       subClassName = "Twilight Domain"
+  },
+--[[
+  MySubclass = {
+    modGuid = "GUID from your meta.lsx file",
+    suibClassGuid = "UUID from your CLassDescription",
+    class ="bard",
+    subClassName = "Localized Name of Subclass for sorting"
   }
+]] --
 }
 
 if subClasses ~= nil then
@@ -58,5 +66,5 @@ if subClasses ~= nil then
     end
 end
 
-SCF_SupportedClassDict['cleric'] = ""
-SCF_SupportedClassDict['mc_cleric'] = ""
+SCF_SupportedClassDict['cleric'] = "1dbce574-fff1-49be-b7da-704f9b73cad9"
+SCF_SupportedClassDict['mc_cleric'] = "366cde9c-db0c-43ce-a49c-fb140e084b3c"
