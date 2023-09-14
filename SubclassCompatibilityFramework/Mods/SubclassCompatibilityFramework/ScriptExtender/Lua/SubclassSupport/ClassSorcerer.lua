@@ -5,13 +5,14 @@ local subClasses = {
   BaaleosShadowSorcerer = { -- BG3ShadowSorcerer by Baaleos
     modGuid = "38291fe1-40a3-4af7-bbbd-c9a55f3e39c0",
     subClassGuid = "d007a7be-60c6-4606-87db-66eb9e247050",
-    class = "sorcerer"
+    class = "sorcerer",
+    subClassName = "Shadow Sorcerery"
   },
 --[[
   MySubclass = {
     modGuid = "GUID from your meta.lsx file",
     suibClassGuid = "UUID from your CLassDescription",
-    class ="bard",
+    class ="sorcerer",
     subClassName = "Localized Name of Subclass for sorting"
   }
 ]] --

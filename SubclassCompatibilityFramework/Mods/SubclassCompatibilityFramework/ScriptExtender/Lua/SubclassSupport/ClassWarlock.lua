@@ -30,7 +30,7 @@ local subClasses = {
   MySubclass = {
     modGuid = "GUID from your meta.lsx file",
     suibClassGuid = "UUID from your CLassDescription",
-    class ="bard",
+    class ="warlock",
     subClassName = "Localized Name of Subclass for sorting"
   }
 ]] --
