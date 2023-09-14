@@ -3,7 +3,6 @@ local SCF_ClassProgressions = {}
 
 function SCF_InsertSubclass(arr, guid)
   if arr ~= nil then
-    Ext.Utils.Print("Inserting " .. guid)
     table.insert(arr, guid)
   end
 end
@@ -11,9 +10,7 @@ end
 function SCF_FindExistingSubclass(arr, guid)
   if arr ~= nil then
         for _, value in pairs(arr) do
-      Ext.Utils.Print("value is " .. value)
       if value == guid then
-        Ext.Utils.Print("Subclass: " .. guid .. " already exists")
         return true
       end
     end
