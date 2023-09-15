@@ -1,4 +1,5 @@
 Globals.SupportedSubClasses = {}
+Globals.SupportedClassProgressions = {}
 Globals.SupportedClassDict = {}
 
 Globals.MulticlassClasses = {

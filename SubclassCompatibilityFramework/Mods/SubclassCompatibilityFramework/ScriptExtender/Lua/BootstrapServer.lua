@@ -5,9 +5,9 @@ SCF.modVersion = { major = 2, minor = 1, revision = 0, build = 0 }
 
 Api = {}
 Globals = {}
-Ext.Require("SubclassSupport/_Globals.lua")
-Ext.Require("SubclassSupport/_SubclassCompatibilityFramework.lua")
-Ext.Require("SubclassSupport/API.lua")
+Ext.Require("ProgressionSupport/_Globals.lua")
+Ext.Require("ProgressionSupport/Subclass/_SubclassCompatibilityFramework.lua")
+Ext.Require("ProgressionSupport/API.lua")
 
 -- Insert our Supported Classes
 Api.InsertClass("barbarian", "0d4a6b4b-8162-414b-81ef-1838e36e778a")
@@ -27,15 +27,5 @@ Api.InsertClass("warlock", "a7767dc5-e6ab-4e05-96fd-f0424256121c")
 Api.InsertClass("mc_warlock", "20015e25-8aa9-41bf-b959-aa587ba0aa27")
 Api.InsertClass("wizard", "d6184c47-5b99-4e63-95ac-02f8ce4ccda1")
 
-Ext.Require("SubclassSupport/ClassBarbarian.lua")
-Ext.Require("SubclassSupport/ClassBard.lua")
-Ext.Require("SubclassSupport/ClassCleric.lua")
-Ext.Require("SubclassSupport/ClassDruid.lua")
-Ext.Require("SubclassSupport/ClassFighter.lua")
-Ext.Require("SubclassSupport/ClassMonk.lua")
-Ext.Require("SubclassSupport/ClassPaladin.lua")
-Ext.Require("SubclassSupport/ClassRanger.lua")
-Ext.Require("SubclassSupport/ClassRogue.lua")
-Ext.Require("SubclassSupport/ClassSorcerer.lua")
-Ext.Require("SubclassSupport/ClassWarlock.lua")
-Ext.Require("SubclassSupport/ClassWizard.lua")
+-- Load Integrated Subclasses
+Ext.Require("ProgressionSupport/Subclass/IntegratedSubclasses.lua")
