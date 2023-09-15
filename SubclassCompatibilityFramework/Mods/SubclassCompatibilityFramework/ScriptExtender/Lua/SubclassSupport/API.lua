@@ -1,16 +1,18 @@
-Api = {}
-
 -- For adding Support to 1 or more Subclasses
-Api.InsertSubClass = function (subClasses)
+function Api.InsertSubClasses(subClasses)
     if subClasses ~= nil then
         for _, subClass in pairs(subClasses) do
-            table.insert(Globals.SupportedSubClasses, subClass)
+            --Ext.Utils.Print(Ext.Json.Stringify(subClass))
+            --table.insert(Globals.SupportedSubClasses, subClass)
+            if Ext.Mod.IsModLoaded(subClass.modGuid) then
+              SubClassHandler(subClass.subClassGuid, subClass.class)
+            end
         end
     end
 end
 
 -- For adding support to a Custom Class
-Api.InsertClass = function(classGuid, className)
+function Api.InsertClass(className, classGuid)
     Globals.SupportedClassDict[className] = classGuid
 end
 

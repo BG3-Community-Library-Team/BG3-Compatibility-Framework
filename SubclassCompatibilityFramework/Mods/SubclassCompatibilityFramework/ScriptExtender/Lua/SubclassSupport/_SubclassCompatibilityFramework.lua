@@ -1,12 +1,12 @@
 local ClassProgressions = {}
 
-local InsertSubclass = function(arr, guid)
+local function InsertSubclass(arr, guid)
   if arr ~= nil then
     table.insert(arr, guid)
   end
 end
 
-local FindExistingSubclass = function(arr, guid)
+local function FindExistingSubclass(arr, guid)
   if arr ~= nil then
         for _, value in pairs(arr) do
       if value == guid then
@@ -16,7 +16,7 @@ local FindExistingSubclass = function(arr, guid)
   end
 end
 
-local LoadClass = function(className)
+local function LoadClass(className)
   if ClassProgressions[className] == nil and Globals.SupportedClassDict[className] then
     ClassProgressions[className] = Ext.Definition.Get(Globals.SupportedClassDict[className], "Progression")
   end
@@ -24,7 +24,7 @@ local LoadClass = function(className)
   return ClassProgressions[className].SubClasses
 end
 
-local LoadSubClass = function(guid, className)
+local function LoadSubClass(guid, className)
   if Globals.SupportedClassDict[className] ~= nil then
     local subClassNodes = LoadClass(className)
     if not FindExistingSubclass(subClassNodes, guid) then

@@ -1,4 +1,3 @@
-Globals = {}
 Globals.SupportedSubClasses = {}
 Globals.SupportedClassDict = {}
 

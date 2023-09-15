@@ -11,21 +11,8 @@ local subClasses = {
     subClassGuid = "5c6d6be7-f302-4dfa-9545-3dc719f1abbd",
     class = "bard",
     subClassName = "College of Players"
-  },
---[[
-  MySubclass = {
-    modGuid = "GUID from your meta.lsx file",
-    suibClassGuid = "UUID from your CLassDescription",
-    class ="bard",
-    subClassName = "Localized Name of Subclass for sorting"
   }
-]] --
 }
 
-if subClasses ~= nil then
-  for _, subClass in pairs(subClasses) do
-    table.insert(Globals.SupportedSubClasses, subClass)
-  end
-end
-
-Globals.SupportedClassDict['bard'] = "26f64038-6033-48d5-9da7-38e8c95ce712"
+Api.InsertSubClasses(subClasses)
+Api.InsertClass("bard", "26f64038-6033-48d5-9da7-38e8c95ce712")
