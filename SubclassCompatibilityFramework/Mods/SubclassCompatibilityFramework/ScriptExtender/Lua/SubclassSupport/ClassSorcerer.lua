@@ -8,6 +8,12 @@ local subClasses = {
     class = "sorcerer",
     subClassName = "Shadow Sorcerery"
   },
+  CodyAbodeStoneSorcery = { -- Stone Sorcery by Cody Abode
+  modGuid = "f48b2612-4d95-4601-b324-b8a07c9d90be",
+  subClassGuid = "3c335f43-bae3-4468-9972-d9bdedca2a71",
+  class = "sorcerer",
+  subClassName = "Stone Sorcery"
+},
 --[[
   MySubclass = {
     modGuid = "GUID from your meta.lsx file",
