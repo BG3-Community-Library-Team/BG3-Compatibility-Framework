@@ -59,6 +59,12 @@ local subClasses = {
     subClassGuid = "32c7b8df-a6ec-4848-a9db-c0dce781beb9",
     class = "rogue",
     subClassName = "Swashbuckler* (wesslen)"
+  },
+  AdamMasherShadowDancerr = { -- Shadowdancer by AdamMasher
+    modGuid = "e48d404b-5ef4-4808-8116-8db9e473c7ae",
+    subClassGuid = "c5bc9d23-5b34-43dd-9c65-1512e3a5b637",
+    class = "rogue",
+    subClassName = "Shadowdancer"
   }
 }
 
