@@ -1,13 +1,14 @@
-Ext.Require("SubclassSupport/_SCF_Globals.lua")
-local SCF_ClassProgressions = {}
+local ClassProgressions = {}
 
-function SCF_InsertSubclass(arr, guid)
+local function InsertSubclass(arr, guid)
+  Ext.Utils.Print("Entered InsertSubclass")
   if arr ~= nil then
     table.insert(arr, guid)
   end
 end
 
-function SCF_FindExistingSubclass(arr, guid)
+local function FindExistingSubclass(arr, guid)
+  Ext.Utils.Print("Entered FindExistingSubclass")
   if arr ~= nil then
         for _, value in pairs(arr) do
       if value == guid then
@@ -17,27 +18,32 @@ function SCF_FindExistingSubclass(arr, guid)
   end
 end
 
-function SCF_LoadClass(className)
-  if SCF_ClassProgressions[className] == nil and SCF_SupportedClassDict[className] then
-    SCF_ClassProgressions[className] = Ext.Definition.Get(SCF_SupportedClassDict[className], "Progression")
+local function LoadClass(className)
+  Ext.Utils.Print("Entered LoadClass")
+  if ClassProgressions[className] == nil and Globals.SupportedClassDict[className] then
+    ClassProgressions[className] = Ext.Definition.Get(Globals.SupportedClassDict[className], "Progression")
   end
 
-  return SCF_ClassProgressions[className].SubClasses
+  return ClassProgressions[className].SubClasses
 end
 
-function SCF_LoadSubClass(guid, className)
-  if SCF_SupportedClassDict[className] ~= nil then
-    local subClassNodes = SCF_LoadClass(className)
-    if not SCF_FindExistingSubclass(subClassNodes, guid) then
-      SCF_InsertSubclass(subClassNodes, guid)
+local function LoadSubClass(guid, className)
+  Ext.Utils.Print("Entered LoadSubClass with " .. className .. " " .. guid)
+  if Globals.SupportedClassDict[className] ~= nil then
+    Ext.Utils.Print("SupportedClassDict " .. className .. " exists!")
+    local subClassNodes = LoadClass(className)
+    if not FindExistingSubclass(subClassNodes, guid) then
+      Ext.Utils.Print("Subclass not a duplicate")
+      InsertSubclass(subClassNodes, guid)
     end
   end
 end
 
-function SCF_SubClassHandler(guid, parentClass)
-  SCF_LoadSubClass(guid, parentClass)
+function SubClassHandler(guid, parentClass)
+  Ext.Utils.Print("Entered Subclass Handler with " .. parentClass .. " " .. guid)
+  LoadSubClass(guid, parentClass)
 
-  if SCF_MulticlassClasses[parentClass] ~= nil then
-    SCF_LoadSubClass(guid, SCF_MulticlassClasses[parentClass])
+  if Globals.MulticlassClasses[parentClass] ~= nil then
+    LoadSubClass(guid, Globals.MulticlassClasses[parentClass])
   end
 end

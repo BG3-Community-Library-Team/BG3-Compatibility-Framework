@@ -1,7 +1,7 @@
-SCF_SupportedSubClasses = {}
-SCF_SupportedClassDict = {}
+Globals.SupportedSubClasses = {}
+Globals.SupportedClassDict = {}
 
-SCF_MulticlassClasses = {
+Globals.MulticlassClasses = {
     cleric = "mc_cleric",
     paladin = "mc_paladin",
     sorcerer = "mc_sorcerer",

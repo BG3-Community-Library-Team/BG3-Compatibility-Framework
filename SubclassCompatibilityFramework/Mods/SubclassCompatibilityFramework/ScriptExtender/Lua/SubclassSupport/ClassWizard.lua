@@ -1,5 +1,3 @@
-Ext.Require("SubclassSupport/_SCF_Globals.lua")
-
 -- Subclass Definitions
 local subClasses = {
   DizBladesinger = { -- Bladesinger by DiZ91891
@@ -19,21 +17,7 @@ local subClasses = {
     subClassGuid = "bec3ead5-a59a-4241-b778-27fb17f28e54",
     class = "wizard",
     subClassName = "War Magic"
-  },
---[[
-  MySubclass = {
-    modGuid = "GUID from your meta.lsx file",
-    suibClassGuid = "UUID from your CLassDescription",
-    class ="wizard",
-    subClassName = "Localized Name of Subclass for sorting"
   }
-]] --
 }
 
-if subClasses ~= nil then
-  for _, subClass in pairs(subClasses) do
-    table.insert(SCF_SupportedSubClasses, subClass)
-  end
-end
-
-SCF_SupportedClassDict['wizard'] = "d6184c47-5b99-4e63-95ac-02f8ce4ccda1"
+Api.InsertSubClasses(subClasses)
