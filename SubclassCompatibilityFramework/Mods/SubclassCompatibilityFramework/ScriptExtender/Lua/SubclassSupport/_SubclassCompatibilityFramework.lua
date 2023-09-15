@@ -1,13 +1,13 @@
-Ext.Require("SubclassSupport/_SCF_Globals.lua")
-local SCF_ClassProgressions = {}
+Ext.Require("SubclassSupport/_Globals.lua")
+local ClassProgressions = {}
 
-function SCF_InsertSubclass(arr, guid)
+local InsertSubclass = function(arr, guid)
   if arr ~= nil then
     table.insert(arr, guid)
   end
 end
 
-function SCF_FindExistingSubclass(arr, guid)
+local FindExistingSubclass = function(arr, guid)
   if arr ~= nil then
         for _, value in pairs(arr) do
       if value == guid then
@@ -17,27 +17,27 @@ function SCF_FindExistingSubclass(arr, guid)
   end
 end
 
-function SCF_LoadClass(className)
-  if SCF_ClassProgressions[className] == nil and SCF_SupportedClassDict[className] then
-    SCF_ClassProgressions[className] = Ext.Definition.Get(SCF_SupportedClassDict[className], "Progression")
+local LoadClass = function(className)
+  if ClassProgressions[className] == nil and Globals.SupportedClassDict[className] then
+    ClassProgressions[className] = Ext.Definition.Get(Globals.SupportedClassDict[className], "Progression")
   end
 
-  return SCF_ClassProgressions[className].SubClasses
+  return ClassProgressions[className].SubClasses
 end
 
-function SCF_LoadSubClass(guid, className)
-  if SCF_SupportedClassDict[className] ~= nil then
-    local subClassNodes = SCF_LoadClass(className)
-    if not SCF_FindExistingSubclass(subClassNodes, guid) then
-      SCF_InsertSubclass(subClassNodes, guid)
+local LoadSubClass = function(guid, className)
+  if Globals.SupportedClassDict[className] ~= nil then
+    local subClassNodes = LoadClass(className)
+    if not FindExistingSubclass(subClassNodes, guid) then
+      InsertSubclass(subClassNodes, guid)
     end
   end
 end
 
-function SCF_SubClassHandler(guid, parentClass)
-  SCF_LoadSubClass(guid, parentClass)
+function SubClassHandler(guid, parentClass)
+  LoadSubClass(guid, parentClass)
 
-  if SCF_MulticlassClasses[parentClass] ~= nil then
-    SCF_LoadSubClass(guid, SCF_MulticlassClasses[parentClass])
+  if Globals.MulticlassClasses[parentClass] ~= nil then
+    LoadSubClass(guid, Globals.MulticlassClasses[parentClass])
   end
 end

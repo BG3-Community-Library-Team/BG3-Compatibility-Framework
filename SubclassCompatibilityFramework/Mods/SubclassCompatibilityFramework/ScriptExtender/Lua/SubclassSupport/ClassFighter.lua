@@ -1,4 +1,4 @@
-Ext.Require("SubclassSupport/_SCF_Globals.lua")
+Ext.Require("SubclassSupport/_Globals.lua")
 
 -- Subclass Definitions
 local subClasses = {
@@ -56,8 +56,8 @@ local subClasses = {
 
 if subClasses ~= nil then
   for _, subClass in pairs(subClasses) do
-    table.insert(SCF_SupportedSubClasses, subClass)
+    table.insert(Globals.SupportedSubClasses, subClass)
   end
 end
 
-SCF_SupportedClassDict['fighter'] = "23eacff0-9efe-4ea6-b031-19075cc96b63"
+Globals.SupportedClassDict['fighter'] = "23eacff0-9efe-4ea6-b031-19075cc96b63"

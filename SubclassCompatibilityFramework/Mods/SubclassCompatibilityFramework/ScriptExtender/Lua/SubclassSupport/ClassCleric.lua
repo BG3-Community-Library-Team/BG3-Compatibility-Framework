@@ -1,4 +1,4 @@
-Ext.Require("SubclassSupport/_SCF_Globals.lua")
+Ext.Require("SubclassSupport/_Globals.lua")
 
 -- Subclass Definitions
 local subClasses = {
@@ -62,9 +62,9 @@ local subClasses = {
 
 if subClasses ~= nil then
     for _, subClass in pairs(subClasses) do
-        table.insert(SCF_SupportedSubClasses, subClass)
+        table.insert(Globals.SupportedSubClasses, subClass)
     end
 end
 
-SCF_SupportedClassDict['cleric'] = "1dbce574-fff1-49be-b7da-704f9b73cad9"
-SCF_SupportedClassDict['mc_cleric'] = "366cde9c-db0c-43ce-a49c-fb140e084b3c"
+Globals.SupportedClassDict['cleric'] = "1dbce574-fff1-49be-b7da-704f9b73cad9"
+Globals.SupportedClassDict['mc_cleric'] = "366cde9c-db0c-43ce-a49c-fb140e084b3c"
