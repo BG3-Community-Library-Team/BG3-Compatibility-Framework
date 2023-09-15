@@ -1,12 +1,12 @@
 # Subclass Compatibility Framework
-[![GitHub release](https://img.shields.io/github/v/tag/BG3-Community-Library-Team/BG3-Subclass-Compatibility-Framework?label=Latest%20Version)](https://GitHub.com/BG3-Community-Library-Team/BG3-Subclass-Compatibility-Framework/releases/) [![GitHub commits](https://img.shields.io/github/commits-since/BG3-Community-Library-Team/BG3-Subclass-Compatibility-Framework/2.0.0/main)](https://GitHub.com/BG3-Community-Library-Team/BG3-Subclass-Compatibility-Framework/commit/)
+[![GitHub release](https://img.shields.io/github/v/tag/BG3-Community-Library-Team/BG3-Subclass-Compatibility-Framework?label=Latest%20Version)](https://GitHub.com/BG3-Community-Library-Team/BG3-Subclass-Compatibility-Framework/releases/) [![GitHub commits](https://img.shields.io/github/commits-since/BG3-Community-Library-Team/BG3-Subclass-Compatibility-Framework/2.1.0/main)](https://GitHub.com/BG3-Community-Library-Team/BG3-Subclass-Compatibility-Framework/commit/)
 
 This is the Subclass Compatibility Framework. Split off from BG3 Community Library, this mod aims to patch subclass mods created by the community, using a Community Submission approach. All compatibility patches set up in the Community Library have been moved to this library, and future requests to add Subclass Support are meant to come through here. If you want to know which subclasses are currently supported, [check out this list](https://github.com/BG3-Community-Library-Team/BG3-Subclass-Compatibility-Framework/wiki/Supported-Mods).
 
 ## Contributing
 If you'd like to contribute to the Subclass Compatibility Framework, make a Fork of this project: [![GitHub forks](https://img.shields.io/github/forks/BG3-Community-Library-Team/BG3-Subclass-Compatibility-Framework)](https://GitHub.com/BG3-Community-Library-Team/BG3-Subclass-Compatibility-Framework/network/)
 
-The Sucblass Compatibility Framework makes it easy to set your Subclass up for compatibility with other Subclass mods. You only need to add a small amount of code to three file. To find out how, [check out our Wiki page](https://github.com/BG3-Community-Library-Team/BG3-Subclass-Compatibility-Framework/wiki/Adding-a-Subclass-to-the-Subclass-Compatibility-Framework).
+The Sucblass Compatibility Framework makes it easy to set your Subclass up for compatibility with other Subclass mods. You can utilize the Framework's API, or add a small amount of code to a single file. To find out how, [check out our Wiki page](https://github.com/BG3-Community-Library-Team/BG3-Subclass-Compatibility-Framework/wiki/Adding-a-Subclass-to-the-Subclass-Compatibility-Framework).
 
 ## Installation
 This mod works with [Baldur's Gate 3 Mod Manager](https://github.com/LaughingLeader/BG3ModManager), and possibly Vortex and Manual
