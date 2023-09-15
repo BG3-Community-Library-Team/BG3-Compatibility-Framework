@@ -12,5 +12,17 @@ end
 
 -- For adding support to a Custom Class
 Api.InsertClass = function(classGuid, className)
-  Globals.SupportedClassDict[className] = classGuid
+    Globals.SupportedClassDict[className] = classGuid
 end
+
+--[[Api.InsertSelector = function (selector)
+-- Selector: type, uuid, params
+end]]--
+
+--[[Api.InsertBoost = function (boost)
+
+end]]--
+
+--[[Api.InsertPassive = function (passive)
+
+end]]--
