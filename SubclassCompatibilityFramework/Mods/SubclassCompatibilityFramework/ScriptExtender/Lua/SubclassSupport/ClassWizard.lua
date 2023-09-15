@@ -17,6 +17,12 @@ local subClasses = {
     subClassGuid = "bec3ead5-a59a-4241-b778-27fb17f28e54",
     class = "wizard",
     subClassName = "War Magic"
+  },
+  HavsglimtGraviturgy = {   -- War Magic by havsglimt
+    modGuid = "c62ae435-c1a4-41b7-b887-4f24a6dcd846",
+    subClassGuid = "b33fdb2e-10d1-45c6-8e3a-24e7df975fe2",
+    class = "wizard",
+    subClassName = "Graviturgy"
   }
 }
 
