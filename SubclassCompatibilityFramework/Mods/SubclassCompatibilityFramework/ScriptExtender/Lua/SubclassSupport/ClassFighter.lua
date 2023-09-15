@@ -38,6 +38,12 @@ local subClasses = {
     class = "fighter",
     subClassName = "Rune Knight"
   },
+  BonnaVenturaSamurai = { -- Samurai by BonnaVentura
+    modGuid = "67cbd005-166c-4f76-b822-a19a4a41e615",
+    subClassGuid = "4a9878a2-b7d4-4fe7-b89c-c6ddfd3ab4ce",
+    class = "fighter",
+    subClassName = "Samurai"
+  },
 --[[
   MySubclass = {
     modGuid = "GUID from your meta.lsx file",
