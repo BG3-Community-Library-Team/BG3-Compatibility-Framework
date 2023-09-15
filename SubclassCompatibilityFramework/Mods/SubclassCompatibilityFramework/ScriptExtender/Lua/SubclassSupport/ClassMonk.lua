@@ -1,5 +1,3 @@
-Ext.Require("SubclassSupport/_Globals.lua")
-
 -- Subclass Definitions
 local subClasses = {
   SneedDrunkenMaster = { -- Way of the Drunken Master by Johnny Sneed

@@ -1,4 +1,3 @@
-Ext.Require("SubclassSupport/_Globals.lua")
 Api = {}
 
 -- For adding Support to 1 or more Subclasses

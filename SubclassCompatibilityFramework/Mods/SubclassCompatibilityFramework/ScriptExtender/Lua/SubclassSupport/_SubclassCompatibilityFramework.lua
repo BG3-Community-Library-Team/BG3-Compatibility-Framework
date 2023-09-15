@@ -1,4 +1,3 @@
-Ext.Require("SubclassSupport/_Globals.lua")
 local ClassProgressions = {}
 
 local InsertSubclass = function(arr, guid)

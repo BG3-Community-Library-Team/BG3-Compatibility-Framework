@@ -1,5 +1,3 @@
-Ext.Require("SubclassSupport/_Globals.lua")
-
 -- Subclass Definitions
 local subClasses = {
   BaaleosShadowSorcerer = { -- BG3ShadowSorcerer by Baaleos
