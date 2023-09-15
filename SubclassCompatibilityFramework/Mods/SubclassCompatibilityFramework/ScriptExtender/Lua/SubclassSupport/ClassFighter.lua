@@ -45,4 +45,3 @@ local subClasses = {
 }
 
 Api.InsertSubClasses(subClasses)
-Api.InsertClass("fighter", "23eacff0-9efe-4ea6-b031-19075cc96b63")

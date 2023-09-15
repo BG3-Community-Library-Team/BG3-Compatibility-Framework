@@ -21,4 +21,3 @@ local subClasses = {
 }
 
 Api.InsertSubClasses(subClasses)
-Api.InsertClass("druid", "95322dde-349a-4101-964f-9aa46abd890b")

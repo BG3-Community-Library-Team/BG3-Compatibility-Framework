@@ -27,5 +27,3 @@ local subClasses = {
 }
 
 Api.InsertSubClasses(subClasses)
-Api.InsertClass("warlock", "a7767dc5-e6ab-4e05-96fd-f0424256121c")
-Api.InsertClass("mc_warlock", "20015e25-8aa9-41bf-b959-aa587ba0aa27")

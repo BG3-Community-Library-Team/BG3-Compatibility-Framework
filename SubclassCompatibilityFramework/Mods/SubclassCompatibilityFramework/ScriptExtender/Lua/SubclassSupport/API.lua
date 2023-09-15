@@ -2,7 +2,7 @@
 function Api.InsertSubClasses(subClasses)
     if subClasses ~= nil then
         for _, subClass in pairs(subClasses) do
-            --Ext.Utils.Print(Ext.Json.Stringify(subClass))
+            Ext.Utils.Print(Ext.Json.Stringify(subClass))
             --table.insert(Globals.SupportedSubClasses, subClass)
             if Ext.Mod.IsModLoaded(subClass.modGuid) then
               SubClassHandler(subClass.subClassGuid, subClass.class)

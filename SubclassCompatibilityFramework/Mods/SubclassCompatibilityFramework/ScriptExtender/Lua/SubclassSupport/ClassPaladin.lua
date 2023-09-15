@@ -9,5 +9,3 @@ local subClasses = {
 }
 
 Api.InsertSubClasses(subClasses)
-Api.InsertClass("paladin", "b60618d1-c262-42b5-9fdd-2c0f7aa5e5af")
-Api.InsertClass("mc_paladin", "1f5396ad-65e3-4ed5-a339-d76b11af96ea")
