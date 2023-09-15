@@ -9,13 +9,13 @@ local subClasses = {
     subClassName = "Arcane Archer"
   },
   BackBurnerArtfulDodger = { -- Artful Dodger by Backburner26
-    modGuid = "be37a0e6-f2bc-46f3-b98d-8cfbe977053a",
+    modGuid = "ee3cd8a6-16a7-4963-847e-2e2238b8f315",
     subClassGuid = "ae652c3b-f9e1-4ff7-9419-344e8d9f922d",
     class = "fighter",
     subClassName = "Artful Dodger"
   },
   BackBurnerCombatMedic = { -- Combat Medic by Backburner26
-    modGuid = "be37a0e6-f2bc-46f3-b98d-8cfbe977053a",
+    modGuid = "ee3cd8a6-16a7-4963-847e-2e2238b8f315",
     subClassGuid = "c0af79a7-67d2-4a20-acd4-b0ee331ca5ad",
     class = "fighter",
     subClassName = "Combat Medic"
@@ -27,7 +27,7 @@ local subClasses = {
     subClassName = "Marksman"
   },
   BackBurnerPsychopath = { -- Psychopath by Backburner26
-    modGuid = "be37a0e6-f2bc-46f3-b98d-8cfbe977053a",
+    modGuid = "ee3cd8a6-16a7-4963-847e-2e2238b8f315",
     subClassGuid = "082e45c3-f102-42ea-8241-dd6fbd6bc307",
     class = "fighter",
     subClassName = "Psychopath"
