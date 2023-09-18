@@ -1,4 +1,4 @@
--- TODO: Phase these out as mods utilize the API
+-- TODO: Phase these out as mods switch to using the API
 IntegratedSupport.SubClasses = {
   BonebreakerGlamour = { -- College of Glamour by Bonebreaker687
     modGuid = "50b1fe7-4733-40bd-9506-5f5dd2bad616",
