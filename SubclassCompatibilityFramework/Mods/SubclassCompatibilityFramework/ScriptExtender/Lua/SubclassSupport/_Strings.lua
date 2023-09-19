@@ -1,0 +1,1 @@
+Strings.INVALID_CLASS_PROVIDED = "Invalid Class Supplied. Provide a UUID, or Insert the Parent Class into Globals.ClassUUIDs"
