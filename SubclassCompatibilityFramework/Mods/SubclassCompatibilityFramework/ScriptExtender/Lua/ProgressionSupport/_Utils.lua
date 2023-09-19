@@ -1,20 +1,28 @@
+function Utils.CacheOrRetrieveProgression(guid)
+  if Globals.ProgressionCache ~= nil and Globals.ProgressionCache[guid] ~= nil then
+    return Globals.ProgressionCache[guid]
+  else
+    return Ext.Definition.Get(guid, "Progression")
+  end
+end
+
 function Utils.Stringify(obj)
   return Ext.Json.Stringify(obj)
 end
 
 function Utils.Info(message)
   if Globals.Debug == 1 then
-    Ext.Utils.Print("[INFO]: " .. message)
+    Ext.Utils.Print(Strings.INFO_TAG .. message)
   end
 end
 
 function Utils.Error(message)
-  Ext.Utils.Print("[Error]: " .. message)
+  Ext.Utils.Print(Strings.ERROR_TAG .. message)
 end
 
-function Utils.IsInTable(arr, val, giveKey)
+function Utils.IsInTable(arr, val)
   if arr ~= nil then
-    for key, value in pairs(arr) do
+    for _, value in pairs(arr) do
       if val == value then
         return true
       end

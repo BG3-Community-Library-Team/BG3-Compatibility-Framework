@@ -2,6 +2,7 @@ Globals.SupportedSubClasses = {}
 Globals.ClassUUIDs = {}
 Globals.MulticlassClasses = {}
 Globals.ClassProgressions = {}
+Globals.ProgressionCache = {}
 Globals.Debug = 0
 
 -- Including the non-level-one-multiclass-specific entries to be sure we
@@ -15,3 +16,22 @@ Globals.MulticlassClasses["sorcerer"] = "e115c732-80b1-4ae1-bf04-cee44660d64f"
 Globals.MulticlassClasses["42af9bda-9ac0-4564-920b-f9ca1588d6ee"] = "e115c732-80b1-4ae1-bf04-cee44660d64f"
 Globals.MulticlassClasses["warlock"] = "20015e25-8aa9-41bf-b959-aa587ba0aa27"
 Globals.MulticlassClasses["a7767dc5-e6ab-4e05-96fd-f0424256121c"] = "20015e25-8aa9-41bf-b959-aa587ba0aa27"
+
+Globals.SelectorFunctions = {
+  SelectSpells = "SelectSpells",
+  AddSpells = "AddSpells",
+  SelectSkills = "SelectSkills",
+  SelectPassives = "SelectPassives",
+  SelectAbilityBonus = "SelectAbilityBonus",
+  SelectSkillsExpertise = "SelectSkillsExpertise",
+  SelectEquipment = "SelectEquipment"
+}
+
+Globals.Attributes = {
+  aSTR = "Strength",
+  aDEX = "Dexterity",
+  aCON = "Constitution",
+  aINT = "Intelligence",
+  aWIS = "Wisdom",
+  aCHA = "Charisma"
+}
