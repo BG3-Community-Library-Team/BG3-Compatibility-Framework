@@ -8,11 +8,14 @@ Globals = {}
 Utils = {}
 Strings = {}
 IntegratedSupport = {}
-Ext.Require("SubclassSupport/_Strings.lua")
-Ext.Require("SubclassSupport/_Globals.lua")
-Ext.Require("SubclassSupport/_Utils.lua")
-Ext.Require("SubclassSupport/_SubclassCompatibilityFramework.lua")
-Ext.Require("SubclassSupport/API.lua")
+Ext.Require("ProgressionSupport/SubclassSupport/_IntegratedSubClasses.lua")
+Ext.Require("ProgressionSupport/_Strings.lua")
+Ext.Require("ProgressionSupport/_Globals.lua")
+Ext.Require("ProgressionSupport/_Utils.lua")
+Ext.Require("ProgressionSupport/SubclassSupport/_SubclassCompatibilityFramework.lua")
+Ext.Require("ProgressionSupport/API.lua")
+
+Utils.Info("Required Files loaded")
 
 -- Insert our Supported Classes
 Api.InsertClass("barbarian", "0d4a6b4b-8162-414b-81ef-1838e36e778a")
@@ -32,7 +35,10 @@ Api.InsertClass("warlock", "a7767dc5-e6ab-4e05-96fd-f0424256121c")
 Api.InsertClass("mc_warlock", "20015e25-8aa9-41bf-b959-aa587ba0aa27")
 Api.InsertClass("wizard", "d6184c47-5b99-4e63-95ac-02f8ce4ccda1")
 
+Utils.Info("Main Classes Supported")
+
 local function OnSessionLoaded()
+  Utils.Info(Utils.Stringify(IntegratedSupport.SubClasses))
   if IntegratedSupport.SubClasses ~= nil then
     Api.InsertSubClasses(IntegratedSupport.SubClasses)
   end

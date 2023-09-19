@@ -8,11 +8,12 @@ Globals = {}
 Utils = {}
 Strings = {}
 IntegratedSupport = {}
-Ext.Require("SubclassSupport/_Strings.lua")
-Ext.Require("SubclassSupport/_Globals.lua")
-Ext.Require("SubclassSupport/_Utils.lua")
-Ext.Require("SubclassSupport/_SubclassCompatibilityFramework.lua")
-Ext.Require("SubclassSupport/API.lua")
+Ext.Require("ProgressionSupport/SubclassSupport/_IntegratedSubClasses.lua")
+Ext.Require("ProgressionSupport/_Strings.lua")
+Ext.Require("ProgressionSupport/_Globals.lua")
+Ext.Require("ProgressionSupport/_Utils.lua")
+Ext.Require("ProgressionSupport/SubclassSupport/_SubclassCompatibilityFramework.lua")
+Ext.Require("ProgressionSupport/API.lua")
 
 -- Insert our Supported Classes
 Api.InsertClass("barbarian", "0d4a6b4b-8162-414b-81ef-1838e36e778a")

@@ -126,42 +126,6 @@ IntegratedSupport.SubClasses = {
     class = "fighter",
     subClassName = "Samurai"
   },
-  SneedDrunkenMaster = { -- Way of the Drunken Master by Johnny Sneed
-    modGuid = "83e20b3d-75cc-4d9a-af04-430f797290e5",
-    subClassGuid = "bbd5e265-82f5-403f-8141-887480d41bba",
-    class = "monk",
-    subClassName = "Way of the Drunken Master"
-  },
-  YuukaYunnaKensei = { -- Way of Kensei by YuukaYunna
-    modGuid = "b4ff257e-7522-4fcd-b919-7dec4250dc36",
-    subClassGuid = "dd9f59af-7b14-4d01-bb7a-cbb372ff0a7a",
-    class = "monk",
-    subClassName = "Way of Kensei"
-  },
-  PlatypusVenomMercy = { -- Way of Mercy by PlatypusVenom
-    modGuid = "c5343ccb-d1d8-4970-8a1d-c44203a6a55a",
-    subClassGuid = "54bdda89-b5a1-4f4e-9366-3057b079613f",
-    class = "monk",
-    subClassName = "Way of Mercy"
-  },
-  YoshiSunSoul = { -- Way of the Sun Soul by Kingdomyoshi
-    modGuid = "b382793b-6161-42d2-a3fb-a4d69fa3a8e8",
-    subClassGuid = "62db00d9-2298-43a3-9fd8-64cdfed3a0df",
-    class = "monk",
-    subClassName = "Way of the Sun Soul"
-  },
-  havsglimtConquest = { -- Oath of Conquest by havsglimt
-    modGuid = "74b2a448-6771-4289-9393-d359c3b79596",
-    subClassGuid = "d05d37d9-c702-4924-9e8d-5d5d7db19918",
-    class = "paladin",
-    subClassName = "Oath of Conquest"
-  },
-  ShivasShadowArcaneArcherRanger = { -- Arcane Archer by ShivasShadow
-    modGuid = "38c4c12d-f325-4493-8fd7-fac1d63fdace",
-    subClassGuid = "a86356c9-9fdf-45fb-912f-9b0d4ca0c32c",
-    class = "ranger",
-    subClassName = "Arcane Archer"
-  },
   LostSoulInquisitive = { -- Inquisitive by lostsoulman
     modGuid = "b986a6b0-6755-496c-8ea8-0fbee6b66026",
     subClassGuid = "30fa5210-8dac-4c7a-902c-453375ee31e2",
@@ -240,6 +204,42 @@ IntegratedSupport.SubClasses = {
     class = "sorcerer",
     subClassName = "Stone Sorcery"
   },
+  SneedDrunkenMaster = { -- Way of the Drunken Master by Johnny Sneed
+    modGuid = "83e20b3d-75cc-4d9a-af04-430f797290e5",
+    subClassGuid = "bbd5e265-82f5-403f-8141-887480d41bba",
+    class = "monk",
+    subClassName = "Way of the Drunken Master"
+  },
+  YuukaYunnaKensei = { -- Way of Kensei by YuukaYunna
+    modGuid = "b4ff257e-7522-4fcd-b919-7dec4250dc36",
+    subClassGuid = "dd9f59af-7b14-4d01-bb7a-cbb372ff0a7a",
+    class = "monk",
+    subClassName = "Way of Kensei"
+  },
+  PlatypusVenomMercy = { -- Way of Mercy by PlatypusVenom
+    modGuid = "c5343ccb-d1d8-4970-8a1d-c44203a6a55a",
+    subClassGuid = "54bdda89-b5a1-4f4e-9366-3057b079613f",
+    class = "monk",
+    subClassName = "Way of Mercy"
+  },
+  YoshiSunSoul = { -- Way of the Sun Soul by Kingdomyoshi
+    modGuid = "b382793b-6161-42d2-a3fb-a4d69fa3a8e8",
+    subClassGuid = "62db00d9-2298-43a3-9fd8-64cdfed3a0df",
+    class = "monk",
+    subClassName = "Way of the Sun Soul"
+  },
+  havsglimtConquest = { -- Oath of Conquest by havsglimt
+    modGuid = "74b2a448-6771-4289-9393-d359c3b79596",
+    subClassGuid = "d05d37d9-c702-4924-9e8d-5d5d7db19918",
+    class = "paladin",
+    subClassName = "Oath of Conquest"
+  },
+  ShivasShadowArcaneArcherRanger = { -- Arcane Archer by ShivasShadow
+    modGuid = "38c4c12d-f325-4493-8fd7-fac1d63fdace",
+    subClassGuid = "a86356c9-9fdf-45fb-912f-9b0d4ca0c32c",
+    class = "ranger",
+    subClassName = "Arcane Archer"
+  },
   FeriatHexBlade = { -- Hexblade by Feriat111
     modGuid = "e1eb6d1a-5922-4964-bfd7-c971e71e351a",
     subClassGuid = "95f27fb1-7e7d-4ae3-ba42-17c2f11b4bc3",
@@ -282,7 +282,7 @@ IntegratedSupport.SubClasses = {
     class = "wizard",
     subClassName = "War Magic"
   },
-  HavsglimtGraviturgy = { -- War Magic by havsglimt
+  HavsglimtGraviturgy = { -- Graviturgy by havsglimt
     modGuid = "c62ae435-c1a4-41b7-b887-4f24a6dcd846",
     subClassGuid = "b33fdb2e-10d1-45c6-8e3a-24e7df975fe2",
     class = "wizard",

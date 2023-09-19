@@ -13,25 +13,25 @@ end
 
 -- For adding support to a Custom Class
 function Api.InsertClass(className, classGuid)
-    Globals.ClassUUIDs[className] = classGuid
+  Globals.ClassUUIDs[className] = classGuid
 end
 
 -- Additional endpoint to ensure support for classes with a level 1 subclass choice
 function Api.InsertLevelOneProgression(className, classGuid)
-  Globals.MulticlassClasses[className] = classGuid
+    Globals.MulticlassClasses[className] = classGuid
 end
 
 --[[Api.InsertSelector = function (selector)
 -- Selector: type, uuid, params
 end]]
-      --
+--
 
 --[[Api.InsertBoost = function (boost)
 
 end]]
-      --
+--
 
 --[[Api.InsertPassive = function (passive)
 
 end]]
-      --
+--
