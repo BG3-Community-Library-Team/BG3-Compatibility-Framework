@@ -24,17 +24,19 @@ function Utils.IsInTable(arr, val, giveKey)
 end
 
 function Utils.IsKeyInTable(arr, key)
-  return arr[key] ~= nil
+  if arr ~= nil then
+    return arr[key] ~= nil
+  end
 end
 
 function Utils.GetKeyFromvalue(arr, val)
-    if arr ~= nil then
-        for key, value in pairs(arr) do
-            if val == value then
-                return key
-            end
-        end
+  if arr ~= nil then
+    for key, value in pairs(arr) do
+      if val == value then
+        return key
+      end
     end
+  end
 end
 
 function Utils.AddToTable(arr, val)
