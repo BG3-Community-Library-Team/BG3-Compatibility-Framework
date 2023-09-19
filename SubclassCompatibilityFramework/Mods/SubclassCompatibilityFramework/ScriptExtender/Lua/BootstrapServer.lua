@@ -5,8 +5,12 @@ SCF.modVersion = { major = 2, minor = 1, revision = 0, build = 0 }
 
 Api = {}
 Globals = {}
+Utils = {}
+Strings = {}
 IntegratedSupport = {}
+Ext.Require("SubclassSupport/_Strings.lua")
 Ext.Require("SubclassSupport/_Globals.lua")
+Ext.Require("SubclassSupport/_Utils.lua")
 Ext.Require("SubclassSupport/_SubclassCompatibilityFramework.lua")
 Ext.Require("SubclassSupport/API.lua")
 

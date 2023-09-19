@@ -13,58 +13,58 @@ IntegratedSupport.SubClasses = {
     subClassName = "College of Players"
   },
   BaltaviArcana = { -- Arcana Domain by baltavi
-      modGuid = "eef7b885-1423-4096-abd6-7a5db5f871db",
-      subClassGuid = "e7fc0b04-a1b6-4539-af0e-f309a76d2427",
-      class = "cleric",
-      subClassName = "Arcana Domain"
+    modGuid = "eef7b885-1423-4096-abd6-7a5db5f871db",
+    subClassGuid = "e7fc0b04-a1b6-4539-af0e-f309a76d2427",
+    class = "cleric",
+    subClassName = "Arcana Domain"
   },
   BaltaviBloodDomain = { -- Blood Domain by baltavi
-      modGuid = "eef7b885-1423-4096-abd6-7a5db5f871db",
-      subClassGuid = "b548ab7e-d262-4aec-8145-ce9b21a145b5",
-      class = "cleric",
-      subClassName = "Blood Domain"
+    modGuid = "eef7b885-1423-4096-abd6-7a5db5f871db",
+    subClassGuid = "b548ab7e-d262-4aec-8145-ce9b21a145b5",
+    class = "cleric",
+    subClassName = "Blood Domain"
   },
   CrackerJackDeathDomain = { -- Death Domain by CrackerJackGCO
-      modGuid = "36ffab06-d6b3-4cbb-8e9f-f16a01c06473",
-      subClassGuid = "e64c5974-b64b-42b7-b86d-2fb368ae9d33",
-      class = "cleric",
-      subClassName = "Death Domain (crackerjack)"
+    modGuid = "36ffab06-d6b3-4cbb-8e9f-f16a01c06473",
+    subClassGuid = "e64c5974-b64b-42b7-b86d-2fb368ae9d33",
+    class = "cleric",
+    subClassName = "Death Domain (crackerjack)"
   },
   BaltaviDeathDomain = { -- Death Domain by baltavi
-      modGuid = "eef7b885-1423-4096-abd6-7a5db5f871db",
-      subClassGuid = "f0f90719-e27a-403a-b891-4d739b4bf589",
-      class = "cleric",
-      subClassName = "Death Domain (baltavi)"
+    modGuid = "eef7b885-1423-4096-abd6-7a5db5f871db",
+    subClassGuid = "f0f90719-e27a-403a-b891-4d739b4bf589",
+    class = "cleric",
+    subClassName = "Death Domain (baltavi)"
   },
   BaltaviForgeDomain = { -- Forge Domain by baltavi
-      modGuid = "eef7b885-1423-4096-abd6-7a5db5f871db",
-      subClassGuid = "af5d4ccc-e144-41aa-9c92-325618fb1a76",
-      class = "cleric",
-      subClassName = "Forge Domain"
+    modGuid = "eef7b885-1423-4096-abd6-7a5db5f871db",
+    subClassGuid = "af5d4ccc-e144-41aa-9c92-325618fb1a76",
+    class = "cleric",
+    subClassName = "Forge Domain"
   },
   BaltaviGraveDomain = { -- Grave Domain by baltavi
-      modGuid = "eef7b885-1423-4096-abd6-7a5db5f871db",
-      subClassGuid = "394a1640-4c1d-49e3-aedd-7cc4fa38fd0e",
-      class = "cleric",
-      subClassName = "Grave Domain"
+    modGuid = "eef7b885-1423-4096-abd6-7a5db5f871db",
+    subClassGuid = "394a1640-4c1d-49e3-aedd-7cc4fa38fd0e",
+    class = "cleric",
+    subClassName = "Grave Domain"
   },
   BaltaviOrderDomain = { -- Order Domain by baltavi
-      modGuid = "eef7b885-1423-4096-abd6-7a5db5f871db",
-      subClassGuid = "4d6f7d28-2f87-4012-aab2-71045c1f61ad",
-      class = "cleric",
-      subClassName = "Order Domain"
+    modGuid = "eef7b885-1423-4096-abd6-7a5db5f871db",
+    subClassGuid = "4d6f7d28-2f87-4012-aab2-71045c1f61ad",
+    class = "cleric",
+    subClassName = "Order Domain"
   },
   BaltaviPeaceDomain = { -- Peace Domain by baltavi
-      modGuid = "eef7b885-1423-4096-abd6-7a5db5f871db",
-      subClassGuid = "edf303e8-f04b-4e7b-96f1-97624c977822",
-      class = "cleric",
-      subClassName = "Peace Domain"
+    modGuid = "eef7b885-1423-4096-abd6-7a5db5f871db",
+    subClassGuid = "edf303e8-f04b-4e7b-96f1-97624c977822",
+    class = "cleric",
+    subClassName = "Peace Domain"
   },
   BaltaviTwilightDomain = { -- Twilight Domain by baltavi
-      modGuid = "eef7b885-1423-4096-abd6-7a5db5f871db",
-      subClassGuid = "828350d9-d916-48fa-ad87-a531c03099cc",
-      class = "cleric",
-      subClassName = "Twilight Domain"
+    modGuid = "eef7b885-1423-4096-abd6-7a5db5f871db",
+    subClassGuid = "828350d9-d916-48fa-ad87-a531c03099cc",
+    class = "cleric",
+    subClassName = "Twilight Domain"
   },
   YoshiDreams = { -- Circle of Dreams by Kingdomyoshi
     modGuid = "81d10c14-3abb-41d6-a6a6-78daab7076d5",
@@ -78,7 +78,7 @@ IntegratedSupport.SubClasses = {
     class = "druid",
     subClassName = "Circle of Stars"
   },
-  YoshiWildfire = {   -- Circle of Wildfire by Kingdomyoshi
+  YoshiWildfire = { -- Circle of Wildfire by Kingdomyoshi
     modGuid = "c9cfbec9-136f-40de-a12e-33650efea178",
     subClassGuid = "d06c070d-43c9-4bfe-b68e-7fe6e2ec10c5",
     class = "druid",
@@ -138,13 +138,13 @@ IntegratedSupport.SubClasses = {
     class = "monk",
     subClassName = "Way of Kensei"
   },
-  PlatypusVenomMercy = {   -- Way of Mercy by PlatypusVenom
+  PlatypusVenomMercy = { -- Way of Mercy by PlatypusVenom
     modGuid = "c5343ccb-d1d8-4970-8a1d-c44203a6a55a",
     subClassGuid = "54bdda89-b5a1-4f4e-9366-3057b079613f",
     class = "monk",
     subClassName = "Way of Mercy"
   },
-  YoshiSunSoul = {   -- Way of the Sun Soul by Kingdomyoshi
+  YoshiSunSoul = { -- Way of the Sun Soul by Kingdomyoshi
     modGuid = "b382793b-6161-42d2-a3fb-a4d69fa3a8e8",
     subClassGuid = "62db00d9-2298-43a3-9fd8-64cdfed3a0df",
     class = "monk",
@@ -276,13 +276,13 @@ IntegratedSupport.SubClasses = {
     class = "wizard",
     subClassName = "Sorcery"
   },
-  FierrofWarMagic = {   -- War Magic by fierrof
+  FierrofWarMagic = { -- War Magic by fierrof
     modGuid = "be37a0e6-f2bc-46f3-b98d-8cfbe977053a",
     subClassGuid = "bec3ead5-a59a-4241-b778-27fb17f28e54",
     class = "wizard",
     subClassName = "War Magic"
   },
-  HavsglimtGraviturgy = {   -- War Magic by havsglimt
+  HavsglimtGraviturgy = { -- War Magic by havsglimt
     modGuid = "c62ae435-c1a4-41b7-b887-4f24a6dcd846",
     subClassGuid = "b33fdb2e-10d1-45c6-8e3a-24e7df975fe2",
     class = "wizard",

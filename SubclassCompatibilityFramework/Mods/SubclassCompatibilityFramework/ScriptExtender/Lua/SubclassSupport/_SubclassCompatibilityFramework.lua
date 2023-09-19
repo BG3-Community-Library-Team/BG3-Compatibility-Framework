@@ -1,49 +1,57 @@
-local ClassProgressions = {}
+ClassProgressions = {}
 
-local function InsertSubclass(arr, guid)
-  Ext.Utils.Print("Entered InsertSubclass")
-  if arr ~= nil then
-    table.insert(arr, guid)
+-- Insert Subclass into Progression Nodes
+local function AttachSubClass(subClassGuid, parentClassProgressionGuid)
+  local subClassNodes = ClassProgressions[parentClassProgressionGuid].SubClasses
+
+  if not Utils.IsInTable(subClassNodes, subClassGuid) then
+    Utils.Info("Adding " .. subClassGuid .. " to Progression")
+    Utils.AddToTable(subClassNodes, subClassGuid)
   end
 end
 
-local function FindExistingSubclass(arr, guid)
-  Ext.Utils.Print("Entered FindExistingSubclass")
-  if arr ~= nil then
-        for _, value in pairs(arr) do
-      if value == guid then
-        return true
-      end
+-- Cache our Subclass-Choice Progression if it's not already loaded
+local function PrepareMainClassProgression(parentClassProgressionGuid)
+  ClassProgressions[parentClassProgressionGuid] = Ext.Definition.Get(parentClassProgressionGuid, "Progression")
+  if not Utils.IsInTable(ClassProgressions, parentClassProgressionGuid) then
+    Utils.Info(parentClassProgressionGuid .. " not present in ClassUUIDs, inserting...")
+    if not Utils.IsInTable(Globals.ClassUUIDs, parentClassProgressionGuid) then
+      Globals.ClassUUIDs[ClassProgressions[parentClassProgressionGuid].Name] = parentClassProgressionGuid
     end
   end
 end
 
-local function LoadClass(className)
-  Ext.Utils.Print("Entered LoadClass")
-  if ClassProgressions[className] == nil and Globals.SupportedClassDict[className] then
-    ClassProgressions[className] = Ext.Definition.Get(Globals.SupportedClassDict[className], "Progression")
+-- Need to handle special cases where Subclass choice is at level 1
+local function HandleLevelOneProgressions(parentClass)
+  if Utils.IsInTable(Globals.MulticlassClasses, parentClass) then
+    return Globals.MulticlassClasses[parentClass]
   end
-
-  return ClassProgressions[className].SubClasses
 end
 
-local function LoadSubClass(guid, className)
-  Ext.Utils.Print("Entered LoadSubClass with " .. className .. " " .. guid)
-  if Globals.SupportedClassDict[className] ~= nil then
-    Ext.Utils.Print("SupportedClassDict " .. className .. " exists!")
-    local subClassNodes = LoadClass(className)
-    if not FindExistingSubclass(subClassNodes, guid) then
-      Ext.Utils.Print("Subclass not a duplicate")
-      InsertSubclass(subClassNodes, guid)
-    end
+-- Check if our classname is already a guid
+local function ClassNameToGuid(parentClass)
+  if Utils.IsGuid(parentClass) then
+    return parentClass
   end
+
+  return Globals.ClassUUIDs[parentClass] or nil
+end
+
+local function AddSubClass(guid, parentClass)
+  local classGuid = ClassNameToGuid(parentClass)
+
+  if classGuid == nil then
+    Utils.Error(Strings.INVALID_CLASS_PROVIDED)
+  end
+
+  PrepareMainClassProgression(classGuid)
+  AttachSubClass(guid, classGuid)
 end
 
 function SubClassHandler(guid, parentClass)
-  Ext.Utils.Print("Entered Subclass Handler with " .. parentClass .. " " .. guid)
-  LoadSubClass(guid, parentClass)
-
-  if Globals.MulticlassClasses[parentClass] ~= nil then
-    LoadSubClass(guid, Globals.MulticlassClasses[parentClass])
+  AddSubClass(guid, parentClass)
+  LevelOneMulticlassGuid = HandleLevelOneProgressions(parentClass)
+  if LevelOneMulticlassGuid ~= nil then
+    AddSubClass(guid, LevelOneMulticlassGuid)
   end
 end
