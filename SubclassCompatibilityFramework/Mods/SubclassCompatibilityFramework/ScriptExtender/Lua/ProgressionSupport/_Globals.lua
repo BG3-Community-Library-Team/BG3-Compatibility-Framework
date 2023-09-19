@@ -2,7 +2,7 @@ Globals.SupportedSubClasses = {}
 Globals.ClassUUIDs = {}
 Globals.MulticlassClasses = {}
 Globals.ClassProgressions = {}
-Globals.Debug = 1
+Globals.Debug = 0
 
 -- Including the non-level-one-multiclass-specific entries to be sure we
 -- capture edge cases
