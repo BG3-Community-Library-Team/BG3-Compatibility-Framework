@@ -22,7 +22,6 @@ function Api.InsertLevelOneProgression(className, classGuid)
 end
 
 function Api.InsertSelector(payloads)
-  Utils.Error(Strings.UNFINISHED_API_WARNING)
   if payloads ~= nil then
     for _, payload in pairs(payloads) do
       Utils.Info(Utils.Stringify(payload))

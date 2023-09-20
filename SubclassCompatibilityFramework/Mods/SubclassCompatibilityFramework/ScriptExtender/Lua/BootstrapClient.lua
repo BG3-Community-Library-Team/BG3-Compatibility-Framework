@@ -1,7 +1,7 @@
 SCF = {}
 SCF.modTableKey = "SubclassCompatibilityFramework"
 SCF.modPrefix = "SCF"
-SCF.modVersion = { major = 2, minor = 1, revision = 3, build = 0 }
+SCF.modVersion = { major = 2, minor = 2, revision = 0, build = 0 }
 
 Api = {}
 Globals = {}

@@ -90,5 +90,7 @@ function HandleSelector(payload)
   if payload ~= nil then
     Utils.Info("Entering HandleSelector")
     AddSelector(payload)
+  else
+    Utils.Error(Strings.ERROR_EMPTY_PAYLOAD)
   end
 end
