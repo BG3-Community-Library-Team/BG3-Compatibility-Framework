@@ -26,7 +26,7 @@ local function BuildSelectPassivesOrEquipmentTable(params)
   return {
     UUID = params.Guid,
     Amount = params.Amount or "",
-    Arg3 = params.Args3 or ""
+    Arg3 = params.SelectorId or ""
   }
 end
 
