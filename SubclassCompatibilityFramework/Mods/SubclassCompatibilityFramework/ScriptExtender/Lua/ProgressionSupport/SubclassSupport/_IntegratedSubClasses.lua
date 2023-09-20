@@ -252,12 +252,6 @@ IntegratedSupport.SubClasses = {
     class = "warlock",
     subClassName = "Dread Overlord"
   },
-  FluffyDragonCelestial = { -- Celestial by FluffyDragon24
-    modGuid = "1d7bb32c-396d-11ee-be56-0242ac120002",
-    subClassGuid = "1d7bb4b2-396d-11ee-be56-0242ac120002",
-    class = "warlock",
-    subClassName = "Celestial"
-  },
   GladoffelLpRavenQueen = { -- The Raven Queen by GladoffelLp
     modGuid = "9d5e409f-5c4e-4c14-b1f3-6fd47c9359bf",
     subClassGuid = "7842f798-5354-4285-906f-ea2d4202aeff",

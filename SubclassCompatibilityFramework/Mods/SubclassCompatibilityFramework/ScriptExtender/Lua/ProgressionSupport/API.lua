@@ -18,7 +18,20 @@ end
 
 -- Additional endpoint to ensure support for classes with a level 1 subclass choice
 function Api.InsertLevelOneProgression(className, classGuid)
-    Globals.MulticlassClasses[className] = classGuid
+  Globals.MulticlassClasses[className] = classGuid
+end
+
+function Api.InsertSelector(payloads)
+  Utils.Error(Strings.UNFINISHED_API_WARNING)
+  if payloads ~= nil then
+    for _, payload in pairs(payloads) do
+      Utils.Info(Utils.Stringify(payload))
+
+      if Ext.Mod.IsModLoaded(payload.modGuid) then
+        HandleSelector(payload)
+      end
+    end
+  end
 end
 
 --[[Api.InsertSelector = function (selector)

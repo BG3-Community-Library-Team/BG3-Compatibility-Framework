@@ -1,21 +1,23 @@
 SCF = {}
 SCF.modTableKey = "SubclassCompatibilityFramework"
 SCF.modPrefix = "SCF"
-SCF.modVersion = { major = 2, minor = 1, revision = 0, build = 0 }
+SCF.modVersion = { major = 2, minor = 1, revision = 3, build = 0 }
 
 Api = {}
 Globals = {}
 Utils = {}
 Strings = {}
 IntegratedSupport = {}
+
 Ext.Require("ProgressionSupport/SubclassSupport/_IntegratedSubClasses.lua")
 Ext.Require("ProgressionSupport/_Strings.lua")
 Ext.Require("ProgressionSupport/_Globals.lua")
 Ext.Require("ProgressionSupport/_Utils.lua")
-Ext.Require("ProgressionSupport/SubclassSupport/_SubclassCompatibilityFramework.lua")
+Ext.Require("ProgressionSupport/SubclassSupport/_SubclassCompatibility.lua")
+Ext.Require("ProgressionSupport/SelectorSupport/_SelectorCompatibility.lua")
 Ext.Require("ProgressionSupport/API.lua")
 
-Utils.Info("Required Files loaded")
+Utils.Info(Strings.LOADED_REQUIRED_FILES)
 
 -- Insert our Supported Classes
 Api.InsertClass("barbarian", "0d4a6b4b-8162-414b-81ef-1838e36e778a")
@@ -35,7 +37,7 @@ Api.InsertClass("warlock", "a7767dc5-e6ab-4e05-96fd-f0424256121c")
 Api.InsertClass("mc_warlock", "20015e25-8aa9-41bf-b959-aa587ba0aa27")
 Api.InsertClass("wizard", "d6184c47-5b99-4e63-95ac-02f8ce4ccda1")
 
-Utils.Info("Main Classes Supported")
+Utils.Info(Strings.LOADED_MAIN_CLASSES)
 
 local function OnSessionLoaded()
   Utils.Info(Utils.Stringify(IntegratedSupport.SubClasses))
