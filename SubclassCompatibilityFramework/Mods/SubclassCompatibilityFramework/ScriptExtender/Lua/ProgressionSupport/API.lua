@@ -21,22 +21,22 @@ function Api.InsertLevelOneProgression(className, classGuid)
   Globals.MulticlassClasses[className] = classGuid
 end
 
-function Api.InsertSelector(payloads)
-  if payloads ~= nil then
-    for _, payload in pairs(payloads) do
-      Utils.Info(Utils.Stringify(payload))
+function Api.InsertSelectors(payloads)
+    if payloads ~= nil then
+        for _, payload in pairs(payloads) do
+            Utils.Info(Utils.Stringify(payload))
 
-      if Ext.Mod.IsModLoaded(payload.modGuid) then
-        HandleSelector(payload)
-      end
+            if Ext.Mod.IsModLoaded(payload.modGuid) then
+                HandleSelector(payload)
+            end
+        end
     end
-  end
 end
 
---[[Api.InsertSelector = function (selector)
--- Selector: type, uuid, params
-end]]
---
+-- Whoops, we provided someone with the wrong Endpoint. Here's to making things right.:
+function Api.InsertSelector(payloads)
+  Api.InsertSelectors(payloads)
+end
 
 --[[Api.InsertBoost = function (boost)
 
