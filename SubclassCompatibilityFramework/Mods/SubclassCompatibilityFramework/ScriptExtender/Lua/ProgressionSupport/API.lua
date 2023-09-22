@@ -38,6 +38,11 @@ function Api.InsertSelector(payloads)
   Api.InsertSelectors(payloads)
 end
 
+-- Use only for debugging, this will enable Debug across the Framework
+function Api.ToggleDebug(bool)
+  Globals.Debug = bool
+end
+
 --[[Api.InsertBoost = function (boost)
 
 end]]

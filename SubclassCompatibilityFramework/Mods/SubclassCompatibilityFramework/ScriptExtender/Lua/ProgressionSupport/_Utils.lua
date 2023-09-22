@@ -11,7 +11,7 @@ function Utils.Stringify(obj)
 end
 
 function Utils.Info(message)
-  if Globals.Debug == 1 then
+  if Globals.Debug == true then
     Ext.Utils.Print(Strings.INFO_TAG .. message)
   end
 end

@@ -3,7 +3,7 @@ Globals.ClassUUIDs = {}
 Globals.MulticlassClasses = {}
 Globals.ClassProgressions = {}
 Globals.ProgressionCache = {}
-Globals.Debug = 1
+Globals.Debug = false
 
 -- Including the non-level-one-multiclass-specific entries to be sure we
 -- capture edge cases
