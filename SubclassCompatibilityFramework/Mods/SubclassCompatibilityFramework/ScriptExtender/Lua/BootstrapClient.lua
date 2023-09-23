@@ -9,13 +9,15 @@ Utils = {}
 Strings = {}
 IntegratedSupport = {}
 
-Ext.Require("ProgressionSupport/SubclassSupport/_IntegratedSubClasses.lua")
-Ext.Require("ProgressionSupport/_Strings.lua")
-Ext.Require("ProgressionSupport/_Globals.lua")
-Ext.Require("ProgressionSupport/_Utils.lua")
-Ext.Require("ProgressionSupport/SubclassSupport/_SubclassCompatibility.lua")
-Ext.Require("ProgressionSupport/SelectorSupport/_SelectorCompatibility.lua")
-Ext.Require("ProgressionSupport/API.lua")
+Ext.Require("CompatibilitySupport/SubclassSupport/_IntegratedSubClasses.lua")
+Ext.Require("CompatibilitySupport/_Strings.lua")
+Ext.Require("CompatibilitySupport/_Globals.lua")
+Ext.Require("CompatibilitySupport/_Utils.lua")
+Ext.Require("CompatibilitySupport/SubclassSupport/_SubclassCompatibility.lua")
+Ext.Require("CompatibilitySupport/SelectorSupport/_SelectorCompatibility.lua")
+Ext.Require("CompatibilitySupport/StringSupport/_ProgressionStringCompatibility.lua")
+Ext.Require("CompatibilitySupport/ListSupport/_ListCompatibility.lua")
+Ext.Require("CompatibilitySupport/API.lua")
 
 Utils.Info(Strings.LOADED_REQUIRED_FILES)
 

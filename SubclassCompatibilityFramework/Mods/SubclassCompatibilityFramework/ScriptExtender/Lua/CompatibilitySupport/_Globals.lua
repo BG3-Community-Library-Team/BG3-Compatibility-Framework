@@ -3,7 +3,8 @@ Globals.ClassUUIDs = {}
 Globals.MulticlassClasses = {}
 Globals.ClassProgressions = {}
 Globals.ProgressionCache = {}
-Globals.Debug = false
+Globals.ListCache = {}
+Globals.Debug = true
 
 -- Including the non-level-one-multiclass-specific entries to be sure we
 -- capture edge cases
@@ -34,4 +35,29 @@ Globals.Attributes = {
   aINT = "Intelligence",
   aWIS = "Wisdom",
   aCHA = "Charisma"
+}
+
+Globals.ProgressionStringTypes = {
+  Boosts = "Boosts",
+  PassivesAdded = "PassivesAdded",
+  PassivesRemoved = "PassivesRemoved"
+}
+
+Globals.ListTypes = {
+  -- Abilities = "AbilityList",
+  SpellList = "SpellList",
+  SkillList = "SkillList",
+  PassiveList = "PassiveList",
+  -- Equipment = "EquipmentList",
+  -- Colors = "ColorDefinition", Partially supported, figure out actual arrays
+  -- CampChestTemplate = "CampChestTemplates"
+}
+
+Globals.ListNodes = {
+  -- Abilities = "Abilities", Not Supported
+  SpellList = "Spells",
+  SkillList = "Skills",
+  PassiveList = "Passives",
+  -- Equipment = "EquipmentList", Not Supported
+  -- Colors = "ColorDefinition", Partially supported, figure out actual arrays
 }
