@@ -6,6 +6,14 @@ function Utils.CacheOrRetrieveProgression(guid)
   end
 end
 
+function Utils.CacheOrRetrieveList(guid, type)
+  if Globals.ListCache ~= nil and Globals.ListCache[guid] ~= nil then
+    return Globals.ProgressionCache[guid]
+  else
+    return Ext.Definition.Get(guid, type)
+  end
+end
+
 function Utils.Stringify(obj)
   return Ext.Json.Stringify(obj)
 end
