@@ -1,7 +1,7 @@
 SCF = {}
 SCF.modTableKey = "SubclassCompatibilityFramework"
 SCF.modPrefix = "SCF"
-SCF.modVersion = { major = 2, minor = 2, revision = 0, build = 0 }
+SCF.modVersion = { major = 2, minor = 3, revision = 0, build = 0 }
 
 Api = {}
 Globals = {}
@@ -16,7 +16,7 @@ Ext.Require("CompatibilitySupport/_Utils.lua")
 Ext.Require("CompatibilitySupport/SubclassSupport/_SubclassCompatibility.lua")
 Ext.Require("CompatibilitySupport/SelectorSupport/_SelectorCompatibility.lua")
 Ext.Require("CompatibilitySupport/StringSupport/_ProgressionStringCompatibility.lua")
-Ext.Require("CompatibilitySupport/ListSupport/_ListCompatibility.lua")
+Ext.Require("CompatibilitySupport/ListsSupport/_ListCompatibility.lua")
 Ext.Require("CompatibilitySupport/API.lua")
 
 Utils.Info(Strings.LOADED_REQUIRED_FILES)
