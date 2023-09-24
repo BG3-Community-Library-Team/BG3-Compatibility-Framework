@@ -2,7 +2,7 @@
 function Api.InsertToList(payloads)
   if payloads ~= nil then
     for _, payload in pairs(payloads) do
-            Utils.Into(Utils.Stringify(payload))
+            Utils.Info(Utils.Stringify(payload))
       if Ext.Mod.IsModLoaded(payload.modGuid) then
         HandleList(payload)
       end
@@ -14,7 +14,7 @@ end
 function Api.InsertSubClasses(subClasses)
   if subClasses ~= nil then
     for _, subClass in pairs(subClasses) do
-      Utils.Info(Utils.Stringify(subClass))
+      -- Utils.Info(Utils.Stringify(subClass))
       --table.insert(Globals.SupportedSubClasses, subClass)
       if Ext.Mod.IsModLoaded(subClass.modGuid) then
         SubClassHandler(subClass.subClassGuid, subClass.class)

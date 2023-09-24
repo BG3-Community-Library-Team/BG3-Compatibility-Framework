@@ -2,15 +2,17 @@ function Utils.CacheOrRetrieveProgression(guid)
   if Globals.ProgressionCache ~= nil and Globals.ProgressionCache[guid] ~= nil then
     return Globals.ProgressionCache[guid]
   else
-    return Ext.Definition.Get(guid, "Progression")
+      Globals.ProgressionCache[guid] = Ext.StaticData.Get(guid, "Progression")
+    return Globals.ProgressionCache[guid]
   end
 end
 
 function Utils.CacheOrRetrieveList(guid, type)
   if Globals.ListCache ~= nil and Globals.ListCache[guid] ~= nil then
-    return Globals.ProgressionCache[guid]
-  else
-    return Ext.Definition.Get(guid, type)
+    return Globals.ListCache[guid]
+    else
+      Globals.ListCache[guid] = Ext.StaticData.Get(guid, type)
+    return Globals.ListCache[guid]
   end
 end
 
@@ -59,6 +61,18 @@ function Utils.AddToTable(arr, val)
   if arr ~= nil then
     table.insert(arr, val)
   end
+end
+
+function Utils.TableMerge(args)
+  local result = {}
+  for _, t in ipairs(args) do
+    for k, v in pairs(t) do
+      Ext.Utils.Print(Utils.Stringify(k) .. " : " .. Utils.Stringify(v))
+      table.insert(result, v)
+    end
+  end
+  Ext.Utils.Print(Utils.Stringify(result))
+  return result
 end
 
 -- TODO: Send this to Community Library

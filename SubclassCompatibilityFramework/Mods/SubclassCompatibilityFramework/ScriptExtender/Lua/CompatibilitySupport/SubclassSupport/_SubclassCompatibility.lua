@@ -4,7 +4,7 @@ local function AttachSubClass(subClassGuid, parentClassProgressionGuid)
   local subClassNodes = Globals.ClassProgressions[parentClassProgressionGuid].SubClasses
 
   if subClassNodes ~= nil and not Utils.IsInTable(subClassNodes, subClassGuid) then
-    Utils.Info("Adding " .. subClassGuid .. " to Progression")
+    -- Utils.Info("Adding " .. subClassGuid .. " to Progression")
     Utils.AddToTable(subClassNodes, subClassGuid)
   end
 end
@@ -14,11 +14,11 @@ local function PrepareMainClassProgression(parentClassProgressionGuid)
   Utils.Info("Entering PrepareMainClassProgression")
   if Globals.ClassProgressions[parentClassProgressionGuid] == nil then
     -- Cache our Progression for later usage
-    Globals.ClassProgressions[parentClassProgressionGuid] = Ext.Definition.Get(parentClassProgressionGuid, "Progression")
+    Globals.ClassProgressions[parentClassProgressionGuid] = Ext.StaticData.Get(parentClassProgressionGuid, "Progression")
   end
 
   if not Utils.IsInTable(Globals.ClassUUIDs, parentClassProgressionGuid) then
-    Utils.Info(parentClassProgressionGuid .. " not present in ClassUUIDs, inserting...")
+    -- Utils.Info(parentClassProgressionGuid .. " not present in ClassUUIDs, inserting...")
     local className = Globals.ClassProgressions[parentClassProgressionGuid].Name
     Globals.ClassUUIDs[className] = parentClassProgressionGuid
   end

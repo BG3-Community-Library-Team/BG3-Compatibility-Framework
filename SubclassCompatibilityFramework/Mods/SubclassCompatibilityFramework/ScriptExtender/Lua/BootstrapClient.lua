@@ -42,7 +42,7 @@ Api.InsertClass("wizard", "d6184c47-5b99-4e63-95ac-02f8ce4ccda1")
 Utils.Info(Strings.LOADED_MAIN_CLASSES)
 
 local function OnSessionLoaded()
-  Utils.Info(Utils.Stringify(IntegratedSupport.SubClasses))
+  -- Utils.Info(Utils.Stringify(IntegratedSupport.SubClasses))
   if IntegratedSupport.SubClasses ~= nil then
     Api.InsertSubClasses(IntegratedSupport.SubClasses)
   end
