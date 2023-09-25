@@ -1,5 +1,6 @@
 -- Handles SpellLists, SkillLists, and PassiveLists
 function Api.InsertToList(payloads)
+  Utils.Error(Strings.ERROR_DISABLED_API)
   if payloads ~= nil then
     for _, payload in pairs(payloads) do
       Utils.Info(Utils.Stringify(payload))
@@ -14,7 +15,7 @@ end
 function Api.InsertSubClasses(subClasses)
   if subClasses ~= nil then
     for _, subClass in pairs(subClasses) do
-      Utils.Info(Utils.Stringify(subClass))
+      -- Utils.Info(Utils.Stringify(subClass))
       --table.insert(Globals.SupportedSubClasses, subClass)
       if Ext.Mod.IsModLoaded(subClass.modGuid) then
         SubClassHandler(subClass.subClassGuid, subClass.class)

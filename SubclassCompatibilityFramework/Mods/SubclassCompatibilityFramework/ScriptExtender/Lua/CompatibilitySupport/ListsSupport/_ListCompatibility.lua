@@ -1,10 +1,10 @@
 function AddList(payload)
   Utils.Info("Entering AddList")
   if Utils.IsKeyInTable(Globals.ListTypes, payload.ListType) then
-    local list = Utils.CacheOrRetrieveList(payload.TargetList, payload.ListType)
-    Utils.Info(Utils.Stringify(list))
+    local listNode = Globals.ListNodes[payload.ListType]
+    local list     = Ext.StaticData.Get(payload.TargetList, payload.ListType)    -- Utils.CacheOrRetrieveList(payload.TargetList, payload.ListType)
 
-    Utils.AddToTable(payload.ListItems, list[Globals.ListNodes[payload.ListType]])
+    list[listNode] = Utils.MergeTables(list[listNode], payload.ListItems)
   else
     Utils.Error(Strings.ERROR_INVALID_LIST_TYPE)
   end

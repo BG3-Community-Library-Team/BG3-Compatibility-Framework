@@ -2,15 +2,17 @@ function Utils.CacheOrRetrieveProgression(guid)
   if Globals.ProgressionCache ~= nil and Globals.ProgressionCache[guid] ~= nil then
     return Globals.ProgressionCache[guid]
   else
-    return Ext.Definition.Get(guid, "Progression")
+    Globals.ProgressionCache[guid] = Ext.StaticData.Get(guid, "Progression")
+    return Globals.ProgressionCache[guid]
   end
 end
 
 function Utils.CacheOrRetrieveList(guid, type)
   if Globals.ListCache ~= nil and Globals.ListCache[guid] ~= nil then
-    return Globals.ProgressionCache[guid]
+    return Globals.ListCache[guid]
   else
-    return Ext.Definition.Get(guid, type)
+    Globals.ListCache[guid] = Ext.StaticData.Get(guid, type)
+    return Globals.ListCache[guid]
   end
 end
 
@@ -21,6 +23,12 @@ end
 function Utils.Info(message)
   if Globals.Debug == true then
     Ext.Utils.Print(Strings.INFO_TAG .. message)
+  end
+end
+
+function Utils.Warn(message)
+  if Globals.ShowWarnings == true then
+    Ext.Utils.Print(Strings.WARNING_TAG .. message)
   end
 end
 
@@ -59,6 +67,51 @@ function Utils.AddToTable(arr, val)
   if arr ~= nil then
     table.insert(arr, val)
   end
+end
+
+function Utils.AddKeyValueToTable(arr, key, value)
+  if arr ~= nil then
+    arr[key] = value
+  end
+end
+
+function Utils.GetTableSize(arr)
+  local count = 0
+  for _, val in pairs(arr) do
+    count = count + 1
+  end
+
+  return count
+end
+
+function Utils.InsertFromTableToTable(arr, resultArr, count)
+  for _, value in pairs(arr) do
+    if not Utils.IsInTable(resultArr, value) then
+      resultArr[count] = value
+      count = count + 1
+    end
+  end
+  return resultArr, count
+end
+
+function Utils.MergeTables(arrA, arrB)
+  local result = {}
+  local count = 0
+
+  if arrA ~= nil and arrB ~= nil then
+    result, count = Utils.InsertFromTableToTable(arrA, result, count)
+    result, count = Utils.InsertFromTableToTable(arrB, result, count)
+  end
+
+  return result
+end
+
+function Utils.IsTableEmpty(arr)
+  if next(arr) == nil then
+    return true
+  end
+
+  return false
 end
 
 -- TODO: Send this to Community Library
