@@ -1,6 +1,5 @@
 -- Handles SpellLists, SkillLists, and PassiveLists
 function Api.InsertToList(payloads)
-  Utils.Error(Strings.ERROR_DISABLED_API)
   if payloads ~= nil then
     for _, payload in pairs(payloads) do
       Utils.Info(Utils.Stringify(payload))
@@ -77,4 +76,9 @@ end
 -- Use only for debugging, this will enable Debug across the Framework
 function Api.ToggleDebug(bool)
   Globals.Debug = bool
+end
+
+-- Use only for debugging, this will enable Warnings across the Framework
+function Api.ToggleWarn(bool)
+  Globals.Warn = bool
 end

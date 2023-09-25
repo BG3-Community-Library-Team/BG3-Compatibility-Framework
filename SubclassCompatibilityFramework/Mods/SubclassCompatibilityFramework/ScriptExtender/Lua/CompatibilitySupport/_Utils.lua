@@ -106,14 +106,6 @@ function Utils.MergeTables(arrA, arrB)
   return result
 end
 
-function Utils.IsTableEmpty(arr)
-  if next(arr) == nil then
-    return true
-  end
-
-  return false
-end
-
 -- TODO: Send this to Community Library
 function Utils.IsGuid(string)
   local x = "%x"
