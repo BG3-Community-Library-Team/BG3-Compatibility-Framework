@@ -1,5 +1,6 @@
 -- Handles SpellLists, SkillLists, and PassiveLists
 function Api.InsertToList(payloads)
+  Utils.Error(Strings.ERROR_DISABLED_API)
   if payloads ~= nil then
     for _, payload in pairs(payloads) do
       Utils.Info(Utils.Stringify(payload))

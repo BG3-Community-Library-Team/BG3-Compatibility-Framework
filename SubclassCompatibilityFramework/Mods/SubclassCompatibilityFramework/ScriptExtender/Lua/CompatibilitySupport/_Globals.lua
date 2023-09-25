@@ -5,6 +5,7 @@ Globals.ClassProgressions = {}
 Globals.ProgressionCache = {}
 Globals.ListCache = {}
 Globals.Debug = true
+Globals.ShowWarnings = true
 
 -- Including the non-level-one-multiclass-specific entries to be sure we
 -- capture edge cases
