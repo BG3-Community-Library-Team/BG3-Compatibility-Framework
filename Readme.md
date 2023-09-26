@@ -9,7 +9,7 @@ This is the Compatibility Framework. Split off from BG3 Community Library, this 
 ## Contributing
 If you'd like to contribute to the Compatibility Framework, make a Fork of this project: [![GitHub forks](https://img.shields.io/github/forks/BG3-Community-Library-Team/BG3-Subclass-Compatibility-Framework)](https://GitHub.com/BG3-Community-Library-Team/BG3-Subclass-Compatibility-Framework/network/)
 
-The Compatibility Framework makes it easy to set your Subclass up for compatibility with other Subclass mods. You can utilize the Framework's API, or add a small amount of code to a single file. To find out how, [check out our Wiki page](https://github.com/BG3-Community-Library-Team/BG3-Subclass-Compatibility-Framework/wiki/Adding-a-Subclass-to-the-Subclass-Compatibility-Framework).
+The Compatibility Framework makes it easy to set your mods up for compatibility with other mods, just by utilizing the Framework's API. To find out how, [check out our Wiki page](https://github.com/BG3-Community-Library-Team/BG3-Subclass-Compatibility-Framework/wiki/Adding-a-Subclass-to-the-Compatibility-Framework).
 
 For more information on our API, take a look at the following pages:
 - [Class/Subclass Module](https://github.com/BG3-Community-Library-Team/BG3-Subclass-Compatibility-Framework/wiki/_Class-Module)
