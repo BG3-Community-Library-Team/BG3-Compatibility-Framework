@@ -33,7 +33,11 @@ function Utils.Warn(message)
 end
 
 function Utils.Error(message)
-  Ext.Utils.Print(Strings.ERROR_TAG .. message)
+    Ext.Utils.Print(Strings.ERROR_TAG .. message)
+end
+
+function Utils.IsInString(str, value)
+  return str.find(value)
 end
 
 function Utils.IsInTable(arr, val)
