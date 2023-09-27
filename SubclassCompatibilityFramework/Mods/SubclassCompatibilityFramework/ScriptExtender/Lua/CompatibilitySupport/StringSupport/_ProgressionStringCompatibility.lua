@@ -1,17 +1,17 @@
 local function DetectStringType(type)
-    Utils.Info("Entering DetectStringType")
-    return Utils.IsKeyInTable(Globals.ProgressionStringTypes, type)
+  Utils.Info("Entering DetectStringType")
+  return Utils.IsKeyInTable(Globals.ProgressionStringTypes, type)
 end
 
 local function stripDuplicates(field, strings)
-    local strippedStrings = {}
-    for _, value in pairs(strings) do
-        if not Utils.IsInString(field, value) and not Utils.IsInTable(field, strippedStrings) then
-            strippedStrings.insert(value)
-        end
+  local strippedStrings = {}
+  for _, value in pairs(strings) do
+    if not Utils.IsInString(field, value) and not Utils.IsInTable(field, strippedStrings) then
+      strippedStrings.insert(value)
     end
-    
-    return strippedStrings
+  end
+
+  return strippedStrings
 end
 
 local function AddString(payload)

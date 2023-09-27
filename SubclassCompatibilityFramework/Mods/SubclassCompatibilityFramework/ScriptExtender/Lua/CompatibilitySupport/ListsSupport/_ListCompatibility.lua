@@ -7,7 +7,7 @@ function AddList(payload)
     if list ~= nil then
       list[listNode] = Utils.MergeTables(list[listNode], payload.ListItems)
     else
-      Utils.Error(payload.TargetList .. "of type " .. payload.ListType ..  Strings.ERROR_LIST_NOT_FOUND)
+      Utils.Error(payload.TargetList .. "of type " .. payload.ListType .. Strings.ERROR_LIST_NOT_FOUND)
     end
   else
     Utils.Error(Strings.ERROR_INVALID_LIST_TYPE)
