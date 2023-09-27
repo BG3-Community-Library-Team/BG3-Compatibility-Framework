@@ -14,8 +14,6 @@ end
 function Api.InsertSubClasses(subClasses)
   if subClasses ~= nil then
     for _, subClass in pairs(subClasses) do
-      -- Utils.Info(Utils.Stringify(subClass))
-      --table.insert(Globals.SupportedSubClasses, subClass)
       if Ext.Mod.IsModLoaded(subClass.modGuid) then
         SubClassHandler(subClass.subClassGuid, subClass.class)
       end

@@ -36,6 +36,10 @@ function Utils.Error(message)
   Ext.Utils.Print(Strings.ERROR_TAG .. message)
 end
 
+function Utils.IsInString(str, value)
+  return str.find(value)
+end
+
 function Utils.IsInTable(arr, val)
   if arr ~= nil then
     for _, value in pairs(arr) do

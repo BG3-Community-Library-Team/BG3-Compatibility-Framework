@@ -81,7 +81,6 @@ end
 local function AddSelector(payload)
   Utils.Info("Entering AddSelector")
   local selectorField = Utils.CacheOrRetrieveProgression(payload.TargetProgression)[payload.Function]
-  Utils.Info(Utils.Stringify(selectorField))
 
   table.insert(selectorField, BuildSelector(payload))
 end
