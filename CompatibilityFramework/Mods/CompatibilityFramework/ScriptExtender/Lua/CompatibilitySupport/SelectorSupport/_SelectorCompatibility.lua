@@ -81,8 +81,10 @@ end
 local function AddSelector(payload)
   Utils.Info("Entering AddSelector")
   local selectorField = Utils.CacheOrRetrieveProgression(payload.TargetProgression)[payload.Function]
-
+  Ext.Dump(selectorField)
+  Ext.Utils.Print(Ext.Json.Stringify(BuildSelector(payload)))
   table.insert(selectorField, BuildSelector(payload))
+  Ext.Dump(selectorField)
 end
 
 function HandleSelector(payload)
