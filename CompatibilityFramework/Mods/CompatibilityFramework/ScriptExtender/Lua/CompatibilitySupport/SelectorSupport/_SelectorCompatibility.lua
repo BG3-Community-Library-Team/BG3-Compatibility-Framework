@@ -51,8 +51,8 @@ local function BuildSelectSkillsExpertiseTable(params)
   return {
     UUID = params.Guid,
     Amount = params.Amount or "0",
-    Arg3 = params.Arg3 or true,
-    Arg4 = params.Arg4 or ""
+    Arg3 = params.LimitToProficiency or params.Arg3 or true,
+    Arg4 = params.SelectorId or params.Arg4 or ""
   }
 end
 
@@ -81,10 +81,8 @@ end
 local function AddSelector(payload)
   Utils.Info("Entering AddSelector")
   local selectorField = Utils.CacheOrRetrieveProgression(payload.TargetProgression)[payload.Function]
-  Ext.Dump(selectorField)
-  Ext.Utils.Print(Ext.Json.Stringify(BuildSelector(payload)))
+
   table.insert(selectorField, BuildSelector(payload))
-  Ext.Dump(selectorField)
 end
 
 function HandleSelector(payload)
