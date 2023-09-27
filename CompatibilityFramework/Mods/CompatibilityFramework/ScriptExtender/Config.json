@@ -1,5 +1,5 @@
 {
   "RequiredVersion": 5,
-  "ModTable": "CompatibilityFramework",
+  "ModTable": "SubclassCompatibilityFramework",
   "FeatureFlags": ["Lua"]
 }
