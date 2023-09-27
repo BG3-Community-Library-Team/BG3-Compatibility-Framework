@@ -1,12 +1,15 @@
-# Subclass Compatibility Framework
+# Compatibility Framework
 [![GitHub release](https://img.shields.io/github/v/tag/BG3-Community-Library-Team/BG3-Subclass-Compatibility-Framework?label=Latest%20Version)](https://GitHub.com/BG3-Community-Library-Team/BG3-Subclass-Compatibility-Framework/releases/) [![GitHub commits](https://img.shields.io/github/commits-since/BG3-Community-Library-Team/BG3-Subclass-Compatibility-Framework/2.2.0/main)](https://GitHub.com/BG3-Community-Library-Team/BG3-Subclass-Compatibility-Framework/commit/)
+
+[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/O5O8PG8RF)
+
 
 This is the Compatibility Framework. Split off from BG3 Community Library, this mod provides an API for other mods to use improve compatibility. Initially designed for Subclass Compatibility, the Framework has API endpoints that Script-Extender Enabled mods can hook into to insert values into Progressions and Spell/Skill/PassiveLists at Runtime. What this means is that a mod author can inject their mod's data into existing Progressions or Lists without overwriting data, allowing for total compatibility. If you want to know which subclasses are currently supported, [check out this list](https://github.com/BG3-Community-Library-Team/BG3-Subclass-Compatibility-Framework/wiki/Supported-Mods).
 
 ## Contributing
 If you'd like to contribute to the Compatibility Framework, make a Fork of this project: [![GitHub forks](https://img.shields.io/github/forks/BG3-Community-Library-Team/BG3-Subclass-Compatibility-Framework)](https://GitHub.com/BG3-Community-Library-Team/BG3-Subclass-Compatibility-Framework/network/)
 
-The Compatibility Framework makes it easy to set your Subclass up for compatibility with other Subclass mods. You can utilize the Framework's API, or add a small amount of code to a single file. To find out how, [check out our Wiki page](https://github.com/BG3-Community-Library-Team/BG3-Subclass-Compatibility-Framework/wiki/Adding-a-Subclass-to-the-Subclass-Compatibility-Framework).
+The Compatibility Framework makes it easy to set your mods up for compatibility with other mods, just by utilizing the Framework's API. To find out how, [check out our Wiki page](https://github.com/BG3-Community-Library-Team/BG3-Subclass-Compatibility-Framework/wiki/Adding-a-Subclass-to-the-Compatibility-Framework).
 
 For more information on our API, take a look at the following pages:
 - [Class/Subclass Module](https://github.com/BG3-Community-Library-Team/BG3-Subclass-Compatibility-Framework/wiki/_Class-Module)
