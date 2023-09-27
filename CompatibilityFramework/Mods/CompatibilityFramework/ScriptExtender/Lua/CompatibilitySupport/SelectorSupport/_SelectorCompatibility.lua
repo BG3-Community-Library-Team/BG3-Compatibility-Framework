@@ -51,8 +51,8 @@ local function BuildSelectSkillsExpertiseTable(params)
   return {
     UUID = params.Guid,
     Amount = params.Amount or "0",
-    Arg3 = params.Arg3 or true,
-    Arg4 = params.Arg4 or ""
+    Arg3 = params.LimitToProficiency or params.Arg3 or true,
+    Arg4 = params.SelectorId or params.Arg4 or ""
   }
 end
 
