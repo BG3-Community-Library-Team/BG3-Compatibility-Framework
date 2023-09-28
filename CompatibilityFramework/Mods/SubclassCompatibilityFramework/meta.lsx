@@ -9,7 +9,7 @@
           <attribute id="Author" type="LSWString" value="BG3 Community"/>
           <attribute id="CharacterCreationLevelName" type="FixedString" value=""/>
           <attribute id="Description" type="LSWString" value="Community-Driven Compatibility Patch for BG3 Progression/List Mods"/>
-          <attribute id="Folder" type="LSWString" value="CompatibilityFramework"/>
+          <attribute id="Folder" type="LSWString" value="SubclassCompatibilityFramework"/>
           <attribute id="GMTemplate" type="FixedString" value=""/>
           <attribute id="LobbyLevelName" type="FixedString" value=""/>
           <attribute id="MD5" type="LSString" value=""/>
