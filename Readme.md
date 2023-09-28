@@ -47,5 +47,5 @@ Subclass Compatibility Framework Dummies is no longer required as of version 2.0
 ## Acknowledgements
 - Larian Software, for working on Baldur's Gate 3 and bringing 5th Edition to PC.
 - The Baldur's Gate 3 Modding Community.
-- [https://github.com/ShinyHobo](ShinyHobo) for their work easing the process of creating .pak files.
+- [ShinyHobo](https://github.com/ShinyHobo) for their work easing the process of creating .pak files.
 - Alana for the creation of the Mod Manager Compatibility Images.
