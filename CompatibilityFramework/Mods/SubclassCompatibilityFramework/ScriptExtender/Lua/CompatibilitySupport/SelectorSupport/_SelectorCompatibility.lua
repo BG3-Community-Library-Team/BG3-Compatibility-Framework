@@ -80,8 +80,13 @@ end
 
 local function AddSelector(payload)
   Utils.Info("Entering AddSelector")
-  local selectorField = Utils.CacheOrRetrieveProgression(payload.TargetProgression)[payload.Function]
+  local selectorField = {}
+  local target = payload.Target or payload.TargetProgression
+  local type = payload.FileType or "Progression"
 
+  if payload.FileType == "Feat" then
+    selectorField = Utils.CacheOrRetrieve(target, type)[payload.Function]
+  end
   table.insert(selectorField, BuildSelector(payload))
 end
 

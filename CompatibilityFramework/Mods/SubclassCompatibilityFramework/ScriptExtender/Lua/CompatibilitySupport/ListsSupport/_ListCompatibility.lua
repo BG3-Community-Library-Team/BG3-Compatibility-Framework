@@ -2,7 +2,7 @@ function AddList(payload)
   Utils.Info("Entering AddList")
   if Utils.IsKeyInTable(Globals.ListTypes, payload.ListType) then
     local listNode = Globals.ListNodes[payload.ListType]
-    local list     = Utils.CacheOrRetrieveList(payload.TargetList, payload.ListType)
+    local list     = Utils.CacheOrRetrieve(payload.TargetList, payload.ListType)
 
     if list ~= nil then
       list[listNode] = Utils.MergeTables(list[listNode], payload.ListItems)

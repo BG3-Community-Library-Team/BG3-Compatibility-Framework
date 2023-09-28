@@ -16,8 +16,11 @@ end
 
 local function AddString(payload)
   Utils.Info("Entering AddString")
+  target = payload.Target or payload.TargetProgression
+  fileType = payload.FileType or "Progression"
+
   if DetectStringType(payload.Type) then
-    local field = Utils.CacheOrRetrieveProgression(payload.TargetProgression)[payload.Type]
+    local field = Utils.CacheOrRetrieve(payload.TargetProgression, fileType)[payload.Type]
     local stringsToInsert = stripDuplicates(field, payload.Strings)
     table.insert(field, table.concat(stringsToInsert, ';'))
   else
