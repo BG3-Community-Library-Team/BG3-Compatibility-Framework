@@ -62,3 +62,129 @@ Globals.ListNodes = {
   -- Equipment = "EquipmentList", Not Supported
   -- Colors = "ColorDefinition", Partially supported, figure out actual arrays
 }
+
+
+
+Globals.ClassDict = {}
+
+local function inputToClassDict(className, payload)
+  Globals.ClassDict[className] = payload
+end
+
+inputToClassDict("Bard", {
+  ClassId = "",
+  Subclasses = {},
+  SpellLists = {},
+  PassiveLists = {},
+  SkillLists = {},
+  Progressions = {}
+})
+
+inputToClassDict("Barbarian", {
+  ClassId = "",
+  Subclasses = {},
+  SpellLists = {},
+  PassiveLists = {},
+  SkillLists = {},
+  Progressions = {}
+})
+
+inputToClassDict("Cleric", {
+  ClassId = "",
+  Subclasses = {},
+  SpellLists = {},
+  PassiveLists = {},
+  SkillLists = {},
+  Progressions = {}
+})
+
+inputToClassDict("Druid", {
+  ClassId = "",
+  Subclasses = {},
+  SpellLists = {},
+  PassiveLists = {},
+  SkillLists = {},
+  Progressions = {}
+})
+
+
+inputToClassDict("Fighter", {
+  ClassId = "",
+  Subclasses = {},
+  SpellLists = {},
+  PassiveLists = {},
+  SkillLists = {},
+  Progressions = {}
+})
+
+inputToClassDict("Monk", {
+  ClassId = "",
+  Subclasses = {},
+  SpellLists = {},
+  PassiveLists = {},
+  SkillLists = {},
+  Progressions = {}
+})
+
+inputToClassDict("Paladin", {
+  ClassId = "",
+  Subclasses = {},
+  SpellLists = {},
+  PassiveLists = {},
+  SkillLists = {},
+  Progressions = {}
+})
+
+inputToClassDict("Ranger", {
+  ClassId = "",
+  Subclasses = {},
+  SpellLists = {},
+  PassiveLists = {},
+  SkillLists = {},
+  Progressions = {}
+})
+
+inputToClassDict("Rogue", {
+  ClassId = "",
+  Subclasses = {},
+  SpellLists = {},
+  PassiveLists = {},
+  SkillLists = {},
+  Progressions = {}
+})
+
+inputToClassDict("Sorcerer", {
+  ClassId = "",
+  Subclasses = {},
+  SpellLists = {},
+  PassiveLists = {},
+  SkillLists = {},
+  Progressions = {}
+})
+
+inputToClassDict("Warlock", {
+  ClassId = "",
+  Subclasses = {},
+  SpellLists = {},
+  PassiveLists = {},
+  SkillLists = {},
+  Progressions = {}
+})
+
+inputToClassDict("Wizard", {
+  ClassId = "",
+  Subclasses = {},
+  SpellLists = {},
+  PassiveLists = {},
+  SkillLists = {},
+  Progressions = {}
+})
+
+
+
+
+
+
+
+
+
