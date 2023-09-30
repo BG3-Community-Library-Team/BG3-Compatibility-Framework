@@ -9,6 +9,8 @@ Ext.Require("CompatibilitySupport/SelectorSupport/_SelectorRemoval.lua")
 Ext.Require("CompatibilitySupport/StringSupport/_StringAddition.lua")
 Ext.Require("CompatibilitySupport/StringSupport/_StringRemoval.lua")
 Ext.Require("CompatibilitySupport/ListsSupport/_ListCompatibility.lua")
+Ext.Require("CompatibilitySupport/ActionResourceSupport/_ActionResourceGroupAddition.lua")
+Ext.Require("CompatibilitySupport/ActionResourceSupport/_ActionResourceGroupRemoval.lua")
 Ext.Require("CompatibilitySupport/API.lua")
 
 Utils.Info(Strings.LOADED_REQUIRED_FILES)

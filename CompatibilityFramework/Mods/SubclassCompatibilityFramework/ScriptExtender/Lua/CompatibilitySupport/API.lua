@@ -1,3 +1,25 @@
+function Api.InsertResourceToGroup(payloads)
+  if payloads ~= nil then
+    for _, payload in pairs(payloads) do
+      Utils.Info(Utils.Stringify(payload))
+      if Ext.Mod.IsModLoaded(payload.modGuid) then
+        HandleActionResourceGroupAddition(payload)
+      end
+    end
+  end
+end
+
+function Api.RemoveResourceFromGroup(payloads)
+  if payloads ~= nil then
+    for _, payload in pairs(payloads) do
+      Utils.Info(Utils.Stringify(payload))
+      if Ext.Mod.IsModLoaded(payload.modGuid) then
+        HandleActionResourceGroupRemoval(payload)
+      end
+    end
+  end
+end
+
 -- Handles SpellLists, SkillLists, and PassiveLists
 function Api.InsertToList(payloads)
   if payloads ~= nil then
@@ -93,7 +115,7 @@ end
 -- Boosts and Passives are both just strings, so we'll call InsertBoosts here, and
 -- change the API if it becomes necessary:
 function Api.InsertPassives(payloads)
-    Api.InsertBoosts(payloads)
+  Api.InsertBoosts(payloads)
 end
 
 function Api.RemovePassives(payloads)
