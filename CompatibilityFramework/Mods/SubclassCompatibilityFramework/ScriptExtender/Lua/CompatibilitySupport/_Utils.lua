@@ -31,6 +31,15 @@ function Utils.IsInString(str, value)
   return str.find(value)
 end
 
+function Utils.createTableFromString(str)
+    local result = {}
+
+    for value in str:gmatch("([^;]+),?") do
+        table.insert(result, value)
+    end
+    return result
+end
+
 function Utils.IsInTable(arr, val)
   if arr ~= nil then
     for _, value in pairs(arr) do
