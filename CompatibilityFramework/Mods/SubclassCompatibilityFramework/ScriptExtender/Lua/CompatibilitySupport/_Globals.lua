@@ -28,6 +28,11 @@ Globals.SelectorFunctions = {
   SelectEquipment = "SelectEquipment"
 }
 
+Globals.CacheTypes = {
+  "Feat",
+  "Progression"
+}
+
 Globals.Attributes = {
   aSTR = "Strength",
   aDEX = "Dexterity",
@@ -40,7 +45,8 @@ Globals.Attributes = {
 Globals.ProgressionStringTypes = {
   Boosts = "Boosts",
   PassivesAdded = "PassivesAdded",
-  PassivesRemoved = "PassivesRemoved"
+  PassivesRemoved = "PassivesRemoved",
+  Requirements = "Requirements"
 }
 
 Globals.ListTypes = {
