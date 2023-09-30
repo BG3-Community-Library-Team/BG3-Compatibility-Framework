@@ -1,18 +1,9 @@
-function Utils.CacheOrRetrieveProgression(guid)
-  if Globals.ProgressionCache ~= nil and Globals.ProgressionCache[guid] ~= nil then
-    return Globals.ProgressionCache[guid]
+function Utils.CacheOrRetrieve(guid, type)
+  if Globals.Cache ~= nil and Globals.Cache[guid] ~= nil then
+    return Globals.Cache[guid]
   else
-    Globals.ProgressionCache[guid] = Ext.StaticData.Get(guid, "Progression")
-    return Globals.ProgressionCache[guid]
-  end
-end
-
-function Utils.CacheOrRetrieveList(guid, type)
-  if Globals.ListCache ~= nil and Globals.ListCache[guid] ~= nil then
-    return Globals.ListCache[guid]
-  else
-    Globals.ListCache[guid] = Ext.StaticData.Get(guid, type)
-    return Globals.ListCache[guid]
+    Globals.Cache[guid] = Ext.StaticData.Get(guid, type)
+    return Globals.Cache[guid]
   end
 end
 

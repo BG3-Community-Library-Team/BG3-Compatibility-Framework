@@ -2,8 +2,7 @@ Globals.SupportedSubClasses = {}
 Globals.ClassUUIDs = {}
 Globals.MulticlassClasses = {}
 Globals.ClassProgressions = {}
-Globals.ProgressionCache = {}
-Globals.ListCache = {}
+Globals.Cache = {}
 Globals.Debug = false
 Globals.ShowWarnings = false
 

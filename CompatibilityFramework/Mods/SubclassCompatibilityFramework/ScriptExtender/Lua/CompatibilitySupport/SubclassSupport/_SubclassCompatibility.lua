@@ -45,7 +45,7 @@ local function AddSubClass(guid, parentClass)
       return
     end
 
-    PrepareMainClassProgression(classGuid)
+    PrepareMainClassProgression(classGuid) -- TODO: Replace with Utils.CacheOrRetrieve
     AttachSubClass(guid, classGuid)
   end
 end
