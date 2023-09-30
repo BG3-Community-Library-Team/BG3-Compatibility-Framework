@@ -7,7 +7,7 @@ local function stripDuplicates(field, strings)
   local strippedStrings = {}
   for _, value in pairs(strings) do
     if not Utils.IsInString(field, value) and not Utils.IsInTable(field, strippedStrings) then
-      strippedStrings.insert(value)
+      table.insert(strippedStrings, value)
     end
   end
 
@@ -16,11 +16,11 @@ end
 
 local function AddString(payload)
   Utils.Info("Entering AddString")
-  target = payload.Target or payload.TargetProgression
-  fileType = payload.FileType or "Progression"
+  local target = payload.Target or payload.TargetProgression
+  local fileType = payload.FileType or "Progression"
 
   if DetectStringType(payload.Type) then
-    local field = Utils.CacheOrRetrieve(payload.TargetProgression, fileType)[payload.Type]
+    local field = Utils.CacheOrRetrieve(target, fileType)[payload.Type]
     local stringsToInsert = stripDuplicates(field, payload.Strings)
     table.insert(field, table.concat(stringsToInsert, ';'))
   else
