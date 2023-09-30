@@ -29,7 +29,7 @@ Globals.SelectorFunctions = {
 }
 
 Globals.CacheTypes = {
-  "Feats",
+  "Feat",
   "Progression"
 }
 
