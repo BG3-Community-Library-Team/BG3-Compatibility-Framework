@@ -30,6 +30,15 @@ local function BuildSelectPassivesOrEquipmentTable(params)
   }
 end
 
+local function BuildSelectAbilitiesTable(params)
+  return {
+    UUID = params.Guid,
+    Arg2 = params.Amount or 1,
+    Arg3 = params.AbilityAmount or 1,
+    Arg4 = params.SelectorId or ""
+  }
+end
+
 local function BuildSelectAbilityBonusTable(params)
   return {
     UUID = params.Guid,
@@ -69,6 +78,9 @@ local function BuildSelector(payload)
   end
   if payload.Function == Globals.SelectorFunctions.SelectAbilityBonus then
     return BuildSelectAbilityBonusTable(payload.Params)
+  end
+  if payload.Function == Globals.SelectorFunctions.SelectAbilities then
+    return BuildSelectAbilitiesTable(payload.Params)
   end
   if payload.Function == Globals.SelectorFunctions.SelectSkills then
     return BuildSelectSkillsTable(payload.Params)
