@@ -1,3 +1,5 @@
+IntegratedSupport = {}
+
 -- TODO: Phase these out as mods switch to using the API
 IntegratedSupport.SubClasses = {
   BonebreakerGlamour = { -- College of Glamour by Bonebreaker687

@@ -1,43 +1,10 @@
-function Utils.CacheOrRetrieve(guid, type)
-  if Globals.Cache ~= nil and Globals.Cache[guid] ~= nil then
-    return Globals.Cache[guid]
-  else
-    Globals.Cache[guid] = Ext.StaticData.Get(guid, type)
-    return Globals.Cache[guid]
+function Utils.createTableFromString(str, separator)
+  local result = {}
+
+  for value in str:gmatch("([^" .. separator .. "]+),?") do
+    table.insert(result, value)
   end
-end
-
-function Utils.Stringify(obj)
-  return Ext.Json.Stringify(obj)
-end
-
-function Utils.Info(message)
-  if Globals.Debug == true then
-    Ext.Utils.Print(Strings.INFO_TAG .. message)
-  end
-end
-
-function Utils.Warn(message)
-  if Globals.ShowWarnings == true then
-    Ext.Utils.Print(Strings.WARNING_TAG .. message)
-  end
-end
-
-function Utils.Error(message)
-  Ext.Utils.Print(Strings.ERROR_TAG .. message)
-end
-
-function Utils.IsInString(str, value)
-  return str.find(value)
-end
-
-function Utils.createTableFromString(str)
-    local result = {}
-
-    for value in str:gmatch("([^;]+),?") do
-        table.insert(result, value)
-    end
-    return result
+  return result
 end
 
 function Utils.IsInTable(arr, val)
@@ -108,13 +75,4 @@ function Utils.MergeTables(arrA, arrB)
   end
 
   return result
-end
-
--- TODO: Send this to Community Library
-function Utils.IsGuid(string)
-  local x = "%x"
-  local t = { x:rep(8), x:rep(4), x:rep(4), x:rep(4), x:rep(12) }
-  local pattern = table.concat(t, '%-')
-
-  return string:match(pattern)
 end

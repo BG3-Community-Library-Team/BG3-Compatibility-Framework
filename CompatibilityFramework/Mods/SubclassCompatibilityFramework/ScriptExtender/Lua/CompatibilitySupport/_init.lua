@@ -1,0 +1,8 @@
+Ext.Require("SubclassSupport/_SubclassCompatibility.lua")
+Ext.Require("SelectorSupport/_SelectorAddition.lua")
+Ext.Require("SelectorSupport/_SelectorRemoval.lua")
+Ext.Require("StringSupport/_StringAddition.lua")
+Ext.Require("StringSupport/_StringRemoval.lua")
+Ext.Require("ListsSupport/_ListCompatibility.lua")
+Ext.Require("ActionResourceSupport/_ActionResourceGroupAddition.lua")
+Ext.Require("ActionResourceSupport/_ActionResourceGroupRemoval.lua")

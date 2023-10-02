@@ -1,16 +1,18 @@
 local function DetectStringType(type)
   Utils.Info("Entering DetectStringType")
-  return Utils.IsKeyInTable(Globals.ProgressionStringTypes, type)
+  return Utils.IsKeyInTable(Globals.StringTypes, type)
 end
 
 local function RemoveString(payload)
   Utils.Info("Entering RemoveString")
-  target = payload.Target or payload.TargetProgression
-  fileType = payload.FileType or "Progression"
+  local target = payload.Target or payload.TargetProgression
+  local fileType = payload.FileType or "Progression"
+
+  local separator = Globals.FieldSeparator[payload.Type]
 
   if DetectStringType(payload.Type) then
-    local field = Utils.CacheOrRetrieve(payload.TargetProgression, fileType)[payload.Type]
-    local fieldStrings = Utils.createTableFromString(field)
+    local field = Utils.CacheOrRetrieve(target, fileType)[payload.Type]
+    local fieldStrings = Utils.createTableFromString(field, separator)
     local result = {}
 
     for _, value in pairs(payload.Strings) do
