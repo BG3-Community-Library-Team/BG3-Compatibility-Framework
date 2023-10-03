@@ -9,7 +9,7 @@ Globals.Cache = {}
 Globals.Debug = false
 Globals.ShowWarnings = false
 
-Ext.Require("Dictionaries.lua")
-Ext.Require("MulticlassDictionary.lua")
-Ext.Require("VanillaDictionary.lua")
-Ext.Require("Strings.lua")
+Ext.Require("Globals/Dictionaries.lua")
+Ext.Require("Globals/MulticlassDictionary.lua")
+Ext.Require("Globals/VanillaDictionary.lua")
+Ext.Require("Globals/Strings.lua")
