@@ -24,7 +24,8 @@ Globals.SelectorFunctions = {
   SelectPassives = "SelectPassives",
   SelectAbilityBonus = "SelectAbilityBonus",
   SelectSkillsExpertise = "SelectSkillsExpertise",
-  SelectEquipment = "SelectEquipment"
+  SelectEquipment = "SelectEquipment",
+  ReplacePassives = "ReplacePassives"
 }
 
 Globals.StringTypes = {

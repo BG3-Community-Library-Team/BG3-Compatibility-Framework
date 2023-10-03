@@ -77,8 +77,10 @@ local function BuildSelector(payload)
   if payload.Function == Globals.SelectorFunctions.SelectPassives then
     return BuildSelectPassivesOrEquipmentTable(payload.Params)
   end
+  if payload.Function == Globals.SelectorFunctions.ReplacePassives then
+    return BuildSelectPassivesOrEquipmentTable(payload.Params)
+  end
   if payload.Function == Globals.SelectorFunctions.SelectEquipment then
-    Utils.Info("Payload is for SelectEquipment")
     return BuildSelectPassivesOrEquipmentTable(payload.Params)
   end
   if payload.Function == Globals.SelectorFunctions.SelectAbilityBonus then
