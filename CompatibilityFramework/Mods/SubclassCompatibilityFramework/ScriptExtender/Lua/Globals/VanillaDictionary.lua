@@ -1,4 +1,5 @@
 local function setupClassLevelEntry(progression, lists)
+  lists = lists or {}
   return {
     Progression = progression or "",
     AbilityLists = lists.AbilityLists or {},
@@ -39,7 +40,7 @@ local berserkerBarbarianLevels = {
   }),
   Six = setupClassLevelEntry("27a1114c-3f84-4f47-8544-865e91db8d0f"),
   Ten = setupClassLevelEntry("ad9a37aa-bc2d-4024-9b5f-5aaf330cb25c", {
-    SpellLists = {"38191b4b-743a-4d82-800b-c0903baece24"}
+    SpellLists = { "38191b4b-743a-4d82-800b-c0903baece24" }
   })
 }
 
@@ -55,7 +56,7 @@ local totemBarbarianLevels = {
     PassiveLists = { "7f7340a0-faf3-4122-bd3f-37a5434dd6cf" }
   }),
   Six = setupClassLevelEntry("0b05af61-85e4-4183-8422-6c8ced307d7a", {
-    PassiveLists = {"7f7340a0-faf3-4122-bd3f-37a5434dd6cf", "fb9ea4a2-a1ce-4242-a893-84a088ac1145" }
+    PassiveLists = { "7f7340a0-faf3-4122-bd3f-37a5434dd6cf", "fb9ea4a2-a1ce-4242-a893-84a088ac1145" }
   }),
   Seven = setupClassLevelEntry("bbc1564b-4688-484f-84f3-1b3b02173bab", {
     PassiveLists = { "7f7340a0-faf3-4122-bd3f-37a5434dd6cf" }
@@ -85,7 +86,7 @@ local wildMagicBarbarianLevels = {
     SpellLists = { "9e604f0f-ec60-402d-b8c8-7707a1caefd8" }
   }),
   Nine = setupClassLevelEntry("c6894048-1489-406d-b601-e3c8c96f4e42", {
-    SpellLists = {"4e7b517a-2eca-4463-99a6-a5ffa5036216"}
+    SpellLists = { "4e7b517a-2eca-4463-99a6-a5ffa5036216" }
   }),
   Ten = setupClassLevelEntry("3782ea9f-917b-4823-ba34-b619c76a4429")
 }
