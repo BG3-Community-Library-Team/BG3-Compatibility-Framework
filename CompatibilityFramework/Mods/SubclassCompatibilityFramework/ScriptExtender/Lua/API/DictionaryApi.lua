@@ -1,4 +1,5 @@
 local function validateApiCall(payload, params)
+  -- Default Validation
   table.insert(params.Validators, { IsPayloadEmpty = Strings.ERROR_EMPTY_PAYLOAD })
   table.insert(params.Validators, { IsPayloadValid = Strings.ERROR_PAYLOAD_MISSING_FIELD })
   table.insert(params.Validators, { IsModLoaded = Strings.ERROR_MOD_NOT_LOADED })
@@ -17,7 +18,7 @@ local function AddSingular(payload, params)
   params.Table[payload.Name] = payload.Guid
 end
 
-local function retrieveSingular(payload, params)
+local function retrieve(payload, params)
   local err = validateApiCall(payload, params)
 
   if err ~= nil then
@@ -25,15 +26,7 @@ local function retrieveSingular(payload, params)
     return
   end
 
-  return params.Table[payload.Name]
-end
-
-local function AddMany(payload, params)
-  -- TODO
-end
-
-local function retrieveMany(payload, params)
-
+  return Utils.IsInTable_Nested[payload.Name]
 end
 
 -- Feats
@@ -45,9 +38,9 @@ function Api.RegisterFeatID(payload)
 end
 
 function Api.GetFeatID(payload)
-    return retrieveSingular(payload, {
-        Table = Globals.Feats,
-        Validators = { DoesExist = Strings.ERROR_FEAT_DOES_NOT_EXIST_IN_DICTIONARY }
+  return retrieve(payload, {
+    Table = Globals.Feats,
+    Validators = { DoesExist = Strings.ERROR_FEAT_DOES_NOT_EXIST_IN_DICTIONARY }
   })
 end
 
@@ -60,10 +53,10 @@ function Api.RegisterEquipmentListID(payload)
 end
 
 function Api.GetEquipmentListID(payload)
-  return retrieveSingular(payload, {
-      Table = Globals.EquipmentLists,
-      Validators = { DoesExist = Strings.ERROR_LIST_DOES_NOT_EXIST_IN_DICTIONARY_EQUIPMENT }
-})
+  return retrieve(payload, {
+    Table = Globals.EquipmentLists,
+    Validators = { DoesExist = Strings.ERROR_LIST_DOES_NOT_EXIST_IN_DICTIONARY_EQUIPMENT }
+  })
 end
 
 -- Passive Lists
@@ -71,6 +64,9 @@ function Api.RegisterPassiveListIDs(payload)
 
 end
 
-function Api.GetPassiveListIDs(name)
-  return Globals.PassiveLists[name]
+function Api.GetPassiveListIDs(payload)
+  return retrieve(payload, {
+    Table = Globals.PassiveLists,
+    Validators = { DoesExist = Strings.ERROR_LIST_DOES_NOT_EXIST_IN_DICTIONARY_PASSIVE }
+  })
 end

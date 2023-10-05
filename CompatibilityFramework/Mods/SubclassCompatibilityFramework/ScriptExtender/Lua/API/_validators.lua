@@ -36,13 +36,13 @@ function Validators.IsModLoaded(payload, params, val)
 end
 
 function Validators.IsInTable(payload, params, val)
-  if Utils.IsInTable(params.Table, payload.Name) then
+  if Utils.IsInTable_Nested(params.Table, payload.Name) then
     return val
   end
 end
 
 function Validators.DoesExist(payload, params, val)
-  if not Utils.IsInTable(params.Table, payload.Name) then
+  if not Utils.IsInTable_Nested(params.Table, payload.Name) then
     return val
   end
 end

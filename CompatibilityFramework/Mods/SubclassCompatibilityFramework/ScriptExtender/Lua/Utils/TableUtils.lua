@@ -7,6 +7,19 @@ function Utils.createTableFromString(str, separator)
   return result
 end
 
+function Utils.IsInTable_Nested(arr, str)
+  local returnValue = arr
+  for key in string.gmatch(str, "[^.]+") do
+    if returnValue[key] then
+      returnValue = returnValue[key]
+    else
+      return nil
+    end
+  end
+
+  return returnValue
+end
+
 function Utils.IsInTable(arr, val)
   if arr ~= nil then
     for _, value in pairs(arr) do
@@ -75,4 +88,16 @@ function Utils.MergeTables(arrA, arrB)
   end
 
   return result
+end
+
+function Utils.Traverse(item, filterFn, doFn)
+  if filterFn(item) then
+    doFn(item)
+  else
+    if type(item) == "table" then
+      for _, value in pairs(item) do
+        Utils.Traverse(value, filterFn, doFn)
+      end
+    end
+  end
 end
