@@ -1,5 +1,6 @@
 Api = {}
 
+Ext.Require("API/_validators.lua")
 Ext.Require("API/ActionResourceApi.lua")
 Ext.Require("API/DebugApi.lua")
 Ext.Require("API/ListApi.lua")
