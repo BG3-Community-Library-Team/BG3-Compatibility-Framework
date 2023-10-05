@@ -9,7 +9,7 @@ end
 
 function Utils.IsInTable_Nested(arr, str)
   local returnValue = arr
-  for key in string.gmatch(str, "[^.]+") do
+  for key in str:gmatch("[^.]+") do
     if returnValue[key] then
       returnValue = returnValue[key]
     else

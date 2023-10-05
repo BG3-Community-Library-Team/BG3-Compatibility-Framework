@@ -18,6 +18,16 @@ local function AddSingular(payload, params)
   params.Table[payload.Name] = payload.Guid
 end
 
+local function AddNested(payload, params)
+  local err = validateApiCall(payload, params)
+
+  if err ~= nil then
+    Utils.Error(err)
+    return
+  end
+
+end
+
 local function retrieve(payload, params)
   local err = validateApiCall(payload, params)
 
@@ -44,6 +54,21 @@ function Api.GetFeatID(payload)
   })
 end
 
+-- Progressions
+function Api.RegisterProgressionID(payload)
+  AddNested(payload, {
+    Table = Globals.Progressions,
+    Validators = { IsInTable = Strings.ERROR_PROGRESSION_EXISTS_IN_DICTIONARY }
+  })
+end
+
+function Api.GetProgressionID(payload)
+  return retrieve(payload, {
+    Table = Globals.Progressions,
+    Validators = { DoesExist = Strings.ERROR_PROGRESSION_DOES_NOT_EXIST_IN_DICTIONARY }
+  })
+end
+
 -- Equipment Lists
 function Api.RegisterEquipmentListID(payload)
   AddSingular(payload, {
@@ -61,12 +86,60 @@ end
 
 -- Passive Lists
 function Api.RegisterPassiveListIDs(payload)
-
+  return AddNested(payload, {
+    Table = Globals.PassiveLists,
+    Validators = {}
+  })
 end
 
 function Api.GetPassiveListIDs(payload)
   return retrieve(payload, {
     Table = Globals.PassiveLists,
     Validators = { DoesExist = Strings.ERROR_LIST_DOES_NOT_EXIST_IN_DICTIONARY_PASSIVE }
+  })
+end
+
+-- Spell Lists
+function Api.RegisterSpellListIDs(payload)
+  return AddNested(payload, {
+    Table = Globals.SpellLists,
+    Validators = {}
+  })
+end
+
+function Api.GetSpellListIDs(payload)
+  return retrieve(payload, {
+    Table = Globals.SpellLists,
+    Validators = { DoesExist = Strings.ERROR_LIST_DOES_NOT_EXIST_IN_DICTIONARY_SPELL }
+  })
+end
+
+-- Skill Lists
+function Api.RegisterSkillListIDs(payload)
+  return AddSingular(payload, {
+    Table = Globals.SkillLists,
+    Validators = { IsInTable = Strings.ERROR_LIST_EXISTS_IN_DICTIONARY_SKILL }
+  })
+end
+
+function Api.GetSkillListIDs(payload)
+  return retrieve(payload, {
+    Table = Globals.SkillLists,
+    Validators = { DoesExist = Strings.ERROR_LIST_DOES_NOT_EXIST_IN_DICTIONARY_SKILL }
+  })
+end
+
+-- Ability Lists
+function Api.RegisterAbilityListIDs(payload)
+  return AddSingular(payload, {
+    Table = Globals.AbilityLists,
+    Validators = { IsInTable = Strings.ERROR_LIST_EXISTS_IN_DICTIONARY_ABILITY }
+  })
+end
+
+function Api.GetAbilityListIDs(payload)
+  return retrieve(payload, {
+    Table = Globals.AbilityLists,
+    Validators = { DoesExist = Strings.ERROR_LIST_DOES_NOT_EXIST_IN_DICTIONARY_ABILITIES }
   })
 end
