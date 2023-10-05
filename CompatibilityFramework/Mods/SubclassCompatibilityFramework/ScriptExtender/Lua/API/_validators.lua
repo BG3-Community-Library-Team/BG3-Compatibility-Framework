@@ -3,7 +3,7 @@ Validators = {}
 function DoValidation(payload, params)
   local err
 
-  for fn in pairs(params) do
+  for fn in pairs(params.Validators) do
     err = Validators[fn](payload, params)
 
     if err ~= nil then
@@ -29,5 +29,11 @@ end
 function Validators.IsModLoaded(payload, params)
   if not Ext.IsModLoaded(payload.modGuid) then
     return Strings.ERROR_MOD_NOT_LOADED .. payload.modGuid
+  end
+end
+
+function Validators.IsInTable(payload, params)
+  if Utils.IsInTable(params.Table, payload.Name) then
+    return params.ErrorString
   end
 end

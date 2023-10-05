@@ -1,23 +1,8 @@
--- Retrieval Endpoints for navigating the Dictionary
 local function validateApiCall(payload, params)
-  local err = Validators.IsPayloadEmpty(payload) or Validators.IsModLoaded(payload.modGuid)
-  if payload == nil then
-    err = Strings.ERROR_EMPTY_PAYLOAD
-  end
-
-  if not Ext.IsModLoaded(payload.modGuid) then
-    err = Strings.ERROR_MOD_NOT_LOADED .. payload.modGuid
-  end
-
-  if Utils.IsInTable(params.Table, payload.Name) then
-    err = params.ErrorString
-  end
-  if err ~= nil then
-    return err
-  end
+  return DoValidation(payload, params)
 end
 
-local function AddSingular(dict, payload, errString)
+local function AddSingular(dict, payload, validators, errString)
   local err = validateApiCall(payload, {
     Table = Globals.Feats,
     ErrorString = errString,
@@ -32,7 +17,7 @@ local function AddSingular(dict, payload, errString)
 end
 
 local function AddMany(dict, payload, errString)
- -- TODO
+  -- TODO
 end
 
 -- Feats
@@ -41,7 +26,7 @@ function Api.RegisterFeatID(payload)
 end
 
 function Api.GetFeatID(name)
-    return Globals.Feats[name]
+  return Globals.Feats[name]
 end
 
 -- Equipment Lists
