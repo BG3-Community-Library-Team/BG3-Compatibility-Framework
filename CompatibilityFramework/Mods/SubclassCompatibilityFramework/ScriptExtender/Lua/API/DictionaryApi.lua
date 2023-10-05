@@ -18,7 +18,27 @@ local function AddSingular(payload, params)
   params.Table[payload.Name] = payload.Guid
 end
 
+--[[
 local function AddNested(payload, params)
+    local err = validateApiCall(payload, params)
+
+    if err ~= nil then
+        Utils.Error(err)
+        return
+    end
+    local resultTable = params.Table
+    local temp_table = {}
+
+    for key in string.gmatch(payload.Name, "[^.]+") do
+        if resultTable[key] == nil then
+            resultTable[key] = {}
+            temp_table = temp_table[key]
+        end
+    end
+end
+]]--
+
+local function AddProgression(payload, params)
   local err = validateApiCall(payload, params)
 
   if err ~= nil then
@@ -26,6 +46,36 @@ local function AddNested(payload, params)
     return
   end
 
+end
+
+local function AddSpellList(payload, params)
+  local err = validateApiCall(payload, params)
+
+  if err ~= nil then
+    Utils.Error(err)
+    return
+  end
+
+end
+
+local function AddPassiveList(payload, params)
+  local err = validateApiCall(payload, params)
+
+    if err ~= nil then
+        Utils.Error(err)
+        return
+    end
+
+    -- Passives only have two levels to worry about
+    if params.Table[payload.Name] == nil then
+      params.Table[payload.Name] = {}
+    end
+    
+    if payload.GuidKey ~= nil then
+      params.Table[payload.Name][payload.GuidKey] = payload.Guid
+    else
+      table.insert(params.Table[payload.Name], payload.GuidKey)
+    end
 end
 
 local function retrieve(payload, params)
@@ -56,7 +106,7 @@ end
 
 -- Progressions
 function Api.RegisterProgressionID(payload)
-  AddNested(payload, {
+  AddProgression(payload, {
     Table = Globals.Progressions,
     Validators = { IsInTable = Strings.ERROR_PROGRESSION_EXISTS_IN_DICTIONARY }
   })
@@ -86,7 +136,7 @@ end
 
 -- Passive Lists
 function Api.RegisterPassiveListIDs(payload)
-  return AddNested(payload, {
+  return AddPassiveList(payload, {
     Table = Globals.PassiveLists,
     Validators = {}
   })
@@ -101,7 +151,7 @@ end
 
 -- Spell Lists
 function Api.RegisterSpellListIDs(payload)
-  return AddNested(payload, {
+  return AddSpellList(payload, {
     Table = Globals.SpellLists,
     Validators = {}
   })
