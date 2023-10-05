@@ -19,3 +19,4 @@ Strings.ERROR_LIST_EXISTS_IN_DICTIONARY_ABILITY = "List is already defained in G
 Strings.ERROR_LIST_EXISTS_IN_DICTIONARY_SKILL = "List is already defained in Globals.SkillList"
 Strings.ERROR_LIST_EXISTS_IN_DICTIONARY_SPELL = "List is already defained in Globals.SpellList"
 Strings.ERROR_LIST_EXISTS_IN_DICTIONARY_PASSIVE = "List is already defained in Globals.PassiveList"
+Strings.ERROR_PAYLOAD_MISSING_FIELD = "Payload is missing expected field "

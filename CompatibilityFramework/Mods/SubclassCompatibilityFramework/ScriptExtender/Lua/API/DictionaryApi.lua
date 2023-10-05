@@ -1,7 +1,7 @@
 -- Retrieval Endpoints for navigating the Dictionary
 local function validateApiCall(payload, params)
-  local err
-  if payload ~= nil then
+  local err = Validators.IsPayloadEmpty(payload) or Validators.IsModLoaded(payload.modGuid)
+  if payload == nil then
     err = Strings.ERROR_EMPTY_PAYLOAD
   end
 
@@ -35,7 +35,7 @@ local function AddMany(dict, payload, errString)
  -- TODO
 end
 
--- Adding a Feat to the Dictionary
+-- Feats
 function Api.RegisterFeatID(payload)
   AddSingular(Globals.Feats, payload, Strings.ERROR_FEAT_EXISTS_IN_DICTIONARY)
 end
@@ -44,10 +44,20 @@ function Api.GetFeatID(name)
     return Globals.Feats[name]
 end
 
+-- Equipment Lists
 function Api.RegisterEquipmentListID(payload)
   AddSingular(Globals.EquipmentLists, payload, Strings.ERROR_LIST_EXISTS_IN_DICTIONARY_EQUIPMENT)
 end
 
 function Api.GetEquipmentListID(name)
   return Globals.EquipmentLists[name]
+end
+
+-- Passive Lists
+function Api.RegisterPassiveListIDs(payload)
+
+end
+
+function Api.GetPassiveListIDs(name)
+  return Globals.PassiveLists[name]
 end
