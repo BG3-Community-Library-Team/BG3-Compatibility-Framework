@@ -38,6 +38,7 @@ local function AddNested(payload, params)
 end
 ]]--
 
+-- Expected setup: Class.SubClass.Level
 local function AddProgression(payload, params)
   local err = validateApiCall(payload, params)
 
@@ -48,6 +49,7 @@ local function AddProgression(payload, params)
 
 end
 
+-- Expected structure is Parent(class, race, etc).Type.Subparent
 local function AddSpellList(payload, params)
   local err = validateApiCall(payload, params)
 
@@ -87,6 +89,36 @@ local function retrieve(payload, params)
   end
 
   return Utils.IsInTable_Nested[payload.Name]
+end
+
+-- Action Resources
+function Api.RegisterActionResourceID(payload)
+  AddSingular(payload, {
+    Table = Globals.ActionResources,
+    Validators = { IsInTable = Strings.ERROR_ACTION_RESOURCE_EXISTS_IN_DICTIONARY }
+  })
+end
+
+function Api.GetActionResourcesID(payload)
+  return retrieve(payload, {
+    Table = Globals.ActionResources,
+    Validators = { DoesExist = Strings.ERROR_ACTION_RESOURCE_DOES_NOT_EXIST_IN_DICTIONARY }
+  })
+end
+
+-- Action Resource Groups
+function Api.RegisterActionResourceGroupID(payload)
+  AddSingular(payload, {
+    Table = Globals.ActionResourcesGroup,
+    Validators = { IsInTable = Strings.ERROR_ACTION_RESOURCE_GROUP_EXISTS_IN_DICTIONARY }
+  })
+end
+
+function Api.GetActionResourceGroupID(payload)
+  return retrieve(payload, {
+    Table = Globals.ActionResourceGroups,
+    Validators = { DoesExist = Strings.ERROR_ACTION_RESOURCE_GROUP_DOES_NOT_EXIST_IN_DICTIONARY }
+  })
 end
 
 -- Feats
