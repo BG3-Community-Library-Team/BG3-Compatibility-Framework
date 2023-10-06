@@ -10,10 +10,10 @@ end
 
 function Utils.Warn(message)
   if Globals.ShowWarnings == true then
-    Ext.Utils.Print(Strings.WARNING_TAG .. message)
+    Ext.Utils.PrintWarning(Strings.WARNING_TAG .. message)
   end
 end
 
 function Utils.Error(message)
-  Ext.Utils.Print(Strings.ERROR_TAG .. message)
+  Ext.Utils.PrintError(Strings.ERROR_TAG .. message)
 end
