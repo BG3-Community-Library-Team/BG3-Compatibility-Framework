@@ -7,7 +7,7 @@ function DoValidation(payload, params)
     err = Validators[key](payload, params, val)
 
     if err ~= nil then
-      return err
+      return Strings.ERROR_FAILED_VALIDATION .. err
     end
   end
 end
@@ -19,8 +19,9 @@ function Validators.IsPayloadEmpty(payload, params, val)
 end
 
 function Validators.IsPayloadValid(payload, params, val)
+  params.ExpectFields = params.ExpectFields or {"modGuid"}
   local missingFields = {}
-  for field in pairs(params.ExpectFields) do
+  for _, field in pairs(params.ExpectFields) do
     if payload[field] == nil then
       table.insert(missingFields, field)
     end

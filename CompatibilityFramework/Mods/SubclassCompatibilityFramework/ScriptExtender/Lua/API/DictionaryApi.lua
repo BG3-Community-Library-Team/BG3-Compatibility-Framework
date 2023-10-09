@@ -1,4 +1,5 @@
 local function ValidateApiCall(payload, params)
+  params.Validators = params.Validators or {}
   -- Default Validation
   table.insert(params.Validators, { IsPayloadEmpty = Strings.ERROR_EMPTY_PAYLOAD })
   table.insert(params.Validators, { IsPayloadValid = Strings.ERROR_PAYLOAD_MISSING_FIELD })
@@ -85,7 +86,7 @@ function Api.RegisterProgressionID(payload)
   Register(payload, {
     Table = Globals.Progressions,
     Type = "complex",
-    Validators = { IsInTable = Strings.ERROR_PROGRESSION_EXISTS_IN_DICTIONARY }
+    -- Validators = { IsInTable = Strings.ERROR_PROGRESSION_EXISTS_IN_DICTIONARY }
   })
 end
 
@@ -116,7 +117,7 @@ function Api.RegisterPassiveListIDs(payload)
   return Register(payload, {
     Table = Globals.PassiveLists,
     Type = "complex",
-    Validators = {}
+    -- Validators = {}
   })
 end
 
@@ -132,7 +133,7 @@ function Api.RegisterSpellListIDs(payload)
   return Register(payload, {
     Table = Globals.SpellLists,
     Type = "complex",
-    Validators = {}
+    -- Validators = {}
   })
 end
 
