@@ -1,4 +1,4 @@
-local function validateApiCall(payload, params)
+local function ValidateApiCall(payload, params)
   -- Default Validation
   table.insert(params.Validators, { IsPayloadEmpty = Strings.ERROR_EMPTY_PAYLOAD })
   table.insert(params.Validators, { IsPayloadValid = Strings.ERROR_PAYLOAD_MISSING_FIELD })
@@ -7,81 +7,25 @@ local function validateApiCall(payload, params)
   return DoValidation(payload, params)
 end
 
-local function AddSingular(payload, params)
-  local err = validateApiCall(payload, params)
+local function Register(payload, params)
+  local err = ValidateApiCall(payload, params)
 
   if err ~= nil then
     Utils.Error(err)
     return
   end
-
-  params.Table[payload.Name] = payload.Guid
-end
-
---[[
-local function AddNested(payload, params)
-    local err = validateApiCall(payload, params)
-
-    if err ~= nil then
-        Utils.Error(err)
-        return
-    end
-    local resultTable = params.Table
-    local temp_table = {}
-
-    for key in string.gmatch(payload.Name, "[^.]+") do
-        if resultTable[key] == nil then
-            resultTable[key] = {}
-            temp_table = temp_table[key]
-        end
-    end
-end
-]]--
-
--- Expected setup: Class.SubClass.Level
-local function AddProgression(payload, params)
-  local err = validateApiCall(payload, params)
-
-  if err ~= nil then
-    Utils.Error(err)
-    return
-  end
-
-end
-
--- Expected structure is Parent(class, race, etc).Type.Subparent
-local function AddSpellList(payload, params)
-  local err = validateApiCall(payload, params)
-
-  if err ~= nil then
-    Utils.Error(err)
-    return
-  end
-
-end
-
-local function AddPassiveList(payload, params)
-  local err = validateApiCall(payload, params)
-
-    if err ~= nil then
-        Utils.Error(err)
-        return
-    end
-
-    -- Passives only have two levels to worry about
+  if params.Type == "complex" then
     if params.Table[payload.Name] == nil then
       params.Table[payload.Name] = {}
     end
-    
-    if payload.GuidKey ~= nil then
-      params.Table[payload.Name][payload.GuidKey] = payload.Guid
-    else
-      table.insert(params.Table[payload.Name], payload.GuidKey)
-    end
+    params.Table[payload.Name] = payload.Obj
+  else
+    params.Table[payload.Name] = payload.Guid
+  end
 end
 
-local function retrieve(payload, params)
-  local err = validateApiCall(payload, params)
+local function Retrieve(payload, params)
+  local err = ValidateApiCall(payload, params)
 
   if err ~= nil then
     Utils.Error(error)
@@ -93,14 +37,14 @@ end
 
 -- Action Resources
 function Api.RegisterActionResourceID(payload)
-  AddSingular(payload, {
+  Register(payload, {
     Table = Globals.ActionResources,
     Validators = { IsInTable = Strings.ERROR_ACTION_RESOURCE_EXISTS_IN_DICTIONARY }
   })
 end
 
 function Api.GetActionResourcesID(payload)
-  return retrieve(payload, {
+  return Retrieve(payload, {
     Table = Globals.ActionResources,
     Validators = { DoesExist = Strings.ERROR_ACTION_RESOURCE_DOES_NOT_EXIST_IN_DICTIONARY }
   })
@@ -108,14 +52,14 @@ end
 
 -- Action Resource Groups
 function Api.RegisterActionResourceGroupID(payload)
-  AddSingular(payload, {
+  Register(payload, {
     Table = Globals.ActionResourcesGroup,
     Validators = { IsInTable = Strings.ERROR_ACTION_RESOURCE_GROUP_EXISTS_IN_DICTIONARY }
   })
 end
 
 function Api.GetActionResourceGroupID(payload)
-  return retrieve(payload, {
+  return Retrieve(payload, {
     Table = Globals.ActionResourceGroups,
     Validators = { DoesExist = Strings.ERROR_ACTION_RESOURCE_GROUP_DOES_NOT_EXIST_IN_DICTIONARY }
   })
@@ -123,14 +67,14 @@ end
 
 -- Feats
 function Api.RegisterFeatID(payload)
-  AddSingular(payload, {
+  Register(payload, {
     Table = Globals.Feats,
     Validators = { IsInTable = Strings.ERROR_FEAT_EXISTS_IN_DICTIONARY }
   })
 end
 
 function Api.GetFeatID(payload)
-  return retrieve(payload, {
+  return Retrieve(payload, {
     Table = Globals.Feats,
     Validators = { DoesExist = Strings.ERROR_FEAT_DOES_NOT_EXIST_IN_DICTIONARY }
   })
@@ -138,14 +82,15 @@ end
 
 -- Progressions
 function Api.RegisterProgressionID(payload)
-  AddProgression(payload, {
+  Register(payload, {
     Table = Globals.Progressions,
+    Type = "complex",
     Validators = { IsInTable = Strings.ERROR_PROGRESSION_EXISTS_IN_DICTIONARY }
   })
 end
 
 function Api.GetProgressionID(payload)
-  return retrieve(payload, {
+  return Retrieve(payload, {
     Table = Globals.Progressions,
     Validators = { DoesExist = Strings.ERROR_PROGRESSION_DOES_NOT_EXIST_IN_DICTIONARY }
   })
@@ -153,14 +98,14 @@ end
 
 -- Equipment Lists
 function Api.RegisterEquipmentListID(payload)
-  AddSingular(payload, {
+  Register(payload, {
     Table = Globals.EquipmentLists,
     Validators = { IsInTable = Strings.ERROR_LIST_EXISTS_IN_DICTIONARY_EQUIPMENT }
   })
 end
 
 function Api.GetEquipmentListID(payload)
-  return retrieve(payload, {
+  return Retrieve(payload, {
     Table = Globals.EquipmentLists,
     Validators = { DoesExist = Strings.ERROR_LIST_DOES_NOT_EXIST_IN_DICTIONARY_EQUIPMENT }
   })
@@ -168,14 +113,15 @@ end
 
 -- Passive Lists
 function Api.RegisterPassiveListIDs(payload)
-  return AddPassiveList(payload, {
+  return Register(payload, {
     Table = Globals.PassiveLists,
+    Type = "complex",
     Validators = {}
   })
 end
 
 function Api.GetPassiveListIDs(payload)
-  return retrieve(payload, {
+  return Retrieve(payload, {
     Table = Globals.PassiveLists,
     Validators = { DoesExist = Strings.ERROR_LIST_DOES_NOT_EXIST_IN_DICTIONARY_PASSIVE }
   })
@@ -183,14 +129,15 @@ end
 
 -- Spell Lists
 function Api.RegisterSpellListIDs(payload)
-  return AddSpellList(payload, {
+  return Register(payload, {
     Table = Globals.SpellLists,
+    Type = "complex",
     Validators = {}
   })
 end
 
 function Api.GetSpellListIDs(payload)
-  return retrieve(payload, {
+  return Retrieve(payload, {
     Table = Globals.SpellLists,
     Validators = { DoesExist = Strings.ERROR_LIST_DOES_NOT_EXIST_IN_DICTIONARY_SPELL }
   })
@@ -198,14 +145,14 @@ end
 
 -- Skill Lists
 function Api.RegisterSkillListIDs(payload)
-  return AddSingular(payload, {
+  return Register(payload, {
     Table = Globals.SkillLists,
     Validators = { IsInTable = Strings.ERROR_LIST_EXISTS_IN_DICTIONARY_SKILL }
   })
 end
 
 function Api.GetSkillListIDs(payload)
-  return retrieve(payload, {
+  return Retrieve(payload, {
     Table = Globals.SkillLists,
     Validators = { DoesExist = Strings.ERROR_LIST_DOES_NOT_EXIST_IN_DICTIONARY_SKILL }
   })
@@ -213,14 +160,14 @@ end
 
 -- Ability Lists
 function Api.RegisterAbilityListIDs(payload)
-  return AddSingular(payload, {
+  return Register(payload, {
     Table = Globals.AbilityLists,
     Validators = { IsInTable = Strings.ERROR_LIST_EXISTS_IN_DICTIONARY_ABILITY }
   })
 end
 
 function Api.GetAbilityListIDs(payload)
-  return retrieve(payload, {
+  return Retrieve(payload, {
     Table = Globals.AbilityLists,
     Validators = { DoesExist = Strings.ERROR_LIST_DOES_NOT_EXIST_IN_DICTIONARY_ABILITIES }
   })
