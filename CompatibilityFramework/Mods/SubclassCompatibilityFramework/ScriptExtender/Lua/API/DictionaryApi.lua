@@ -19,7 +19,8 @@ local function Register(payload, params)
     if params.Table[payload.Name] == nil then
       params.Table[payload.Name] = {}
     end
-    params.Table[payload.Name] = payload.Obj
+
+    Utils.MergeTables(params.Table[payload.Name], payload.Obj)
   else
     params.Table[payload.Name] = payload.Guid
   end
