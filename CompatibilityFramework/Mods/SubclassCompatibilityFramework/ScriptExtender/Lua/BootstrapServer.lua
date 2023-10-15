@@ -1,7 +1,7 @@
 Ext.Require("Init/_InitGlobals.lua")
 Ext.Require("CompatibilitySupport/SubclassSupport/_IntegratedSubClasses.lua")
-Ext.Require("Globals/_init.lua")
 Ext.Require("Utils/_init.lua")
+Ext.Require("Globals/_init.lua")
 Ext.Require("CompatibilitySupport/_init.lua")
 Ext.Require("API/_init.lua")
 
