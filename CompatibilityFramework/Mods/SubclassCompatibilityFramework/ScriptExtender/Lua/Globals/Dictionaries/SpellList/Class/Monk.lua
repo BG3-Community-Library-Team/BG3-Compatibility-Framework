@@ -6,7 +6,7 @@ DictUtils.InsertField(monk.Base.Spells, {
   Seven = "90d61529-d390-4d39-a84a-58dfc94c90aa"
 })
 
-monk.FourElements.Attunement = "de3d347b-69f4-43ac-915d-26e7cbb912bc"
+DictUtils.InsertField(monk.FourElements.Abilities, { Attunement = "de3d347b-69f4-43ac-915d-26e7cbb912bc" })
 DictUtils.InsertField(monk.FourElements.Spells, {
   Three = "9da8ef4f-676b-46f1-81e4-f7c3cfd1c34c",
   Six = "c841dfad-9d3b-486d-ad6b-ac3eaebc2db4",

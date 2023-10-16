@@ -3,7 +3,7 @@ DictUtils = {}
 
 local function setupSpellListDict()
   local result = {
-    Cantrips = {},
+    Abilities = {},
     Spells = {}
   }
 

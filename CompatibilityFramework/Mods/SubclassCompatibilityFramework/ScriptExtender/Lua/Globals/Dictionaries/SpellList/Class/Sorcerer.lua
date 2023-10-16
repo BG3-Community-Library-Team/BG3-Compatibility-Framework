@@ -2,7 +2,7 @@ local sorcerer = DictUtils.SpellList("Sorcerer", { "Draconic", "Storm", "WildMag
 
 sorcerer.Base.Scrolls = "2ba5248a-f014-409d-ab26-b50116f7e477"
 sorcerer.Base.Cantrips = "485a68b4-c678-4888-be63-4a702efbe391"
-sorcerer.Base.FontOfMagic = "979e37ad-05fa-466c-af99-9eb104a6e876"
+DictUtils.InsertField(sorcerer.Base.Abilities, { FontOfMagic = "979e37ad-05fa-466c-af99-9eb104a6e876" })
 
 DictUtils.InsertField(sorcerer.Base.Spells, {
   One = "92c4751f-6255-4f67-822c-a75d53830b27",
@@ -13,11 +13,11 @@ DictUtils.InsertField(sorcerer.Base.Spells, {
   Six = "1270a6db-980b-4e3b-bf26-2924da61dfd5"
 })
 
-sorcerer.Draconic.Fly = "12150e11-267a-4ecc-a3cc-292c9e2a198d"
+DictUtils.InsertField(sorcerer.Draconic.Abilities, { Fly = "12150e11-267a-4ecc-a3cc-292c9e2a198d" })
 
 sorcerer.Storm.Scrolls = "c572712a-eabf-4659-8289-ea1fa4a0d234"
 DictUtils.InsertField(sorcerer.Storm.Spells, {
   Six = "1efc151d-f076-4ab9-9886-d8c5625691c9"
 })
 
-sorcerer.WildMagic.BendLuck = "9c12019a-3535-4f54-a51d-e1277a5bffd6"
+DictUtils.InsertField(sorcerer.WildMagic.Abilities, { BendLuck = "9c12019a-3535-4f54-a51d-e1277a5bffd6" })

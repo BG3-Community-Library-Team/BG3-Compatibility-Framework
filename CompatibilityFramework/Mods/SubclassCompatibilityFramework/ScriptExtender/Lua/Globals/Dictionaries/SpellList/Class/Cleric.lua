@@ -1,6 +1,13 @@
+local function initCleric(subclass, channelDivinity, divineStrike)
+  DictUtils.InsertField(subclass.Abilities, {
+    ChannelDivinity = channelDivinity or nil,
+    DivineStrike = divineStrike or nil
+  })
+end
+
 local cleric = DictUtils.SpellList("Cleric", { "Life", "Light", "Knowledge", "Nature", "Tempest", "Trickery", "War" })
 
-cleric.Base.ChannelDivinity = "239cc7cc-f642-4ddc-b091-498d81612c51"
+initCleric(cleric.Base, "239cc7cc-f642-4ddc-b091-498d81612c51")
 cleric.Base.Scrolls = "42acd9d3-3b44-4d08-a061-3fd2f69aa4bf"
 cleric.Base.Cantrips = "2f43a103-5bf1-4534-b14f-663decc0c525"
 DictUtils.InsertField(cleric.Base.Spells, {
@@ -12,8 +19,8 @@ DictUtils.InsertField(cleric.Base.Spells, {
   Six = "f8ba7b05-1237-4eaa-97fa-1d3623d5862b"
 })
 
+initCleric(cleric.Knowledge, "7ba90f2b-5e5f-410f-a61d-1ffdf3876790")
 cleric.Knowledge.Scrolls = "6e728725-5a3a-42f4-ae6c-93b803e5d979"
-cleric.Life.ChannelDivinity = "7ba90f2b-5e5f-410f-a61d-1ffdf3876790"
 DictUtils.InsertField(cleric.Knowledge.Spells, {
   One = "6c7083cd-e957-449d-a652-33dfbd9785e6",
   Three = "2fbc1acc-ea80-4b61-9bed-e5e7dd50ad16",
@@ -22,8 +29,7 @@ DictUtils.InsertField(cleric.Knowledge.Spells, {
   Nine = "db3bbbe0-01cc-4e35-8186-0c6757182ec4"
 })
 
-cleric.Life.ChannelDivinity = "239cc7cc-f642-4ddc-b091-498d81612c51"
-cleric.Life.DivineStrike = "bbdd7836-8c4f-4f41-aaf7-acb16e7fc91d"
+initCleric(cleric.Life, "239cc7cc-f642-4ddc-b091-498d81612c51", "bbdd7836-8c4f-4f41-aaf7-acb16e7fc91d")
 cleric.Life.Scrolls = "79f6a154-c3e0-4a6a-ad96-faa89166d1cc"
 DictUtils.InsertField(cleric.Life.Spells, {
   One = "26ffbe70-23c6-4918-9e6a-a3e556a9d355",
@@ -33,7 +39,7 @@ DictUtils.InsertField(cleric.Life.Spells, {
   Nine = "1b8b6282-c1f2-4095-89ab-aaefdf234317"
 })
 
-cleric.Light.ChannelDivinity = "239cc7cc-f642-4ddc-b091-498d81612c51"
+initCleric(cleric.Light, "239cc7cc-f642-4ddc-b091-498d81612c51")
 cleric.Light.Scrolls = "ad589eda-d471-49fb-a629-f9c5a1860666"
 DictUtils.InsertField(cleric.Light.Spells, {
   One = "e2464518-2484-436e-9153-864c9dd05a7d",
@@ -43,8 +49,7 @@ DictUtils.InsertField(cleric.Light.Spells, {
   Nine = "5675d0b3-8a2c-4658-bfe3-42abbc0bdcfd"
 })
 
-cleric.Nature.ChannelDivinity = "28a930af-d2a0-4411-8018-c1b95d5d2f23"
-cleric.Nature.DivineStrike = "eee6250e-b75a-4012-a3da-e6452a53ed8b"
+initCleric(cleric.Nature, "28a930af-d2a0-4411-8018-c1b95d5d2f23", "eee6250e-b75a-4012-a3da-e6452a53ed8b")
 cleric.Nature.Scrolls = "38f8f794-6c62-4641-bcb9-2d1a733badaa"
 DictUtils.InsertField(cleric.Nature.Spells, {
   One = "cba2f112-697f-4611-ae1d-758bf25ab3fd",
@@ -54,8 +59,8 @@ DictUtils.InsertField(cleric.Nature.Spells, {
   Nine = "f5609f93-a17c-456c-a7bb-3b4203bb2eea"
 })
 
+initCleric(cleric.Tempest, nil, "06bb8fc7-f335-4c13-82a1-0fb63ebf5c35")
 cleric.Tempest.Scrolls = "264c3b2d-8445-40f6-9a2f-383de3baa01e"
-cleric.Tempest.DivineStrike = "06bb8fc7-f335-4c13-82a1-0fb63ebf5c35"
 DictUtils.InsertField(cleric.Tempest.Spells, {
   One = "0888d55d-6382-4149-9b62-90a9579b0ec4",
   Three = "a05bd5e7-c815-4db7-9a21-66dc08d03e44",
@@ -64,8 +69,7 @@ DictUtils.InsertField(cleric.Tempest.Spells, {
   Nine = "87d05f19-7198-424a-93ac-cf222ca25fc7"
 })
 
-cleric.Trickery.ChannelDivinity = "239cc7cc-f642-4ddc-b091-498d81612c51"
-cleric.Trickery.DivineStrike = "b5f88a1e-931f-4851-b86c-875f756b7313"
+initCleric(cleric.Trickery, "239cc7cc-f642-4ddc-b091-498d81612c51", "b5f88a1e-931f-4851-b86c-875f756b7313")
 cleric.Trickery.Scrolls = "25157f12-3bfb-4df0-a322-a3109066037a"
 DictUtils.InsertField(cleric.Trickery.Spells, {
   One = "98ef625f-d127-4fc3-8e37-37a4b27e6393",
@@ -75,7 +79,7 @@ DictUtils.InsertField(cleric.Trickery.Spells, {
   Nine = "154b461e-23c2-4147-97fd-b7892f031a50"
 })
 
-cleric.War.DivineStrike = "4935a640-e3ec-48f7-933b-512b72268e68"
+initCleric(cleric.War, nil, "4935a640-e3ec-48f7-933b-512b72268e68")
 cleric.War.Scrolls = "d76e6293-e2e3-4e63-9ef1-655556b18833"
 DictUtils.InsertField(cleric.War.Spells, {
   One = "e785b163-bff3-4134-978c-20b654dc7203",

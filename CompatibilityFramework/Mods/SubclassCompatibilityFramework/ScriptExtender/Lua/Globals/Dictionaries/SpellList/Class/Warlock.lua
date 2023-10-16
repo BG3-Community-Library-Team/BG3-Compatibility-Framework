@@ -2,10 +2,10 @@ local warlock = DictUtils.SpellList("Warlock", { "Fiend", "GreatOldOne", "ArchFe
 
 warlock.Base.Scrolls = "32879c22-4858-48ef-8f8d-22e6d395b396"
 warlock.Base.Cantrips = "f5c4af9c-5d8d-4526-9057-94a4b243cd40"
-warlock.Base.MysticArcanum = "e6ccab5e-3b3b-4b34-8fa2-1058dff2b3e6"
+DictUtils.InsertField(warlock.Base.Abilities, { MysticArcanum = "e6ccab5e-3b3b-4b34-8fa2-1058dff2b3e6" })
 
 warlock.ArchFey.Scrolls = "f95ef4cc-5f75-4274-bda5-589175d2ac66"
-warlock.ArchFey.FeyPresence = "489ff3dd-b93e-4a96-b553-b59c07d5cd6f"
+DictUtils.InsertField(warlock.ArchFey.Abilities, { FeyPresence = "489ff3dd-b93e-4a96-b553-b59c07d5cd6f" })
 DictUtils.InsertField(warlock.ArchFey.Spells, {
   One = "e0099b15-2599-4cba-a54b-b25ae03d6519",
   Two = "0cc2c8ab-9bbc-43a7-a66d-08e47da4c172",

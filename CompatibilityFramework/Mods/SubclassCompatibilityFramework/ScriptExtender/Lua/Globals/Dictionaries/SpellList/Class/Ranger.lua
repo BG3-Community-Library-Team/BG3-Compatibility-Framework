@@ -8,7 +8,7 @@ DictUtils.InsertField(ranger.Base.Spells, {
   Ten = "89384c46-b6e2-4d3c-b61e-e48b932beafb"
 })
 
-ranger.BeastMaster.Companions = "93ba8d5f-e25a-40d6-ab25-a19af93130c7"
+DictUtils.InsertField(ranger.BeastMaster.Abilities, { Companions = "93ba8d5f-e25a-40d6-ab25-a19af93130c7" })
 
 ranger.GloomStalker.Scrolls = "54450a9e-a079-4449-9463-089916803d9c"
 DictUtils.InsertField(ranger.GloomStalker.Spells, {
@@ -17,7 +17,7 @@ DictUtils.InsertField(ranger.GloomStalker.Spells, {
   Nine = "4a23c3c3-e6f7-48a4-a883-8ac2f6a2c97a"
 })
 
-ranger.Hunter.HordeBreaker = "8fe0d752-8846-41fd-a071-52592060cba8"
+DictUtils.InsertField(ranger.Hunter.Abilities, { HordeBreaker = "8fe0d752-8846-41fd-a071-52592060cba8" })
 DictUtils.InsertField(ranger.Hunter.Spells, {
   Eleven = "49cfa35d-94c9-4092-a5c6-337b7f16fd3a"
 })

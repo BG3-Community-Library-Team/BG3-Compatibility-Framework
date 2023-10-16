@@ -1,7 +1,7 @@
 local companions = DictUtils.SpellList("Companions",
   { "Astarion", "Gale", "Halsin", "Jaheira", "Karlach", "Minsc", "Shadowheart", "Wyll" })
 
-DictUtils.InsertField(companions.Gale.PreRecruitSpells, {
+DictUtils.InsertField(companions.Gale.Spells, {
   PreRecruit = "a3272ff0-3235-45ce-b625-0484ad4b15fb"
 })
 
