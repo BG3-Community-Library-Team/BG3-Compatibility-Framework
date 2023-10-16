@@ -1,0 +1,5 @@
+local fistMeleeAttacker = DictUtils.ClassProgression("NPC_FlamingFist_Melee_Attacker")
+local fistMeleeDefender = DictUtils.ClassProgression("NPC_FlamingFist_Melee_Defender")
+local fistMeleeRanger = DictUtils.ClassProgression("NPC_FlamingFist_Melee_Ranger")
+local fistMeleeCleric = DictUtils.ClassProgression("NPC_FlamingFist_Melee_Cleric")
+local fistMeleeCaster = DictUtils.ClassProgression("NPC_FlamingFist_Melee_Caster")

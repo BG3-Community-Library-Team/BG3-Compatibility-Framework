@@ -1,4 +1,4 @@
-local drow = DictUtils.SpellList("Drow", { "LlothSworn", "Seldarine" })
+local drow = DictUtils.SpellList("Drow", { "LolthSworn", "Seldarine" })
 
 drow.Base.Cantrips = "d707ec70-da8a-457b-9b69-7cf5205eef0e"
 DictUtils.InsertField(drow.Base.Spells, {

@@ -1,0 +1,1 @@
+local fighterRogue = DictUtils.ClassProgression("NPC_Fighter_Rogue")
