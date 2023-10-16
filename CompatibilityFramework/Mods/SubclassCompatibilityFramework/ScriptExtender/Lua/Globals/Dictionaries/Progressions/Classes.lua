@@ -274,7 +274,7 @@ Globals.Progressions = {
   Barbarian = {
     Base = baseBarbarianLevels,
     Berserker = berserkerBarbarianLevels,
-    Wildheart = totemBarbarianLevels,
+    WildHeart = totemBarbarianLevels,
     WildMagic = wildMagicBarbarianLevels
   },
   Bard = {},
