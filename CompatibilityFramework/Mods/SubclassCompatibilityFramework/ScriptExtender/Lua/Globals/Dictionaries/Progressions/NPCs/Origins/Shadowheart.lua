@@ -1,1 +1,1 @@
-local shadowheart = DictUtils.ClassProgression("Origin_Shadowheart")
+local shadowheart = DictUtils.Progression("Origin_Shadowheart")

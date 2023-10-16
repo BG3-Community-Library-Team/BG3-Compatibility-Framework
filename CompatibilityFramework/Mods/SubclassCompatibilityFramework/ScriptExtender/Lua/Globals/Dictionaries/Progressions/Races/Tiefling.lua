@@ -1,1 +1,1 @@
-local tiefling = DictUtils.ClassProgression("Tiefling", { "Asmodeus", "Mephisto", "Zariel" })
+local tiefling = DictUtils.Progression("Tiefling", { "Asmodeus", "Mephisto", "Zariel" })

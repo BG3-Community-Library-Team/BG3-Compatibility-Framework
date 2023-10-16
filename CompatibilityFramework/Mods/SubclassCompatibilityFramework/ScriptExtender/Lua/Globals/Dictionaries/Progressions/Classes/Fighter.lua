@@ -1,1 +1,1 @@
-local fighter = DictUtils.ClassProgression("Fighter", { "Champion", "BattleMaster", "EldritchKnight" })
+local fighter = DictUtils.Progression("Fighter", { "Champion", "BattleMaster", "EldritchKnight" })

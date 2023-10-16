@@ -1,1 +1,1 @@
-local minthara = DictUtils.ClassProgression("NPC_Minthara")
+local minthara = DictUtils.Progression("NPC_Minthara")

@@ -1,1 +1,1 @@
-local human = DictUtils.ClassProgression("Human")
+local human = DictUtils.Progression("Human")

@@ -1,2 +1,2 @@
-local minsc = DictUtils.ClassProgression("Origin_Minsc")
-local npcMinsc = DictUtils.ClassProgression("NPC_Minsc")
+local minsc = DictUtils.Progression("Origin_Minsc")
+local npcMinsc = DictUtils.Progression("NPC_Minsc")

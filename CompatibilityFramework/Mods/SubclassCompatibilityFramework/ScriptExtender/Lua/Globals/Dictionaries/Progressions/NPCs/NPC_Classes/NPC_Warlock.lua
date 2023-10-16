@@ -1,1 +1,1 @@
-local warlock = DictUtils.ClassProgression("NPC_Warlock")
+local warlock = DictUtils.Progression("NPC_Warlock")

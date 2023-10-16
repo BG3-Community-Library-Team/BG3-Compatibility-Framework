@@ -1,1 +1,1 @@
-local wyll = DictUtils.ClassProgression("Origin_Wyll")
+local wyll = DictUtils.Progression("Origin_Wyll")

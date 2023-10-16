@@ -1,1 +1,1 @@
-local halsin = DictUtils.ClassProgression("NPC_Halsin")
+local halsin = DictUtils.Progression("NPC_Halsin")

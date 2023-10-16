@@ -1,1 +1,1 @@
-local paladin = DictUtils.ClassProgression("Paladin", { "Ancients", "Devotion", "Vengeance", "Oathbreaker" })
+local paladin = DictUtils.Progression("Paladin", { "Ancients", "Devotion", "Vengeance", "Oathbreaker" })

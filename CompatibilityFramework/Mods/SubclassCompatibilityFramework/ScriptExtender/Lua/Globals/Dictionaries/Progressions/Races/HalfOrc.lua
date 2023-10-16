@@ -1,1 +1,1 @@
-local halfOrc = DictUtils.ClassProgression("HalfOrc")
+local halfOrc = DictUtils.Progression("HalfOrc")

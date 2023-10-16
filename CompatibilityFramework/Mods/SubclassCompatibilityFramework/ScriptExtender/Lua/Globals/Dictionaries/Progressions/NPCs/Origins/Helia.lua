@@ -1,1 +1,1 @@
-local helia = DictUtils.ClassProgression("Origin_Helia")
+local helia = DictUtils.Progression("Origin_Helia")

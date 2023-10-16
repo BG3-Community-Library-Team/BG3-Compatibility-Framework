@@ -1,1 +1,1 @@
-local drow = DictUtils.ClassProgression("Drow", { "Seldarine", "LolthSworn" })
+local drow = DictUtils.Progression("Drow", { "Seldarine", "LolthSworn" })

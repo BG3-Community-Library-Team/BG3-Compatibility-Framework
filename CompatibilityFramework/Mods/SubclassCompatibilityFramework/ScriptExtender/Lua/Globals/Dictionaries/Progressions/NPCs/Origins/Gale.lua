@@ -1,1 +1,1 @@
-local gale = DictUtils.ClassProgression("Origin_Gale")
+local gale = DictUtils.Progression("Origin_Gale")

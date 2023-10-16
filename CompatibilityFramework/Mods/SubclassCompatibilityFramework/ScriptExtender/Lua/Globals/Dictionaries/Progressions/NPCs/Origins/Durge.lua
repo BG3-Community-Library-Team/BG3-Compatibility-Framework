@@ -1,1 +1,1 @@
-local durge = DictUtils.ClassProgression("Origin_DarkUrge")
+local durge = DictUtils.Progression("Origin_DarkUrge")

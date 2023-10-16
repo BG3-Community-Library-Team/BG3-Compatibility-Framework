@@ -1,1 +1,1 @@
-local monk = DictUtils.ClassProgression("Monk", { "OpenHand", "Shadows", "FourElements" })
+local monk = DictUtils.Progression("Monk", { "OpenHand", "Shadows", "FourElements" })

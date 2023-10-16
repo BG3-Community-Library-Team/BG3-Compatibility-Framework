@@ -8,14 +8,14 @@ end
 
 local function setupProgressionDict()
   return {
-    Level = {}
+    Levels = {}
   }
 end
 
-function DictUtils.ClassProgression(name, subType)
+function DictUtils.Progression(name, subType)
   subType = subType or {}
 
-  Globals.SpellLists[name] = {
+  Globals.Progressions[name] = {
     Base = setupProgressionDict()
   }
 

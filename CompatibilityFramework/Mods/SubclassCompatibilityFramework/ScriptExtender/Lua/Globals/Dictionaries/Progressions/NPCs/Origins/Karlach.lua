@@ -1,1 +1,1 @@
-local karlach = DictUtils.ClassProgression("Origin_Karlach")
+local karlach = DictUtils.Progression("Origin_Karlach")

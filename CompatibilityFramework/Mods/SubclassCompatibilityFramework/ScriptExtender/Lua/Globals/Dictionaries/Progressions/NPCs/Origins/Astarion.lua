@@ -1,1 +1,1 @@
-local astarion = DictUtils.ClassProgression("Origin_Astarion")
+local astarion = DictUtils.Progression("Origin_Astarion")

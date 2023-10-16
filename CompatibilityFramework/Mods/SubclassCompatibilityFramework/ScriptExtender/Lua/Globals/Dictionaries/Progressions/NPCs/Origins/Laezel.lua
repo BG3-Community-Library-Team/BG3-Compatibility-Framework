@@ -1,1 +1,1 @@
-local laezel = DictUtils.ClassProgression("Origin_Laezel")
+local laezel = DictUtils.Progression("Origin_Laezel")

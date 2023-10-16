@@ -1,1 +1,1 @@
-local rogue = DictUtils.ClassProgression("Rogue", { "Thief", "Assassin", "ArcaneTrickster" })
+local rogue = DictUtils.Progression("Rogue", { "Thief", "Assassin", "ArcaneTrickster" })

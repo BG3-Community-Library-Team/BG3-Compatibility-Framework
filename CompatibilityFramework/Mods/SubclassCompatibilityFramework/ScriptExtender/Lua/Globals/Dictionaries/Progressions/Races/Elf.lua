@@ -1,1 +1,1 @@
-local elf = DictUtils.ClassProgression("Elf", { "Wood", "High" })
+local elf = DictUtils.Progression("Elf", { "Wood", "High" })

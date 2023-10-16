@@ -1,1 +1,1 @@
-local jaheria = DictUtils.ClassProgression("NPC_Jaheria")
+local jaheria = DictUtils.Progression("NPC_Jaheira")

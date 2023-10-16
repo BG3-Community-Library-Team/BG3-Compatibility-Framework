@@ -1,1 +1,1 @@
-local cleric = DictUtils.ClassProgression("Cleric", { "Life", "Light", "Knowledge", "Nature", "Tempest", "Trickery", "War" })
+local cleric = DictUtils.Progression("Cleric", { "Life", "Light", "Knowledge", "Nature", "Tempest", "Trickery", "War" })

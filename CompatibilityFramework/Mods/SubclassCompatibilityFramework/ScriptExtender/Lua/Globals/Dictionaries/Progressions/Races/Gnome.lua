@@ -1,1 +1,1 @@
-local gnome = DictUtils.ClassProgression("Gnome", { "Forest", "Rock", "Deep" })
+local gnome = DictUtils.Progression("Gnome", { "Forest", "Rock", "Deep" })

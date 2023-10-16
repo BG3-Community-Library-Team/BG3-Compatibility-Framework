@@ -1,1 +1,1 @@
-local barbarian = DictUtils.ClassProgression("NPC_Barbarian")
+local barbarian = DictUtils.Progression("NPC_Barbarian")

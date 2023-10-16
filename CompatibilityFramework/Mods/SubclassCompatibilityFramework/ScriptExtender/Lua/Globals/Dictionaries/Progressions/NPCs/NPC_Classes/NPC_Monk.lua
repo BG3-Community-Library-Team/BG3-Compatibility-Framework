@@ -1,1 +1,1 @@
-local monk = DictUtils.ClassProgression("NPC_Monk")
+local monk = DictUtils.Progression("NPC_Monk")

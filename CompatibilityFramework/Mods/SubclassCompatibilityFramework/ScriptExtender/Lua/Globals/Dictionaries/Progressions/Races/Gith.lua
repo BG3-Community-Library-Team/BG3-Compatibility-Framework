@@ -1,1 +1,1 @@
-local gith = DictUtils.ClassProgression("Githyanki")
+local gith = DictUtils.Progression("Githyanki")

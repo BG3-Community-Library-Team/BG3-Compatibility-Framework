@@ -1,1 +1,1 @@
-local halfling = DictUtils.ClassProgression("Halfling", { "Lightfoot", "Stout" })
+local halfling = DictUtils.Progression("Halfling", { "Lightfoot", "Stout" })

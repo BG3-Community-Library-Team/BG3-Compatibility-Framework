@@ -1,1 +1,1 @@
-local druid = DictUtils.ClassProgression("NPC_Druid")
+local druid = DictUtils.Progression("NPC_Druid")

@@ -1,1 +1,1 @@
-local mcSpellSlots = DictUtils.ClassProgression("MultiClassSpellSlots")
+local mcSpellSlots = DictUtils.Progression("MultiClassSpellSlots")
