@@ -1,5 +1,5 @@
 local function initCleric(subclass, channelDivinity, divineStrike)
-  DictUtils.InsertField(subclass.Abilities, {
+  DictUtils.InsertField(subclass.Features, {
     ChannelDivinity = channelDivinity or nil,
     DivineStrike = divineStrike or nil
   })

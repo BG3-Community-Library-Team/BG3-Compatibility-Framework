@@ -2,7 +2,7 @@ local druid = DictUtils.SpellList("Druid", { "Moon", "Land", "Spore" })
 
 druid.Base.Scrolls = "fd366d4e-4063-4b6f-9cd9-26889bcd6465"
 druid.Base.Cantrips = "b8faf12f-ca42-45c0-84f8-6951b526182a"
-DictUtils.InsertField(druid.Base.Abilities, {
+DictUtils.InsertField(druid.Base.Features, {
   WildShape = {
     WildShape = "0f094e35-9675-464d-8cae-8e58c28de955",
     WildShapeCombat = "2df1a00f-a66a-4240-a505-6a7835f2f1fa",
@@ -27,7 +27,7 @@ DictUtils.InsertField(druid.Base.Spells, {
 })
 
 druid.Land.Scrolls = "2c5a2f80-4da9-4aab-b9f4-500335eeffee"
-DictUtils.InsertField(druid.Land.Abilities, { NaturalRecovery = "bd15435a-55a8-4e81-bbac-f6f600cbe1af" })
+DictUtils.InsertField(druid.Land.Features, { NaturalRecovery = "bd15435a-55a8-4e81-bbac-f6f600cbe1af" })
 
 druid.Spore.Scrolls = "877f8053-b97f-4b75-99e2-6e6834a11e87"
 druid.Spore.Cantrips = "e568eca4-b5e1-4b67-83d6-d831adf05e23"

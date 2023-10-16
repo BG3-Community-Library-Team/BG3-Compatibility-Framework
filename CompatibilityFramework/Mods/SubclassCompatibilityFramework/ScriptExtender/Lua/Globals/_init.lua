@@ -1,5 +1,6 @@
 Globals = {}
 Strings = {}
+DictUtils = {}
 
 Globals.SupportedSubClasses = {}
 Globals.ClassUUIDs = {}
@@ -8,6 +9,7 @@ Globals.ClassProgressions = {}
 Globals.Cache = {}
 Globals.Debug = false
 Globals.ShowWarnings = false
+Globals.SpellLists = {}
 
 Ext.Require("Globals/Dictionaries.lua")
 Ext.Require("Globals/MulticlassDictionary.lua")
@@ -39,6 +41,7 @@ Ext.Require("Globals/Dictionaries/SpellList/Race/Dwarf.lua")
 Ext.Require("Globals/Dictionaries/SpellList/Class/Githyanki.lua")
 Ext.Require("Globals/Dictionaries/SpellList/Class/Gnome.lua")
 Ext.Require("Globals/Dictionaries/SpellList/Class/Tiefling.lua")
+Ext.Require("Globals/Dictionaries/Progressions/Utils.lua")
 Ext.Require("Globals/Dictionaries/Progressions/Classes.lua")
 Ext.Require("Globals/Dictionaries/Progressions/Races.lua")
 Ext.Require("Globals/Dictionaries/Progressions/NPCs.lua")

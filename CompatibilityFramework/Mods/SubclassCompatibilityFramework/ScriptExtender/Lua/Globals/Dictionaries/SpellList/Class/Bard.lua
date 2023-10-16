@@ -3,7 +3,7 @@ local bard = DictUtils.SpellList("Bard", { "Lore", "Sword", "Valor" })
 
 bard.Base.Cantrips = "61f79a30-2cac-4a7a-b5fe-50c89d307dd6"
 bard.Base.Scrolls = "c98f2011-31e1-4e9a-8061-62c8679c645e"
-DictUtils.InsertField(bard.Base.Abilities, {
+DictUtils.InsertField(bard.Base.Features, {
   SongOfRest = "80225e21-5acd-4122-b779-488dae33a31c",
   CounterCharm = "d84fc8ab-293e-437f-9825-e3e313f78060",
   MagicalSecrets = {
@@ -21,14 +21,14 @@ DictUtils.InsertField(bard.Base.Spells, {
 })
 
 
-DictUtils.InsertField(bard.Lore.Abilities, {
+DictUtils.InsertField(bard.Lore.Features, {
   MagicalSecrets = { Six = "175ceed7-5a53-4f48-823c-41c4f72d18ae" }
 })
 DictUtils.InsertField(bard.Lore.Spells, {
   Three = "ec3719ef-6a99-4305-8fd6-b2257b165aec"
 })
 
-DictUtils.InsertField(bard.Sword.Abilities, {
+DictUtils.InsertField(bard.Sword.Features, {
   Flourish = "246ad664-1a53-4d42-8a5e-0ed5cda6af62"
 })
 

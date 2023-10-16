@@ -1,0 +1,1 @@
+local bard = DictUtils.ClassProgression("Bard", { "Lore", "Sword", "Valor" })

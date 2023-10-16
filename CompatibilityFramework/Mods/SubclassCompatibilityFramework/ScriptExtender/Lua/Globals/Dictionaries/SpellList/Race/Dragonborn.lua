@@ -1,7 +1,7 @@
 local dragonborn = DictUtils.SpellList("Dragonborn", { "Black", "Blue", "Copper", "Gold", "Green", "Red", "Brass", "Bronze", "Silver", "White" })
 
 local function initDragonbreath(subrace, breath)
-  DictUtils.InsertField(dragonborn[subrace].Abilities, { Breath = breath })
+  DictUtils.InsertField(dragonborn[subrace].Features, { Breath = breath })
 end
 
 initDragonbreath("Black", "b415e521-403b-441b-911a-2aa5d36f17ed")

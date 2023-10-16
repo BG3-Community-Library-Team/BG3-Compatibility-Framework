@@ -1,9 +1,6 @@
-Globals.SpellLists = {}
-DictUtils = {}
-
 local function setupSpellListDict()
   local result = {
-    Abilities = {},
+    Features = {},
     Spells = {}
   }
 
@@ -26,6 +23,7 @@ function DictUtils.SpellList(name, subType)
   return Globals.SpellLists[name]
 end
 
+-- TODO: Add table handling so we can safely merge things
 function DictUtils.InsertField(obj, fieldObj)
   obj = obj or {}
   for key, value in pairs(fieldObj) do
