@@ -2,6 +2,7 @@ local cleric = DictUtils.Progression("Cleric", { "Life", "Light", "Knowledge", "
 
 Utils.MergeTables(cleric.Base.Levels, {
   One = DictUtils.setupClassLevelEntry("1dbce574-fff1-49be-b7da-704f9b73cad9", "366cde9c-db0c-43ce-a49c-fb140e084b3c"),
+  OtherMulticlass = DictUtils.setupClassLevelEntry(nil, "2b249feb-bba5-4922-8385-c2dd9baaa049"),
   Two = DictUtils.setupClassLevelEntry("ef18265f-dda6-4eb6-8dd0-b14c57202c33"),
   Three = DictUtils.setupClassLevelEntry("4d9072bb-7b14-43b9-afb2-0d7e89f90c65"),
   Four = DictUtils.setupClassLevelEntry("051cd419-b843-4996-807e-d0ac78084ef0"),
