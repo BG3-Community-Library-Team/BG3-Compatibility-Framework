@@ -1,7 +1,7 @@
 local barbarian = DictUtils.Progression("Barbarian", { "Berserker", "WildMagic", "WildHeart" })
 
 Utils.MergeTables(barbarian.Base.Levels, {
-  One = DictUtils.setupClassLevelEntry("a2198ee9-ea4c-468e-b6b4-22b32d37806e"),
+  One = DictUtils.setupClassLevelEntry("a2198ee9-ea4c-468e-b6b4-22b32d37806e", "2dc1015e-6fd9-48aa-923e-eecaf72a83f1"),
   Two = DictUtils.setupClassLevelEntry("89986e8a-09b1-4163-b1d0-ddb2332bf3c5"),
   Three = DictUtils.setupClassLevelEntry("0d4a6b4b-8162-414b-81ef-1838e36e778a"),
   Four = DictUtils.setupClassLevelEntry("942265f9-bb74-4f9b-82e4-0c8c8036ac7f"),
