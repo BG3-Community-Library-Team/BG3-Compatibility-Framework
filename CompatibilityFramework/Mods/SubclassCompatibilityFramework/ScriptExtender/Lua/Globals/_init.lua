@@ -15,12 +15,10 @@ Globals.Progressions = {}
 Ext.Require("Globals/Dictionaries.lua")
 Ext.Require("Globals/MulticlassDictionary.lua")
 Ext.Require("Globals/Strings.lua")
-Ext.Require("Globals/Dictionaries/AbilityList.lua")
 Ext.Require("Globals/Dictionaries/EquipmentList.lua")
 Ext.Require("Globals/Dictionaries/Feat.lua")
 Ext.Require("Globals/Dictionaries/PassiveList.lua")
 Ext.Require("Globals/Dictionaries/ActionResource.lua")
-
 Ext.Require("Globals/Dictionaries/SpellList/Utils.lua")
 Ext.Require("Globals/Dictionaries/SpellList/Class/Barbarian.lua")
 Ext.Require("Globals/Dictionaries/SpellList/Class/Bard.lua")
