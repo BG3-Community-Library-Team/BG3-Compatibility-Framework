@@ -1,6 +1,6 @@
 local function DetectStringType(type)
   Utils.Info("Entering DetectStringType")
-  return Utils.IsKeyInTable(Globals.ProgressionStringTypes, type)
+  return Utils.IsKeyInTable(Globals.StringTypes, type)
 end
 
 local function stripDuplicates(field, strings)

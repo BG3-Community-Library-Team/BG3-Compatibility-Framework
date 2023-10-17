@@ -23,6 +23,7 @@ local function BuildAddSpellsTable(params)
 end
 
 local function BuildSelectPassivesOrEquipmentTable(params)
+  Utils.Info("Entering BuildSelectPassivesOrEquipmentTable")
   return {
     UUID = params.Guid,
     Amount = params.Amount or "",
@@ -73,7 +74,13 @@ local function BuildSelector(payload)
   if payload.Function == Globals.SelectorFunctions.AddSpells then
     return BuildAddSpellsTable(payload.Params)
   end
-  if payload.Function == Globals.SelectorFunctions.SelectPassives or payload.Function == Globals.SelectorFunctions.SelectEquipment then
+  if payload.Function == Globals.SelectorFunctions.SelectPassives then
+    return BuildSelectPassivesOrEquipmentTable(payload.Params)
+  end
+  if payload.Function == Globals.SelectorFunctions.ReplacePassives then
+    return BuildSelectPassivesOrEquipmentTable(payload.Params)
+  end
+  if payload.Function == Globals.SelectorFunctions.SelectEquipment then
     return BuildSelectPassivesOrEquipmentTable(payload.Params)
   end
   if payload.Function == Globals.SelectorFunctions.SelectAbilityBonus then
@@ -90,16 +97,27 @@ local function BuildSelector(payload)
   end
 end
 
+local function IsPayloadInSelector(selectorField, selectorToInsert)
+  local found = false
+  for _, value in pairs(selectorField) do
+    if value.UUID == selectorToInsert.UUID then
+      found = true
+    end
+  end
+  return found
+end
+
 local function AddSelector(payload)
   Utils.Info("Entering AddSelector")
-  local selectorField = {}
   local target = payload.Target or payload.TargetProgression
   local type = payload.FileType or "Progression"
+  local target = Utils.CacheOrRetrieve(target, type)
+  local selectorField = target[payload.Function]
+  local selectorToInsert = BuildSelector(payload)
 
-  if payload.FileType == "Feat" then
-    selectorField = Utils.CacheOrRetrieve(target, type)[payload.Function]
+  if not IsPayloadInSelector(selectorField, selectorToInsert) then
+    target[payload.Function] = Utils.MergeTables(selectorField, { selectorToInsert })
   end
-  table.insert(selectorField, BuildSelector(payload))
 end
 
 function HandleSelector(payload)
