@@ -1,3 +1,4 @@
+Ext.Require("CompatibilitySupport/RaceSupport/_RaceChild.lua")
 Ext.Require("CompatibilitySupport/SubclassSupport/_SubclassCompatibility.lua")
 Ext.Require("CompatibilitySupport/SelectorSupport/_SelectorAddition.lua")
 Ext.Require("CompatibilitySupport/SelectorSupport/_SelectorRemoval.lua")
