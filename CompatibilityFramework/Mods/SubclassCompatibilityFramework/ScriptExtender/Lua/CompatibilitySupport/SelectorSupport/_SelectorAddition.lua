@@ -100,7 +100,9 @@ end
 local function IsPayloadInSelector(selectorField, selectorToInsert)
   local found = false
   for _, value in pairs(selectorField) do
-    if value.UUID == selectorToInsert.UUID then
+    local valID = value.UUID or value.SpellUUID
+    local newSelectorID = selectorToInsert.UUID or selectorToInsert.SpellUUID
+    if valID == newSelectorID then
       found = true
     end
   end
