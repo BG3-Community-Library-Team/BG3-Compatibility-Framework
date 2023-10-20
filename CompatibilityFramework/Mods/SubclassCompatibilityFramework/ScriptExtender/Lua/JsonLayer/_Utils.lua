@@ -1,5 +1,3 @@
-JsonUtils = {}
-
 JsonUtils.Endpoints = {
   Insert = {
     ActionResourceGroup = Api.InsertResourceToGroup,

@@ -3,7 +3,7 @@ local configFilePathPattern = "Mods/%s/ScriptExtender/CompatibilityFrameworkConf
 local function SubmitData(data, modGUID)
   Utils.Info("Entering SubmitData")
   if data.Progressions ~= nil then
-
+    ProgressionJsonHandler(data.Races, modGUID)
   end
 
   if data.Races ~= nil then

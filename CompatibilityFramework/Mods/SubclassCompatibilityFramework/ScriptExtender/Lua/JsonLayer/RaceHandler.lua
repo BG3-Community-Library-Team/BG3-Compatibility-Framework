@@ -1,7 +1,7 @@
 local function ParseAndSubmitEntries(data, modGuid)
   Utils.Info("Entering ParseAndSubmitEntries")
   local payloads = {
-    Insert = JsonUtils.BuilRacePayloads(data, modGuid, "Insert"),
+    Insert = JsonUtils.BuildRacePayloads(data, modGuid, "Insert"),
     Remove = JsonUtils.BuildRacePayloads(data, modGuid, "Remove")
   }
 
@@ -14,7 +14,7 @@ end
 
 function RaceJsonHandler(data, modGuid)
   Utils.Info("Entering RaceJsonHandler")
-  for _, races in pairs(data) do
-    ParseAndSubmitEntries(races, modGuid)
+  for _, race in pairs(data) do
+    ParseAndSubmitEntries(race, modGuid)
   end
 end
