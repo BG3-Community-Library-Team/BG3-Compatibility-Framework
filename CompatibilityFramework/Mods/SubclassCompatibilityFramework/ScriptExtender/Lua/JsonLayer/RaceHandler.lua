@@ -1,37 +1,13 @@
-local Endpoints = {
-  Insert = Api.InsertRaceChildData,
-  Remove = Api.RemoveRaceChildData
-}
-
-local function BuildPayloads(data, modGuid, action)
-  Utils.Info("Entering BuildPayloads")
-  local count = 0
-  local result = {
-    modGuid = modGuid,
-    raceGuid = data.UUID,
-    children = {}
-  }
-
-  for _, child in pairs(data.Children) do
-    if child.Action == action then
-      result.children[tostring(count)] = { Type = child.Type, Value = child.Value }
-      count = count + 1
-    end
-  end
-
-  return result
-end
-
 local function ParseAndSubmitEntries(data, modGuid)
   Utils.Info("Entering ParseAndSubmitEntries")
   local payloads = {
-    Insert = BuildPayloads(data, modGuid, "Insert"),
-    Remove = BuildPayloads(data, modGuid, "Remove")
+    Insert = JsonUtils.BuilRacePayloads(data, modGuid, "Insert"),
+    Remove = JsonUtils.BuildRacePayloads(data, modGuid, "Remove")
   }
 
   for action, payload in pairs(payloads) do
     if payload ~= nil then
-      Endpoints[action]({ payload })
+      JsonUtils.Endpoints[action].Race({ payload })
     end
   end
 end

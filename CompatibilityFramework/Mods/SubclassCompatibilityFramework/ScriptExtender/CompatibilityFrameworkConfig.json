@@ -26,7 +26,38 @@
           "SubClassName": "Brute",
           "Class": "barbarian"
         }
+      ],
+      "Selectors": [
+        {
+          "Action": "Insert",
+          "Function": "SelectSpells",
+          "Overwrite": false,
+          "UUID": "",
+          "Params": {}
+        }
+      ],
+      "Strings": [
+        {
+          "Action": "Remove",
+          "Type": "Boosts",
+          "Strings": ["test", "test2"]
+        }
       ]
+    }
+  ],
+  "Lists": [
+    {
+      "Action": "Insert",
+      "UUID": "",
+      "Type": "",
+      "Items": ["", "", ""]
+    }
+  ],
+  "ActionResourceGroups": [
+    {
+      "UUID": "",
+      "Definitions": ["", "", ""],
+      "Action": "Insert"
     }
   ]
 }
