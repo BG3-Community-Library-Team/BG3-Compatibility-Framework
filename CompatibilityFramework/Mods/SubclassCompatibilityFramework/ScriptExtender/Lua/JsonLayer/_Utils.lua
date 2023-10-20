@@ -122,3 +122,31 @@ function JsonUtils.BuildActionResourceGroupPayload(data, modGuid)
 
   return result
 end
+
+function JsonUtils.ParseAndSubmitSelectors(data, target, modGuid, fileType)
+  Utils.Info("Entering ParseAndSubmitSelectors")
+  local payloads = {
+    Insert = JsonUtils.BuildAddSelectorPayload(data, modGuid, target, fileType),
+    Remove = JsonUtils.BuildRemoveSelectorPayload(data, modGuid, target, fileType)
+  }
+
+  for action, payload in pairs(payloads) do
+    if payload ~= nil then
+      JsonUtils.Endpoints[action].Selector({ payload })
+    end
+  end
+end
+
+function JsonUtils.ParseAndSubmitStrings(data, target, modGuid, fileType)
+  Utils.Info("Entering ParseAndSubmitStrings")
+  local payloads = {
+    Insert = JsonUtils.BuildStringPayload(data, modGuid, target, fileType),
+    Remove = JsonUtils.BuildStringPayload(data, modGuid, target, fileType)
+  }
+
+  for action, payload in pairs(payloads) do
+    if payload ~= nil then
+      JsonUtils.Endpoints[action].Strings({ payload })
+    end
+  end
+end

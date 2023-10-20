@@ -2,9 +2,13 @@ local configFilePathPattern = "Mods/%s/ScriptExtender/CompatibilityFrameworkConf
 
 local function SubmitData(data, modGUID)
   Utils.Info("Entering SubmitData")
-  if data.Progressions ~= nil then
-    ProgressionJsonHandler(data.Races, modGUID)
-  end
+    if data.Progressions ~= nil then
+        ProgressionJsonHandler(data.Races, modGUID)
+    end
+  
+    if data.Feats ~= nil then
+      FeatJsonHandler(data.Fears, modGUID)
+    end
 
   if data.Races ~= nil then
     RaceJsonHandler(data.Races, modGUID)

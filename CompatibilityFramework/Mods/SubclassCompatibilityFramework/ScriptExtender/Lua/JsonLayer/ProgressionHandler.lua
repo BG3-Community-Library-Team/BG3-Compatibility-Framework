@@ -11,34 +11,6 @@ local function ParseAndSubmitSubclasses(data, modGuid)
   end
 end
 
-local function ParseAndSubmitSelectors(data, target, modGuid)
-  Utils.Info("Entering ParseAndSubmitSelectors")
-  local payloads = {
-    Insert = JsonUtils.BuildAddSelectorPayload(data, modGuid, target, "Progression"),
-    Remove = JsonUtils.BuildRemoveSelectorPayload(data, modGuid, target, "Progression")
-  }
-
-  for action, payload in pairs(payloads) do
-    if payload ~= nil then
-      JsonUtils.Endpoints[action].Selector({ payload })
-    end
-  end
-end
-
-local function ParseAndSubmitStrings(data, target, modGuid)
-  Utils.Info("Entering ParseAndSubmitStrings")
-  local payloads = {
-    Insert = JsonUtils.BuildStringPayload(data, modGuid, target, "Progression"),
-    Remove = JsonUtils.BuildStringPayload(data, modGuid, target, "Progression")
-  }
-
-  for action, payload in pairs(payloads) do
-    if payload ~= nil then
-      JsonUtils.Endpoints[action].Strings({ payload })
-    end
-  end
-end
-
 local function ProgressionSubSectionHandler(data, modGuid)
   if data.Subclasses ~= nil then
     for _, subclass in pairs(data.Subclasses) do
@@ -48,13 +20,13 @@ local function ProgressionSubSectionHandler(data, modGuid)
 
   if data.Selectors ~= nil then
     for _, selector in pairs(data.Selectors) do
-      ParseAndSubmitSelectors(selector, data.UUID, modGuid)
+      JsonUtils.ParseAndSubmitSelectors(selector, data.UUID, modGuid, "Progression")
     end
   end
 
   if data.Strings ~= nil then
     for _, strings in pairs(data.strings) do
-      ParseAndSubmitStrings(strings, data.UUID, modGuid)
+      JsonUtils.ParseAndSubmitStrings(strings, data.UUID, modGuid, "Progression")
     end
   end
 end
