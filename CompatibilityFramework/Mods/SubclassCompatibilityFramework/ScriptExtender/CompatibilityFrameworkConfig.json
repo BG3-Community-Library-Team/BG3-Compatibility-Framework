@@ -1,0 +1,32 @@
+{
+  "FileVersion": 1,
+  "Races": [
+    {
+      "UUID": "9c61a74a-20df-4119-89c5-d996956b6c66",
+      "Children": [
+        {
+          "Type": "EyeColors",
+          "Value": "bdf9b779-002c-4077-b377-8ea7c1faa795",
+          "Action": "Insert"
+        },
+        {
+          "Type": "LipsMakeupColors",
+          "Value": "bdf9b779-002c-4077-b377-8ea7c1faa795",
+          "Action": "Remove"
+        }
+      ]
+    }
+  ],
+  "Progressions": [
+    {
+      "UUID": "0d4a6b4b-8162-414b-81ef-1838e36e778a",
+      "Subclasses": [
+        {
+          "UUID": "5b3cd5ec-4234-434e-a6c5-da5fc01183cd",
+          "SubClassName": "Brute",
+          "Class": "barbarian"
+        }
+      ]
+    }
+  ]
+}

@@ -21,9 +21,11 @@ end
 
 local function RemoveRaceChildren(payload)
   Utils.Info("Entering RemoveRaceChildren")
+  Utils.Info(Utils.Stringify(payload))
   local raceData = Utils.CacheOrRetrieve(payload.raceGuid, "Race")
 
-  for _, entry in pairs(payload.children) do
+    for _, entry in pairs(payload.children) do
+    Utils.Info(Utils.Stringify(entry))
     if raceData[entry.Type] ~= nil then
       if Utils.IsInTable(raceData[entry.Type], entry.Value) then
         local idx = Utils.GetKeyFromvalue(raceData[entry.Type], entry.Value)
