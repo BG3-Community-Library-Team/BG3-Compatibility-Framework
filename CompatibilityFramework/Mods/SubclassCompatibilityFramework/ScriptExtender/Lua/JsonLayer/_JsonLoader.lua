@@ -2,7 +2,6 @@ local configFilePathPattern = "Mods/%s/ScriptExtender/CompatibilityFrameworkConf
 
 local function SubmitData(data, modGUID)
   Utils.Info("Entering SubmitData")
-  Utils.Info(Utils.Stringify(data))
   if data.Progressions ~= nil then
 
   end

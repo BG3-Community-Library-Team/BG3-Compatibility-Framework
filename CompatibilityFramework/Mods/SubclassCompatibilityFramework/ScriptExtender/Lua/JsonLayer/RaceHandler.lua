@@ -4,14 +4,13 @@ local Endpoints = {
 }
 
 local function BuildPayloads(data, modGuid, action)
+  Utils.Info("Entering BuildPayloads")
   local count = 0
   local result = {
     modGuid = modGuid,
     raceGuid = data.UUID,
     children = {}
   }
-
-  Utils.Info(Utils.Stringify(data))
 
   for _, child in pairs(data.Children) do
     if child.Action == action then
@@ -23,7 +22,8 @@ local function BuildPayloads(data, modGuid, action)
   return result
 end
 
-local function parseAndSubmitEntries(data, modGuid)
+local function ParseAndSubmitEntries(data, modGuid)
+  Utils.Info("Entering ParseAndSubmitEntries")
   local payloads = {
     Insert = BuildPayloads(data, modGuid, "Insert"),
     Remove = BuildPayloads(data, modGuid, "Remove")
@@ -31,14 +31,14 @@ local function parseAndSubmitEntries(data, modGuid)
 
   for action, payload in pairs(payloads) do
     if payload ~= nil then
-      Utils.Info("Submitting entry: " .. Utils.Stringify(payload))
       Endpoints[action]({ payload })
     end
   end
 end
 
 function RaceJsonHandler(data, modGuid)
+  Utils.Info("Entering RaceJsonHandler")
   for _, races in pairs(data) do
-    local insertionEntries, removalEntries = parseAndSubmitEntries(races, modGuid)
+    ParseAndSubmitEntries(races, modGuid)
   end
 end
