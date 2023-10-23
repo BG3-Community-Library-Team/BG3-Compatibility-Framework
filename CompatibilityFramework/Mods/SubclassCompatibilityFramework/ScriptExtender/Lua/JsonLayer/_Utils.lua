@@ -12,6 +12,9 @@ JsonUtils.Endpoints = {
     Race = Api.RemoveRaceChildData,
     Strings = Api.RemoveStrings,
     Selector = Api.RemoveSelectors
+  },
+  Set = {
+    Booleans = Api.SetBoolean
   }
 }
 
@@ -88,6 +91,17 @@ function JsonUtils.BuildStringPayload(data, modGuid, target, type)
   return result
 end
 
+function JsonUtils.BuildBooleanPayload(data, modGuid, target, type)
+  Utils.Info("Entering BuildStringPayload")
+  return {
+    modGuid = modGuid,
+    FileType = type,
+    Target = target,
+    Key = data.Key,
+    Value = data.Value
+  }
+end
+
 function JsonUtils.BuildListPayload(data, modGuid)
   Utils.Info("Entering BuildListPayload")
   local count = 0
@@ -126,8 +140,8 @@ end
 function JsonUtils.ParseAndSubmitSelectors(data, target, modGuid, fileType)
   Utils.Info("Entering ParseAndSubmitSelectors")
   local payloads = {
-    Insert = JsonUtils.BuildAddSelectorPayload(data, modGuid, target, fileType),
-    Remove = JsonUtils.BuildRemoveSelectorPayload(data, modGuid, target, fileType)
+    Insert = JsonUtils.BuildAddSelectorPayload(data, modGuid, target, fileType)
+    -- Remove = JsonUtils.BuildRemoveSelectorPayload(data, modGuid, target, fileType)
   }
 
   for action, payload in pairs(payloads) do
@@ -140,13 +154,26 @@ end
 function JsonUtils.ParseAndSubmitStrings(data, target, modGuid, fileType)
   Utils.Info("Entering ParseAndSubmitStrings")
   local payloads = {
-    Insert = JsonUtils.BuildStringPayload(data, modGuid, target, fileType),
-    Remove = JsonUtils.BuildStringPayload(data, modGuid, target, fileType)
+    Insert = JsonUtils.BuildStringPayload(data, modGuid, target, fileType)
+    -- Remove = JsonUtils.BuildStringPayload(data, modGuid, target, fileType)
   }
 
   for action, payload in pairs(payloads) do
     if payload ~= nil then
       JsonUtils.Endpoints[action].Strings({ payload })
+    end
+  end
+end
+
+function JsonUtils.ParseAndSubmitBooleans(data, target, modGuid, fileType)
+  Utils.Info("Entering ParseAndSubmitBooleans")
+  local payloads = {
+    Set = JsonUtils.BuildBooleanPayload(data, modGuid, target, fileType)
+  }
+
+  for action, payload in pairs(payloads) do
+    if payload ~= nil then
+      JsonUtils.Endpoints[action].Booleans({ payload })
     end
   end
 end

@@ -17,6 +17,10 @@ local function SubmitData(data, modGUID)
   if data.Lists ~= nil then
     ListJsonHandler(data.Lists, modGUID)
   end
+
+  if data.ActionResourceGroups ~= nil then
+    ActionResourceGroupJsonHandler(data.ActionResourceGroups, modGUID)
+  end
 end
 
 ---@param configStr string

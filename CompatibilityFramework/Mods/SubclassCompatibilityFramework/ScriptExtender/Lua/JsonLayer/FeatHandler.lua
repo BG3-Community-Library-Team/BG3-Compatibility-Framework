@@ -12,5 +12,11 @@ function FeatJsonHandler(data, modGuid)
         JsonUtils.ParseAndSubmitStrings(strings, feat.UUID, modGuid, "Feat")
       end
     end
+
+    if data.Booleans ~= nil then
+      for _, boolean in pairs(data.Booleans) do
+        JsonUtils.ParseAndSubmitBoolean(boolean, data.UUIT, modGuid, "Feat")
+      end
+    end
   end
 end

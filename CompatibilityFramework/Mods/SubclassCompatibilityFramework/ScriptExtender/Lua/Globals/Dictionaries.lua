@@ -40,6 +40,12 @@ Globals.CacheTypes = {
   "Progression"
 }
 
+Globals.BooleanTypes = {
+  "AllowImprovement",               -- Progression
+  "IsMulticlass",                   -- Progression
+  "CanBeTakenMultipleTimes"         -- Feat
+}
+
 Globals.Attributes = {
   aSTR = "Strength",
   aDEX = "Dexterity",

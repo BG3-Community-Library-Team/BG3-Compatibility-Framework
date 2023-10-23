@@ -29,6 +29,12 @@ local function ProgressionSubSectionHandler(data, modGuid)
       JsonUtils.ParseAndSubmitStrings(strings, data.UUID, modGuid, "Progression")
     end
   end
+
+  if data.Booleans ~= nil then
+    for _, boolean in pairs(data.Booleans) do
+      JsonUtils.ParseAndSubmitBoolean(boolean, data.UUIT, modGuid, "Progression")
+    end
+  end
 end
 
 function ProgressionJsonHandler(data, modGuid)

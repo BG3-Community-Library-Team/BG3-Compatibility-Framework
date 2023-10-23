@@ -27,6 +27,12 @@
           "Class": "barbarian"
         }
       ],
+      "Booleans": [
+        {
+          "Key": "AllowImprovement",
+          "Value": true
+        }
+      ],
       "Selectors": [
         {
           "Action": "Insert",
