@@ -3,7 +3,7 @@ function Api.InsertRaceChildData(payloads)
   Utils.Info("Entering API.InsertRaceChildData")
 
   for _, payload in pairs(payloads) do
-    local err = DoValidation(payloads, { Validators = { IsPayloadEmpty = Strings.ERROR_EMPTY_PAYLOAD } })
+    local err = DoValidation(payload, { Validators = { IsPayloadEmpty = Strings.ERROR_EMPTY_PAYLOAD } })
 
     if err ~= nil then
       Utils.Error(error)
