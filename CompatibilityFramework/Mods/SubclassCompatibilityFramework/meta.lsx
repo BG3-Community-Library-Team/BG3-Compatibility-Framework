@@ -21,11 +21,10 @@
           <attribute id="StartupLevelName" type="FixedString" value=""/>
           <attribute id="Tags" type="LSWString" value="Template"/>
           <attribute id="Type" type="FixedString" value="Patch"/>
-          <attribute id="UUID" type="FixedString" value="67fbbd53-7c7d-4cfa-9409-6d737b4d92a9"/>
-          <attribute id="Version64" type="int64" value="72620550433800192"/>
+          <attribute id="Version64" type="int64" value="72620554728767488"/>
           <children>
             <node id="PublishVersion">
-                <attribute id="Version64" type="int64" value="72620550433800192"/>
+                <attribute id="Version64" type="int64" value="72620554728767488"/>
             </node>
             <node id="Scripts" />
             <node id="TargetModes">

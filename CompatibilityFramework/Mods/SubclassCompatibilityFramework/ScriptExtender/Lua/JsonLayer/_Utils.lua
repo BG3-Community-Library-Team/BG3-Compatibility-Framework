@@ -28,7 +28,12 @@ function JsonUtils.BuildRacePayloads(data, modGuid, action)
   }
 
   for _, child in pairs(data.Children) do
-    if child.Action == action then
+    if child.Action == action and child.Values ~= nil then
+      for _, value in pairs(child.Values) do
+        result.children[tostring(count)] = { Type = child.Type, Value = value }
+        count = count + 1
+      end
+    elseif child.Action == action and child.Value ~= nil then
       result.children[tostring(count)] = { Type = child.Type, Value = child.Value }
       count = count + 1
     end
