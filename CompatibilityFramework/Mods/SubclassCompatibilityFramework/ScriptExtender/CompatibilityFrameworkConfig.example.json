@@ -6,12 +6,12 @@
       "Children": [
         {
           "Type": "EyeColors",
-          "Value": "bdf9b779-002c-4077-b377-8ea7c1faa795",
+          "Values": ["bdf9b779-002c-4077-b377-8ea7c1faa795"],
           "Action": "Insert"
         },
         {
           "Type": "LipsMakeupColors",
-          "Value": "bdf9b779-002c-4077-b377-8ea7c1faa795",
+          "Values": ["bdf9b779-002c-4077-b377-8ea7c1faa795"],
           "Action": "Remove"
         }
       ]
