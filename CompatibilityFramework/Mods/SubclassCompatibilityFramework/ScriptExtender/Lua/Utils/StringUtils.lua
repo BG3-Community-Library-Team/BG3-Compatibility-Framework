@@ -1,5 +1,5 @@
 function Utils.IsInString(str, value)
-  return str.find(value)
+  return string.find(str, value)
 end
 
 function Utils.IsGuid(string)

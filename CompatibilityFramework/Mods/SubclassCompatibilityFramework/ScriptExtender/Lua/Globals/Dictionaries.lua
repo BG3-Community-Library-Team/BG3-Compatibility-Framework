@@ -35,15 +35,22 @@ Globals.StringTypes = {
   Requirements = "Requirements"
 }
 
+Globals.FieldSeparator = {
+  Boosts = ";",
+  PassivesAdded = ";",
+  PassivesRemoved = ";",
+  Requirements = ";"
+}
+
 Globals.CacheTypes = {
   "Feat",
   "Progression"
 }
 
 Globals.BooleanTypes = {
-  "AllowImprovement",               -- Progression
-  "IsMulticlass",                   -- Progression
-  "CanBeTakenMultipleTimes"         -- Feat
+  "AllowImprovement",       -- Progression
+  "IsMulticlass",           -- Progression
+  "CanBeTakenMultipleTimes" -- Feat
 }
 
 Globals.Attributes = {

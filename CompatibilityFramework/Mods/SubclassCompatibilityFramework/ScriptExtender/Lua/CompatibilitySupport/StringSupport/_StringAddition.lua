@@ -6,7 +6,7 @@ end
 local function stripDuplicates(field, strings)
   local strippedStrings = {}
   for _, value in pairs(strings) do
-    if not Utils.IsInString(field, value) and not Utils.IsInTable(field, strippedStrings) then
+    if not Utils.IsInString(field, value) and not Utils.IsInTable(strippedStrings, value) then
       table.insert(strippedStrings, value)
     end
   end
@@ -20,9 +20,12 @@ local function AddString(payload)
   local fileType = payload.FileType or "Progression"
 
   if DetectStringType(payload.Type) then
-    local field = Utils.CacheOrRetrieve(target, fileType)[payload.Type]
-    local stringsToInsert = stripDuplicates(field, payload.Strings)
-    table.insert(field, table.concat(stringsToInsert, ';'))
+    local target = Utils.CacheOrRetrieve(target, fileType)
+    local stringsToInsert = stripDuplicates(target[payload.Type], payload.Strings)
+    local separator = Globals.FieldSeparator[payload.Type]
+
+    target[payload.Type] = target[payload.Type] .. separator .. table.concat(stringsToInsert, separator)
+    _D(target[payload.Type])
   else
     Utils.Error(Strings.ERROR_INVALID_PROGRESSION_TYPE)
   end
