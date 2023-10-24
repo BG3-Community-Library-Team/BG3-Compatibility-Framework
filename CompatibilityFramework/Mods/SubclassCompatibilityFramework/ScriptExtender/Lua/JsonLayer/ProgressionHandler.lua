@@ -1,7 +1,7 @@
 local function ParseAndSubmitSubclasses(data, modGuid)
   Utils.Info("Entering ParseAndSubmitSubclasses")
   local payloads = {
-    Insert = JsonUtils.BuildRacePayloads(data, modGuid)
+    Insert = JsonUtils.BuildSubclassPayload(data, modGuid)
   }
 
   for action, payload in pairs(payloads) do
