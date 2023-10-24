@@ -75,6 +75,7 @@ function Utils.InsertFromTableToTable(arr, resultArr, count)
       count = count + 1
     end
   end
+  
   return resultArr, count
 end
 
@@ -82,10 +83,16 @@ function Utils.MergeTables(arrA, arrB)
   local result = {}
   local count = 0
 
-  if arrA ~= nil and arrB ~= nil then
-    result, count = Utils.InsertFromTableToTable(arrA, result, count)
-    result, count = Utils.InsertFromTableToTable(arrB, result, count)
-  end
+    if arrA ~= nil and arrB ~= nil then
+        result, count = Utils.InsertFromTableToTable(arrA, result, count)
+        result, count = Utils.InsertFromTableToTable(arrB, result, count)
+    end
+  
+    if arrA == nil then
+      result = arrB
+    elseif arrB == nil then
+      result = arrA
+    end
 
   return result
 end
