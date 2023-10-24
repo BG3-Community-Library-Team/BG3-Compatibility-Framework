@@ -1,23 +1,23 @@
 local function BuildSelectSpellsTable(params)
   return {
-    SpellUUID = params.Guid,
+    SpellUUID = params.Guid or params.UUID,
     Amount = params.Amount or "1",
     Arg3 = params.Prepared or "0",
-    SelectorId = params.SelectorId or "",
-    CastingAbility = params.CastingAbility or "",
-    ActionResource = params.ActionResource or "",
-    PrepareType = params.PrepareType or "Default",
+    SelectorId = params.SelectorId or " ",
+    CastingAbility = params.CastingAbility or "None",
+    ActionResource = params.ActionResource or "d136c5d9-0ff0-43da-acce-a74a07f8d6bf",
+    PrepareType = params.PrepareType or "Unknown",
     CooldownType = params.CooldownType or "Default"
   }
 end
 
 local function BuildAddSpellsTable(params)
   return {
-    SpellUUID = params.Guid,
-    SelectorId = params.Descriptor or "",
-    Ability = params.CastingAbility or "",
+    SpellUUID = params.Guid or params.UUID,
+    SelectorId = params.Descriptor or " ",
+    Ability = params.CastingAbility or "None",
     ActionResource = params.ActionResource or "",
-    PrepareType = params.PrepareType or "Default",
+    PrepareType = params.PrepareType or "Unknown",
     CooldownType = params.CooldownType or "Default"
   }
 end
@@ -25,25 +25,25 @@ end
 local function BuildSelectPassivesOrEquipmentTable(params)
   Utils.Info("Entering BuildSelectPassivesOrEquipmentTable")
   return {
-    UUID = params.Guid,
-    Amount = params.Amount or "",
-    Arg3 = params.SelectorId or ""
+    UUID = params.Guid or params.UUID,
+    Amount = params.Amount or 1,
+    Arg3 = params.SelectorId or " "
   }
 end
 
 local function BuildSelectAbilitiesTable(params)
   return {
-    UUID = params.Guid,
+    UUID = params.Guid or params.UUID,
     Arg2 = params.Amount or 1,
     Arg3 = params.AbilityAmount or 1,
-    Arg4 = params.SelectorId or ""
+    Arg4 = params.SelectorId or " "
   }
 end
 
 local function BuildSelectAbilityBonusTable(params)
   return {
-    UUID = params.Guid,
-    Amount = params.Amount or "0",
+    UUID = params.Guid or params.UUID,
+    Amount = params.Amount or "1",
     BonusType = params.BonusType or "AbilityBonus",
     Amounts = params.Amounts or { "2", "1" }
   }
@@ -51,18 +51,18 @@ end
 
 local function BuildSelectSkillsTable(params)
   return {
-    UUID = params.Guid,
-    Amount = params.Amount or "0",
-    Arg3 = params.SelectorId or ""
+    UUID = params.Guid or params.UUID,
+    Amount = params.Amount or "1",
+    Arg3 = params.SelectorId or " "
   }
 end
 
 local function BuildSelectSkillsExpertiseTable(params)
   return {
-    UUID = params.Guid,
-    Amount = params.Amount or "0",
+    UUID = params.Guid or params.UUID,
+    Amount = params.Amount or "1",
     Arg3 = params.LimitToProficiency or params.Arg3 or true,
-    Arg4 = params.SelectorId or params.Arg4 or ""
+    Arg4 = params.SelectorId or params.Arg4 or " "
   }
 end
 
@@ -100,8 +100,15 @@ end
 local function IsPayloadInSelector(selectorField, selectorToInsert)
   local found = false
   for _, value in pairs(selectorField) do
-    local valID = value.UUID or value.SpellUUID
-    local newSelectorID = selectorToInsert.UUID or selectorToInsert.SpellUUID
+    local valID, newSelectorID
+    if selectorToInsert.UUID ~= nil then
+      valID = value.UUID
+      newSelectorID = selectorToInsert.UUID
+    elseif selectorToInsert.SpellUUID ~= nil then
+      valID = value.SpellUUID
+      newSelectorID = selectorToInsert.SpellUUID
+    end
+
     if valID == newSelectorID then
       found = true
     end

@@ -6,7 +6,7 @@ local function RemoveSelector(payload)
   local result = {}
 
   for _, selector in pairs(selectorField) do
-    selectorUUID = selector.SpellUUID or selector.UUID
+    local selectorUUID = selector.SpellUUID or selector.UUID
     if selectorUUID ~= nil and selectorUUID ~= payload.ListUUID then
       table.insert(result, selector)
     end
