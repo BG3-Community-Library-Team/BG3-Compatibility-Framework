@@ -5,13 +5,15 @@ JsonUtils.Endpoints = {
     Race = Api.InsertRaceChildData,
     Subclass = Api.InsertSubClasses,
     Strings = Api.InsertStrings,
-    Selector = Api.InsertSelectors
+    Selector = Api.InsertSelectors,
+    ContainerSpells = Api.InsertSpellStrings
   },
   Remove = {
     ActionResourceGroup = Api.RemoveResourceFromGroup,
     Race = Api.RemoveRaceChildData,
     Strings = Api.RemoveStrings,
-    Selector = Api.RemoveSelectors
+    Selector = Api.RemoveSelectors,
+    ContainerSpells = Api.RemoveSpellStrings
   },
   Set = {
     Booleans = Api.SetBoolean
@@ -97,7 +99,7 @@ function JsonUtils.BuildStringPayload(data, modGuid, target, type)
 end
 
 function JsonUtils.BuildBooleanPayload(data, modGuid, target, type)
-  Utils.Info("Entering BuildStringPayload")
+  Utils.Info("Entering BuildBooleanPayload")
   return {
     modGuid = modGuid,
     FileType = type,

@@ -1,5 +1,33 @@
 {
   "FileVersion": 1,
+  "Spells": [
+    {
+      "ID": "Shout_DisguiseSelf",
+      "Action": "Insert",
+      "ContainerSpells": [
+        "Shout_FeatherFall",
+        "Shout_PassWithoutTrace"
+      ]
+    },
+    {
+      "ID": "Shout_DisguiseSelf",
+      "Action": "Remove",
+      "ContainerSpells": [
+        "Shout_DisguiseSelf_Tiefling_Male",
+        "Shout_DisguiseSelf_Tiefling_Female",
+        "Shout_DisguiseSelf_Drow_Male",
+        "Shout_DisguiseSelf_Drow_Female",
+        "Shout_DisguiseSelf_Human_Male",
+        "Shout_DisguiseSelf_Human_Female",
+        "Shout_DisguiseSelf_Githyanki_Male",
+        "Shout_DisguiseSelf_Githyanki_Female",
+        "Shout_DisguiseSelf_Dwarf_Male",
+        "Shout_DisguiseSelf_Dwarf_Female",
+        "Shout_DisguiseSelf_Elf_Male",
+        "Shout_DisguiseSelf_Elf_Female"
+      ]
+    }
+  ],
   "Progressions": [
     {
       "UUID": "42af9bda-9ac0-4564-920b-f9ca1588d6ee",

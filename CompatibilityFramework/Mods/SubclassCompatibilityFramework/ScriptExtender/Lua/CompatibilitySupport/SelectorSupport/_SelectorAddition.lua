@@ -119,9 +119,6 @@ local function AddSelector(payload)
   local selectorToInsert = BuildSelector(payload)
 
   if not IsPayloadInSelector(selectorField, selectorToInsert, Globals.SelectorIdTypes[payload.Function]) then
-    Ext.Utils.Print("SELECTOR")
-    Ext.Dump(selectorField)
-    Ext.Dump(selectorToInsert)
     target[payload.Function] = Utils.MergeTables(selectorField, { selectorToInsert })
   end
 end

@@ -24,6 +24,32 @@ function Api.RemoveStrings(payloads)
   end
 end
 
+function Api.InsertSpellStrings(payloads)
+  for _, payload in pairs(payloads) do
+    local err = DoValidation(payload, { Validators = { IsPayloadEmpty = Strings.ERROR_EMPTY_PAYLOAD } })
+
+    if err ~= nil then
+      Utils.Error(error)
+      return
+    end
+
+    HandleSpellString(payload)
+  end
+end
+
+function Api.RemoveSpellStrings(payloads)
+  for _, payload in pairs(payloads) do
+    local err = DoValidation(payload, { Validators = { IsPayloadEmpty = Strings.ERROR_EMPTY_PAYLOAD } })
+
+    if err ~= nil then
+      Utils.Error(error)
+      return
+    end
+
+    HandleRemoveSpellString(payload)
+  end
+end
+
 function Api.InsertBoosts(payloads)
   Api.InsertStrings(payloads)
 end

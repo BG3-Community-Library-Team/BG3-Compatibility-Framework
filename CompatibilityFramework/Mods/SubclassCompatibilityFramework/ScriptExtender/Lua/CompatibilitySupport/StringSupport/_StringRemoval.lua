@@ -35,3 +35,29 @@ function HandleRemoveString(payload)
     Utils.Error(Strings.ERROR_EMPTY_PAYLOAD)
   end
 end
+
+function RemoveSpellString(payload)
+  local target = Ext.Stats.Get(payload.Target)
+  local separator = ";"
+
+  local fieldStrings = Utils.createTableFromString(target[payload.Type], separator)
+  local result = {}
+
+  for _, value in pairs(fieldStrings) do
+    if not Utils.IsInTable(payload.SubSpells, value) then
+      table.insert(result, value)
+    end
+  end
+
+  target[payload.Type] = table.concat(result, separator)
+  Ext.Stats.Sync(payload.Target)
+end
+
+function HandleRemoveSpellString(payload)
+  if payload ~= nil then
+    Utils.Info("Entering HandleRemoveSpellString")
+    RemoveSpellString(payload)
+  else
+    Utils.Error(Strings.ERROR_EMPTY_PAYLOAD)
+  end
+end

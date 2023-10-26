@@ -2,13 +2,13 @@ local configFilePathPattern = "Mods/%s/ScriptExtender/CompatibilityFrameworkConf
 
 local function SubmitData(data, modGUID)
   Utils.Info("Entering SubmitData")
-    if data.Progressions ~= nil then
-        ProgressionJsonHandler(data.Progressions, modGUID)
-    end
-  
-    if data.Feats ~= nil then
-      FeatJsonHandler(data.Feats, modGUID)
-    end
+  if data.Progressions ~= nil then
+    ProgressionJsonHandler(data.Progressions, modGUID)
+  end
+
+  if data.Feats ~= nil then
+    FeatJsonHandler(data.Feats, modGUID)
+  end
 
   if data.Races ~= nil then
     RaceJsonHandler(data.Races, modGUID)
@@ -20,6 +20,10 @@ local function SubmitData(data, modGUID)
 
   if data.ActionResourceGroups ~= nil then
     ActionResourceGroupJsonHandler(data.ActionResourceGroups, modGUID)
+  end
+
+  if data.Spells ~= nil then
+    SpellJsonHandler(data.Spells, modGUID)
   end
 end
 
@@ -42,7 +46,7 @@ function LoadConfigFiles()
     if config ~= nil and config ~= "" then
       local b, err = xpcall(TryLoadConfig, debug.traceback, config, uuid)
       if not b then
-        Ext.Utils.PrintError(err)
+        Utils.Error(err)
       end
     end
   end
