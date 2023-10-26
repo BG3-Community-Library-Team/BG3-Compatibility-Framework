@@ -59,7 +59,7 @@ function JsonUtils.BuildAddSelectorPayload(data, modGuid, target, type)
   Utils.Info("Entering BuildSelectorPayload")
 
   return {
-    modGuid = modGuid,
+    modGuid = data.modGuid or modGuid,
     Target = target,
     FileType = type,
     Function = data.Function,
@@ -72,7 +72,7 @@ function JsonUtils.BuildRemoveSelectorPayload(data, modGuid, target, type)
   Utils.Info("Entering BuildSelectorPayload")
 
   return {
-    modGuid = modGuid,
+    modGuid = data.modGuid or modGuid,
     TargetUUID = target,
     FileType = type,
     Function = data.Function,
@@ -84,7 +84,7 @@ function JsonUtils.BuildStringPayload(data, modGuid, target, type)
   Utils.Info("Entering BuildStringPayload")
   local count = 0
   local result = {
-    modGuid = modGuid,
+    modGuid = data.modGuid or modGuid,
     Target = target,
     FileType = type,
     Type = data.Type,
@@ -102,7 +102,7 @@ end
 function JsonUtils.BuildBooleanPayload(data, modGuid, target, type)
   Utils.Info("Entering BuildBooleanPayload")
   return {
-    modGuid = modGuid,
+    modGuid = data.modGuid or modGuid,
     FileType = type,
     Target = target,
     Key = data.Key,
@@ -115,7 +115,7 @@ function JsonUtils.BuildListPayload(data, modGuid, listId)
   listId = listId or data.UUID
   local count = 0
   local result = {
-    modGuid = modGuid,
+    modGuid = data.modGuid or modGuid,
     TargetList = listId,
     ListType = data.Type,
     ListItems = {}
@@ -133,7 +133,7 @@ function JsonUtils.BuildActionResourceGroupPayload(data, modGuid)
   Utils.Info("Entering BuildActionResourceGroupPayload")
   local count = 0
   local result = {
-    modGuid = modGuid,
+    modGuid = data.modGuid or modGuid,
     Type = data.Type,
     Definitions = {}
   }

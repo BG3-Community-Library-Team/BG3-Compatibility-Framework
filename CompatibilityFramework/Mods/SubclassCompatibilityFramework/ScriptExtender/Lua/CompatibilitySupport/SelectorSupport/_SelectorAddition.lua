@@ -16,7 +16,7 @@ local function BuildAddSpellsTable(params)
     SpellUUID = params.Guid or params.UUID,
     SelectorId = params.Descriptor or " ",
     Ability = params.CastingAbility or "None",
-    ActionResource = params.ActionResource or "",
+    ActionResource = params.ActionResource or "d136c5d9-0ff0-43da-acce-a74a07f8d6bf",
     PrepareType = params.PrepareType or "Unknown",
     CooldownType = params.CooldownType or "Default"
   }
@@ -114,12 +114,12 @@ local function AddSelector(payload)
   Utils.Info("Entering AddSelector")
   local target = payload.Target or payload.TargetProgression
   local type = payload.FileType or "Progression"
-  local target = Utils.CacheOrRetrieve(target, type)
-  local selectorField = target[payload.Function]
+  local targetObj = Utils.CacheOrRetrieve(target, type)
+  local selectorField = targetObj[payload.Function]
   local selectorToInsert = BuildSelector(payload)
 
   if not IsPayloadInSelector(selectorField, selectorToInsert, Globals.SelectorIdTypes[payload.Function]) then
-    target[payload.Function] = Utils.MergeTables(selectorField, { selectorToInsert })
+    targetObj[payload.Function] = Utils.MergeTables(selectorField, { selectorToInsert })
   end
 end
 
