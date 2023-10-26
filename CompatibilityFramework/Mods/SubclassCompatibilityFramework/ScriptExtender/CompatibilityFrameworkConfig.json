@@ -232,27 +232,6 @@
           "SubClassName": "Sorcery",
           "Class": "wizard"
         }
-      ],
-      "Selectors": [
-        {
-          "Action": "Insert",
-          "Function": "SelectSpells",
-          "Params": {
-            "Guid": "2cd54137-2fe5-4100-aad3-df64735a8145",
-            "Amount": "5",
-            "Prepared": "0"
-          }
-        }
-      ],
-      "Strings": [
-        {
-          "Action": "Insert",
-          "Type": "PassivesAdded",
-          "Strings": [
-            "SculptSpells",
-            "WrathOfTheStorm"
-          ]
-        }
       ]
     }
   ]
