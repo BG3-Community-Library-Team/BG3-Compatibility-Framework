@@ -1,6 +1,6 @@
 local fighter = DictUtils.Progression("Fighter", { "Champion", "BattleMaster", "EldritchKnight" })
 
-Utils.MergeTables(fighter.Base.Levels, {
+fighter.Base.Levels = Utils.MergeTables(fighter.Base.Levels, {
   One = DictUtils.setupClassLevelEntry("dfb2fd83-9849-4c2d-be84-adedb81a867a", "b29977d4-b81a-4794-9f4f-badd7cc23f6b"),
   Two = DictUtils.setupClassLevelEntry("aafbbc41-16e8-4296-a283-a2c5fdd0625b"),
   Three = DictUtils.setupClassLevelEntry("23eacff0-9efe-4ea6-b031-19075cc96b63"),
@@ -15,7 +15,7 @@ Utils.MergeTables(fighter.Base.Levels, {
   Twelve = DictUtils.setupClassLevelEntry("ddf55c97-9032-4aa1-af76-4ae669a6b53b")
 })
 
-Utils.MergeTables(fighter.BattleMaster.Levels, {
+fighter.BattleMaster.Levels = Utils.MergeTables(fighter.BattleMaster.Levels, {
   One = DictUtils.setupClassLevelEntry("da34ac1f-362f-4271-972c-e5a79b49ee59"),
   Two = DictUtils.setupClassLevelEntry("6d8e161f-4b16-4ca3-8d33-d7d519c47739"),
   ThreeEA = DictUtils.setupClassLevelEntry("59505762-9251-463c-a81b-420e9a14c8cd"),
@@ -25,13 +25,13 @@ Utils.MergeTables(fighter.BattleMaster.Levels, {
   Ten = DictUtils.setupClassLevelEntry("bddec33b-81db-4941-ae71-e044799bae05")
 })
 
-Utils.MergeTables(fighter.Champion.Levels, {
+fighter.Champion.Levels = Utils.MergeTables(fighter.Champion.Levels, {
   Three = DictUtils.setupClassLevelEntry("cbd87913-03ee-484b-bc62-57d6867e8aca"),
   Seven = DictUtils.setupClassLevelEntry("07180f5f-54ab-4fe6-9972-df150a5fb85a"),
   Ten = DictUtils.setupClassLevelEntry("a4b1948f-7367-43bb-bff2-e5e18cc2c5a7")
 })
 
-Utils.MergeTables(fighter.EldritchKnight.Levels, {
+fighter.EldritchKnight.Levels = Utils.MergeTables(fighter.EldritchKnight.Levels, {
   One = DictUtils.setupClassLevelEntry("ed68cf5e-0f53-4dae-b16c-d3628f8017dd"),
   Two = DictUtils.setupClassLevelEntry("0743e55d-73b9-4812-9c18-dcd1983eceac"),
   Three = DictUtils.setupClassLevelEntry("77ef26e6-6872-4f9c-82eb-a0640a49030d"),

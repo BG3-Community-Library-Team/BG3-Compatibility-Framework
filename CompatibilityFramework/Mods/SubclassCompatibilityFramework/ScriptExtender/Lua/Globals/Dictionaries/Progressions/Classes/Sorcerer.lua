@@ -1,6 +1,6 @@
 local sorcerer = DictUtils.Progression("Sorcerer", { "Draconic", "Storm", "WildMagic" })
 
-Utils.MergeTables(sorcerer.Base.Levels, {
+sorcerer.Base.Levels = Utils.MergeTables(sorcerer.Base.Levels, {
   One = DictUtils.setupClassLevelEntry("42af9bda-9ac0-4564-920b-f9ca1588d6ee", "e115c732-80b1-4ae1-bf04-cee44660d64f"),
   Two = DictUtils.setupClassLevelEntry("706a869d-7894-453d-b6ac-9428f617649c"),
   Three = DictUtils.setupClassLevelEntry("e60b351e-aa26-4c5e-bbdc-ce5c8af03b5a"),
@@ -15,7 +15,7 @@ Utils.MergeTables(sorcerer.Base.Levels, {
   Twelve = DictUtils.setupClassLevelEntry("9c5f5645-ccb9-49c0-864c-2522aabff53e")
 })
 
-Utils.MergeTables(sorcerer.Draconic.Levels, {
+sorcerer.Draconic.Levels = Utils.MergeTables(sorcerer.Draconic.Levels, {
   One = DictUtils.setupClassLevelEntry("58965d6f-fa5d-41a4-bb78-2d3a142373fe"),
   Two = DictUtils.setupClassLevelEntry("4a855c18-ca24-4f12-bc8d-5f0354d8e253"),
   Three = DictUtils.setupClassLevelEntry("15f581f8-b68a-46ab-b2c7-6212c7fcd83b"),
@@ -24,13 +24,13 @@ Utils.MergeTables(sorcerer.Draconic.Levels, {
   Seven = DictUtils.setupClassLevelEntry("94ba4bb9-7335-497a-8ac0-1ec535fb85d6")
 })
 
-Utils.MergeTables(sorcerer.Storm.Levels, {
+sorcerer.Storm.Levels = Utils.MergeTables(sorcerer.Storm.Levels, {
   One = DictUtils.setupClassLevelEntry("6a973653-70d4-46dc-a634-315b47ef336e"),
   Six = DictUtils.setupClassLevelEntry("daca4d03-f668-4c71-a013-4532cba886f5"),
   Eleven = DictUtils.setupClassLevelEntry("18a0cd31-027a-41ab-ae20-0131332a0439")
 })
 
-Utils.MergeTables(sorcerer.WildMagic.Levels, {
+sorcerer.WildMagic.Levels = Utils.MergeTables(sorcerer.WildMagic.Levels, {
   One = DictUtils.setupClassLevelEntry("9ab30b9c-0117-414f-8c88-c6a19c8c6d0f"),
   Two = DictUtils.setupClassLevelEntry("879ec4bd-e2ae-4e6c-b985-45d92e3258c4"),
   Three = DictUtils.setupClassLevelEntry("e6071ac3-9689-466f-80cd-9fd9e88a1e44"),

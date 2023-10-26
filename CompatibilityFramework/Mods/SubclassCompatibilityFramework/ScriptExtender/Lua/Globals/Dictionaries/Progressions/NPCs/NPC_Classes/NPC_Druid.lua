@@ -1,6 +1,6 @@
 local druid = DictUtils.Progression("NPC_Druid")
 
-Utils.MergeTables(druid.Base.Levels, {
+druid.Base.Levels = Utils.MergeTables(druid.Base.Levels, {
   One = DictUtils.setupClassLevelEntry("13b286a5-fb07-4944-97e9-58be14a32678"),
   Two = DictUtils.setupClassLevelEntry("cb70bfde-ec6e-4a63-b76b-657d0c08ef31"),
   Three = DictUtils.setupClassLevelEntry("1843cb66-3652-47e8-aab1-2996d92a0299"),

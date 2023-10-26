@@ -44,12 +44,13 @@ function JsonUtils.BuildRacePayloads(data, modGuid, action)
   return result
 end
 
-function JsonUtils.BuildSubclassPayload(data, modGuid)
+function JsonUtils.BuildSubclassPayload(data, classId, modGuid, subclassGuid)
   Utils.Info("Entering BuildSubclassPayload")
+  subclassGuid = subclassGuid or data.UUID
   return {
     modGuid = data.modGuid or modGuid,
-    subClassGuid = data.UUID,
-    class = data.Class,
+    subClassGuid = subclassGuid,
+    class = classId,
     subClassName = data.SubClassName or ""
   }
 end
@@ -109,12 +110,13 @@ function JsonUtils.BuildBooleanPayload(data, modGuid, target, type)
   }
 end
 
-function JsonUtils.BuildListPayload(data, modGuid)
+function JsonUtils.BuildListPayload(data, modGuid, listId)
   Utils.Info("Entering BuildListPayload")
+  listId = listId or data.UUID
   local count = 0
   local result = {
     modGuid = modGuid,
-    TargetList = data.UUID,
+    TargetList = listId,
     ListType = data.Type,
     ListItems = {}
   }
@@ -172,7 +174,7 @@ function JsonUtils.ParseAndSubmitStrings(data, target, modGuid, fileType)
   end
 end
 
-function JsonUtils.ParseAndSubmitBooleans(data, target, modGuid, fileType)
+function JsonUtils.ParseAndSubmitBoolean(data, target, modGuid, fileType)
   Utils.Info("Entering ParseAndSubmitBooleans")
   local payloads = {
     Set = JsonUtils.BuildBooleanPayload(data, modGuid, target, fileType)

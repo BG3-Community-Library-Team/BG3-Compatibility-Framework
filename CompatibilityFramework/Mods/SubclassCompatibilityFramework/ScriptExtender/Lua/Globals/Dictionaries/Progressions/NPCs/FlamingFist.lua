@@ -4,7 +4,7 @@ local fistMeleeRanger = DictUtils.Progression("NPC_FlamingFist_Melee_Ranger")
 local fistMeleeCleric = DictUtils.Progression("NPC_FlamingFist_Melee_Cleric")
 local fistMeleeCaster = DictUtils.Progression("NPC_FlamingFist_Melee_Caster")
 
-Utils.MergeTables(fistMeleeAttacker.Base.Levels, {
+fistMeleeAttacker.Base.Levels  = Utils.MergeTables(fistMeleeAttacker.Base.Levels, {
   One = DictUtils.setupClassLevelEntry("4f5c0abd-6611-4303-893b-8d3230323632"),
   Two = DictUtils.setupClassLevelEntry("e118972a-029c-4aa7-8bad-c51ae6cefe91"),
   Three = DictUtils.setupClassLevelEntry("131890d2-d83b-4b9f-8e18-2a4bc23e3a88"),
@@ -19,7 +19,7 @@ Utils.MergeTables(fistMeleeAttacker.Base.Levels, {
   Twelve = DictUtils.setupClassLevelEntry("a56ee5ec-e9b8-47ed-83b8-6fbff771a2cc")
 })
 
-Utils.MergeTables(fistMeleeDefender.Base.Levels, {
+fistMeleeDefender.Base.Levels  = Utils.MergeTables(fistMeleeDefender.Base.Levels, {
   One = DictUtils.setupClassLevelEntry("d64a3faf-db6c-4f09-b462-fd881e55f00c"),
   Two = DictUtils.setupClassLevelEntry("5adf327b-c5f4-4243-bd51-6d628bb69140"),
   Three = DictUtils.setupClassLevelEntry("e6760ecd-fee0-4720-a890-0a5d43914ec5"),
@@ -34,7 +34,7 @@ Utils.MergeTables(fistMeleeDefender.Base.Levels, {
   Twelve = DictUtils.setupClassLevelEntry("fddd443d-0ee5-4e9a-9512-c70c4f187d06")
 })
 
-Utils.MergeTables(fistMeleeRanger.Base.Levels, {
+fistMeleeRanger.Base.Levels  = Utils.MergeTables(fistMeleeRanger.Base.Levels, {
   One = DictUtils.setupClassLevelEntry("5fff2494-7cdf-4e6a-8c11-262da9208c5f"),
   Two = DictUtils.setupClassLevelEntry("778569fc-af9d-4dbb-9121-e0a244d73250"),
   Three = DictUtils.setupClassLevelEntry("bea867a1-90ed-4ba7-95b4-648560e2c595"),
@@ -49,7 +49,7 @@ Utils.MergeTables(fistMeleeRanger.Base.Levels, {
   Twelve = DictUtils.setupClassLevelEntry("a6759075-588e-4b84-a526-095b70898cdf")
 })
 
-Utils.MergeTables(fistMeleeCleric.Base.Levels, {
+fistMeleeCleric.Base.Levels  = Utils.MergeTables(fistMeleeCleric.Base.Levels, {
   One = DictUtils.setupClassLevelEntry("84187594-9a5e-4607-beaa-bedbe0d5390a"),
   Two = DictUtils.setupClassLevelEntry("3448f81e-b171-42f0-873f-9d7246b5614d"),
   Three = DictUtils.setupClassLevelEntry("a3ab6937-97db-4582-a471-846d233a1bb1"),
@@ -64,7 +64,7 @@ Utils.MergeTables(fistMeleeCleric.Base.Levels, {
   Twelve = DictUtils.setupClassLevelEntry("e5b8be4a-98a2-4f82-9ea5-27f9296e095c")
 })
 
-Utils.MergeTables(fistMeleeCaster.Base.Levels, {
+fistMeleeCaster.Base.Levels  = Utils.MergeTables(fistMeleeCaster.Base.Levels, {
   One = DictUtils.setupClassLevelEntry("36672dc1-614e-49f3-aa58-2f2dff6fca2a"),
   Two = DictUtils.setupClassLevelEntry("26680e1e-61e3-4897-b403-8e33115f93c4"),
   Three = DictUtils.setupClassLevelEntry("ab425a86-872e-4d71-af0d-4cca6784487d"),

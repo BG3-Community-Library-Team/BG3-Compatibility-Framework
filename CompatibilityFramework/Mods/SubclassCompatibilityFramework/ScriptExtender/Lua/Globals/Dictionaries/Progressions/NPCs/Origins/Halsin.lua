@@ -1,6 +1,6 @@
 local halsin = DictUtils.Progression("NPC_Halsin")
 
-Utils.MergeTables(halsin.Base.Levels, {
+halsin.Base.Levels = Utils.MergeTables(halsin.Base.Levels, {
   One = DictUtils.setupClassLevelEntry("e9bd3ad3-31d1-4ea5-8604-e28a719591f2"),
   Two = DictUtils.setupClassLevelEntry("8bc5401d-e1e8-43f4-a370-0a754b2b8fca"),
   Three = DictUtils.setupClassLevelEntry("3b8f3461-0a8f-4ab0-aaa8-476ee7d0e1b8"),

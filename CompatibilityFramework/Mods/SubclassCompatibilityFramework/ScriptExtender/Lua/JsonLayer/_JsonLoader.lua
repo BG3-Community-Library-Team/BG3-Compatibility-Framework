@@ -1,4 +1,4 @@
-local configFilePathPattern = "Mods/%s/ScriptExtender/CompatibilityFrameworkConfig.json"
+local configFilePathPattern = string.gsub("Mods/%s/ScriptExtender/CompatibilityFrameworkConfig.json", "'", "\'")
 
 local function SubmitData(data, modGUID)
   Utils.Info("Entering SubmitData")

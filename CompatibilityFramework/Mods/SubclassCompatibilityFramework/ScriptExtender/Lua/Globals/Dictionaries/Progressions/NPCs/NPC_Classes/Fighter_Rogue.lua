@@ -1,6 +1,6 @@
 local fighterRogue = DictUtils.Progression("NPC_Fighter_Rogue")
 
-Utils.MergeTables(fighterRogue.Base.Levels, {
+fighterRogue.Base.Levels = Utils.MergeTables(fighterRogue.Base.Levels, {
   One = DictUtils.setupClassLevelEntry("aa7b1eaf-d170-4331-88be-15e46fc73971"),
   Two = DictUtils.setupClassLevelEntry("35de3db4-e8be-49ff-9699-7296dca5b0a0"),
   Three = DictUtils.setupClassLevelEntry("1e2e4213-1f8c-4de4-9c7e-d634ab7389de"),

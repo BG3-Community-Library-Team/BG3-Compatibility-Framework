@@ -54,9 +54,15 @@ local function AddSpellString(payload)
   Utils.Info("Entering AddSpellString")
   local target = Ext.Stats.Get(payload.Target)
   local separator = ";"
-  local newStringField = target[payload.Type] .. separator .. table.concat(payload.SubSpells, separator)
 
-  target[payload.Type] = newStringField
+  local baseSpells = Utils.createTableFromString(target[payload.Type], separator)
+  for _, spell in pairs(payload.SubSpells) do
+    table.insert(baseSpells, spell)
+  end
+
+  table.sort(baseSpells)
+
+  target[payload.Type] = table.concat(baseSpells, separator)
   Ext.Stats.Sync(payload.Target)
 end
 

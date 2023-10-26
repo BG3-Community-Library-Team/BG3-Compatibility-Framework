@@ -1,6 +1,6 @@
 local wizard = DictUtils.Progression("NPC_Wizard")
 
-Utils.MergeTables(wizard.Base.Levels, {
+wizard.Base.Levels = Utils.MergeTables(wizard.Base.Levels, {
   One = DictUtils.setupClassLevelEntry("c58ef8c9-45d2-41cf-b3f8-d087153de86a"),
   Two = DictUtils.setupClassLevelEntry("eb2577a2-1393-4e17-8e75-8e7e2c448c5b"),
   Three = DictUtils.setupClassLevelEntry("8ab7fa9c-6ef0-47e5-92ca-e44a4e4282ce"),

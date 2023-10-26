@@ -1,7 +1,7 @@
 local wizard = DictUtils.Progression("Wizard",
   { "Abjuration", "Conjuration", "Divination", "Enchantment", "Evocation", "Illusion", "Necromancy", "Transmutation" })
 
-Utils.MergeTables(wizard.Base.Levels, {
+  wizard.Base.Levels = Utils.MergeTables(wizard.Base.Levels, {
   One = DictUtils.setupClassLevelEntry("c201c736-3717-4c3c-9e36-2ae7387597a3", "92744093-a9b4-4df1-9e84-9d0b1dfea91d"),
   Two = DictUtils.setupClassLevelEntry("d6184c47-5b99-4e63-95ac-02f8ce4ccda1"),
   Three = DictUtils.setupClassLevelEntry("314ad8a4-bf06-4774-bb23-7db0090b51b9"),
@@ -16,7 +16,7 @@ Utils.MergeTables(wizard.Base.Levels, {
   Twelve = DictUtils.setupClassLevelEntry("3cb9d873-5f41-4c3c-88f1-b7574c1bf661")
 })
 
-Utils.MergeTables(wizard.Abjuration.Levels, {
+wizard.Abjuration.Levels = Utils.MergeTables(wizard.Abjuration.Levels, {
   One = DictUtils.setupClassLevelEntry("88984337-3c43-42c3-8589-3fa6501d43b8"),
   Two = DictUtils.setupClassLevelEntry("c29c6eb8-c79b-4f89-9095-cd39048043ba"),
   Three = DictUtils.setupClassLevelEntry("2bc2b4ab-426b-424f-a723-0ec49a9cf25c"),
@@ -31,7 +31,7 @@ Utils.MergeTables(wizard.Abjuration.Levels, {
   Twelve = DictUtils.setupClassLevelEntry("ac3a0aa5-ee02-4d7f-9a2a-b026dfdeca93")
 })
 
-Utils.MergeTables(wizard.Conjuration.Levels, {
+wizard.Conjuration.Levels = Utils.MergeTables(wizard.Conjuration.Levels, {
   Two = DictUtils.setupClassLevelEntry("f7b1bfed-d4bd-4e05-8cd9-f9cb59ccc2e0"),
   Three = DictUtils.setupClassLevelEntry("e6a249d9-2c05-4530-bfbf-79c4dc8a364c"),
   Four = DictUtils.setupClassLevelEntry("46f01cef-3adf-4e55-8f24-61c6f20a945a"),
@@ -45,7 +45,7 @@ Utils.MergeTables(wizard.Conjuration.Levels, {
   Twelve = DictUtils.setupClassLevelEntry("e713a538-8e78-4d28-89bc-d9ade4af10e2")
 })
 
-Utils.MergeTables(wizard.Divination.Levels, {
+wizard.Divination.Levels = Utils.MergeTables(wizard.Divination.Levels, {
   Two = DictUtils.setupClassLevelEntry("79b9e743-a551-4798-970c-60615e503b1d"),
   Three = DictUtils.setupClassLevelEntry("0e0e8fe5-337e-4b6d-9656-ee09f4e95658"),
   Four = DictUtils.setupClassLevelEntry("a9fc879a-0a81-4e3d-bd54-291da9ea84fe"),
@@ -59,7 +59,7 @@ Utils.MergeTables(wizard.Divination.Levels, {
   Twelve = DictUtils.setupClassLevelEntry("96dd8868-e982-4eb9-9eba-e6e03df2eefe")
 })
 
-Utils.MergeTables(wizard.Enchantment.Levels, {
+wizard.Enchantment.Levels = Utils.MergeTables(wizard.Enchantment.Levels, {
   Two = DictUtils.setupClassLevelEntry("0e988b6b-43d1-4821-84e7-89703320a2c3"),
   Three = DictUtils.setupClassLevelEntry("33e5bc43-c2a9-4473-8ca6-4210ff5506f9"),
   Four = DictUtils.setupClassLevelEntry("564239bd-2a4e-4b54-a884-8e9a54af9001"),
@@ -73,7 +73,7 @@ Utils.MergeTables(wizard.Enchantment.Levels, {
   Twelve = DictUtils.setupClassLevelEntry("5adc3681-3841-456f-b2a9-c28d9f56df32")
 })
 
-Utils.MergeTables(wizard.Evocation.Levels, {
+wizard.Evocation.Levels = Utils.MergeTables(wizard.Evocation.Levels, {
   One = DictUtils.setupClassLevelEntry("09e5d252-7a73-4378-92b5-33c658a1c937"),
   Two = DictUtils.setupClassLevelEntry("8c55b8f1-e340-4c35-9171-f677e80e9dc8"),
   Three = DictUtils.setupClassLevelEntry("4d2c81e0-ae58-438b-9778-d1217d11e085"),
@@ -88,7 +88,7 @@ Utils.MergeTables(wizard.Evocation.Levels, {
   Twelve = DictUtils.setupClassLevelEntry("68a85276-6b53-40c7-baf0-70b894590115")
 })
 
-Utils.MergeTables(wizard.Illusion.Levels, {
+wizard.Illusion.Levels = Utils.MergeTables(wizard.Illusion.Levels, {
   Two = DictUtils.setupClassLevelEntry("2fd8466a-422d-4b10-8c13-50a01d29ec0a"),
   Three = DictUtils.setupClassLevelEntry("4ecd1912-2215-43f1-a328-ffce7768ceea"),
   Four = DictUtils.setupClassLevelEntry("fb0be9da-36e0-4d26-ac68-3c20e76f6e59"),
@@ -102,7 +102,7 @@ Utils.MergeTables(wizard.Illusion.Levels, {
   Twelve = DictUtils.setupClassLevelEntry("ec37c73f-c644-4793-abd7-0957b0746102")
 })
 
-Utils.MergeTables(wizard.Necromancy.Levels, {
+wizard.Necromancy.Levels = Utils.MergeTables(wizard.Necromancy.Levels, {
   Two = DictUtils.setupClassLevelEntry("c8ddfbcf-4867-4188-8b76-78a732f6186b"),
   Three = DictUtils.setupClassLevelEntry("a552baf9-d1c0-4c67-ab01-962c54ca825e"),
   Four = DictUtils.setupClassLevelEntry("8c263a9e-227a-40e0-92d5-a3f194f5a212"),
@@ -116,7 +116,7 @@ Utils.MergeTables(wizard.Necromancy.Levels, {
   Twelve = DictUtils.setupClassLevelEntry("fa281fef-e891-4ab2-bc65-8e3254d06776")
 })
 
-Utils.MergeTables(wizard.Transmutation.Levels, {
+wizard.Transmutation.Levels = Utils.MergeTables(wizard.Transmutation.Levels, {
   Two = DictUtils.setupClassLevelEntry("de2a9945-7c62-444b-a61d-a8e8fe09fefd"),
   Three = DictUtils.setupClassLevelEntry("e09afe3e-ed6e-4bbd-b2a6-157501f14f64"),
   Four = DictUtils.setupClassLevelEntry("6433e2f2-2558-43e5-a045-35bd054ed813"),

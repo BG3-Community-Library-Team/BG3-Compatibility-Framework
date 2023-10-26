@@ -1,11 +1,11 @@
 local minscEA = DictUtils.Progression("Origin_Minsc")
 local minsc = DictUtils.Progression("NPC_Minsc")
 
-Utils.MergeTables(minscEA.Base.Levels, {
+minscEA.Base.Levels = Utils.MergeTables(minscEA.Base.Levels, {
   One = DictUtils.setupClassLevelEntry("c95014c5-5024-4d76-82e7-50392426ccb5")
 })
 
-Utils.MergeTables(minsc.Base.Levels, {
+minsc.Base.Levels = Utils.MergeTables(minsc.Base.Levels, {
   One = DictUtils.setupClassLevelEntry("b25dbcf5-22ee-4a47-8a2e-dd7355cbb64f"),
   Two = DictUtils.setupClassLevelEntry("1cc2d7c4-7d5c-4f2e-95a5-431ae12c8129"),
   Three = DictUtils.setupClassLevelEntry("910373d5-fd9f-40b3-acfc-7dd4bffb0174"),

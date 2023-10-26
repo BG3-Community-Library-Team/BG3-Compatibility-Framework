@@ -1,6 +1,6 @@
 local cleric = DictUtils.Progression("NPC_Cleric")
 
-Utils.MergeTables(cleric.Base.Levels, {
+cleric.Base.Levels = Utils.MergeTables(cleric.Base.Levels, {
   One = DictUtils.setupClassLevelEntry("1ad594c1-e06f-40f6-bb1d-765add46584a"),
   Two = DictUtils.setupClassLevelEntry("fdcda349-5a31-42ad-9e87-21ad862608a5"),
   Three = DictUtils.setupClassLevelEntry("86a1f593-866f-49f5-a0be-af45a192aa31"),

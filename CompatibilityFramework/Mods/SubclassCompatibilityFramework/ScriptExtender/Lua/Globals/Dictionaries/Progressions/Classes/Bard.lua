@@ -1,6 +1,6 @@
 local bard = DictUtils.Progression("Bard", { "Lore", "Sword", "Valor" })
 
-Utils.MergeTables(bard.Base.Levels, {
+bard.Base.Levels = Utils.MergeTables(bard.Base.Levels, {
   One = DictUtils.setupClassLevelEntry("374c3aae-828b-44d8-b4e3-51ba802977dd", "d1e6f60f-7b72-43c7-8ed2-45cf9c3d34d3"),
   Two = DictUtils.setupClassLevelEntry("7a2f66b5-7555-49f2-833b-f3d79affc7ca"),
   Three = DictUtils.setupClassLevelEntry("26f64038-6033-48d5-9da7-38e8c95ce712"),
@@ -15,16 +15,16 @@ Utils.MergeTables(bard.Base.Levels, {
   Twelve = DictUtils.setupClassLevelEntry("36301759-1445-4cc4-a3c2-f186b8da0309")
 })
 
-Utils.MergeTables(bard.Lore.Levels, {
+bard.Lore.Levels = Utils.MergeTables(bard.Lore.Levels, {
   Three = DictUtils.setupClassLevelEntry("a951662b-afb5-4eae-abcf-ec4a501ac6df"),
   Six = DictUtils.setupClassLevelEntry("8ddbdfce-20ff-452e-b945-6b5f6f0c7e78")
 })
 
-Utils.MergeTables(bard.Sword.Levels, {
+bard.Sword.Levels = Utils.MergeTables(bard.Sword.Levels, {
   Six = DictUtils.setupClassLevelEntry("b5a994cc-e76a-4e55-b2d7-ac8ec665c2f1")
 })
 
-Utils.MergeTables(bard.Valor.Levels, {
+bard.Valor.Levels = Utils.MergeTables(bard.Valor.Levels, {
   Three = DictUtils.setupClassLevelEntry("517fc6b8-bdf4-4687-a7fc-9d94b559f787"),
   Six = DictUtils.setupClassLevelEntry("eb3a178a-03d1-4300-bdaa-129656a5536c")
 })

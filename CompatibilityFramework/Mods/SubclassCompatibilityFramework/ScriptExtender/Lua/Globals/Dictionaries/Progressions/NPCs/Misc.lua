@@ -3,7 +3,7 @@ local rolan = DictUtils.Progression("NPC_Rolan")
 local aradin = DictUtils.Progression("NPC_Aradin")
 local phasm = DictUtils.Progression("Phasm")
 
-Utils.MergeTables(roah.Base.Levels, {
+roah.Base.Levels = Utils.MergeTables(roah.Base.Levels, {
   One = DictUtils.setupClassLevelEntry("653135b3-edb9-4b79-a736-78a4cbfad2d2"),
   Two = DictUtils.setupClassLevelEntry("20b62ee9-f075-43e9-99ba-8d88e31fbc47"),
   Three = DictUtils.setupClassLevelEntry("07b7b9ac-91b4-4acb-af72-f5cdac224692"),
@@ -18,7 +18,7 @@ Utils.MergeTables(roah.Base.Levels, {
   Twelve = DictUtils.setupClassLevelEntry("84fca008-bfc8-4d65-b684-2abb0ccba12b")
 })
 
-Utils.MergeTables(rolan.Base.Levels, {
+rolan.Base.Levels = Utils.MergeTables(rolan.Base.Levels, {
   One = DictUtils.setupClassLevelEntry("08ab7179-b8c3-4048-891a-ded4a520f861"),
   Two = DictUtils.setupClassLevelEntry("c9c3a3e9-9f95-4491-a6d8-f4a5899012f1"),
   Three = DictUtils.setupClassLevelEntry("e5428c31-fe43-4516-a03c-cbaab75e1442"),
@@ -29,7 +29,7 @@ Utils.MergeTables(rolan.Base.Levels, {
   Ten = DictUtils.setupClassLevelEntry("80a57d0b-5d4e-4b35-87ee-d073a572a4c5")
 })
 
-Utils.MergeTables(aradin.Base.Levels, {
+aradin.Base.Levels = Utils.MergeTables(aradin.Base.Levels, {
   One = DictUtils.setupClassLevelEntry("de43ebc2-241f-4d98-9937-b8858a016d8f"),
   Two = DictUtils.setupClassLevelEntry("ada873bb-ba54-40f2-b983-9db19f85274d"),
   Three = DictUtils.setupClassLevelEntry("87ce1f36-a954-4147-aaf8-69bd855ab48f"),
@@ -44,7 +44,7 @@ Utils.MergeTables(aradin.Base.Levels, {
   Twelve = DictUtils.setupClassLevelEntry("2b4a358d-4478-43f4-94e3-697a310dee75")
 })
 
-Utils.MergeTables(phasm.Base.Levels, {
+phasm.Base.Levels = Utils.MergeTables(phasm.Base.Levels, {
   One = DictUtils.setupClassLevelEntry("f9de8ade-6b4b-46db-8591-baa0fdb2ad06"),
   Five = DictUtils.setupClassLevelEntry("0a271b39-913a-40f5-ac57-c532ebf3b384"),
   Nine = DictUtils.setupClassLevelEntry("8753e86a-0e84-43cc-964e-f4db2ea77015"),

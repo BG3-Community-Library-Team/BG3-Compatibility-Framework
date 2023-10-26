@@ -1,6 +1,6 @@
 local cleric = DictUtils.Progression("Cleric", { "Life", "Light", "Knowledge", "Nature", "Tempest", "Trickery", "War" })
 
-Utils.MergeTables(cleric.Base.Levels, {
+cleric.Base.Levels = Utils.MergeTables(cleric.Base.Levels, {
   One = DictUtils.setupClassLevelEntry("1dbce574-fff1-49be-b7da-704f9b73cad9", "366cde9c-db0c-43ce-a49c-fb140e084b3c"),
   OtherMulticlass = DictUtils.setupClassLevelEntry(nil, "2b249feb-bba5-4922-8385-c2dd9baaa049"),
   Two = DictUtils.setupClassLevelEntry("ef18265f-dda6-4eb6-8dd0-b14c57202c33"),
@@ -16,7 +16,7 @@ Utils.MergeTables(cleric.Base.Levels, {
   Twelve = DictUtils.setupClassLevelEntry("e209aba2-bb27-4416-af41-09ce37b7f08f")
 })
 
-Utils.MergeTables(cleric.Knowledge.Levels, {
+cleric.Knowledge.Levels = Utils.MergeTables(cleric.Knowledge.Levels, {
   One = DictUtils.setupClassLevelEntry("2a780e20-d5a7-436e-9331-433ee8847db8"),
   Two = DictUtils.setupClassLevelEntry("3cab05e3-fcf7-44fb-a503-73eb23fd4de3"),
   Three = DictUtils.setupClassLevelEntry("8072ab7b-1371-4acf-aaf5-9f95c7a5a51a"),
@@ -27,7 +27,7 @@ Utils.MergeTables(cleric.Knowledge.Levels, {
   Nine = DictUtils.setupClassLevelEntry("aa87cb08-6669-4ee8-9b17-e3f977c2c3b2")
 })
 
-Utils.MergeTables(cleric.Life.Levels, {
+cleric.Life.Levels = Utils.MergeTables(cleric.Life.Levels, {
   One = DictUtils.setupClassLevelEntry("87f501ae-c909-4f30-852b-98bdc72c0248"),
   Two = DictUtils.setupClassLevelEntry("1aa8a001-f56c-4b99-800f-27fc12f8ebe8"),
   Three = DictUtils.setupClassLevelEntry("8355f4fe-7d7f-4132-8d57-7ca17e3c4ab4"),
@@ -39,7 +39,7 @@ Utils.MergeTables(cleric.Life.Levels, {
   Nine = DictUtils.setupClassLevelEntry("b3a95e65-8ba5-4e32-ba5a-6e2c745c237a")
 })
 
-Utils.MergeTables(cleric.Light.Levels, {
+cleric.Light.Levels = Utils.MergeTables(cleric.Light.Levels, {
   One = DictUtils.setupClassLevelEntry("18b60150-3f77-4f5d-9c67-b25c3b7ce404"),
   Two = DictUtils.setupClassLevelEntry("7f63932d-64bd-4a70-b1d0-0e6728c1888e"),
   Three = DictUtils.setupClassLevelEntry("21725b6d-71f5-4df9-b828-b31bb20794cd"),
@@ -51,7 +51,7 @@ Utils.MergeTables(cleric.Light.Levels, {
   Nine = DictUtils.setupClassLevelEntry("00479bc3-396b-4738-9ccf-f00d7087374f")
 })
 
-Utils.MergeTables(cleric.Nature.Levels, {
+cleric.Nature.Levels = Utils.MergeTables(cleric.Nature.Levels, {
   One = DictUtils.setupClassLevelEntry("9c544341-fc87-446d-b77d-0b6948eeb0f3"),
   Two = DictUtils.setupClassLevelEntry("80a0e447-ec7f-45c0-af51-0002b8fd1662"),
   Three = DictUtils.setupClassLevelEntry("0d4a6b4b-8162-414b-81ef-1838e36e778a"),
@@ -62,7 +62,7 @@ Utils.MergeTables(cleric.Nature.Levels, {
   Nine = DictUtils.setupClassLevelEntry("82cbf414-345f-4e1c-9ebb-ba9d49f52fa2")
 })
 
-Utils.MergeTables(cleric.Tempest.Levels, {
+cleric.Tempest.Levels = Utils.MergeTables(cleric.Tempest.Levels, {
   One = DictUtils.setupClassLevelEntry("6634d63a-07a6-4a4b-95cd-96852396dc39"),
   Two = DictUtils.setupClassLevelEntry("31ea2386-5ade-467d-9be4-33ce599ccec2"),
   Three = DictUtils.setupClassLevelEntry("9328822b-9140-401d-9273-cb1a4998c068"),
@@ -73,7 +73,7 @@ Utils.MergeTables(cleric.Tempest.Levels, {
   Nine = DictUtils.setupClassLevelEntry("1e4d3a2f-e712-4135-bc6a-569c169ea15f")
 })
 
-Utils.MergeTables(cleric.Trickery.Levels, {
+cleric.Trickery.Levels = Utils.MergeTables(cleric.Trickery.Levels, {
   One = DictUtils.setupClassLevelEntry("97ba481e-13d2-4a8c-8503-e1b146c21b7b"),
   Two = DictUtils.setupClassLevelEntry("87609f34-d8c7-4ca6-88b3-6f2692286e44"),
   Three = DictUtils.setupClassLevelEntry("90dafea8-c773-4dfa-b0c8-da4789122a0f"),
@@ -85,7 +85,7 @@ Utils.MergeTables(cleric.Trickery.Levels, {
   Nine = DictUtils.setupClassLevelEntry("5eff9cd1-2376-452a-bb09-93a6aa8ee8d0")
 })
 
-Utils.MergeTables(cleric.War.Levels, {
+cleric.War.Levels = Utils.MergeTables(cleric.War.Levels, {
   One = DictUtils.setupClassLevelEntry("61eb9c49-e4c7-42f1-a6e6-9d059eb71669"),
   Two = DictUtils.setupClassLevelEntry("2f5c8f13-a61c-4008-8a0e-83d51894e086"),
   Three = DictUtils.setupClassLevelEntry("59fd6b2d-dcf6-4aa2-a439-22700f68b68b"),

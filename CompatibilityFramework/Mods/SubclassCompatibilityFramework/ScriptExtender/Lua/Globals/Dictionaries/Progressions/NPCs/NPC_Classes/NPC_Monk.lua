@@ -1,6 +1,6 @@
 local monk = DictUtils.Progression("NPC_Monk")
 
-Utils.MergeTables(monk.Base.Levels, {
+monk.Base.Levels = Utils.MergeTables(monk.Base.Levels, {
   One = DictUtils.setupClassLevelEntry("44a6c6b2-25f1-4248-82e3-3676bfe992a0"),
   Two = DictUtils.setupClassLevelEntry("80f2f343-fc7a-4346-924b-b119e3354da5"),
   Three = DictUtils.setupClassLevelEntry("45cf151d-5ed6-4b87-835b-6de2cec7601a"),

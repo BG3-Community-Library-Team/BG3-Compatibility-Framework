@@ -1,6 +1,6 @@
 local barbarian = DictUtils.Progression("Barbarian", { "Berserker", "WildMagic", "WildHeart" })
 
-Utils.MergeTables(barbarian.Base.Levels, {
+barbarian.Base.Levels = Utils.MergeTables(barbarian.Base.Levels, {
   One = DictUtils.setupClassLevelEntry("a2198ee9-ea4c-468e-b6b4-22b32d37806e", "2dc1015e-6fd9-48aa-923e-eecaf72a83f1"),
   Two = DictUtils.setupClassLevelEntry("89986e8a-09b1-4163-b1d0-ddb2332bf3c5"),
   Three = DictUtils.setupClassLevelEntry("0d4a6b4b-8162-414b-81ef-1838e36e778a"),
@@ -15,13 +15,13 @@ Utils.MergeTables(barbarian.Base.Levels, {
   Twelve = DictUtils.setupClassLevelEntry("d31c7f2f-52e6-4c83-8a7b-9f0b7b953a79")
 })
 
-Utils.MergeTables(barbarian.Berserker.Levels, {
+barbarian.Berserker.Levels = Utils.MergeTables(barbarian.Berserker.Levels, {
   Three = DictUtils.setupClassLevelEntry("5ce67263-04f2-4ede-b30a-2eb962d828f2"),
   Six = DictUtils.setupClassLevelEntry("27a1114c-3f84-4f47-8544-865e91db8d0f"),
   Ten = DictUtils.setupClassLevelEntry("ad9a37aa-bc2d-4024-9b5f-5aaf330cb25c")
 })
 
-Utils.MergeTables(barbarian.WildHeart.Levels, {
+barbarian.WildHeart.Levels = Utils.MergeTables(barbarian.WildHeart.Levels, {
   Three = DictUtils.setupClassLevelEntry("42329ce3-0fb3-43a3-a0b4-79584c6877e7"),
   Four = DictUtils.setupClassLevelEntry("6777c3c3-5f17-4d49-8da7-0f0b8b380d06"),
   Five = DictUtils.setupClassLevelEntry("0fe6f4ec-8601-462d-a233-53fc0ad62513"),
@@ -34,7 +34,7 @@ Utils.MergeTables(barbarian.WildHeart.Levels, {
   Twelve = DictUtils.setupClassLevelEntry("7521f3eb-efa9-4d40-9f65-e6ff247a9ee8")
 })
 
-Utils.MergeTables(barbarian.WildMagic.Levels, {
+barbarian.WildMagic.Levels = Utils.MergeTables(barbarian.WildMagic.Levels, {
   Three = DictUtils.setupClassLevelEntry("9026e0b6-52a7-46b9-a318-d85b6a2a81c5"),
   Six = DictUtils.setupClassLevelEntry("7509026b-0ea3-40cb-a106-95977a40a3b7"),
   Nine = DictUtils.setupClassLevelEntry("c6894048-1489-406d-b601-e3c8c96f4e42"),

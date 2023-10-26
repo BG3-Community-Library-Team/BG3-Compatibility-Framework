@@ -1,6 +1,6 @@
 local warlock = DictUtils.Progression("Warlock", { "Fiend", "GreatOldOne", "ArchFey" })
 
-Utils.MergeTables(warlock.Base.Levels, {
+warlock.Base.Levels = Utils.MergeTables(warlock.Base.Levels, {
   One = DictUtils.setupClassLevelEntry("a7767dc5-e6ab-4e05-96fd-f0424256121c", "20015e25-8aa9-41bf-b959-aa587ba0aa27"),
   Two = DictUtils.setupClassLevelEntry("4de835bb-b7d0-47d8-aaea-596b4204a32a"),
   Three = DictUtils.setupClassLevelEntry("da1ea937-f361-4dc6-abb1-1e7153e2a6de"),
@@ -15,7 +15,7 @@ Utils.MergeTables(warlock.Base.Levels, {
   Twelve = DictUtils.setupClassLevelEntry("b50cff2c-9879-4f87-bc77-c428fd69c4e0")
 })
 
-Utils.MergeTables(warlock.ArchFey.Levels, {
+warlock.ArchFey.Levels = Utils.MergeTables(warlock.ArchFey.Levels, {
   One = DictUtils.setupClassLevelEntry("5085c372-c3b7-4910-85f9-e33be18d7071"),
   Two = DictUtils.setupClassLevelEntry("2e30ddf6-e3d2-4891-8e52-1034bcc613af"),
   Three = DictUtils.setupClassLevelEntry("3fe3b85e-ed6e-4264-9492-07b69516ba18"),
@@ -30,7 +30,7 @@ Utils.MergeTables(warlock.ArchFey.Levels, {
   Twelve = DictUtils.setupClassLevelEntry("17c18ca0-bf00-4809-ba35-16ef8ca3197b")
 })
 
-Utils.MergeTables(warlock.Fiend.Levels, {
+warlock.Fiend.Levels = Utils.MergeTables(warlock.Fiend.Levels, {
   One = DictUtils.setupClassLevelEntry("995c4979-50a9-49fe-b7b8-5d026e79464a"),
   Two = DictUtils.setupClassLevelEntry("9f99f3a6-2fd5-4b6e-8506-a58c8198b1c6"),
   Three = DictUtils.setupClassLevelEntry("428e4841-ff37-4b12-afb8-8bb26577a5c9"),
@@ -45,7 +45,7 @@ Utils.MergeTables(warlock.Fiend.Levels, {
   Twelve = DictUtils.setupClassLevelEntry("2f79787c-f0f5-4ada-8baf-4a78aaf07236")
 })
 
-Utils.MergeTables(warlock.GreatOldOne.Levels, {
+warlock.GreatOldOne.Levels = Utils.MergeTables(warlock.GreatOldOne.Levels, {
   One = DictUtils.setupClassLevelEntry("3081d0f1-32ea-4c33-9350-f423ececc9b8"),
   Two = DictUtils.setupClassLevelEntry("d7209ef3-ac5c-4e16-995f-5c6ffebe49a9"),
   Three = DictUtils.setupClassLevelEntry("e558c8bb-7b5f-4e18-8ca7-4ab167fa0857"),

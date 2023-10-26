@@ -1,6 +1,6 @@
 local jaheria = DictUtils.Progression("NPC_Jaheira")
 
-Utils.MergeTables(jaheria.Base.Levels, {
+jaheria.Base.Levels = Utils.MergeTables(jaheria.Base.Levels, {
   One = DictUtils.setupClassLevelEntry("73773a6a-f107-4718-95d3-f8624d372fb5"),
   Two = DictUtils.setupClassLevelEntry("1d706fa7-389b-47cb-ada1-d1bd61d94246"),
   Three = DictUtils.setupClassLevelEntry("ee28bd89-217f-4730-9648-d9c5cc322093"),

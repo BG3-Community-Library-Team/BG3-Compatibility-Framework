@@ -1,6 +1,6 @@
 local druid = DictUtils.Progression("Druid", { "Moon", "Land", "Spore" })
 
-Utils.MergeTables(druid.Base.Levels, {
+druid.Base.Levels = Utils.MergeTables(druid.Base.Levels, {
   One = DictUtils.setupClassLevelEntry("b499258c-2823-42f1-b8ca-0a5ee8455e11", "a13110fc-3555-4b33-9b8a-47f70586f567"),
   Two = DictUtils.setupClassLevelEntry("95322dde-349a-4101-964f-9aa46abd890b"),
   Three = DictUtils.setupClassLevelEntry("ce4b9b17-8afb-4fa4-8f01-742da3c3cf26"),
@@ -15,7 +15,7 @@ Utils.MergeTables(druid.Base.Levels, {
   Twelve = DictUtils.setupClassLevelEntry("e2207fae-9b49-49b5-8764-2c4fb2d5945d")
 })
 
-Utils.MergeTables(druid.Land.Levels, {
+druid.Land.Levels = Utils.MergeTables(druid.Land.Levels, {
   One = DictUtils.setupClassLevelEntry("783683c5-c875-48c9-9875-69569528a89d"),
   Two = DictUtils.setupClassLevelEntry("adc920c4-56d6-43e6-9615-121c35f7abfe"),
   Three = DictUtils.setupClassLevelEntry("9ee8ebe9-f91b-4412-9594-7fbc9755bcbf"),
@@ -28,7 +28,7 @@ Utils.MergeTables(druid.Land.Levels, {
   Eleven = DictUtils.setupClassLevelEntry("f04d6584-b98f-4a9f-80b5-336b22e3d0e0")
 })
 
-Utils.MergeTables(druid.Moon.Levels, {
+druid.Moon.Levels = Utils.MergeTables(druid.Moon.Levels, {
   One = DictUtils.setupClassLevelEntry("94387976-ebc2-46a2-836a-ec92a82b270c"),
   Two = DictUtils.setupClassLevelEntry("513f2de5-0a39-42ed-8ea7-ddfa9c733c51"),
   Three = DictUtils.setupClassLevelEntry("4466d0f4-723a-419e-9d38-1c036a0ef7d4"),
@@ -38,7 +38,7 @@ Utils.MergeTables(druid.Moon.Levels, {
   Ten = DictUtils.setupClassLevelEntry("4c9fed0c-c9a7-49c8-a634-6582f2d99ecb")
 })
 
-Utils.MergeTables(druid.Spore.Levels, {
+druid.Spore.Levels = Utils.MergeTables(druid.Spore.Levels, {
   One = DictUtils.setupClassLevelEntry("da7601da-2a17-456c-bd0e-f98160470653"),
   Two = DictUtils.setupClassLevelEntry("ac2a03fd-ac7b-42b6-a1b7-e0de94a77703"),
   Three = DictUtils.setupClassLevelEntry("88231d81-3a90-4c53-b373-651c9369d298"),
