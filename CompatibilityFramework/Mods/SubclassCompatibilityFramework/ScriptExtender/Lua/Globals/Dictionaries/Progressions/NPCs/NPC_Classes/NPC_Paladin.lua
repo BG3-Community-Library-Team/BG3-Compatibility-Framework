@@ -1,6 +1,6 @@
 local paladin = DictUtils.Progression("NPC_Paladin")
 
-Utils.MergeTables(paladin.Base.Levels, {
+paladin.Base.Levels = Utils.MergeTables(paladin.Base.Levels, {
   One = DictUtils.setupClassLevelEntry("ba895540-fb26-4c85-9024-fe15c9a832ec"),
   Two = DictUtils.setupClassLevelEntry("0ba007e2-806a-4198-ad5d-f47045d27be4"),
   Three = DictUtils.setupClassLevelEntry("c5c25a3d-e5f0-44a2-9509-d30da893bf12"),

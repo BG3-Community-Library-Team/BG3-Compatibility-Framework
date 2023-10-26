@@ -1,6 +1,6 @@
 local paladin = DictUtils.Progression("Paladin", { "Ancients", "Devotion", "Vengeance", "Oathbreaker" })
 
-Utils.MergeTables(paladin.Base.Levels, {
+paladin.Base.Levels = Utils.MergeTables(paladin.Base.Levels, {
   One = DictUtils.setupClassLevelEntry("b60618d1-c262-42b5-9fdd-2c0f7aa5e5af", "1f5396ad-65e3-4ed5-a339-d76b11af96ea"),
   Two = DictUtils.setupClassLevelEntry("d6c11773-888b-47a3-9dfa-e247bcbd461a"),
   Three = DictUtils.setupClassLevelEntry("31c12f48-d62f-4e83-b475-10ed9068c9dd"),
@@ -15,7 +15,7 @@ Utils.MergeTables(paladin.Base.Levels, {
   Twelve = DictUtils.setupClassLevelEntry("0a2410b4-ff13-429f-84ca-73ce2fd9654d")
 })
 
-Utils.MergeTables(paladin.Ancients.Levels, {
+paladin.Ancients.Levels = Utils.MergeTables(paladin.Ancients.Levels, {
   One = DictUtils.setupClassLevelEntry("c5896730-ac3f-4f00-b719-41a1ed82616b"),
   Three = DictUtils.setupClassLevelEntry("11c1bab3-90d0-4558-895b-200bca7ec2e3"),
   Five = DictUtils.setupClassLevelEntry("ccbbcbad-d2b1-4064-a731-81480cf78d9f"),
@@ -23,7 +23,7 @@ Utils.MergeTables(paladin.Ancients.Levels, {
   Nine = DictUtils.setupClassLevelEntry("ed44db42-a704-4717-aed3-7d3672775b36")
 })
 
-Utils.MergeTables(paladin.Devotion.Levels, {
+paladin.Devotion.Levels = Utils.MergeTables(paladin.Devotion.Levels, {
   One = DictUtils.setupClassLevelEntry("394623a5-f829-4295-9efc-3ea14197536a"),
   Three = DictUtils.setupClassLevelEntry("419d61a5-2e61-4aaa-992a-f113817f607c"),
   Five = DictUtils.setupClassLevelEntry("df3ddb35-5479-45ee-be32-63d75ca6fd90"),
@@ -31,7 +31,7 @@ Utils.MergeTables(paladin.Devotion.Levels, {
   Nine = DictUtils.setupClassLevelEntry("5e9cbd8a-af0f-4ce8-a9ac-cc31d4873c61")
 })
 
-Utils.MergeTables(paladin.Vengeance.Levels, {
+paladin.Vengeance.Levels = Utils.MergeTables(paladin.Vengeance.Levels, {
   One = DictUtils.setupClassLevelEntry("ebe9b2bf-97fb-460b-860b-22ae602b7e97"),
   Three = DictUtils.setupClassLevelEntry("bd1e9c6b-84e8-4b9f-9439-398cb9fd452b"),
   Five = DictUtils.setupClassLevelEntry("333ea8d0-326f-42a1-a150-95ef5a9e7541"),
@@ -39,7 +39,7 @@ Utils.MergeTables(paladin.Vengeance.Levels, {
   Nine = DictUtils.setupClassLevelEntry("b3d4b30b-8a84-419a-98b2-68639ae3649d")
 })
 
-Utils.MergeTables(paladin.Oathbreaker.Levels, {
+paladin.Oathbreaker.Levels = Utils.MergeTables(paladin.Oathbreaker.Levels, {
   One = DictUtils.setupClassLevelEntry("504688df-4b4b-49fc-abdf-ce7af44f70b1"),
   Three = DictUtils.setupClassLevelEntry("27124c6c-fd7f-4895-b1fc-a04515f2a2ac"),
   Five = DictUtils.setupClassLevelEntry("65c8e05b-fcdd-456c-b8b9-180b3459c253"),

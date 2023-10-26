@@ -1,6 +1,6 @@
 local warlock = DictUtils.Progression("NPC_Warlock")
 
-Utils.MergeTables(warlock.Base.Levels, {
+warlock.Base.Levels = Utils.MergeTables(warlock.Base.Levels, {
   One = DictUtils.setupClassLevelEntry("05c17c4c-6ebe-4685-8231-e6d86e760530"),
   Two = DictUtils.setupClassLevelEntry("8b06e96b-fb4e-4018-8bf1-c5bac4295522"),
   Three = DictUtils.setupClassLevelEntry("e16a65f9-d908-46b9-93cd-9e281774d37d"),

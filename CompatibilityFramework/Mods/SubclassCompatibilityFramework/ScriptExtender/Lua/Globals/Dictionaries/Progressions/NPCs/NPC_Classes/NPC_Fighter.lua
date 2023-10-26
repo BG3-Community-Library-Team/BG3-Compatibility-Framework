@@ -1,6 +1,6 @@
 local fighter = DictUtils.Progression("NPC_Fighter")
 
-Utils.MergeTables(fighter.Base.Levels, {
+fighter.Base.Levels = Utils.MergeTables(fighter.Base.Levels, {
   One = DictUtils.setupClassLevelEntry("7d5877f0-e973-4a7a-b8d8-423fecadebb4"),
   Two = DictUtils.setupClassLevelEntry("8568b134-eb2c-44ec-bbb5-c1bf6f36ea52"),
   Three = DictUtils.setupClassLevelEntry("b22c77d4-8d9a-4849-9027-03ddb2ca0685"),

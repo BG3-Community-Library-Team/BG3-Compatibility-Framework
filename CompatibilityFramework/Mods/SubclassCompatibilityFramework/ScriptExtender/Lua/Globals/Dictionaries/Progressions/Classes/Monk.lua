@@ -1,6 +1,6 @@
 local monk = DictUtils.Progression("Monk", { "OpenHand", "Shadows", "FourElements" })
 
-Utils.MergeTables(monk.Base.Levels, {
+monk.Base.Levels = Utils.MergeTables(monk.Base.Levels, {
   One = DictUtils.setupClassLevelEntry("c091d27e-009b-4841-8bde-5e63e5ca8f4e", "297e0cb5-9743-4ae8-b053-b3850f0fa134"),
   Two = DictUtils.setupClassLevelEntry("c17915f1-df2b-4cce-876f-68faf153f373"),
   Three = DictUtils.setupClassLevelEntry("296468cb-3640-4460-9f44-b30ee820a9ed"),
@@ -15,7 +15,7 @@ Utils.MergeTables(monk.Base.Levels, {
   Twelve = DictUtils.setupClassLevelEntry("67747624-d156-4e2b-917f-3d795ad06e8e")
 })
 
-Utils.MergeTables(monk.FourElements.Levels, {
+monk.FourElements.Levels = Utils.MergeTables(monk.FourElements.Levels, {
   Three = DictUtils.setupClassLevelEntry("cae2ce43-a1b8-473a-b163-c961d0048bd6"),
   Four = DictUtils.setupClassLevelEntry("4d2390c9-e95a-4b3d-bc22-22ac680e0393"),
   Five = DictUtils.setupClassLevelEntry("64e4f191-186b-4cc9-9e3d-9374d2670ec3"),
@@ -28,14 +28,14 @@ Utils.MergeTables(monk.FourElements.Levels, {
   Twelve = DictUtils.setupClassLevelEntry("d61acf79-7437-49e1-a003-2426049ef323")
 })
 
-Utils.MergeTables(monk.OpenHand.Levels, {
+monk.OpenHand.Levels = Utils.MergeTables(monk.OpenHand.Levels, {
   Three = DictUtils.setupClassLevelEntry("e126f91a-faae-4b12-8dfd-5e385e68c659"),
   Six = DictUtils.setupClassLevelEntry("fd86d0cd-791d-49a1-8d99-402c15f5f77d"),
   Nine = DictUtils.setupClassLevelEntry("2c9045a3-0d3b-4daf-b3b3-7e0518ba4ee5"),
   Eleven = DictUtils.setupClassLevelEntry("7bbc316f-d60a-4e80-a371-247dcca83685")
 })
 
-Utils.MergeTables(monk.Shadows.Levels, {
+monk.Shadows.Levels = Utils.MergeTables(monk.Shadows.Levels, {
   Three = DictUtils.setupClassLevelEntry("077e6458-3b93-4820-88a7-bd7c9babbeae"),
   Five = DictUtils.setupClassLevelEntry("62fa2d62-9cc9-4642-9d11-121ac5188875"),
   Six = DictUtils.setupClassLevelEntry("2843ad66-a79d-4357-9c34-877e443f9701"),

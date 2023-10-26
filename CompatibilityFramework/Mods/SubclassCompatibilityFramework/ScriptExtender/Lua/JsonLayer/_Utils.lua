@@ -44,12 +44,13 @@ function JsonUtils.BuildRacePayloads(data, modGuid, action)
   return result
 end
 
-function JsonUtils.BuildSubclassPayload(data, modGuid)
+function JsonUtils.BuildSubclassPayload(data, classId, modGuid, subclassGuid)
   Utils.Info("Entering BuildSubclassPayload")
+  subclassGuid = subclassGuid or data.UUID
   return {
     modGuid = data.modGuid or modGuid,
-    subClassGuid = data.UUID,
-    class = data.Class,
+    subClassGuid = subclassGuid,
+    class = classId,
     subClassName = data.SubClassName or ""
   }
 end

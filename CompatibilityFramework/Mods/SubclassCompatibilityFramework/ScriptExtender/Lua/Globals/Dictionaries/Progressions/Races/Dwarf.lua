@@ -1,10 +1,10 @@
 local dwarf = DictUtils.Progression("Dwarf", { "Gold", "Shield", "Deep" })
 
-Utils.MergeTables(dwarf.Base.Levels, {
+dwarf.Base.Levels = Utils.MergeTables(dwarf.Base.Levels, {
   One = DictUtils.setupClassLevelEntry("3c9a0bd8-bb0f-4a42-b77f-7a9a1cff2e5d")
 })
 
-Utils.MergeTables(dwarf.Gold.Levels, {
+dwarf.Gold.Levels = Utils.MergeTables(dwarf.Gold.Levels, {
   One = DictUtils.setupClassLevelEntry("207d038e-1add-4335-81d1-b0861f524c19"),
   Two = DictUtils.setupClassLevelEntry("d06d7fea-98ee-42a4-a298-8db698c88644"),
   Three = DictUtils.setupClassLevelEntry("c968fd3c-59b4-46e3-bbe0-ddd53f6a4d58"),
@@ -13,11 +13,11 @@ Utils.MergeTables(dwarf.Gold.Levels, {
   Six = DictUtils.setupClassLevelEntry("c6d8c5b5-3143-4f1e-aeaf-563f0715199f")
 })
 
-Utils.MergeTables(dwarf.Shield.Levels, {
+dwarf.Shield.Levels = Utils.MergeTables(dwarf.Shield.Levels, {
   One = DictUtils.setupClassLevelEntry("3576f8c6-e515-49c5-808c-b68b77154ffd")
 })
 
-Utils.MergeTables(dwarf.Deep.Levels, {
+dwarf.Deep.Levels = Utils.MergeTables(dwarf.Deep.Levels, {
   One = DictUtils.setupClassLevelEntry("bd012f5b-0a0b-424e-ab7c-186dbd82ab30"),
   Three = DictUtils.setupClassLevelEntry("02828bce-0bee-4010-a614-f4e46d0aba12"),
   Five = DictUtils.setupClassLevelEntry("77f416e5-406b-40ee-a2ff-dea281c32c8f")

@@ -1,6 +1,6 @@
 local ranger = DictUtils.Progression("NPC_Ranger")
 
-Utils.MergeTables(ranger.Base.Levels, {
+ranger.Base.Levels = Utils.MergeTables(ranger.Base.Levels, {
   One = DictUtils.setupClassLevelEntry("b75b71bd-5853-4483-ac11-0705382a658a"),
   Two = DictUtils.setupClassLevelEntry("51d40e29-6d6a-436d-af00-ea73ad3d22df"),
   Three = DictUtils.setupClassLevelEntry("64eb81fc-aa40-4a45-aeb6-e28e7df015b8"),

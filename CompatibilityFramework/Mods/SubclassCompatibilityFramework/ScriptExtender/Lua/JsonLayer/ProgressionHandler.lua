@@ -1,8 +1,17 @@
-local function ParseAndSubmitSubclasses(data, modGuid)
+local function ParseAndSubmitSubclasses(data, classId, modGuid)
   Utils.Info("Entering ParseAndSubmitSubclasses")
-  local payloads = {
-    Insert = JsonUtils.BuildSubclassPayload(data, modGuid)
-  }
+  local payloads = {}
+  if Utils.IsGuid(classId) then
+    classId = string.lower(DictUtils.RetrieveClassNameFromProgression(classId))
+  end
+
+  if data.UUIDs ~= nil then
+    for _, uuid in pairs(data.UUIDs) do
+      payloads.Insert = JsonUtils.BuildSubclassPayload(data, classId, modGuid, uuid)
+    end
+  elseif data.UUID ~= nil then
+    payloads.Insert = JsonUtils.BuildSubclassPayload(data, classId, modGuid)
+  end
 
   for action, payload in pairs(payloads) do
     if payload ~= nil then
@@ -14,7 +23,7 @@ end
 local function ProgressionSubSectionHandler(data, modGuid)
   if data.Subclasses ~= nil then
     for _, subclass in pairs(data.Subclasses) do
-      ParseAndSubmitSubclasses(subclass, modGuid)
+      ParseAndSubmitSubclasses(subclass, data.UUID, modGuid)
     end
   end
 

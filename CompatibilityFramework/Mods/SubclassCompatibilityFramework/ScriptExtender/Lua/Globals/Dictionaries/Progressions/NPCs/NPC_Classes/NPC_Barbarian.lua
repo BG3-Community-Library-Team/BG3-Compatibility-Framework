@@ -1,6 +1,6 @@
 local barbarian = DictUtils.Progression("NPC_Barbarian")
 
-Utils.MergeTables(barbarian.Base.Levels, {
+barbarian.Base.Levels = Utils.MergeTables(barbarian.Base.Levels, {
   One = DictUtils.setupClassLevelEntry("b695c31f-9bdb-47bb-b9c9-ceda68369783"),
   Two = DictUtils.setupClassLevelEntry("3d568fee-41cd-48cd-9496-267f814dd5f0"),
   Three = DictUtils.setupClassLevelEntry("7c9136a0-925b-4959-ae3c-3683e6d7eaee"),

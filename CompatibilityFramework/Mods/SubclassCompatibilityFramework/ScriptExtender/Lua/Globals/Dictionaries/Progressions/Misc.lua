@@ -1,6 +1,6 @@
 local mcSpellSlots = DictUtils.Progression("MultiClassSpellSlots")
 
-Utils.MergeTables(mcSpellSlots.Base.Levels, {
+mcSpellSlots.Base.Levels = Utils.MergeTables(mcSpellSlots.Base.Levels, {
   OneEA = DictUtils.setupClassLevelEntry("2366e69f-1248-41c5-b98a-abb5b79c8c29"),
   One = DictUtils.setupClassLevelEntry("4f9daa06-d758-424c-a77e-58ca71d1bffa"),
   TwoEA = DictUtils.setupClassLevelEntry("efe53247-a533-4c43-a8bd-b20627b47305"),

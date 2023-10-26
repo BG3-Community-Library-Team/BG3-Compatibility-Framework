@@ -1,6 +1,6 @@
 local minthara = DictUtils.Progression("NPC_Minthara")
 
-Utils.MergeTables(minthara.Base.Levels, {
+minthara.Base.Levels = Utils.MergeTables(minthara.Base.Levels, {
   One = DictUtils.setupClassLevelEntry("98d1e09c-34ad-48c3-80be-2613c05f5949"),
   Two = DictUtils.setupClassLevelEntry("07ccc22a-312a-468c-b65e-c7e659f551a9"),
   Three = DictUtils.setupClassLevelEntry("859105aa-a9be-4e1d-be49-fcf972968856"),

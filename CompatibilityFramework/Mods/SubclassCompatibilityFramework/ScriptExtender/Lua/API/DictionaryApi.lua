@@ -20,7 +20,7 @@ local function Register(payload, params)
       params.Table[payload.Name] = {}
     end
 
-    Utils.MergeTables(params.Table[payload.Name], payload.Obj)
+    params.Table[payload.Name] = Utils.MergeTables(params.Table[payload.Name], payload.Obj)
   else
     params.Table[payload.Name] = payload.Guid
   end

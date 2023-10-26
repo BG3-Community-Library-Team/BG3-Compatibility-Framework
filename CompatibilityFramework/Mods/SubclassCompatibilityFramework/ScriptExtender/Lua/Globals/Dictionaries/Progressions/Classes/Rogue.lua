@@ -1,6 +1,6 @@
 local rogue = DictUtils.Progression("Rogue", { "Thief", "Assassin", "ArcaneTrickster" })
 
-Utils.MergeTables(rogue.Base.Levels, {
+rogue.Base.Levels = Utils.MergeTables(rogue.Base.Levels, {
   One = DictUtils.setupClassLevelEntry("16f00e7f-12f6-4cff-b610-4ee738b02d62", "cd3d8b16-37ce-4107-a2e3-e729751c2b1c"),
   Two = DictUtils.setupClassLevelEntry("35863719-e935-4757-a9f3-eb38a8cd8cb7"),
   Three = DictUtils.setupClassLevelEntry("6f8d3e70-9b20-4fe0-914f-0f8f19206329"),
@@ -15,7 +15,7 @@ Utils.MergeTables(rogue.Base.Levels, {
   Twelve = DictUtils.setupClassLevelEntry("1a340e86-fcd6-4268-9f05-e7a45e30e6d1")
 })
 
-Utils.MergeTables(rogue.ArcaneTrickster.Levels, {
+rogue.ArcaneTrickster.Levels = Utils.MergeTables(rogue.ArcaneTrickster.Levels, {
   One = DictUtils.setupClassLevelEntry("7fcb7261-5e2e-4d39-8a9d-1adc2921faf9"),
   Two = DictUtils.setupClassLevelEntry("be899de7-1f73-44d8-99ec-741d1981e723"),
   Three = DictUtils.setupClassLevelEntry("a7dc1d04-ba88-42d6-a2cf-3f0573a203ba"),
@@ -30,12 +30,12 @@ Utils.MergeTables(rogue.ArcaneTrickster.Levels, {
   Twelve = DictUtils.setupClassLevelEntry("dc94de47-af1f-49cb-a7a4-b60218140b41")
 })
 
-Utils.MergeTables(rogue.Assassin.Levels, {
+rogue.Assassin.Levels = Utils.MergeTables(rogue.Assassin.Levels, {
   Three = DictUtils.setupClassLevelEntry("a0d702c1-4286-40be-9ae5-2b8b7954f1f8"),
   Nine = DictUtils.setupClassLevelEntry("b3ea7f97-4cba-4d03-91cc-ef07993642b9")
 })
 
-Utils.MergeTables(rogue.Thief.Levels, {
+rogue.Thief.Levels = Utils.MergeTables(rogue.Thief.Levels, {
   One = DictUtils.setupClassLevelEntry("2820ed6e-4eb6-40f6-bff8-3776a022b111"),
   Two = DictUtils.setupClassLevelEntry("0c43b700-951d-4602-962e-9dca67ad3e44"),
   Three = DictUtils.setupClassLevelEntry("3f95146b-90bc-4064-b3e0-4e1e751cd08d"),
