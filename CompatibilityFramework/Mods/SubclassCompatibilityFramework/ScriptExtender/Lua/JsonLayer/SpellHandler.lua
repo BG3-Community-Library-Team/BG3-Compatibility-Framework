@@ -21,6 +21,7 @@ function JsonUtils.ParseAndSubmitSpellStrings(spells, target, modGuid, stringTyp
 end
 
 function SpellSubsectionHandler(data, modGuid)
+  modGuid = data.modGuid or modGuid
   if data.ContainerSpells ~= nil then
     JsonUtils.ParseAndSubmitSpellStrings(data.ContainerSpells, data.ID, modGuid, "ContainerSpells", data.Action)
   end
