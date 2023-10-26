@@ -1,8 +1,5 @@
-local function OnSessionLoaded()
+local function OnStatsLoaded()
   LoadConfigFiles()
-  if IntegratedSupport.SubClasses ~= nil then
-    Api.InsertSubClasses(IntegratedSupport.SubClasses)
-  end
 end
 
-Ext.Events.SessionLoaded:Subscribe(OnSessionLoaded)
+Ext.Events.StatsLoaded:Subscribe(OnStatsLoaded)

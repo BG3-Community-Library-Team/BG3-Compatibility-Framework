@@ -97,18 +97,12 @@ local function BuildSelector(payload)
   end
 end
 
-local function IsPayloadInSelector(selectorField, selectorToInsert)
+local function IsPayloadInSelector(selectorField, selectorToInsert, idType)
   local found = false
-  for _, value in pairs(selectorField) do
-    local valID, newSelectorID
-    if selectorToInsert.UUID ~= nil then
-      valID = value.UUID
-      newSelectorID = selectorToInsert.UUID
-    elseif selectorToInsert.SpellUUID ~= nil then
-      valID = value.SpellUUID
-      newSelectorID = selectorToInsert.SpellUUID
-    end
 
+  local newSelectorID = selectorToInsert[idType]
+  for _, value in pairs(selectorField) do
+    local valID = value[idType]
     if valID == newSelectorID then
       found = true
     end
@@ -124,7 +118,10 @@ local function AddSelector(payload)
   local selectorField = target[payload.Function]
   local selectorToInsert = BuildSelector(payload)
 
-  if not IsPayloadInSelector(selectorField, selectorToInsert) then
+  if not IsPayloadInSelector(selectorField, selectorToInsert, Globals.SelectorIdTypes[payload.Function]) then
+    Ext.Utils.Print("SELECTOR")
+    Ext.Dump(selectorField)
+    Ext.Dump(selectorToInsert)
     target[payload.Function] = Utils.MergeTables(selectorField, { selectorToInsert })
   end
 end

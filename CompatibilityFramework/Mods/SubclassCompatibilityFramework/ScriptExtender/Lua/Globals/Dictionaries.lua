@@ -28,6 +28,17 @@ Globals.SelectorFunctions = {
   ReplacePassives = "ReplacePassives"
 }
 
+Globals.SelectorIdTypes = {
+  SelectSpells = "SpellUUID",
+  AddSpells = "SpellUUID",
+  SelectSkills = "UUID",
+  SelectPassives = "UUID",
+  SelectAbilityBonus = "UUID",
+  SelectSkillsExpertise = "UUID",
+  SelectEquipment = "UUID",
+  ReplacePassives = "UUID"
+}
+
 Globals.StringTypes = {
   Boosts = "Boosts",
   PassivesAdded = "PassivesAdded",

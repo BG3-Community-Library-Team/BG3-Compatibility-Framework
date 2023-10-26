@@ -45,7 +45,7 @@ end
 function JsonUtils.BuildSubclassPayload(data, modGuid)
   Utils.Info("Entering BuildSubclassPayload")
   return {
-    modGuid = modGuid,
+    modGuid = data.modGuid or modGuid,
     subClassGuid = data.UUID,
     class = data.Class,
     subClassName = data.SubClassName or ""

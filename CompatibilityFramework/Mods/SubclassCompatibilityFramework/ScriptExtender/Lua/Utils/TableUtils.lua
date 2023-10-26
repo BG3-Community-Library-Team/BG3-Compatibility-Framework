@@ -69,30 +69,33 @@ function Utils.GetTableSize(arr)
 end
 
 function Utils.InsertFromTableToTable(arr, resultArr, count)
+  resultArr = resultArr or {}
   for _, value in pairs(arr) do
     if not Utils.IsInTable(resultArr, value) then
       resultArr[count] = value
       count = count + 1
     end
   end
-  
+
   return resultArr, count
 end
 
 function Utils.MergeTables(arrA, arrB)
   local result = {}
-  local count = 0
+  if arrA ~= nil and arrB ~= nil then
+    for _, arrItem in pairs(arrA) do
+      table.insert(result, arrItem)
+    end
+    for _, arrItem in pairs(arrB) do
+      table.insert(result, arrItem)
+    end
+  end
 
-    if arrA ~= nil and arrB ~= nil then
-        result, count = Utils.InsertFromTableToTable(arrA, result, count)
-        result, count = Utils.InsertFromTableToTable(arrB, result, count)
-    end
-  
-    if arrA == nil then
-      result = arrB
-    elseif arrB == nil then
-      result = arrA
-    end
+  if arrA == nil then
+    result = arrB
+  elseif arrB == nil then
+    result = arrA
+  end
 
   return result
 end
