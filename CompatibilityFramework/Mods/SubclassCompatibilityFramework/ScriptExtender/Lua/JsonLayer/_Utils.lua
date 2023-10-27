@@ -163,15 +163,11 @@ end
 function JsonUtils.ParseAndSubmitStrings(data, target, modGuid, fileType)
   Utils.Info("Entering ParseAndSubmitStrings")
   local payloads = {
-    Insert = JsonUtils.BuildStringPayload(data, modGuid, target, fileType)
-    -- Remove = JsonUtils.BuildStringPayload(data, modGuid, target, fileType)
+    Insert = JsonUtils.BuildStringPayload(data, modGuid, target, fileType),
+    Remove = JsonUtils.BuildStringPayload(data, modGuid, target, fileType)
   }
 
-  for action, payload in pairs(payloads) do
-    if payload ~= nil then
-      JsonUtils.Endpoints[action].Strings({ payload })
-    end
-  end
+  JsonUtils.Endpoints[data.Action].Strings({ payloads[data.Action]})
 end
 
 function JsonUtils.ParseAndSubmitBoolean(data, target, modGuid, fileType)

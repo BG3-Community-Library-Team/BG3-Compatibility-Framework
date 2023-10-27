@@ -5,23 +5,23 @@ end
 
 local function RemoveString(payload)
   Utils.Info("Entering RemoveString")
-  local target = payload.Target or payload.TargetProgression
+  local targetId = payload.Target or payload.TargetProgression
   local fileType = payload.FileType or "Progression"
+  local target = Utils.CacheOrRetrieve(targetId, fileType)
 
   local separator = Globals.FieldSeparator[payload.Type]
 
   if DetectStringType(payload.Type) then
-    local field = Utils.CacheOrRetrieve(target, fileType)[payload.Type]
-    local fieldStrings = Utils.createTableFromString(field, separator)
+    local fieldStrings = Utils.createTableFromString(target[payload.Type], separator)
     local result = {}
 
-    for _, value in pairs(payload.Strings) do
-      if not Utils.IsInTable(fieldStrings, value) then
+    for _, value in pairs(fieldStrings) do
+      if not Utils.IsInTable(payload.Strings, value) then
         table.insert(result, value)
       end
     end
 
-    field = table.concat(result)
+    target[payload.Type] = table.concat(result, separator)
   else
     Utils.Error(Strings.ERROR_INVALID_PROGRESSION_TYPE)
   end
@@ -37,6 +37,7 @@ function HandleRemoveString(payload)
 end
 
 function RemoveSpellString(payload)
+  Utils.Info("Entering RemoveSpellString")
   local target = Ext.Stats.Get(payload.Target)
   local separator = ";"
 
