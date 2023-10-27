@@ -40,7 +40,9 @@ function RemoveSpellString(payload)
   Utils.Info("Entering RemoveSpellString")
   local target = Ext.Stats.Get(payload.Target)
   local separator = ";"
-
+  if target == nil then
+    Utils.Error(Strings.ERROR_TARGET_NOT_FOUND)
+  end
   local fieldStrings = Utils.createTableFromString(target[payload.Type], separator)
   local result = {}
 

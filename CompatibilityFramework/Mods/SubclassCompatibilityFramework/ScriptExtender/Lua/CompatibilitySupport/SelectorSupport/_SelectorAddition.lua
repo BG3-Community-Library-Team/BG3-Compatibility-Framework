@@ -114,6 +114,9 @@ local function AddSelector(payload)
   Utils.Info("Entering AddSelector")
   local target = payload.Target or payload.TargetProgression
   local type = payload.FileType or "Progression"
+  if target == nil then
+    Utils.Error(Strings.ERROR_TARGET_NOT_FOUND)
+  end
   local targetObj = Utils.CacheOrRetrieve(target, type)
   local selectorField = targetObj[payload.Function]
   local selectorToInsert = BuildSelector(payload)

@@ -11,6 +11,11 @@ function AddList(payload)
   if Utils.IsKeyInTable(Globals.ListTypes, payload.ListType) then
     local listNode = Globals.ListNodes[payload.ListType]
     local list     = Utils.CacheOrRetrieve(payload.TargetList, payload.ListType)
+
+    if list == nil then
+      Utils.Error(Strings.ERROR_LIST_NOT_FOUND)
+    end
+
     local tempList = {}
     if list[listNode] ~= nil then
       AddToTempTable(tempList, list[listNode])

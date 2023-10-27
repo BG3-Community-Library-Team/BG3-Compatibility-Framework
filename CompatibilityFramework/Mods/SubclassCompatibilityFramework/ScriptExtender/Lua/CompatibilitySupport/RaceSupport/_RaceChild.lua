@@ -1,7 +1,9 @@
 local function AddRaceChildren(payload)
   Utils.Info("Entering AddRaceChildren")
   local raceData = Utils.CacheOrRetrieve(payload.raceGuid, "Race")
-
+  if raceData == nil then
+    Utils.Error(Strings.ERROR_RACE_DATA_NOT_FOUND)
+  end
   for _, entry in pairs(payload.children) do
     if raceData[entry.Type] == nil then
       raceData[entry.Type] = { entry.Value }

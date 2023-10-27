@@ -33,3 +33,5 @@ Strings.ERROR_LIST_DOES_NOT_EXIST_IN_DICTIONARY_EQUIPMENT = "List is not defined
 Strings.ERROR_LIST_DOES_NOT_EXIST_IN_DICTIONARY_SKILL = "List is not defined in Globals.SkillLists"
 Strings.ERROR_LIST_DOES_NOT_EXIST_IN_DICTIONARY_SPELL = "List is not defined in Globals.SpellLists"
 Strings.ERROR_LIST_DOES_NOT_EXIST_IN_DICTIONARY_PASSIVE = "List is not defined in Globals.PassiveLists"
+Strings.ERROR_TARGET_NOT_FOUND = "Target Object not found!"
+Strings.ERROR_RACE_DATA_NOT_FOUND = "Race Data not found!"

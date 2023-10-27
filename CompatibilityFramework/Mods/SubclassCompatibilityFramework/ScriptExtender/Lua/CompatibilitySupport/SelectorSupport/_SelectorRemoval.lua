@@ -2,6 +2,9 @@ local function RemoveSelector(payload)
   Utils.Info("Entering RemoveSelector")
   local target = payload.TargetUUID
   local type = payload.FileType or "Progression"
+  if target == nil then
+    Utils.Error(Strings.ERROR_TARGET_NOT_FOUND)
+  end
   local selectorField = Utils.CacheOrRetrieve(target, type)[payload.Function]
   local result = {}
 

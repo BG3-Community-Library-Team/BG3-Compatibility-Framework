@@ -25,7 +25,9 @@ local function AddString(payload)
   Utils.Info("Entering AddString")
   local target = payload.Target or payload.TargetProgression
   local fileType = payload.FileType or "Progression"
-
+  if target == nil then
+    Utils.Error(Strings.ERROR_TARGET_NOT_FOUND)
+  end
   if DetectStringType(payload.Type) then
     local target = Utils.CacheOrRetrieve(target, fileType)
     local stringsToInsert = stripDuplicates(target[payload.Type], payload.Strings)
