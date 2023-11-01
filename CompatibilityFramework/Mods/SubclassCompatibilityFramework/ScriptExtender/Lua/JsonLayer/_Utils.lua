@@ -51,7 +51,8 @@ function JsonUtils.BuildSubclassPayload(data, classId, modGuid, subclassGuid)
     modGuid = data.modGuid or modGuid,
     subClassGuid = subclassGuid,
     class = classId,
-    subClassName = data.SubClassName or ""
+    subClassName = data.SubClassName or "",
+    isIntegrated = data.IsIntegrated or false
   }
 end
 
@@ -167,7 +168,7 @@ function JsonUtils.ParseAndSubmitStrings(data, target, modGuid, fileType)
     Remove = JsonUtils.BuildStringPayload(data, modGuid, target, fileType)
   }
 
-  JsonUtils.Endpoints[data.Action].Strings({ payloads[data.Action]})
+  JsonUtils.Endpoints[data.Action].Strings({ payloads[data.Action] })
 end
 
 function JsonUtils.ParseAndSubmitBoolean(data, target, modGuid, fileType)

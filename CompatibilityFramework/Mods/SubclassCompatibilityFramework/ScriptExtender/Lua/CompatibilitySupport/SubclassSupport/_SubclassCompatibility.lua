@@ -1,26 +1,21 @@
 -- Insert Subclass into Progression Nodes
-local function AttachSubClass(subClassGuid, parentClassProgressionGuid)
+local function AttachSubClass(subClassGuid, progression)
   Utils.Info("Entering AttachSubClass")
-  local subClassNodes = Globals.ClassProgressions[parentClassProgressionGuid].SubClasses
-
-  if subClassNodes ~= nil and not Utils.IsInTable(subClassNodes, subClassGuid) then
-    -- Utils.Info("Adding " .. subClassGuid .. " to Progression")
-    Utils.AddToTable(subClassNodes, subClassGuid)
-  end
-end
-
--- Cache our Subclass-Choice Progression if it's not already loaded
-local function PrepareMainClassProgression(parentClassProgressionGuid)
-  Utils.Info("Entering PrepareMainClassProgression")
-  if Globals.ClassProgressions[parentClassProgressionGuid] == nil then
-    -- Cache our Progression for later usage
-    Globals.ClassProgressions[parentClassProgressionGuid] = Ext.StaticData.Get(parentClassProgressionGuid, "Progression")
+  local sortTable = {}
+  local subclassTable = {}
+  for _, val in pairs(progression.SubClasses) do
+    Utils.AddToTable(sortTable, { Utils.RetrieveHandle(val, "ClassDescription", "DisplayName"), val })
   end
 
-  if not Utils.IsInTable(Globals.ClassUUIDs, parentClassProgressionGuid) then
-    -- Utils.Info(parentClassProgressionGuid .. " not present in ClassUUIDs, inserting...")
-    local className = Globals.ClassProgressions[parentClassProgressionGuid].Name
-    Globals.ClassUUIDs[className] = parentClassProgressionGuid
+  table.sort(sortTable, Utils.SimpleCompare)
+
+  for _, val in pairs(sortTable) do
+    Utils.AddToTable(subclassTable, val[2])
+  end
+  if progression.SubClasses ~= nil and not Utils.IsInTable(progression.SubClasses, subClassGuid) then
+    Utils.AddToTable(subclassTable, subClassGuid)
+
+    progression.SubClasses = subclassTable
   end
 end
 
@@ -36,7 +31,6 @@ end
 
 local function AddSubClass(guid, parentClass)
   Utils.Info("Entering AddSubClass")
-
   if parentClass ~= nil then
     local classGuid = ClassNameToGuid(parentClass)
 
@@ -45,13 +39,12 @@ local function AddSubClass(guid, parentClass)
       return
     end
 
-    PrepareMainClassProgression(classGuid) -- TODO: Replace with Utils.CacheOrRetrieve
-    AttachSubClass(guid, classGuid)
+    AttachSubClass(guid, Utils.CacheOrRetrieve(classGuid, "Progression"))
   end
 end
 
-function SubClassHandler(guid, parentClass)
+function SubClassHandler(payload)
   Utils.Info("Entering SubClassHandler")
-  AddSubClass(guid, parentClass)
-  AddSubClass(guid, Globals.MulticlassClasses[parentClass])
+  AddSubClass(payload.subClassGuid, payload.class)
+  AddSubClass(payload.subClassGuid, Globals.MulticlassClasses[payload.class])
 end

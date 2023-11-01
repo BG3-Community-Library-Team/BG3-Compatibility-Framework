@@ -18,10 +18,10 @@ function Api.RemoveRaceChildData(payloads)
   Utils.Info("Entering API.RemoveRaceChildData")
 
   for _, payload in pairs(payloads) do
-    local err = DoValidation(payloads, { Validators = { IsPayloadEmpty = Strings.ERROR_EMPTY_PAYLOAD } })
+    local err = DoValidation(payloads, { Validators = { IsPayloadEmpty = Strings.ERROR_EMPTY_PAYLOAD, IsModLoaded = Strings.ERROR_MOD_NOT_LOADED } })
 
     if err ~= nil then
-      Utils.Error(error)
+      Utils.Warn(err)
       return
     end
 

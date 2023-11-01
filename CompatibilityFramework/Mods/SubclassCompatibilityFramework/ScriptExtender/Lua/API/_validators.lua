@@ -19,7 +19,7 @@ function Validators.IsPayloadEmpty(payload, params, val)
 end
 
 function Validators.IsPayloadValid(payload, params, val)
-  params.ExpectFields = params.ExpectFields or {"modGuid"}
+  params.ExpectFields = params.ExpectFields or { "modGuid" }
   local missingFields = {}
   for _, field in pairs(params.ExpectFields) do
     if payload[field] == nil then
@@ -31,7 +31,7 @@ function Validators.IsPayloadValid(payload, params, val)
 end
 
 function Validators.IsModLoaded(payload, params, val)
-  if not Ext.IsModLoaded(payload.modGuid) then
+  if not Ext.Mod.IsModLoaded(payload.modGuid) then
     return val .. payload.modGuid
   end
 end

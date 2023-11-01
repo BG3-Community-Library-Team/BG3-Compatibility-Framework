@@ -1,11 +1,21 @@
 -- For adding Support to 1 or more Subclasses
-function Api.InsertSubClasses(subClasses)
-  if subClasses ~= nil then
-    for _, subClass in pairs(subClasses) do
-      if Ext.Mod.IsModLoaded(subClass.modGuid) then
-        SubClassHandler(subClass.subClassGuid, subClass.class)
+function Api.InsertSubClasses(payloads)
+  for _, payload in pairs(payloads) do
+    local err = DoValidation(payload,
+      {
+        Validators = { IsPayloadEmpty = Strings.ERROR_EMPTY_PAYLOAD, IsModLoaded = Strings.ERROR_MOD_NOT_LOADED },
+        IsIntegrated = payload.isIntegrated
+      })
+
+    if err ~= nil then
+      if not payload.isIntegrated then
+        Utils.Warn(err)
       end
+
+      return
     end
+
+    SubClassHandler(payload)
   end
 end
 

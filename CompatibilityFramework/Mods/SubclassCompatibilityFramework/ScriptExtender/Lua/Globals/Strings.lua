@@ -35,3 +35,4 @@ Strings.ERROR_LIST_DOES_NOT_EXIST_IN_DICTIONARY_SPELL = "List is not defined in 
 Strings.ERROR_LIST_DOES_NOT_EXIST_IN_DICTIONARY_PASSIVE = "List is not defined in Globals.PassiveLists"
 Strings.ERROR_TARGET_NOT_FOUND = "Target Object not found!"
 Strings.ERROR_RACE_DATA_NOT_FOUND = "Race Data not found!"
+Strings.WARN_SERVER_FUNCTION_NO_LONGER_REQUIRED = "Unnecessary call from external mod to Compatibility Framework API from BootstrapServer.lua. This is not a bug, but the mod calling Compatibility Framework should remove the call to Compatibility Framework's API from their BootstrapServer file, leaving it in the BootstrapClient file."

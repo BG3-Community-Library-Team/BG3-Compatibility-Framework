@@ -3,9 +3,11 @@ function Utils.IsInString(str, value)
 end
 
 function Utils.IsGuid(string)
-  local x = "%x"
-  local t = { x:rep(8), x:rep(4), x:rep(4), x:rep(4), x:rep(12) }
-  local pattern = table.concat(t, '%-')
+    local pattern = "^%x%x%x%x%x%x%x%x%-%x%x%x%x%-%x%x%x%x%-%x%x%x%x%-%x%x%x%x%x%x%x%x%x%x%x%x$"
 
-  return string:match(pattern)
+    return string:match(pattern)
+end
+
+function Utils.RetrieveHandle(uuid, staticDataType, stringType)
+  return Ext.Loca.GetTranslatedString(Ext.StaticData.Get(uuid, staticDataType)[stringType].Handle.Handle)
 end

@@ -8,7 +8,7 @@ Globals.MulticlassClasses = {}
 Globals.ClassProgressions = {}
 Globals.Cache = {}
 Globals.Debug = false
-Globals.ShowWarnings = false
+Globals.ShowWarnings = true
 Globals.SpellLists = {}
 Globals.Progressions = {}
 
