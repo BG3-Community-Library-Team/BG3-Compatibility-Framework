@@ -42,7 +42,7 @@ function ProgressionJsonHandler(data, modGuid)
   Utils.Info("Entering ProgressionJsonHandler")
   for _, progressions in pairs(data) do
     if progressions.UUIDs ~= nil then
-      for _, uuid in pairs(data.UUIDs) do
+      for _, uuid in pairs(progressions.UUIDs) do
         ProgressionSubSectionHandler(progressions, uuid, modGuid)
       end
     elseif progressions.UUID ~= nil then
