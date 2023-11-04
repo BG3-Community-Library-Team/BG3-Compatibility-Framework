@@ -15,15 +15,18 @@ function JsonUtils.ParseAndSubmitSpellStrings(spells, target, modGuid, stringTyp
     Remove = JsonUtils.BuildSpellStringPayload(spells, target, modGuid, stringType)
   }
 
-  if payloads[action] ~= nil then
-    JsonUtils.Endpoints[action][stringType]({ payloads[action] })
+    if payloads[action] ~= nil then
+    JsonUtils.Endpoints[action].SpellData({ payloads[action] })
   end
 end
 
 function SpellSubsectionHandler(data, modGuid)
   modGuid = data.modGuid or modGuid
-  if data.ContainerSpells ~= nil then
-    JsonUtils.ParseAndSubmitSpellStrings(data.ContainerSpells, data.ID, modGuid, "ContainerSpells", data.Action)
+  local blacklistedKeys = { ["modGuid"] = true, ["UUID"] = true, ["ID"] = true, ["Action"] = true }
+  for key, val in pairs(data) do
+    if not blacklistedKeys[key] then
+      JsonUtils.ParseAndSubmitSpellStrings(val, data.ID, modGuid, key, data.Action)
+    end
   end
 end
 

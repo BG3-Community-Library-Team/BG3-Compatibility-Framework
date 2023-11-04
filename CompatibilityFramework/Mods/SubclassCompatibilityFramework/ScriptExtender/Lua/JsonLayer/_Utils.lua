@@ -6,14 +6,14 @@ JsonUtils.Endpoints = {
     Subclass = Api.InsertSubClasses,
     Strings = Api.InsertStrings,
     Selector = Api.InsertSelectors,
-    ContainerSpells = Api.InsertSpellStrings
+    SpellData = Api.InsertSpellStrings
   },
   Remove = {
     ActionResourceGroup = Api.RemoveResourceFromGroup,
     Race = Api.RemoveRaceChildData,
     Strings = Api.RemoveStrings,
     Selector = Api.RemoveSelectors,
-    ContainerSpells = Api.RemoveSpellStrings
+    SpellData = Api.RemoveSpellStrings
   },
   Set = {
     Booleans = Api.SetBoolean

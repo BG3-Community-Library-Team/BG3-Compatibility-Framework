@@ -1,5 +1,5 @@
 local function ParseAndSubmitSubclasses(data, classId, modGuid)
-    Utils.Info("Entering ParseAndSubmitSubclasses")
+  Utils.Info("Entering ParseAndSubmitSubclasses")
   if Utils.IsGuid(classId) then
     classId = string.lower(DictUtils.RetrieveClassNameFromProgression(classId))
   end

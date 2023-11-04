@@ -40,20 +40,21 @@ function RemoveSpellString(payload)
   Utils.Info("Entering RemoveSpellString")
   local target = Ext.Stats.Get(payload.Target)
   local separator = ";"
-  if target == nil then
+  if target ~= nil then
+    local fieldStrings = Utils.createTableFromString(target[payload.Type], separator)
+    local result = {}
+
+    for _, value in pairs(fieldStrings) do
+      if not Utils.IsInTable(payload.SubSpells, value) then
+        table.insert(result, value)
+      end
+    end
+
+    target[payload.Type] = table.concat(result, separator)
+    Ext.Stats.Sync(payload.Target)
+  else
     Utils.Error(Strings.ERROR_TARGET_NOT_FOUND)
   end
-  local fieldStrings = Utils.createTableFromString(target[payload.Type], separator)
-  local result = {}
-
-  for _, value in pairs(fieldStrings) do
-    if not Utils.IsInTable(payload.SubSpells, value) then
-      table.insert(result, value)
-    end
-  end
-
-  target[payload.Type] = table.concat(result, separator)
-  Ext.Stats.Sync(payload.Target)
 end
 
 function HandleRemoveSpellString(payload)

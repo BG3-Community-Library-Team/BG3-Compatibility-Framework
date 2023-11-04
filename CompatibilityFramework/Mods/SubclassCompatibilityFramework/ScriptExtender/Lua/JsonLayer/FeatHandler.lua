@@ -8,7 +8,7 @@ function FeatJsonHandler(data, modGuid)
     end
 
     if feat.Strings ~= nil then
-      for _, strings in pairs(feat.strings) do
+      for _, strings in pairs(feat.Strings) do
         JsonUtils.ParseAndSubmitStrings(strings, feat.UUID, modGuid, "Feat")
       end
     end

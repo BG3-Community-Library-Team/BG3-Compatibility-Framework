@@ -26,7 +26,8 @@ end
 
 function Api.InsertSpellStrings(payloads)
   for _, payload in pairs(payloads) do
-    local err = DoValidation(payload, { Validators = { IsPayloadEmpty = Strings.ERROR_EMPTY_PAYLOAD, IsModLoaded = Strings.ERROR_MOD_NOT_LOADED } })
+    local err = DoValidation(payload,
+      { Validators = { IsPayloadEmpty = Strings.ERROR_EMPTY_PAYLOAD, IsModLoaded = Strings.ERROR_MOD_NOT_LOADED } })
 
     if err ~= nil then
       Utils.Warn(err)
@@ -39,7 +40,8 @@ end
 
 function Api.RemoveSpellStrings(payloads)
   for _, payload in pairs(payloads) do
-    local err = DoValidation(payload, { Validators = { IsPayloadEmpty = Strings.ERROR_EMPTY_PAYLOAD, IsModLoaded = Strings.ERROR_MOD_NOT_LOADED } })
+    local err = DoValidation(payload,
+      { Validators = { IsPayloadEmpty = Strings.ERROR_EMPTY_PAYLOAD, IsModLoaded = Strings.ERROR_MOD_NOT_LOADED } })
 
     if err ~= nil then
       Utils.Warn(err)
