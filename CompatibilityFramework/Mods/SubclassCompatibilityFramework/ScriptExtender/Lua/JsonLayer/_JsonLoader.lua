@@ -44,6 +44,7 @@ function LoadConfigFiles()
     local filePath = configFilePathPattern:format(modData.Info.Directory)
     local config = Ext.IO.LoadFile(filePath, "data")
     if config ~= nil and config ~= "" then
+      Utils.Info("Found config for Mod: " .. Ext.Mod.GetMod(uuid).Info.Name)
       local b, err = xpcall(TryLoadConfig, debug.traceback, config, uuid)
       if not b then
         Utils.Error(err)

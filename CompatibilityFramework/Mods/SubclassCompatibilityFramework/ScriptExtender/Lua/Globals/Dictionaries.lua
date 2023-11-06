@@ -22,6 +22,7 @@ Globals.SelectorFunctions = {
   AddSpells = "AddSpells",
   SelectSkills = "SelectSkills",
   SelectPassives = "SelectPassives",
+  SelectAbilities = "SelectAbilities",
   SelectAbilityBonus = "SelectAbilityBonus",
   SelectSkillsExpertise = "SelectSkillsExpertise",
   SelectEquipment = "SelectEquipment",
