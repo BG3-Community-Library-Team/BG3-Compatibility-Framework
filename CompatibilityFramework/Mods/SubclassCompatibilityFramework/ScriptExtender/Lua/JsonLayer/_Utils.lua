@@ -57,7 +57,7 @@ function JsonUtils.BuildSubclassPayload(data, classId, modGuid, subclassGuid)
 end
 
 function JsonUtils.BuildAddSelectorPayload(data, modGuid, target, type)
-  Utils.Info("Entering BuildSelectorPayload")
+  Utils.Info("Entering BuildAddSelectorPayload")
 
   return {
     modGuid = data.modGuid or modGuid,
@@ -70,7 +70,7 @@ function JsonUtils.BuildAddSelectorPayload(data, modGuid, target, type)
 end
 
 function JsonUtils.BuildRemoveSelectorPayload(data, modGuid, target, type)
-  Utils.Info("Entering BuildSelectorPayload")
+  Utils.Info("Entering BuildRemoveSelectorPayload")
 
   return {
     modGuid = data.modGuid or modGuid,
