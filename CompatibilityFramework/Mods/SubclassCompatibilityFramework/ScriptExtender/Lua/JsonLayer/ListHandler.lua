@@ -1,19 +1,18 @@
-function ParseAndSubmitLists(data, modGuid)
+function ParseAndSubmitLists(data, listId, modGuid)
   Utils.Info("Entering ParseAndSubmitLists")
-
-  if data.UUIDs ~= nil then
-    for _, uuid in pairs(data.UUIDs) do
-      JsonUtils.Endpoints[data.Action].List({ JsonUtils.BuildListPayload(data, modGuid, uuid) })
-    end
-  else
-    JsonUtils.Endpoints[data.Action].List({JsonUtils.BuildListPayload(data, modGuid)})
-  end
-
+  JsonUtils.Endpoints[data.Action].List({ JsonUtils.BuildListPayload(data, modGuid, listId) })
 end
 
 function ListJsonHandler(data, modGuid)
   Utils.Info("Entering ListJsonHandler")
+
   for _, list in pairs(data) do
-    ParseAndSubmitLists(list, modGuid)
+    if list.UUIDs ~= nil then
+      for _, uuid in pairs(list.UUIDs) do
+        ParseAndSubmitLists(list, uuid, modGuid)
+      end
+    else
+      ParseAndSubmitLists(list, list.UUID, modGuid)
+    end
   end
 end

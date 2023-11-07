@@ -32,7 +32,7 @@ end
 
 function HandleList(payload)
   if payload ~= nil then
-    Utils.Info("Entering HandleSelector")
+    Utils.Info("Entering HandleList")
     AddList(payload)
   else
     Utils.Error(Strings.ERROR_EMPTY_PAYLOAD)
