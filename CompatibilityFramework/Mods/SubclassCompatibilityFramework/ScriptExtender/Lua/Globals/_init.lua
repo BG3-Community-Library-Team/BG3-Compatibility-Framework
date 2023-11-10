@@ -1,6 +1,7 @@
 Globals = {}
 Strings = {}
 DictUtils = {}
+Queue = {}
 
 Globals.SupportedSubClasses = {}
 Globals.ClassUUIDs = {}
@@ -12,6 +13,7 @@ Globals.ShowWarnings = true
 Globals.SpellLists = {}
 Globals.Progressions = {}
 
+Ext.Require("Globals/Queue.lua")
 Ext.Require("Globals/Dictionaries.lua")
 Ext.Require("Globals/MulticlassDictionary.lua")
 Ext.Require("Globals/Strings.lua")

@@ -62,7 +62,7 @@ local function AddSpellString(payload)
     table.insert(baseSpells, spell)
   end
 
-  table.sort(baseSpells)
+  -- table.sort(baseSpells)
 
   target[payload.Type] = table.concat(baseSpells, separator)
   Ext.Stats.Sync(payload.Target)

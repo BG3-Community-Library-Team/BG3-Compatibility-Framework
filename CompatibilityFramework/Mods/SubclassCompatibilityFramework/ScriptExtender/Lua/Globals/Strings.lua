@@ -38,6 +38,6 @@ Strings.ERROR_LIST_DOES_NOT_EXIST_IN_DICTIONARY_SPELL = "List is not defined in 
 Strings.ERROR_LIST_DOES_NOT_EXIST_IN_DICTIONARY_PASSIVE = "List is not defined in Globals.PassiveLists"
 Strings.ERROR_TARGET_NOT_FOUND = "Target Object not found!"
 Strings.ERROR_RACE_DATA_NOT_FOUND = "Race Data not found!"
-Strings.WARN_INVALID_SPELLDATA_SUPPLIED = "The following SpellData was supplied to CF, but does not exist: "
+Strings.WARN_INVALID_SPELLDATA_SUPPLIED = "The following Stats Data was either supplied to CF or manually defined in *List.lsx, but does not exist: "
 Strings.WARN_SERVER_FUNCTION_NO_LONGER_REQUIRED =
 "Unnecessary call from external mod to Compatibility Framework API from BootstrapServer.lua. THIS IS NOT A BUG. The mod using Compatibility Framework API can remove their API call from BootstrapServer file, leaving it in the BootstrapClient file."

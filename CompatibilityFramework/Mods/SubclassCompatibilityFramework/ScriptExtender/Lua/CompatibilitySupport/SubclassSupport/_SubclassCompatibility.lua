@@ -7,7 +7,7 @@ local function AttachSubClass(subClassGuid, progression)
     Utils.AddToTable(sortTable, { Utils.RetrieveHandle(val, "ClassDescription", "DisplayName"), val })
   end
 
-  table.sort(sortTable, Utils.SimpleCompare)
+  -- table.sort(sortTable, Utils.SimpleCompare)
 
   for _, val in pairs(sortTable) do
     Utils.AddToTable(subclassTable, val[2])
