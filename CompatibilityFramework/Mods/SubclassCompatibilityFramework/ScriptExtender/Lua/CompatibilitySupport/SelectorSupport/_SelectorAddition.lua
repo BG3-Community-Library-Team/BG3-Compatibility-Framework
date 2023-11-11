@@ -2,7 +2,7 @@ local function BuildSelectSpellsTable(params)
   return {
     SpellUUID = params.Guid or params.UUID,
     Amount = params.Amount or "1",
-    Arg3 = params.Prepared or "0",
+    Arg3 = params.SwapAmount or params.Prepared or "0",
     SelectorId = params.SelectorId or " ",
     CastingAbility = params.CastingAbility or "None",
     ActionResource = params.ActionResource or "d136c5d9-0ff0-43da-acce-a74a07f8d6bf",
