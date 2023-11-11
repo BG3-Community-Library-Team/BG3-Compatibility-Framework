@@ -1,22 +1,14 @@
 -- Insert Subclass into Progression Nodes
-local function AttachSubClass(subClassGuid, progression)
+local function AttachSubClass(subClassGuid, classGuid)
   Utils.Info("Entering AttachSubClass")
-  local sortTable = {}
-  local subclassTable = {}
-  for _, val in pairs(progression.SubClasses) do
-    Utils.AddToTable(sortTable, { Utils.RetrieveHandle(val, "ClassDescription", "DisplayName"), val })
-  end
 
-  -- table.sort(sortTable, Utils.SimpleCompare)
-
-  for _, val in pairs(sortTable) do
-    Utils.AddToTable(subclassTable, val[2])
+  if Queue.Progressions[classGuid] == nil then
+    Queue.Progressions[classGuid] = {}
   end
-  if progression.SubClasses ~= nil and not Utils.IsInTable(progression.SubClasses, subClassGuid) then
-    Utils.AddToTable(subclassTable, subClassGuid)
-
-    progression.SubClasses = subclassTable
+  if Queue.Progressions[classGuid].SubClasses == nil then
+    Queue.Progressions[classGuid].SubClasses = {}
   end
+  Utils.AddToTable(Queue.Progressions[classGuid].SubClasses, subClassGuid)
 end
 
 -- Check if our classname is already a guid
@@ -39,7 +31,7 @@ local function AddSubClass(guid, parentClass)
       return
     end
 
-    AttachSubClass(guid, Utils.CacheOrRetrieve(classGuid, "Progression"))
+    AttachSubClass(guid, classGuid)
   end
 end
 

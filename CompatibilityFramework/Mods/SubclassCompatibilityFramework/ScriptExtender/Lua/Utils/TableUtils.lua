@@ -115,9 +115,9 @@ end
 function Utils.SimpleCompare(a, b)
   for idx = 1, #a do
     a[idx] = a[idx]:gsub("of ", "")
-    a[idx] = a[idx]:gsub("the ", ""):lower()
+    a[idx] = a[idx]:gsub("the ", "")
     b[idx] = b[idx]:gsub("of ", "")
-    b[idx] = b[idx]:gsub("the ", ""):lower()
+    b[idx] = b[idx]:gsub("the ", "")
     if a[idx] == b[idx] and a[idx + 1] < b[idx + 1] then
       return true
     elseif a[idx] ~= b[idx] and a[idx] < b[idx] == true then

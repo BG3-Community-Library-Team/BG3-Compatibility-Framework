@@ -1,11 +1,11 @@
 Queue.ActionResourceGroup = {}
 Queue.Progressions = {
-  IsMulticlass = "",
-  Boosts = "",
-  PassivesAdded = "",
-  PassivesRemoved = "",
-  Selectors = "",
-  SubClasses = {},
+  -- IsMulticlass = "",
+  -- Boosts = "",
+  -- PassivesAdded = "",
+  -- PassivesRemoved = "",
+  -- Selectors = "",
+  -- SubClasses = {},
 }
 Queue.Feats = {}
 Queue.Lists = {
