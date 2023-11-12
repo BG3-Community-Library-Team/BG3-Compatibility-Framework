@@ -1,0 +1,15 @@
+{
+  "FileVersion": 1,
+  "Progressions": [
+    {
+      "UUID": "296468cb-3640-4460-9f44-b30ee820a9ed",
+      "Subclasses": [
+        {
+          "UUID": "dd9f59af-7b14-4d01-bb7a-cbb372ff0a7a",
+          "modGuid": "b4ff257e-7522-4fcd-b919-7dec4250dc36",
+          "Comment": "Way of Kensei (YuukaYunna)"
+        }
+      ]
+    }
+  ]
+}

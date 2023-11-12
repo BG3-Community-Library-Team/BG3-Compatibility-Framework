@@ -1,13 +1,7 @@
 -- Insert Subclass into Progression Nodes
 local function AttachSubClass(subClassGuid, classGuid)
   Utils.Info("Entering AttachSubClass")
-
-  if Queue.Progressions[classGuid] == nil then
-    Queue.Progressions[classGuid] = {}
-  end
-  if Queue.Progressions[classGuid].SubClasses == nil then
-    Queue.Progressions[classGuid].SubClasses = {}
-  end
+  Utils.BuildQueueEntry("Progressions", classGuid, "SubClasses")
   Utils.AddToTable(Queue.Progressions[classGuid].SubClasses, subClassGuid)
 end
 

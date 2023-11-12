@@ -41,3 +41,4 @@ Strings.ERROR_RACE_DATA_NOT_FOUND = "Race Data not found!"
 Strings.WARN_INVALID_SPELLDATA_SUPPLIED = "The following Stats Data was either supplied to CF or manually defined in *List.lsx, but does not exist: "
 Strings.WARN_SERVER_FUNCTION_NO_LONGER_REQUIRED =
 "Unnecessary call from external mod to Compatibility Framework API from BootstrapServer.lua. THIS IS NOT A BUG. The mod using Compatibility Framework API can remove their API call from BootstrapServer file, leaving it in the BootstrapClient file."
+Strings.WARN_LAST_CALL = "StatsLoaded Complete. Session Loading. Any mods calling the CF API after this point may not appear. Please contact the developer of any missing mods and inform them to switch their CF API call to happen on StatsLoaded instead of on SessionLoaded."
