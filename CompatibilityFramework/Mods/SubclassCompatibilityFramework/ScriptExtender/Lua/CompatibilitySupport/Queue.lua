@@ -23,14 +23,14 @@ function Queue.CommitProgressions_Subclasses(progression, subclasses)
   progression.SubClasses = Utils.SortStaticData(strippedList, "ClassDescription", "DisplayName")
 end
 
-function Queue.CommitProgressions_Strings(progression, stringArr)
+function Queue.Commit_Strings(objectType, stringArr)
   --for _, value in pairs(progression.Strings) do
   --_P("Key: " .. key .. " | Value: ")
   --_D(value)
   --end
 end
 
-function Queue.CommitProgressions_Selectors(progression, selectors)
+function Queue.Commit_Selectors(objectType, selectors)
   for selectorFunction, selectorGroup in pairs(selectors) do
     local res = {}
     local count = 1
@@ -42,21 +42,40 @@ function Queue.CommitProgressions_Selectors(progression, selectors)
       end
     end
 
-    for _, val in pairs(progression[selectorFunction]) do
+    for _, val in pairs(objectType[selectorFunction]) do
       if not Utils.IsPayloadInSelector(res, val, Globals.SelectorIdTypes[selectorFunction]) then
         Utils.AddKeyValueToTable(res, tostring(count), val)
         count = count + 1
       end
     end
-    progression[selectorFunction] = res
+    objectType[selectorFunction] = res
   end
 end
 
-function Queue.CommitProgressions_Booleans(progression, booleans)
+function Queue.Commit_Booleans(objectType, booleans)
   --for _, value in pairs(progression.Booleans) do
   --_P("Key: " .. key .. " | Value: ")
   --_D(value)
   --end
+end
+
+function Queue.CommitFeats()
+  for featId, featTable in pairs(Queue.Feats) do
+    local feat = Utils.CacheOrRetrieve(featId, "Feat")
+    if feat ~= nil then
+
+      if featTable.Strings ~= nil then
+        Queue.Commit_Strings(feat, featTable.Strings)
+      end
+      if feat.Selectors ~= nil then
+        Queue.Commit_Selectors(feat, featTable.Selectors)
+      end
+
+      if featTable.Booleans ~= nil then
+        Queue.Commit_Booleans(feat, featTable.Booleans)
+      end
+    end
+  end
 end
 
 function Queue.CommitProgressions()
@@ -68,7 +87,7 @@ function Queue.CommitProgressions()
       end
 
       if progressionTable.Selectors ~= nil then
-        Queue.CommitProgressions_Selectors(progression, progressionTable.Selectors)
+        Queue.Commit_Selectors(progression, progressionTable.Selectors)
       end
 
       if progressionTable.Strings ~= nil then

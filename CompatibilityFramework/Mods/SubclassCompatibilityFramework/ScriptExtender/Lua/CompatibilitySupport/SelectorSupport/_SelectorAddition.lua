@@ -119,12 +119,6 @@ local function AddSelector(payload)
   else
     Utils.Error(Strings.ERROR_TARGET_NOT_FOUND)
   end
-  --local targetObj = Utils.CacheOrRetrieve(target, type)
-  --local selectorField = targetObj[payload.Function]
-
-  --if not IsPayloadInSelector(selectorField, selectorToInsert, Globals.SelectorIdTypes[payload.Function]) then
-  --  targetObj[payload.Function] = Utils.MergeTables(selectorField, { selectorToInsert })
-  --end
 end
 
 function HandleSelector(payload)
