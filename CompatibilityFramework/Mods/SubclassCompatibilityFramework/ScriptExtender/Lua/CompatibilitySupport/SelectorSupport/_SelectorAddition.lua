@@ -1,10 +1,16 @@
 local function BuildSelectSpellsTable(params)
+  local castingAbility = params.CastingAbility
+  if not Utils.IsInTable(Globals.Attributes, params.CastingAbility) then
+    castingAbility = "None"
+  end
+
   return {
     SpellUUID = params.Guid or params.UUID,
     Amount = params.Amount or "1",
     Arg3 = params.SwapAmount or params.Prepared or "0",
-    SelectorId = params.SelectorId or " ",
-    CastingAbility = params.CastingAbility or "None",
+    SelectorId = params.SelectorId or "",
+    CastingAbility = castingAbility,
+    ClassUUID = params.ClassUUID or "00000000-0000-0000-0000-000000000000",
     ActionResource = params.ActionResource or "d136c5d9-0ff0-43da-acce-a74a07f8d6bf",
     PrepareType = params.PrepareType or "Unknown",
     CooldownType = params.CooldownType or "Default"
@@ -12,10 +18,14 @@ local function BuildSelectSpellsTable(params)
 end
 
 local function BuildAddSpellsTable(params)
+  local castingAbility = params.CastingAbility
+  if not Utils.IsInTable(Globals.Attributes, params.CastingAbility) then
+    castingAbility = "None"
+  end
   return {
     SpellUUID = params.Guid or params.UUID,
-    SelectorId = params.Descriptor or " ",
-    Ability = params.CastingAbility or "None",
+    SelectorId = params.Descriptor or "",
+    Ability = castingAbility or "None",
     ActionResource = params.ActionResource or "d136c5d9-0ff0-43da-acce-a74a07f8d6bf",
     PrepareType = params.PrepareType or "Unknown",
     CooldownType = params.CooldownType or "Default"
@@ -27,7 +37,7 @@ local function BuildSelectPassivesOrEquipmentTable(params)
   return {
     UUID = params.Guid or params.UUID,
     Amount = params.Amount or 1,
-    Arg3 = params.SelectorId or " "
+    Arg3 = params.SelectorId or ""
   }
 end
 
@@ -36,7 +46,7 @@ local function BuildSelectAbilitiesTable(params)
     UUID = params.Guid or params.UUID,
     Arg2 = params.Amount or 1,
     Arg3 = params.AbilityAmount or 1,
-    Arg4 = params.SelectorId or " "
+    Arg4 = params.SelectorId or ""
   }
 end
 
@@ -53,7 +63,7 @@ local function BuildSelectSkillsTable(params)
   return {
     UUID = params.Guid or params.UUID,
     Amount = params.Amount or "1",
-    Arg3 = params.SelectorId or " "
+    Arg3 = params.SelectorId or ""
   }
 end
 
@@ -62,7 +72,7 @@ local function BuildSelectSkillsExpertiseTable(params)
     UUID = params.Guid or params.UUID,
     Amount = params.Amount or "1",
     Arg3 = params.LimitToProficiency or params.Arg3 or true,
-    Arg4 = params.SelectorId or params.Arg4 or " "
+    Arg4 = params.SelectorId or params.Arg4 or ""
   }
 end
 
@@ -97,33 +107,24 @@ local function BuildSelector(payload)
   end
 end
 
-local function IsPayloadInSelector(selectorField, selectorToInsert, idType)
-  local found = false
-
-  local newSelectorID = selectorToInsert[idType]
-  for _, value in pairs(selectorField) do
-    local valID = value[idType]
-    if valID == newSelectorID then
-      found = true
-    end
-  end
-  return found
-end
-
 local function AddSelector(payload)
   Utils.Info("Entering AddSelector")
   local target = payload.Target or payload.TargetProgression
   local type = payload.FileType or "Progression"
-  if target == nil then
+
+  if target ~= nil and Utils.CacheOrRetrieve(target, type) ~= nil then
+    local selectorToInsert = BuildSelector(payload)
+    Utils.BuildQueueEntry(Globals.ModuleTypes[type], target, "Selectors", payload.Function)
+    table.insert(Queue[Globals.ModuleTypes[type]][target].Selectors[payload.Function], selectorToInsert)
+  else
     Utils.Error(Strings.ERROR_TARGET_NOT_FOUND)
   end
-  local targetObj = Utils.CacheOrRetrieve(target, type)
-  local selectorField = targetObj[payload.Function]
-  local selectorToInsert = BuildSelector(payload)
+  --local targetObj = Utils.CacheOrRetrieve(target, type)
+  --local selectorField = targetObj[payload.Function]
 
-  if not IsPayloadInSelector(selectorField, selectorToInsert, Globals.SelectorIdTypes[payload.Function]) then
-    targetObj[payload.Function] = Utils.MergeTables(selectorField, { selectorToInsert })
-  end
+  --if not IsPayloadInSelector(selectorField, selectorToInsert, Globals.SelectorIdTypes[payload.Function]) then
+  --  targetObj[payload.Function] = Utils.MergeTables(selectorField, { selectorToInsert })
+  --end
 end
 
 function HandleSelector(payload)

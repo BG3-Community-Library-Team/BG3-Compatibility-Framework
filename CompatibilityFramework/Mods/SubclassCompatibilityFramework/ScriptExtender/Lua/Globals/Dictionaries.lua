@@ -1,3 +1,9 @@
+Globals.ModuleTypes = {
+  Progression = "Progressions",
+  Feat = "Feats",
+  List = "Lists"
+}
+
 Globals.ListTypes = {
   -- Abilities = "AbilityList",
   SpellList = "SpellList",

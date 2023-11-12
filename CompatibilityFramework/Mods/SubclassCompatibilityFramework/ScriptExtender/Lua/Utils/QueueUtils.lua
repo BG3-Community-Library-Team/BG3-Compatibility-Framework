@@ -1,3 +1,16 @@
+function Utils.BuildQueueEntry(moduleType, targetUUID, fieldType, tertiaryType)
+  if Queue[moduleType][targetUUID] == nil then
+    Queue[moduleType][targetUUID] = {}
+  end
+
+  if Queue[moduleType][targetUUID][fieldType] == nil then
+    Queue[moduleType][targetUUID][fieldType] = {}
+  end
+  if tertiaryType ~= nil and Queue[moduleType][targetUUID][fieldType][tertiaryType] == nil then
+    Queue[moduleType][targetUUID][fieldType][tertiaryType] = {}
+  end
+end
+
 function Utils.StripInvalidStatData(arr)
   for key, value in pairs(arr) do
     if value == '' or value == ' ' then
@@ -38,4 +51,17 @@ function Utils.SortStaticData(arr, type, handle)
   end
 
   return res
+end
+
+function Utils.IsPayloadInSelector(selectorField, selectorToInsert, idType)
+  local found = false
+
+  local newSelectorID = selectorToInsert[idType]
+  for _, value in pairs(selectorField) do
+    local valID = value[idType]
+    if valID == newSelectorID then
+      found = true
+    end
+  end
+  return found
 end

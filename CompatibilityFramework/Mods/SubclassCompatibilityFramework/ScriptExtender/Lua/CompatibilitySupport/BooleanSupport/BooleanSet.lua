@@ -1,3 +1,8 @@
+local Queues = {
+  Progression = "Progressions",
+  Feat = "Feats"
+}
+
 local function SetBoolean(payload)
   if Utils.IsInTable(Globals.BooleanTypes, payload.Key) then
     local target = Utils.CacheOrRetrieve(payload.Target, payload.FileType)
