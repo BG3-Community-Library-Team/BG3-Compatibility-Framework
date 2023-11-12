@@ -29,7 +29,7 @@ function Queue.Commit_Strings(objectType, stringArr)
     local count = 1
 
     for _, string in pairs(stringTable) do
-
+      -- TODO
     end
   end
 end
@@ -83,9 +83,9 @@ function Queue.CommitFeats()
   for featId, featTable in pairs(Queue.Feats) do
     local feat = Utils.CacheOrRetrieve(featId, "Feat")
     if feat ~= nil then
-      if featTable.Strings ~= nil then
-        Queue.Commit_Strings(feat, featTable.Strings)
-      end
+      --if featTable.Strings ~= nil then
+      --  Queue.Commit_Strings(feat, featTable.Strings)
+      --end
       if featTable.Selectors ~= nil then
         Queue.Commit_Selectors(feat, featTable.Selectors)
       end
@@ -94,9 +94,9 @@ function Queue.CommitFeats()
         Queue.Commit_SelectorRemoval(feat, featTable.Selectors)
       end
 
-      if featTable.Booleans ~= nil then
-        Queue.Commit_Booleans(feat, featTable.Booleans)
-      end
+      --if featTable.Booleans ~= nil then
+      --  Queue.Commit_Booleans(feat, featTable.Booleans)
+      --end
     end
   end
 end
@@ -117,13 +117,13 @@ function Queue.CommitProgressions()
         Queue.Commit_SelectorRemoval(progression, progressionTable.Selectors)
       end
 
-      if progressionTable.Strings ~= nil then
-        Queue.CommitProgressions_Strings(progression, progressionTable.Strings)
-      end
+      --if progressionTable.Strings ~= nil then
+      --  Queue.CommitProgressions_Strings(progression, progressionTable.Strings)
+      --end
 
-      if progressionTable.Booleans ~= nil then
-        Queue.CommitProgressions_Booleans(progression, progressionTable.Booleans)
-      end
+      --if progressionTable.Booleans ~= nil then
+      --  Queue.CommitProgressions_Booleans(progression, progressionTable.Booleans)
+      --end
     end
   end
 end
