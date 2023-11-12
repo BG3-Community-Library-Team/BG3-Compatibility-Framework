@@ -24,10 +24,14 @@ function Queue.CommitProgressions_Subclasses(progression, subclasses)
 end
 
 function Queue.Commit_Strings(objectType, stringArr)
-  --for _, value in pairs(progression.Strings) do
-  --_P("Key: " .. key .. " | Value: ")
-  --_D(value)
-  --end
+  for stringType, stringTable in pairs(stringArr) do
+    local res = {}
+    local count = 1
+
+    for _, string in pairs(stringTable) do
+
+    end
+  end
 end
 
 function Queue.Commit_Selectors(objectType, selectors)
@@ -52,6 +56,22 @@ function Queue.Commit_Selectors(objectType, selectors)
   end
 end
 
+function Queue.Commit_SelectorRemoval(objectType, selectors)
+  for selectorFunction, selectorIds in pairs(selectors) do
+    local res = {}
+    local count = 1
+    for _, selector in pairs(objectType[selectorFunction]) do
+      local selectorUUID = ""
+      if selector.SpellUUID ~= nil then selectorUUID = selector.SpellUUID
+        else selectorUUID = selector.UUID end
+      if selectorUUID ~= nil and not Utils.IsInTable(selectorIds, selectorUUID) then
+        Utils.AddKeyValueToTable(res, tostring(count), selector)
+      end
+    end
+    objectType[selectorFunction] = res
+  end
+end
+
 function Queue.Commit_Booleans(objectType, booleans)
   --for _, value in pairs(progression.Booleans) do
   --_P("Key: " .. key .. " | Value: ")
@@ -63,12 +83,15 @@ function Queue.CommitFeats()
   for featId, featTable in pairs(Queue.Feats) do
     local feat = Utils.CacheOrRetrieve(featId, "Feat")
     if feat ~= nil then
-
       if featTable.Strings ~= nil then
         Queue.Commit_Strings(feat, featTable.Strings)
       end
-      if feat.Selectors ~= nil then
+      if featTable.Selectors ~= nil then
         Queue.Commit_Selectors(feat, featTable.Selectors)
+      end
+
+      if featTable.Selectors_Remove ~= nil then
+        Queue.Commit_SelectorRemoval(feat, featTable.Selectors)
       end
 
       if featTable.Booleans ~= nil then
@@ -88,6 +111,10 @@ function Queue.CommitProgressions()
 
       if progressionTable.Selectors ~= nil then
         Queue.Commit_Selectors(progression, progressionTable.Selectors)
+      end
+
+      if progressionTable.Selectors_Remove ~= nil then
+        Queue.Commit_SelectorRemoval(progression, progressionTable.Selectors)
       end
 
       if progressionTable.Strings ~= nil then
