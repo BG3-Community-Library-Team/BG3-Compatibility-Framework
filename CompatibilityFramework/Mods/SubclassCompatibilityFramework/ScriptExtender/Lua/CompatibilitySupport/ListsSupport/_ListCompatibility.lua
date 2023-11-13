@@ -14,13 +14,8 @@ function AddList(payload)
     if list ~= nil then
       if Queue.Lists[payload.ListType][payload.TargetList] == nil then
         Queue.Lists[payload.ListType][payload.TargetList] = {}
-        AddToTempTable(Queue.Lists[payload.ListType][payload.TargetList], list[listNode])
       end
-      if list[listNode] ~= nil then
-        AddToTempTable(Queue.Lists[payload.ListType][payload.TargetList], payload.ListItems)
-      else
-        Utils.Error(payload.TargetList .. "of type " .. payload.ListType .. Strings.ERROR_LIST_NOT_FOUND)
-      end
+      AddToTempTable(Queue.Lists[payload.ListType][payload.TargetList], payload.ListItems)
     else
       Utils.Error(Strings.ERROR_LIST_NOT_FOUND)
     end

@@ -4,7 +4,7 @@ Queue.Progressions = {
   -- Boosts = "",
   -- PassivesAdded = "",
   -- PassivesRemoved = "",
-  -- Selectors = "",
+  -- Selectors = {},
   -- SubClasses = {},
 }
 Queue.Feats = {}
