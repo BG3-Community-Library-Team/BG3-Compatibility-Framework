@@ -14,7 +14,9 @@ function Api.InsertSubClasses(payloads)
 
       return
     end
-
+    if not Globals.AllowPayloads then
+      Utils.AddToLateLoaders(payload.modGuid)
+    end
     SubClassHandler(payload)
   end
 end

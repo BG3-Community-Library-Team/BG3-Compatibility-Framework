@@ -10,6 +10,7 @@ Globals.ClassProgressions = {}
 Globals.Cache = {}
 Globals.Debug = false
 Globals.ShowWarnings = true
+Globals.AllowPayloads = true
 Globals.SpellLists = {}
 Globals.Progressions = {}
 

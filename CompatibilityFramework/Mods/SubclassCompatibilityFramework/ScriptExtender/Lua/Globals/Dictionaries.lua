@@ -79,3 +79,6 @@ Globals.Attributes = {
   aWIS = "Wisdom",
   aCHA = "Charisma"
 }
+
+-- Mods that loaded too late to join the queue
+Globals.LateLoaders = {}

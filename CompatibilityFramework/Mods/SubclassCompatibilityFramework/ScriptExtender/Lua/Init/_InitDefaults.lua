@@ -6,3 +6,12 @@ local function OnStatsLoaded()
 end
 
 Ext.Events.StatsLoaded:Subscribe(OnStatsLoaded)
+
+local function CloseRegistration()
+  _P("Closing Registration")
+  Globals.AllowPayloads = false
+end
+
+Ext.Events.SessionLoading:Subscribe(CloseRegistration, {
+  Priority = 0
+})

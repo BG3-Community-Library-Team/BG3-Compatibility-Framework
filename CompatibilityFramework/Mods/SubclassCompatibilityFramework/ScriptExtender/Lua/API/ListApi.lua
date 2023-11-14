@@ -7,6 +7,9 @@ function Api.InsertToList(payloads)
     if err ~= nil then
       Utils.Warn(err)
     else
+      if not Globals.AllowPayloads then
+        Utils.AddToLateLoaders(payload.modGuid)
+      end
       HandleList(payload)
     end
   end
