@@ -91,12 +91,12 @@ function Queue.CommitFeatsAndProgressions()
           Queue.CommitProgressions_Subclasses(gameObject, objectTable.SubClasses)
         end
 
-        if objectTable.Selectors ~= nil then
-          Queue.Commit_Selectors(gameObject, objectTable.Selectors)
-        end
-
         if objectTable.Selectors_Remove ~= nil then
           Queue.Commit_SelectorRemoval(gameObject, objectTable.Selectors_Remove)
+        end
+
+        if objectTable.Selectors ~= nil then
+          Queue.Commit_Selectors(gameObject, objectTable.Selectors)
         end
 
         --if objectTable.Strings ~= nil then

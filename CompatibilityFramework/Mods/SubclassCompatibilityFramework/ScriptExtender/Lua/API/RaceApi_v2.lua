@@ -10,6 +10,9 @@ function Api.InsertRaceChildData(payloads)
       return
     end
 
+    if not Globals.AllowPayloads then
+      Utils.AddToLateLoaders(payload.modGuid)
+    end
     RaceChildHandler(payload)
   end
 end
@@ -25,6 +28,9 @@ function Api.RemoveRaceChildData(payloads)
       return
     end
 
+    if not Globals.AllowPayloads then
+      Utils.AddToLateLoaders(payload.modGuid)
+    end
     RaceChildRemovalHandler(payload)
   end
 end

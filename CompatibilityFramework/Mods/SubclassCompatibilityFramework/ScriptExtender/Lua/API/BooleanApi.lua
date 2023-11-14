@@ -8,6 +8,9 @@ function Api.SetBoolean(payloads)
       Utils.Warn(err)
       return
     end
+    if not Globals.AllowPayloads then
+      Utils.AddToLateLoaders(payload.modGuid)
+    end
     HandleBoolean(payload)
   end
 end

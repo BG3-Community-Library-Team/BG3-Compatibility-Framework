@@ -3,6 +3,9 @@ function Api.InsertResourceToGroup(payloads)
     for _, payload in pairs(payloads) do
       Utils.Info(Utils.Stringify(payload))
       if Ext.Mod.IsModLoaded(payload.modGuid) then
+        if not Globals.AllowPayloads then
+          Utils.AddToLateLoaders(payload.modGuid)
+        end
         HandleActionResourceGroupAddition(payload)
       end
     end
@@ -14,6 +17,9 @@ function Api.RemoveResourceFromGroup(payloads)
     for _, payload in pairs(payloads) do
       Utils.Info(Utils.Stringify(payload))
       if Ext.Mod.IsModLoaded(payload.modGuid) then
+        if not Globals.AllowPayloads then
+          Utils.AddToLateLoaders(payload.modGuid)
+        end
         HandleActionResourceGroupRemoval(payload)
       end
     end

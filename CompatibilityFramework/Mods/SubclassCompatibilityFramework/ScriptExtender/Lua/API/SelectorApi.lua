@@ -4,6 +4,9 @@ function Api.InsertSelectors(payloads)
       Utils.Info(Utils.Stringify(payload))
 
       if Ext.Mod.IsModLoaded(payload.modGuid) then
+        if not Globals.AllowPayloads then
+          Utils.AddToLateLoaders(payload.modGuid)
+        end
         HandleSelector(payload)
       end
     end
@@ -16,6 +19,9 @@ function Api.RemoveSelectors(payloads)
       Utils.Info(Utils.Stringify(payload))
 
       if Ext.Mod.IsModLoaded(payload.modGuid) then
+        if not Globals.AllowPayloads then
+          Utils.AddToLateLoaders(payload.modGuid)
+        end
         HandleSelectorRemoval(payload)
       end
     end
