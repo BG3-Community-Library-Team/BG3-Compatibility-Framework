@@ -1,0 +1,15 @@
+{
+  "FileVersion": 1,
+  "Progressions": [
+    {
+      "UUID": "23eacff0-9efe-4ea6-b031-19075cc96b63",
+      "Subclasses": [
+        {
+          "UUID": "eafa85af-1cd6-4b63-998a-918a03a5945f",
+          "modGuid": "744ab9dc-35c6-4949-836c-2a19a64d2469",
+          "Comment": "Psi Warrior"
+        }
+      ]
+    }
+  ]
+}

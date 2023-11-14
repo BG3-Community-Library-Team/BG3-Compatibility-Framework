@@ -1,0 +1,20 @@
+{
+  "FileVersion": 1,
+  "Progressions": [
+    {
+      "UUIDs": ["b60618d1-c262-42b5-9fdd-2c0f7aa5e5af","1f5396ad-65e3-4ed5-a339-d76b11af96ea"],
+      "Subclasses": [
+        {
+          "UUID": "66d69a7f-be66-4fd5-bd47-aaa7ec4330ad",
+          "modGuid": "689f22b4-38e9-40a7-aa81-3d3e7ed8d38c",
+          "Comment": "Glory"
+        },
+        {
+          "UUID": "d62b4b6f-e7f2-416e-a3fa-7bbb512af0ea",
+          "modGuid": "e0e1ffe2-6e39-489b-9b70-b30e9025c5c7",
+          "Comment": "Watchers"
+        }
+      ]
+    }
+  ]
+}

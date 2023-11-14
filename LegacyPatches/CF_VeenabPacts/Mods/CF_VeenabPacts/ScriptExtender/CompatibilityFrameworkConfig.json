@@ -1,0 +1,62 @@
+{
+  "FileVersion": 1,
+  "Progressions": [
+    {
+      "UUIDs": ["a7767dc5-e6ab-4e05-96fd-f0424256121c","20015e25-8aa9-41bf-b959-aa587ba0aa27" ],
+      "Subclasses": [
+        {
+          "UUID": "ce676130-238e-48e5-b4aa-20ec81491cb2",
+          "modGuid": "d213482c-2d43-4f78-9ed4-d86f577b6017",
+          "Comment": "Undead Warlock"
+        }
+      ]
+    },
+    {
+      "UUIDs": ["a7767dc5-e6ab-4e05-96fd-f0424256121c","20015e25-8aa9-41bf-b959-aa587ba0aa27" ],
+      "Subclasses": [
+        {
+          "UUID": "4eaff232-e33c-4696-8c99-47ff10458312",
+          "modGuid": "5d30acc9-66aa-482b-8802-33aad93995e4",
+          "Comment": "Fathomless Warlock"
+        }
+      ]
+    },
+    {
+      "UUIDs": ["a7767dc5-e6ab-4e05-96fd-f0424256121c","20015e25-8aa9-41bf-b959-aa587ba0aa27" ],
+      "Subclasses": [
+        {
+          "UUID": "694a64ed-6dd5-4dd8-a18d-7eba20fe5eb2",
+          "modGuid": "0cb5018a-f898-4446-9b9e-8f7a6c3fa9ea",
+          "Comment": "Genie Warlock"
+        }
+      ]
+    }
+  ],
+  "Lists": 
+    [
+        {
+          "Comment": "Fathomless Warlock Cantrips",
+          "modGuid":"5d30acc9-66aa-482b-8802-33aad93995e4",
+          "Type": "SpellList",  
+          "Action": "Insert",
+          "UUID": "f5c4af9c-5d8d-4526-9057-94a4b243cd40",
+          "Items":
+            [
+              "UW_Thunderclap_Cantrip",
+              "FW_Frostbite_Cantrip",
+              "FW_ChurnPuddle"
+            ]
+        },
+        {
+          "Comment": "Undead Warlock Cantrips",
+          "modGuid":"d213482c-2d43-4f78-9ed4-d86f577b6017",
+          "Type": "SpellList",  
+          "Action": "Insert",
+          "UUID": "f5c4af9c-5d8d-4526-9057-94a4b243cd40",
+          "Items":
+            [
+              "UW_Projectile_EldritchChain"
+            ]
+        }
+    ]
+}

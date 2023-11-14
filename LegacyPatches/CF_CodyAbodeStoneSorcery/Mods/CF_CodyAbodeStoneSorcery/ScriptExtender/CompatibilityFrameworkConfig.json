@@ -1,0 +1,15 @@
+{
+  "FileVersion": 1,
+  "Progressions": [
+    {
+      "UUID": "42af9bda-9ac0-4564-920b-f9ca1588d6ee",
+      "Subclasses": [
+        {
+          "UUID": "3724be0f-a87d-4193-bfeb-335e53ed525f",
+          "modGuid": "f48b2612-4d95-4601-b324-b8a07c9d90be",
+          "Comment": "CF_CodyAbodeStoneSorcery"
+        }
+      ]
+    }
+  ]
+}

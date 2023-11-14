@@ -1,0 +1,15 @@
+{
+  "FileVersion": 1,
+  "Progressions": [
+    {
+      "UUID": "296468cb-3640-4460-9f44-b30ee820a9ed",
+      "Subclasses": [
+        {
+          "UUID": "bbd5e265-82f5-403f-8141-887480d41bba",
+          "modGuid": "83e20b3d-75cc-4d9a-af04-430f797290e5",
+          "Comment": "Drunken Master by Johnny"
+        }
+      ]
+    }
+  ]
+}
