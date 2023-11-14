@@ -1,0 +1,15 @@
+{
+  "FileVersion": 1,
+  "Progressions": [
+    {
+      "UUID": "e6179c57-47e9-4f83-831e-28b73f4b5d0d",
+      "Subclasses": [
+        {
+          "UUID": "ddddd47d-cc28-400e-bfa9-3a85baa70f24",
+          "modGuid": "a951d531-dd86-4ff6-8d96-a5358fa95821",
+          "Comment": "Drakewarden (KiderionLykon)"
+        }
+      ]
+    }
+  ]
+}

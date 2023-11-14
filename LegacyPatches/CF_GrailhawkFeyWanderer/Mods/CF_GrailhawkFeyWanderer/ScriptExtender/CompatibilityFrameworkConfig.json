@@ -1,0 +1,15 @@
+{
+  "FileVersion": 1,
+  "Progressions": [
+    {
+      "UUID": "e6179c57-47e9-4f83-831e-28b73f4b5d0d",
+      "Subclasses": [
+        {
+          "UUID": "a6e78c97-3e65-4561-b890-8bddefbe6f42",
+          "modGuid": "fd12600b-6d51-4034-be03-3e7eaa0af4c0",
+          "Comment": "Fey Wanderer (Grailhawk)"
+        }
+      ]
+    }
+  ]
+}
