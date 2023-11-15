@@ -43,4 +43,6 @@ Strings.WARN_SERVER_FUNCTION_NO_LONGER_REQUIRED =
 "Unnecessary call from external mod to Compatibility Framework API from BootstrapServer.lua. THIS IS NOT A BUG. The mod using Compatibility Framework API can remove their API call from BootstrapServer file, leaving it in the BootstrapClient file."
 Strings.WARN_LAST_CALL =
 "StatsLoaded Complete. Any mods calling the CF API after this point may not appear. Please contact the developer of any missing mods and inform them to switch their CF API call to happen on StatsLoaded instead of on SessionLoaded."
-Strings.LATE_LOADER_PREFIX = "The following mods are attempting to call Compatibility Framework API too late for it to take effect: "
+Strings.LATE_LOADER_PREFIX =
+"The following mods are attempting to call Compatibility Framework API too late for it to take effect: "
+Strings.FRAG_PROVIDED_BY = " provided by "

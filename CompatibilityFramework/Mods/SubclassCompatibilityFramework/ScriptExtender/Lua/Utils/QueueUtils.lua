@@ -65,3 +65,36 @@ function Utils.IsPayloadInSelector(selectorField, selectorToInsert, idType)
   end
   return found
 end
+
+function Utils.ManageDuplicates(field, strings)
+  local res = {}
+  for _, value in pairs(strings) do
+    if not string.find(field, value) then
+      if not string.find(table.concat(res, " "), value) then
+        table.insert(res, value)
+      end
+    end
+    if not Utils.IsInString(field, value) and not Utils.IsInTable(res, value) then
+      table.insert(res, value)
+    end
+  end
+
+  return res
+end
+
+function Utils.ShipToQueue(payload, items, itemsType, itemsSubType)
+  local type = payload.FileType or payload.Type or "Progression"
+  local target = payload.Target or payload.TargetProgression
+
+  if Utils.IsKeyInTable(Globals.ModuleTypes[type]) and items ~= nil then
+    local queueType = Globals.ModuleTypes[type]
+    local fleshedObject = Utils.CacheOrRetrieve(target, type)
+    if fleshedObject ~= nil then
+      Utils.BuildQueueEntry(queueType, target, itemsType, itemsSubType)
+      table.insert(Queue[queueType][target][itemsType][itemsSubType], items)
+    else
+      Utils.Error(Strings.ERROR_TARGET_NOT_FOUND ..
+        " " .. type .. ": " .. target .. Strings.FRAG_PROVIDED_BY .. Utils.RetrieveModHandleAndAuthor(payload.modGuid))
+    end
+  end
+end

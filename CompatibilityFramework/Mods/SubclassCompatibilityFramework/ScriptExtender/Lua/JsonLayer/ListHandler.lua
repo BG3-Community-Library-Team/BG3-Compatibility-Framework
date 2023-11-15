@@ -1,6 +1,8 @@
 function ParseAndSubmitLists(data, listId, modGuid)
-  Utils.Info("Entering ParseAndSubmitLists")
-  JsonUtils.Endpoints[data.Action].List({ JsonUtils.BuildListPayload(data, modGuid, listId) })
+    Utils.Info("Entering ParseAndSubmitLists")
+  if data.Action == "Insert" then
+    JsonUtils.Endpoints[data.Action].List({ JsonUtils.BuildListPayload(data, modGuid, listId) })
+  end
 end
 
 function ListJsonHandler(data, modGuid)

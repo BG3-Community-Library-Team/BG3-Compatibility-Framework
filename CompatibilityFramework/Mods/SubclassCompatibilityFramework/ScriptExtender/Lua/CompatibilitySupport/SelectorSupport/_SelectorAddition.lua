@@ -109,26 +109,7 @@ end
 
 local function AddSelector(payload)
   Utils.Info("Entering AddSelector")
-  local type = payload.FileType or "Progression"
-  local target = payload.Target or payload.TargetProgression
-
-  if Utils.IsKeyInTable(Globals.ModuleTypes[type]) and payload.Selectors ~= nil then
-    local queueType = Globals.ModuleTypes[payload.FileType]
-    local fleshedObject = Utils.CacheOrRetrieve(target, type)
-    if fleshedObject ~= nil then
-      if Queue[queueType][target] == nil then
-        Queue[queueType][target] = {}
-      end
-      if Queue[queueType][target][payload.Function] == nil then
-        Queue[queueType][target][payload.Function] = {}
-      end
-
-      local selectorToInsert = BuildSelector(payload)
-      table.insert(Queue[queueType][target][payload.Function], selectorToInsert)
-    else
-      Utils.Error(Strings.ERROR_TARGET_NOT_FOUND)
-    end
-  end
+  Utils.ShipToQueue(payload, BuildSelector(payload), "Selectors", payload.Function)
 end
 
 function HandleSelector(payload)

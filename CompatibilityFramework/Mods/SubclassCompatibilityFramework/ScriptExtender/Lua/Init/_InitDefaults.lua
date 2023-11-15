@@ -8,7 +8,7 @@ end
 Ext.Events.StatsLoaded:Subscribe(OnStatsLoaded)
 
 local function CloseRegistration()
-  _P("Closing Registration")
+  Utils.Info("Closing Registration")
   Globals.AllowPayloads = false
 end
 

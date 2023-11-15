@@ -1,24 +1,27 @@
 function Queue.Commit()
+  Utils.Info("Entering Queue.Commit")
   Queue.CommitLists()
   Queue.CommitFeatsAndProgressions()
 end
 
 function Queue.CommitLists()
+  Utils.Info("Entering Queue.CommitLists")
   for type, listList in pairs(Queue.Lists) do
     for listId, list in pairs(listList) do
       local gameList = Utils.CacheOrRetrieve(listId, type)
-      local res = Utils.StripInvalidStatData(list)
       for _, item in pairs(gameList[Globals.ListNodes[type]]) do
-        if not Utils.IsInTable(res, item) then
-          table.insert(res, item)
+        if not Utils.IsInTable(list, item) then
+          table.insert(list, item)
         end
       end
+      local res = Utils.StripInvalidStatData(list)
       gameList[Globals.ListNodes[type]] = res
     end
   end
 end
 
 function Queue.CommitProgressions_Subclasses(progression, subclasses)
+  Utils.Info("Entering Queue.CommitProgressions_Subclasses")
   local strippedList = Utils.StripInvalidStaticData(subclasses, "ClassDescription")
   for _, vanillaEntry in pairs(progression.SubClasses) do
     Utils.AddToTable(strippedList, vanillaEntry)
@@ -27,18 +30,21 @@ function Queue.CommitProgressions_Subclasses(progression, subclasses)
   progression.SubClasses = Utils.SortStaticData(strippedList, "ClassDescription", "DisplayName")
 end
 
-function Queue.Commit_Strings(objectType, stringArr)
+function Queue.Commit_Strings(gameObject, stringArr)
+  Utils.Info("Entering Queue.Commit_Strings")
   for stringType, stringTable in pairs(stringArr) do
-    local res = {}
-    local count = 1
+    local stringsToInsert = Utils.ManageDuplicates(gameObject[stringType], stringTable)
+    local separator = Globals.FieldSeparator[stringType]
+    local newStringField = gameObject[stringType] .. separator .. table.concat(stringsToInsert, separator)
 
-    for _, string in pairs(stringTable) do
-      -- TODO
+    if string.sub(newStringField, -1) == separator then
+      newStringField = newStringField:sub(1, #newStringField - 1)
     end
   end
 end
 
 function Queue.ParseInsertSelectors(tempArr, selectorGroup, selectorFunction)
+  Utils.Info("Entering Queue.ParseInsertSelectors")
   for _, selector in pairs(selectorGroup) do
     if not Utils.IsPayloadInSelector(tempArr, selector, selectorFunction) then
       table.insert(tempArr, selector)
@@ -47,6 +53,7 @@ function Queue.ParseInsertSelectors(tempArr, selectorGroup, selectorFunction)
 end
 
 function Queue.Commit_Selectors(gameObject, selectors)
+  Utils.Info("Entering Queue.Commit_Selectors")
   for selectorFunction, selectorGroup in pairs(selectors) do
     local res = {}
     Queue.ParseInsertSelectors(res, selectorGroup, Globals.SelectorIdTypes[selectorFunction])
@@ -56,11 +63,12 @@ function Queue.Commit_Selectors(gameObject, selectors)
   end
 end
 
-function Queue.Commit_SelectorRemoval(objectType, selectors)
+function Queue.Commit_SelectorRemoval(gameObject, selectors)
+  Utils.Info("Entering Queue.Commit_SelectorRemoval")
   for selectorFunction, selectorIds in pairs(selectors) do
     local res = {}
     local count = 1
-    for _, selector in pairs(objectType[selectorFunction]) do
+    for _, selector in pairs(gameObject[selectorFunction]) do
       local selectorUUID = ""
       if selector.SpellUUID ~= nil then
         selectorUUID = selector.SpellUUID
@@ -71,11 +79,11 @@ function Queue.Commit_SelectorRemoval(objectType, selectors)
         Utils.AddKeyValueToTable(res, tostring(count), selector)
       end
     end
-    objectType[selectorFunction] = res
+    gameObject[selectorFunction] = res
   end
 end
 
-function Queue.Commit_Booleans(objectType, booleans)
+function Queue.Commit_Booleans(gameObject, booleans)
   --for _, value in pairs(progression.Booleans) do
   --_P("Key: " .. key .. " | Value: ")
   --_D(value)
@@ -83,6 +91,7 @@ function Queue.Commit_Booleans(objectType, booleans)
 end
 
 function Queue.CommitFeatsAndProgressions()
+  Utils.Info("Entering Queue.CommitFeatsAndProgressions")
   for _, objectType in pairs(Globals.CacheTypes) do
     for objectId, objectTable in pairs(Queue[Globals.ModuleTypes[objectType]]) do
       local gameObject = Utils.CacheOrRetrieve(objectId, objectType)
@@ -99,9 +108,9 @@ function Queue.CommitFeatsAndProgressions()
           Queue.Commit_Selectors(gameObject, objectTable.Selectors)
         end
 
-        --if objectTable.Strings ~= nil then
-        --  Queue.Commit_Strings(gameObject, objectTable.Strings)
-        --end
+        if objectTable.Strings ~= nil then
+          Queue.Commit_Strings(gameObject, objectTable.Strings)
+        end
 
         --if objectTable.Booleans ~= nil then
         --  Queue.Commit_Booleans(gameObject, objectTable.Booleans)

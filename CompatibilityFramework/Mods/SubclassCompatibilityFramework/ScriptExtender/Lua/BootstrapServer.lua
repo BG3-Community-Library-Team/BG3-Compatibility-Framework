@@ -10,10 +10,10 @@ Ext.Require("Globals/_init.lua")
 Ext.Require("Utils/ModUtils.lua")
 Ext.Require("ServerDeprecation.lua")
 
-Ext.Osiris.RegisterListener("CharacterCreationStarted", 5, "before", function()
+Ext.Osiris.RegisterListener("CharacterCreationStarted", 5, "after", function()
   if #Globals.LateLoaders > 0 then
     local warnStr = Utils.BuildLateLoaderString()
     Utils.Warn(warnStr)
-    Osi.ShowNotification(GetHostCharacter(), warnStr)
+    Osi.OpenMessageBox(GetHostCharacter(), warnStr)
   end
 end)

@@ -3,8 +3,14 @@ local function RemoveSelector(payload)
   local target = payload.TargetUUID
   local type = payload.FileType or "Progression"
   if target ~= nil and Utils.CacheOrRetrieve(target, type) ~= nil then
-    Utils.BuildQueueEntry(Queue[Globals.ModuleTypes[type]], target, "Selectors_Remove", payload.Function)
+    Utils.BuildQueueEntry(Globals.ModuleTypes[type], target, "Selectors_Remove", payload.Function)
     table.insert(Queue[Globals.ModuleTypes[type]][target].Selectors_Remove[payload.Function], payload.ListUUID)
+    for key, val in pairs(Queue[Globals.ModuleTypes[type]][target].Selectors[payload.Function]) do
+      local uuid = val.UUID or val.SpellUUID
+      if uuid == payload.ListUUID then
+        Queue[Globals.ModuleTypes[type]][target].Selectors[payload.Function][key] = nil
+      end
+    end
   else
     Utils.Error(Strings.ERROR_TARGET_NOT_FOUND)
   end
