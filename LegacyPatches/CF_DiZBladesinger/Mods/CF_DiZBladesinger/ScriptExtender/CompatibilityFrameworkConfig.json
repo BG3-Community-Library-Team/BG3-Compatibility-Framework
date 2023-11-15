@@ -1,0 +1,15 @@
+{
+  "FileVersion": 1,
+  "Progressions": [
+    {
+      "UUID": "d6184c47-5b99-4e63-95ac-02f8ce4ccda1",
+      "Subclasses": [
+        {
+          "UUID": "3fd79523-a973-4373-a973-732344acc959",
+          "modGuid": "a2c4b0fc-e745-41df-81b7-fa53950d86a0",
+          "Comment": "CF_DiZBladesinger"
+        }
+      ]
+    }
+  ]
+}

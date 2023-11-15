@@ -1,0 +1,15 @@
+{
+  "FileVersion": 1,
+  "Progressions": [
+    {
+      "UUID": "d6184c47-5b99-4e63-95ac-02f8ce4ccda1",
+      "Subclasses": [
+        {
+          "UUID": "9fc4ce94-ee08-46b0-aa91-7b9aa0feec30",
+          "modGuid": "bde90ed9-94a3-471e-b59a-95585dff9aec",
+          "Comment": "CF_DungeonMasterShiGoblimancy"
+        }
+      ]
+    }
+  ]
+}
