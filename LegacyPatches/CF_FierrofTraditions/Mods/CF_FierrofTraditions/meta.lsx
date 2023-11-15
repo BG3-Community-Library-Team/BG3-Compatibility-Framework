@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<save>
+  <version major="4" minor="0" revision="0" build="49"/>
+  <region id="Config">
+    <node id="root">
+      <children>
+        <node id="Dependencies"/>
+        <node id="ModuleInfo">
+          <attribute id="Author" type="LSWString" value="BG3 Community"/>
+          <attribute id="CharacterCreationLevelName" type="FixedString" value=""/>
+          <attribute id="Description" type="LSWString" value="CF Patch to ensure Wizard Traditions by fierrof loads using CF Correctly"/>
+          <attribute id="Folder" type="LSWString" value="CF_FierrofTraditions"/>
+          <attribute id="GMTemplate" type="FixedString" value=""/>
+          <attribute id="LobbyLevelName" type="FixedString" value=""/>
+          <attribute id="MD5" type="LSString" value=""/>
+          <attribute id="MainMenuBackgroundVideo" type="FixedString" value=""/>
+          <attribute id="MenuLevelName" type="FixedString" value=""/>
+          <attribute id="Name" type="FixedString" value="Traditions Fierrof (CF Legacy Patch)"/>
+          <attribute id="NumPlayers" type="uint8" value="4"/>
+          <attribute id="PhotoBooth" type="FixedString" value=""/>
+          <attribute id="StartupLevelName" type="FixedString" value=""/>
+          <attribute id="Tags" type="LSWString" value="Template"/>
+          <attribute id="Type" type="FixedString" value="Patch"/>
+          <attribute id="UUID" type="FixedString" value="5cc53d23-3614-4a6b-9f19-5777d977aafd"/>
+          <attribute id="Version64" type="int64" value="36028797018963968"/>
+          <children>
+            <node id="PublishVersion">
+                <attribute id="Version64" type="int64" value="36028797018963968"/>
+            </node>
+            <node id="Scripts" />
+            <node id="TargetModes">
+              <children>
+                <node id="Target">
+                  <attribute id="Object" type="FixedString" value="Story"/>
+                </node>
+              </children>
+            </node>
+          </children>
+        </node>
+      </children>
+    </node>
+  </region>
+</save>

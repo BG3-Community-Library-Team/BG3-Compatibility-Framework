@@ -1,0 +1,20 @@
+{
+  "FileVersion": 1,
+  "Progressions": [
+    {
+      "UUID": "d6184c47-5b99-4e63-95ac-02f8ce4ccda1",
+      "Subclasses": [
+        {
+          "UUID": "440bfc05-aba4-4b25-a577-172acf5cf0a9",
+          "modGuid": "080edc42-9ec0-446f-a9c2-792d5bdf4686",
+          "Comment": "Runesmith"
+        },
+        {
+          "UUID": "bec3ead5-a59a-4241-b778-27fb17f28e54",
+          "modGuid": "be37a0e6-f2bc-46f3-b98d-8cfbe977053a",
+          "Comment": "War Magic"
+        }
+      ]
+    }
+  ]
+}

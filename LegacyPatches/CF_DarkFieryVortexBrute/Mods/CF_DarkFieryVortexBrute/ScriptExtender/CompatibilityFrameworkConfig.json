@@ -1,0 +1,15 @@
+{
+  "FileVersion": 1,
+  "Progressions": [
+    {
+      "UUID": "23eacff0-9efe-4ea6-b031-19075cc96b63",
+      "Subclasses": [
+        {
+          "UUID": "97efe33c-c77e-4512-9e61-182a2e406ece",
+          "modGuid": "afe5e32a-2554-40d1-8c41-7cbc2d73a8c7",
+          "Comment": "CF_DarkFieryVortexBrute"
+        }
+      ]
+    }
+  ]
+}
