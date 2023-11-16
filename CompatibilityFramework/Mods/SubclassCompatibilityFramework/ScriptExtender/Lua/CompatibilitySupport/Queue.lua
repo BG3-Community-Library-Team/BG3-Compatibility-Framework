@@ -34,14 +34,26 @@ end
 
 function Queue.Commit_Strings(gameObject, stringArr)
   Utils.Info("Entering Queue.Commit_Strings")
-  for stringType, stringTable in pairs(stringArr) do
-    local stringsToInsert = Utils.ManageDuplicates(gameObject[stringType], stringTable)
-    local separator = Globals.FieldSeparator[stringType]
-    local newStringField = gameObject[stringType] .. separator .. table.concat(stringsToInsert, separator)
 
-    if string.sub(newStringField, -1) == separator then
-      newStringField = newStringField:sub(1, #newStringField - 1)
+  for stringType, stringTypeArr in pairs(stringArr) do
+    local separator = Globals.FieldSeparator[stringType]
+    local set, result = Utils.createSetFromString(gameObject[stringType], separator)
+    local addSet, _ = Utils.stringTypeArrToSet(stringTypeArr)
+
+    _D(set)
+    _D(result)
+    _D(addSet)
+
+    for element , exists in pairs(addSet) do
+      if not set[element] then
+        set[element] = true
+        table.insert(result, element)
+      end
     end
+
+    _D(result)
+
+    gameObject[stringType] = table.concat(result, separator)
   end
 end
 

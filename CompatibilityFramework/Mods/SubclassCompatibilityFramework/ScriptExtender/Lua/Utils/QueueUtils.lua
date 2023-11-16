@@ -84,6 +84,21 @@ function Utils.ManageDuplicates(field, strings)
   return res
 end
 
+function Utils.stringTypeArrToSet(stringTypeArr)
+  local set = {}
+  local result = {}
+  for _, currentArray in pairs(stringTypeArr) do
+    for _, currentString in pairs(currentArray) do
+      if not set[currentString] then
+        set[currentString] = true
+        table.insert(result, currentString)
+      end
+    end
+  end
+
+  return set, result
+end
+
 function Utils.ShipToQueue(payload, items, itemsType, itemsSubType)
   Utils.Info("Entering ShipToQueue for " .. Utils.RetrieveModHandleAndAuthor(payload.modGuid))
   local type = payload.FileType or payload.Type or "Progression"

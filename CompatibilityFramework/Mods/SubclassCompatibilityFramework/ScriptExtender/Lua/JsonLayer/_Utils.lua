@@ -149,22 +149,19 @@ end
 
 function JsonUtils.ParseAndSubmitSelectors(data, target, modGuid, fileType)
   Utils.Info("Entering ParseAndSubmitSelectors")
-  local payloads = {
-    Insert = JsonUtils.BuildAddSelectorPayload(data, modGuid, target, fileType),
-    Remove = JsonUtils.BuildRemoveSelectorPayload(data, modGuid, target, fileType)
+  local payloadBuilders = {
+    Insert = JsonUtils.BuildAddSelectorPayload,
+    Remove = JsonUtils.BuildRemoveSelectorPayload
   }
 
-  JsonUtils.Endpoints[data.Action].Selector({ payloads[data.Action] })
+  JsonUtils.Endpoints[data.Action].Selector({ payloadBuilders[data.Action](data, modGuid, target, fileType) })
 end
 
 function JsonUtils.ParseAndSubmitStrings(data, target, modGuid, fileType)
   Utils.Info("Entering ParseAndSubmitStrings")
-  local payloads = {
-    Insert = JsonUtils.BuildStringPayload(data, modGuid, target, fileType),
-    Remove = JsonUtils.BuildStringPayload(data, modGuid, target, fileType)
-  }
+  local payloads = JsonUtils.BuildStringPayload(data, modGuid, target, fileType)
 
-  JsonUtils.Endpoints[data.Action].Strings({ payloads[data.Action] })
+  JsonUtils.Endpoints[data.Action].Strings({ payloads })
 end
 
 function JsonUtils.ParseAndSubmitBoolean(data, target, modGuid, fileType)
