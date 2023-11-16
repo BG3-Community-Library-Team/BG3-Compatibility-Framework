@@ -7,6 +7,21 @@ function Utils.createTableFromString(str, separator)
   return result
 end
 
+function Utils.createSetFromString(str, separator)
+  local set = {}
+  local result = {}
+  local stringTable = Utils.createTableFromString(str, separator)
+
+  for _, string in pairs(stringTable) do
+    if not set[string] then
+      set[string] = true
+      table.insert(result,string)
+    end
+  end
+
+  return set, result
+end
+
 function Utils.IsInTable_Nested(arr, str)
   local returnValue = arr
   for key in str:gmatch("[^.]+") do
