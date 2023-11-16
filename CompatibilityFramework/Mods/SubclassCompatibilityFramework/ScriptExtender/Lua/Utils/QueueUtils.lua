@@ -68,14 +68,16 @@ end
 
 function Utils.ManageDuplicates(field, strings)
   local res = {}
-  for _, value in pairs(strings) do
-    if not string.find(field, value) then
-      if not string.find(table.concat(res, " "), value) then
+  for _, stringArr in pairs(strings) do
+    for _, value in pairs(stringArr) do
+      if not string.find(field, value) then
+        if not string.find(table.concat(res, " "), value) then
+          table.insert(res, value)
+        end
+      end
+      if not Utils.IsInString(field, value) and not Utils.IsInTable(res, value) then
         table.insert(res, value)
       end
-    end
-    if not Utils.IsInString(field, value) and not Utils.IsInTable(res, value) then
-      table.insert(res, value)
     end
   end
 
@@ -83,13 +85,19 @@ function Utils.ManageDuplicates(field, strings)
 end
 
 function Utils.ShipToQueue(payload, items, itemsType, itemsSubType)
+  Utils.Info("Entering ShipToQueue for " .. Utils.RetrieveModHandleAndAuthor(payload.modGuid))
   local type = payload.FileType or payload.Type or "Progression"
   local target = payload.Target or payload.TargetProgression
 
-  if Utils.IsKeyInTable(Globals.ModuleTypes[type]) and items ~= nil then
+  if Utils.IsKeyInTable(Globals.ModuleTypes, type) and items ~= nil then
+    Utils.Info("Key is in table: " .. Utils.RetrieveModHandleAndAuthor(payload.modGuid))
     local queueType = Globals.ModuleTypes[type]
+    _D(target)
+    _D(type)
     local fleshedObject = Utils.CacheOrRetrieve(target, type)
+    _D(fleshedObject)
     if fleshedObject ~= nil then
+      Utils.Info("Fleshed Object Exists: " .. Utils.RetrieveModHandleAndAuthor(payload.modGuid))
       Utils.BuildQueueEntry(queueType, target, itemsType, itemsSubType)
       table.insert(Queue[queueType][target][itemsType][itemsSubType], items)
     else

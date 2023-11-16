@@ -2,6 +2,8 @@ function Queue.Commit()
   Utils.Info("Entering Queue.Commit")
   Queue.CommitLists()
   Queue.CommitFeatsAndProgressions()
+  --Queue.CommitRaces()
+  --Queue.CommitSpellData()  
 end
 
 function Queue.CommitLists()
@@ -69,12 +71,8 @@ function Queue.Commit_SelectorRemoval(gameObject, selectors)
     local res = {}
     local count = 1
     for _, selector in pairs(gameObject[selectorFunction]) do
-      local selectorUUID = ""
-      if selector.SpellUUID ~= nil then
-        selectorUUID = selector.SpellUUID
-      else
-        selectorUUID = selector.UUID
-      end
+      local selectorUUID = selector[Globals.SelectorIdTypes[selectorFunction]]
+
       if selectorUUID ~= nil and not Utils.IsInTable(selectorIds, selectorUUID) then
         Utils.AddKeyValueToTable(res, tostring(count), selector)
       end

@@ -32,11 +32,21 @@ local function BuildAddSpellsTable(params)
   }
 end
 
-local function BuildSelectPassivesOrEquipmentTable(params)
-  Utils.Info("Entering BuildSelectPassivesOrEquipmentTable")
+local function BuildSelectPassiveTable(params)
+  Utils.Info("Entering BuildSelectPassiveTable")
   return {
     UUID = params.Guid or params.UUID,
-    Amount = params.Amount or 1,
+    Amount = params.Amount or "1",
+    Amount2 = params.ReplaceAmount or "0",
+    Arg3 = params.SelectorId or ""
+  }
+end
+
+local function BuildSelectEquipmentTable(params)
+  Utils.Info("Entering BuildSelectEquipmentTable")
+  return {
+    UUID = params.Guid or params.UUID,
+    Amount = params.Amount or "1",
     Arg3 = params.SelectorId or ""
   }
 end
@@ -44,8 +54,8 @@ end
 local function BuildSelectAbilitiesTable(params)
   return {
     UUID = params.Guid or params.UUID,
-    Arg2 = params.Amount or 1,
-    Arg3 = params.AbilityAmount or 1,
+    Arg2 = params.Amount or "1",
+    Arg3 = params.AbilityAmount or "1",
     Arg4 = params.SelectorId or ""
   }
 end
@@ -85,13 +95,13 @@ local function BuildSelector(payload)
     return BuildAddSpellsTable(payload.Params)
   end
   if payload.Function == Globals.SelectorFunctions.SelectPassives then
-    return BuildSelectPassivesOrEquipmentTable(payload.Params)
+    return BuildSelectPassiveTable(payload.Params)
   end
   if payload.Function == Globals.SelectorFunctions.ReplacePassives then
-    return BuildSelectPassivesOrEquipmentTable(payload.Params)
+    return BuildSelectPassiveTable(payload.Params)
   end
   if payload.Function == Globals.SelectorFunctions.SelectEquipment then
-    return BuildSelectPassivesOrEquipmentTable(payload.Params)
+    return BuildSelectEquipmentTable(payload.Params)
   end
   if payload.Function == Globals.SelectorFunctions.SelectAbilityBonus then
     return BuildSelectAbilityBonusTable(payload.Params)
@@ -108,7 +118,7 @@ local function BuildSelector(payload)
 end
 
 local function AddSelector(payload)
-  Utils.Info("Entering AddSelector")
+  Utils.Info("Entering AddSelector for " .. Utils.RetrieveModHandleAndAuthor(payload.modGuid))
   Utils.ShipToQueue(payload, BuildSelector(payload), "Selectors", payload.Function)
 end
 
