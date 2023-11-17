@@ -18,7 +18,7 @@ function Api.RemoveStrings(payloads)
       Utils.Info(Utils.Stringify(payload))
 
       if Ext.Mod.IsModLoaded(payload.modGuid) then
-        HandleString(payload, "String_Removal")
+        HandleString(payload, "Strings_Remove")
       end
     end
   end
