@@ -51,6 +51,31 @@ function Queue.Commit_Strings(gameObject, stringArr)
   end
 end
 
+function Queue.Commit_StringRemoval(gameObject, stringArr)
+  Utils.Info("Entering Queue.Commit_StringRemoval")
+
+  for stringType, stringTypeArr in pairs(stringArr) do
+    local separator = Globals.FieldSeparator[stringType]
+    local set, _ = Utils.createSetFromString(gameObject[stringType], separator)
+    local removeSet, _ = Utils.stringTypeArrToSet(stringTypeArr)
+    local result = {}
+
+    for element, exists in pairs(removeSet) do
+      if set[element] then
+        set[element] = nil
+      end
+    end
+
+    for element, exists in pairs(set) do
+      if exists then
+        table.insert(result, element)
+      end
+    end
+
+    gameObject[stringType] = table.concat(result, separator)
+  end
+end
+
 function Queue.ParseInsertSelectors(tempArr, selectorGroup, selectorFunction)
   Utils.Info("Entering Queue.ParseInsertSelectors")
   for _, selector in pairs(selectorGroup) do
@@ -113,7 +138,7 @@ function Queue.CommitFeatsAndProgressions()
         end
 
         if objectTable.Strings_Remove ~= nil then
-          Queue.Commit_StringRemoval(gameObject, objectTable.Selectors_Remove)
+          Queue.Commit_StringRemoval(gameObject, objectTable.Strings_Remove)
         end
 
         if objectTable.Strings ~= nil then

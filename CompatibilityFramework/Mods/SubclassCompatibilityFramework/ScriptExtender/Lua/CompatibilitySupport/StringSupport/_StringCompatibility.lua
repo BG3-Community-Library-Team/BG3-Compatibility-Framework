@@ -1,14 +1,6 @@
 local function StringHandler(payload, type)
   Utils.Info("Entering StringHandler")
   Utils.ShipToQueue(payload, payload.Strings, type, payload.Type)
-
-  if type == "Strings_Remove" then
-    for key, val in pairs(Queue[Globals.ModuleTypes[payload.FileType]][payload.Target][payload.Type]) do
-      if Utils.IsInTable(payload.Strings, val) then
-        Queue[Globals.ModuleTypes[payload.FileType]][payload.Target][payload.Type][key] = nil
-      end
-    end
-  end
 end
 
 function HandleString(payload, type)
