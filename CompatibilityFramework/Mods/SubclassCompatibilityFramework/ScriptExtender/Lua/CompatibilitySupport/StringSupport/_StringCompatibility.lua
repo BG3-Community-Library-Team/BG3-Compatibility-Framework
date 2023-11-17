@@ -12,11 +12,13 @@ local function StringHandler(payload, addRemove)
     queueItem[v] = true
   end
 
-  if stringType == "Strings_Remove" then
-    local queueItem = Queue[queueType][target].Strings[stringType]
-    if queueItem then
-      for _, v in pairs(payload.Strings) do
-        queueItem[v] = nil
+  if addRemove == "Strings_Remove" then
+    if Queue[queueType][target].Strings then
+      local addStrings = queueItem[stringType]
+      if addStrings then
+        for _, v in pairs(payload.Strings) do
+          if addStrings[v] then addStrings[v] = nil end
+        end
       end
     end
   end
