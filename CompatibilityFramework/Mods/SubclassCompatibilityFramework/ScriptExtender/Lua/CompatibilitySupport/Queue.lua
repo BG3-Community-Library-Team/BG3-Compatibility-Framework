@@ -35,10 +35,9 @@ end
 function Queue.Commit_Strings(gameObject, stringArr)
   Utils.Info("Entering Queue.Commit_Strings")
 
-  for stringType, stringTypeArr in pairs(stringArr) do
+  for stringType, addSet in pairs(stringArr) do
     local separator = Globals.FieldSeparator[stringType]
     local set, result = Utils.createSetFromString(gameObject[stringType], separator)
-    local addSet, _ = Utils.stringTypeArrToSet(stringTypeArr)
 
     for element, _ in pairs(addSet) do
       if not set[element] then
@@ -54,13 +53,12 @@ end
 function Queue.Commit_StringRemoval(gameObject, stringArr)
   Utils.Info("Entering Queue.Commit_StringRemoval")
 
-  for stringType, stringTypeArr in pairs(stringArr) do
+  for stringType, removeSet in pairs(stringArr) do
     local separator = Globals.FieldSeparator[stringType]
     local set, _ = Utils.createSetFromString(gameObject[stringType], separator)
-    local removeSet, _ = Utils.stringTypeArrToSet(stringTypeArr)
     local result = {}
 
-    for element, exists in pairs(removeSet) do
+    for element, _ in pairs(removeSet) do
       if set[element] then
         set[element] = nil
       end

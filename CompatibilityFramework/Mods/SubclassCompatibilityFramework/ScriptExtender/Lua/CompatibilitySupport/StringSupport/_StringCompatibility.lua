@@ -1,6 +1,25 @@
-local function StringHandler(payload, type)
+local function StringHandler(payload, addRemove)
   Utils.Info("Entering StringHandler")
-  Utils.ShipToQueue(payload, payload.Strings, type, payload.Type)
+
+  local queueType = Globals.ModuleTypes[payload.FileType or "Progression"]
+  local target = payload.Target
+  local stringType = payload.Type
+
+  Utils.BuildQueueEntry(queueType, target, addRemove, stringType)
+  local queueItem = Queue[queueType][target][addRemove][stringType]
+
+  for _, v in pairs(payload.Strings) do
+    queueItem[v] = true
+  end
+
+  if stringType == "Strings_Remove" then
+    local queueItem = Queue[queueType][target].Strings[stringType]
+    if queueItem then
+      for _, v in pairs(payload.Strings) do
+        queueItem[v] = nil
+      end
+    end
+  end
 end
 
 function HandleString(payload, type)
