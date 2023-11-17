@@ -3,7 +3,7 @@ function Queue.Commit()
   Queue.CommitLists()
   Queue.CommitFeatsAndProgressions()
   --Queue.CommitRaces()
-  --Queue.CommitSpellData()  
+  --Queue.CommitSpellData()
 end
 
 function Queue.CommitLists()
@@ -40,18 +40,12 @@ function Queue.Commit_Strings(gameObject, stringArr)
     local set, result = Utils.createSetFromString(gameObject[stringType], separator)
     local addSet, _ = Utils.stringTypeArrToSet(stringTypeArr)
 
-    _D(set)
-    _D(result)
-    _D(addSet)
-
-    for element , exists in pairs(addSet) do
+    for element, _ in pairs(addSet) do
       if not set[element] then
         set[element] = true
         table.insert(result, element)
       end
     end
-
-    _D(result)
 
     gameObject[stringType] = table.concat(result, separator)
   end
@@ -116,6 +110,10 @@ function Queue.CommitFeatsAndProgressions()
 
         if objectTable.Selectors ~= nil then
           Queue.Commit_Selectors(gameObject, objectTable.Selectors)
+        end
+
+        if objectTable.Strings_Remove ~= nil then
+          Queue.Commit_StringRemoval(gameObject, objectTable.Selectors_Remove)
         end
 
         if objectTable.Strings ~= nil then

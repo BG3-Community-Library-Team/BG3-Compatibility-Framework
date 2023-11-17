@@ -5,7 +5,7 @@ function Api.InsertStrings(payloads)
       Utils.Info(Utils.Stringify(payload))
 
       if Ext.Mod.IsModLoaded(payload.modGuid) then
-        HandleProgressionString(payload)
+        HandleString(payload, "String")
       end
     end
   end
@@ -18,7 +18,7 @@ function Api.RemoveStrings(payloads)
       Utils.Info(Utils.Stringify(payload))
 
       if Ext.Mod.IsModLoaded(payload.modGuid) then
-        HandleRemoveString(payload)
+        HandleString(payload, "String_Removal")
       end
     end
   end
