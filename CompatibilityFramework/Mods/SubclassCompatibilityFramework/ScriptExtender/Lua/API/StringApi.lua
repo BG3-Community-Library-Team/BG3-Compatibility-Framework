@@ -5,7 +5,7 @@ function Api.InsertStrings(payloads)
       Utils.Info(Utils.Stringify(payload))
 
       if Ext.Mod.IsModLoaded(payload.modGuid) then
-        HandleString(payload, "String")
+        HandleString(payload, "Strings")
       end
     end
   end

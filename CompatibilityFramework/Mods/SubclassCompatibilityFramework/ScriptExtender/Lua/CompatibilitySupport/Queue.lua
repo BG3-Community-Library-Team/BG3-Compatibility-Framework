@@ -35,14 +35,37 @@ end
 function Queue.Commit_Strings(gameObject, stringArr)
   Utils.Info("Entering Queue.Commit_Strings")
 
-  for stringType, stringTypeArr in pairs(stringArr) do
+  for stringType, addSet in pairs(stringArr) do
     local separator = Globals.FieldSeparator[stringType]
     local set, result = Utils.createSetFromString(gameObject[stringType], separator)
-    local addSet, _ = Utils.stringTypeArrToSet(stringTypeArr)
 
     for element, _ in pairs(addSet) do
       if not set[element] then
         set[element] = true
+        table.insert(result, element)
+      end
+    end
+
+    gameObject[stringType] = table.concat(result, separator)
+  end
+end
+
+function Queue.Commit_StringRemoval(gameObject, stringArr)
+  Utils.Info("Entering Queue.Commit_StringRemoval")
+
+  for stringType, removeSet in pairs(stringArr) do
+    local separator = Globals.FieldSeparator[stringType]
+    local set, _ = Utils.createSetFromString(gameObject[stringType], separator)
+    local result = {}
+
+    for element, _ in pairs(removeSet) do
+      if set[element] then
+        set[element] = nil
+      end
+    end
+
+    for element, exists in pairs(set) do
+      if exists then
         table.insert(result, element)
       end
     end
@@ -113,7 +136,7 @@ function Queue.CommitFeatsAndProgressions()
         end
 
         if objectTable.Strings_Remove ~= nil then
-          Queue.Commit_StringRemoval(gameObject, objectTable.Selectors_Remove)
+          Queue.Commit_StringRemoval(gameObject, objectTable.Strings_Remove)
         end
 
         if objectTable.Strings ~= nil then
