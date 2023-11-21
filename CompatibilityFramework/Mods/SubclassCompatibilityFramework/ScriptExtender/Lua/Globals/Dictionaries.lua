@@ -1,7 +1,8 @@
 Globals.ModuleTypes = {
   Progression = "Progressions",
   Feat = "Feats",
-  List = "Lists"
+  List = "Lists",
+  Race = "Races"
 }
 
 Globals.ListTypes = {

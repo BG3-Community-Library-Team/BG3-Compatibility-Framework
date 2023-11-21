@@ -1,17 +1,11 @@
 local function AddRaceChildren(payload)
   Utils.Info("Entering AddRaceChildren")
-  local raceData = Utils.CacheOrRetrieve(payload.raceGuid, "Race")
-  if raceData == nil then
+  local fleshedObject = Utils.CacheOrRetrieve(payload.raceGuid, "Race")
+  if fleshedObject ~= nil then
+    Utils.BuildQueueEntry(Globals.ModuleTypes["Race"], payload.Target, payload.Type)
+    table.insert(Queue[Globals.ModuleTypes["Race"]][payload.Target][payload.Type], payload.Value)
+  else
     Utils.Error(Strings.ERROR_RACE_DATA_NOT_FOUND)
-  end
-  for _, entry in pairs(payload.children) do
-    if raceData[entry.Type] == nil then
-      raceData[entry.Type] = { entry.Value }
-    else
-      if not Utils.IsInTable(raceData[entry.Type], entry.Value) then
-        Utils.AddToTable(raceData[entry.Type], entry.Value)
-      end
-    end
   end
 end
 
@@ -25,7 +19,7 @@ local function RemoveRaceChildren(payload)
   Utils.Info("Entering RemoveRaceChildren")
   local raceData = Utils.CacheOrRetrieve(payload.raceGuid, "Race")
 
-    for _, entry in pairs(payload.children) do
+  for _, entry in pairs(payload.children) do
     if raceData[entry.Type] ~= nil then
       if Utils.IsInTable(raceData[entry.Type], entry.Value) then
         local idx = Utils.GetKeyFromvalue(raceData[entry.Type], entry.Value)
