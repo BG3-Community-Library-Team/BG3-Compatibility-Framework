@@ -2,7 +2,7 @@ function Queue.Commit()
   Utils.Info("Entering Queue.Commit")
   Queue.CommitLists()
   Queue.CommitFeatsAndProgressions()
-  --Queue.CommitRaces()
+  Queue.CommitRaces()
   --Queue.CommitSpellData()
 end
 
@@ -151,4 +151,29 @@ function Queue.CommitFeatsAndProgressions()
       end
     end
   end
+end
+
+function Queue.Commit_ChildNodes(gameObject, childNodes)
+  for key, value in pairs(childNodes) do
+    local res = Utils.InsertFromTableToTable(gameObject[key], {})
+    for _, val in pairs(value) do
+      table.insert(res, val)
+    end
+
+    gameObject[key] = res
+  end
+end
+
+function Queue.CommitRaces()
+  Utils.Info("Entering Queue.CommitRaces")
+  for objectId, objectTable in pairs(Queue.Races) do
+    local gameObject = Utils.CacheOrRetrieve(objectId, "Race")
+    if gameObject ~= nil and objectTable ~= nil then
+      Queue.Commit_ChildNodes(gameObject, objectTable)
+    end
+  end
+end
+
+function Queue.CommitSpellData()
+  Utils.Info("Entering Queue.CommitSpellData")
 end

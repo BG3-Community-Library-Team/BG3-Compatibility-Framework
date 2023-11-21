@@ -15,7 +15,7 @@ function Utils.createSetFromString(str, separator)
   for _, string in pairs(stringTable) do
     if not set[string] then
       set[string] = true
-      table.insert(result,string)
+      table.insert(result, string)
     end
   end
 
@@ -85,6 +85,7 @@ end
 
 function Utils.InsertFromTableToTable(arr, resultArr, count)
   resultArr = resultArr or {}
+  count = count or 0
   for _, value in pairs(arr) do
     if not Utils.IsInTable(resultArr, value) then
       resultArr[count] = value
