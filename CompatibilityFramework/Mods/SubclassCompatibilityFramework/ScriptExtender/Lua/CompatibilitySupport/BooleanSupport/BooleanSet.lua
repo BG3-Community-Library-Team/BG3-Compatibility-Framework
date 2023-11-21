@@ -1,15 +1,13 @@
-local Queues = {
-  Progression = "Progressions",
-  Feat = "Feats"
-}
-
 local function SetBoolean(payload)
   if Utils.IsInTable(Globals.BooleanTypes, payload.Key) then
-    local target = Utils.CacheOrRetrieve(payload.Target, payload.FileType)
-    if target == nil then
-      Utils.Error(Strings.ERROR_TARGET_NOT_FOUND)
+    Utils.Info("Key is in table: " .. Utils.RetrieveModHandleAndAuthor(payload.modGuid))
+    local fleshedObject = Utils.CacheOrRetrieve(payload.Target, payload.FileType)
+    local queueType = Globals.ModuleTypes[payload.FileType]
+
+    if fleshedObject ~= nil then
+      Utils.BuildQueueEntry(queueType, payload.Target, "Booleans")
+      Queue[queueType][payload.Target].Booleans[payload.Key] = payload.Value
     end
-    target[payload.Key] = payload.Value
   else
     Utils.Error(Strings.ERROR_INVALID_BOOLEAN_TYPE .. payload.Key)
   end

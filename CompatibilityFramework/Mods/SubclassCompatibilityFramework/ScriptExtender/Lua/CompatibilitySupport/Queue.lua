@@ -111,10 +111,12 @@ function Queue.Commit_SelectorRemoval(gameObject, selectors)
 end
 
 function Queue.Commit_Booleans(gameObject, booleans)
-  --for _, value in pairs(progression.Booleans) do
-  --_P("Key: " .. key .. " | Value: ")
-  --_D(value)
-  --end
+  Utils.Info("Entering Queue.Commit_Booleans")
+  for key, value in pairs(booleans) do
+    if gameObject[key] ~= nil then
+      gameObject[key] = value
+    end
+  end
 end
 
 function Queue.CommitFeatsAndProgressions()
@@ -143,9 +145,9 @@ function Queue.CommitFeatsAndProgressions()
           Queue.Commit_Strings(gameObject, objectTable.Strings)
         end
 
-        --if objectTable.Booleans ~= nil then
-        --  Queue.Commit_Booleans(gameObject, objectTable.Booleans)
-        --end
+        if objectTable.Booleans ~= nil then
+          Queue.Commit_Booleans(gameObject, objectTable.Booleans)
+        end
       end
     end
   end

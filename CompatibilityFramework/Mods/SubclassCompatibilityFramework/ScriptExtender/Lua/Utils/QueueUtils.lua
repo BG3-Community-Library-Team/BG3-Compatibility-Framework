@@ -107,10 +107,7 @@ function Utils.ShipToQueue(payload, items, itemsType, itemsSubType)
   if Utils.IsKeyInTable(Globals.ModuleTypes, type) and items ~= nil then
     Utils.Info("Key is in table: " .. Utils.RetrieveModHandleAndAuthor(payload.modGuid))
     local queueType = Globals.ModuleTypes[type]
-    _D(target)
-    _D(type)
     local fleshedObject = Utils.CacheOrRetrieve(target, type)
-    _D(fleshedObject)
     if fleshedObject ~= nil then
       Utils.Info("Fleshed Object Exists: " .. Utils.RetrieveModHandleAndAuthor(payload.modGuid))
       Utils.BuildQueueEntry(queueType, target, itemsType, itemsSubType)
