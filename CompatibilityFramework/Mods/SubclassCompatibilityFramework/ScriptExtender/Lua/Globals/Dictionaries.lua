@@ -75,8 +75,9 @@ Globals.BooleanTypes = {
   "MustPrepareSpells",          -- ClassDescriptions
   "IsDefaultForUseSpellAction", -- ClassDescriptions
   "IsSomaticWithInstrument",    -- ClassDescriptions
-  "AppearanceLocked",           -- Origins
+  "AppearanceLocked",           -- Origins - Points to LockBody
   "IsHenchman",                 -- Origins
+  "LockBody",                   -- Origins
   "LockClass",                  -- Origins
   "LockRace",                   -- Origins
   "Unique",                     -- Origins

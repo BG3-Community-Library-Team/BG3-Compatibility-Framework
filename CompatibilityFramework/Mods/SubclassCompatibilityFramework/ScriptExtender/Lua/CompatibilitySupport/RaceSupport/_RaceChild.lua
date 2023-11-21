@@ -3,6 +3,7 @@ local function AddRaceChildren(payload)
   local fleshedObject = Utils.CacheOrRetrieve(payload.raceGuid, "Race")
   if fleshedObject ~= nil then
     Utils.BuildQueueEntry(Globals.ModuleTypes["Race"], payload.Target, payload.Type)
+    _D(payload.Value)
     table.insert(Queue[Globals.ModuleTypes["Race"]][payload.Target][payload.Type], payload.Value)
   else
     Utils.Error(Strings.ERROR_RACE_DATA_NOT_FOUND)

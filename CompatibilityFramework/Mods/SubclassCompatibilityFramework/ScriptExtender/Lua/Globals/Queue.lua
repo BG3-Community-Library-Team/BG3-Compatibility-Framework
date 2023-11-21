@@ -13,7 +13,5 @@ Queue.Lists = {
   SkillList = {},
   PassiveList = {}
 }
-Queue.Races = {
-  Children = {}
-}
+Queue.Races = {}
 Queue.Stats = {}
