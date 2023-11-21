@@ -67,9 +67,62 @@ Globals.CacheTypes = {
 }
 
 Globals.BooleanTypes = {
-  "AllowImprovement",       -- Progression
-  "IsMulticlass",           -- Progression
-  "CanBeTakenMultipleTimes" -- Feat
+  "AllowImprovement",           -- Progression
+  "IsMulticlass",               -- Progression
+  "CanBeTakenMultipleTimes",    -- Feat
+  "HasGod",                     -- ClassDescriptions
+  "CanLearnSpells",             -- ClassDescriptions
+  "MustPrepareSpells",          -- ClassDescriptions
+  "IsDefaultForUseSpellAction", -- ClassDescriptions
+  "IsSomaticWithInstrument",    -- ClassDescriptions
+  "AppearanceLocked",           -- Origins
+  "IsHenchman",                 -- Origins
+  "LockClass",                  -- Origins
+  "LockRace",                   -- Origins
+  "Unique",                     -- Origins
+  "ShowOnActionResourcePanel",  -- ActionResourceDefinition
+  "IsSpellResource",            -- ActionResourceDefinition
+  "PartyActionResource",        -- ActionResourceDefinition
+  "UpdatesSpellPowerLevel",     -- ActionResourceDefinition
+  "IsHidden",                   -- ActionResourceDefinition
+  "Hidden",                     -- ConditionErrors, ProgressionDescription
+  "CharacterCreationSet",       -- CharacterCreationAccessorySet
+  "MeshIsTwoSided",             -- CharacterCreationEquipmentIcon
+  "IsDefault",                  -- CustomDice
+  "Default",                    -- RulesetModifier
+  "Value",                      -- RulesetValue
+  "FootstepsType",              -- Rule
+  "MuteEquipmentSound",         -- Rule
+  "WildShapeHotBar",            -- Rule
+  "UseShapeshiftIdentity",      -- Rule
+  "RetainDisplayName",          -- Rule
+  "MuteEquipmentSound",         -- Rule
+  "IgnoreCustomLooks",          -- Rule
+  "DisableEquipmentSlots",      -- Rule
+  "UseTemplateEquipmentSet",    -- Rule
+  "ChangeRace",                 -- Rule
+  "ChangeIcon",                 -- Rule
+  "ChangeBodyType",             -- Rule
+  "ApplyVisual",                -- Rule
+  "ApplyTagsFromTemplate",      -- Rule
+  "ApplySpellsFromTemplate",    -- Rule
+  "RemovePrevSpells",           -- Rule
+  "UnarmedAbilityFromTemplate", -- Rule
+  "BaseACOverride",             -- Rule
+  "RetainDisplayName",          -- Rule
+  "BlockLevelUp",               -- Rule
+  "RemoveOldTags",              -- Rule
+  "ChangeAi",                   -- Rule
+  "KillEntityAtZeroHP",         -- Rule
+  "RetainCanSeeThrough",        -- Rule
+  "RetainCanShootThrough",      -- Rule
+  "RetainCanWalkThrough",       -- Rule
+  "OverrideSwitch",             -- TagSoundState/FlagSoundState
+  "DefaultSwitch",              -- TagSoundState/FlagSoundState
+  "OverrideOriginalCondition",  -- MetaCondition
+  "BlockVocals",                -- StatusSoundState
+  "RandomRotation",             -- ItemWallTemplates
+  "NeedsHalfIllithidToUnlock"   -- TadpolePowerNode
 }
 
 Globals.Attributes = {
