@@ -1,7 +1,10 @@
 function Utils.RetrieveModHandleAndAuthor(guid)
-  if Ext.Mod.IsModLoaded(guid) then
+Utils.Info("Entering Utils.RetrieveModHandleAndAuthor")
+  if guid and Ext.Mod.IsModLoaded(guid) then
     local mod = Ext.Mod.GetMod(guid)
     return mod.Info.Name .. " (" .. mod.Info.Author .. ")"
+  else
+    return guid
   end
 end
 

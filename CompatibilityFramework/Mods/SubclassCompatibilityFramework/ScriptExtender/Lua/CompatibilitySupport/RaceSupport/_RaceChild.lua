@@ -2,9 +2,10 @@ local function AddRaceChildren(payload)
   Utils.Info("Entering AddRaceChildren")
   local fleshedObject = Utils.CacheOrRetrieve(payload.raceGuid, "Race")
   if fleshedObject ~= nil then
-    Utils.BuildQueueEntry(Globals.ModuleTypes["Race"], payload.Target, payload.Type)
-    _D(payload.Value)
-    table.insert(Queue[Globals.ModuleTypes["Race"]][payload.Target][payload.Type], payload.Value)
+    for _, child in pairs(payload.children) do
+      Utils.BuildQueueEntry(Globals.ModuleTypes["Race"], payload.raceGuid, child.Type)
+      Utils.AddToTable(Queue[Globals.ModuleTypes["Race"]][payload.raceGuid][child.Type], child.Value)
+    end
   else
     Utils.Error(Strings.ERROR_RACE_DATA_NOT_FOUND)
   end
