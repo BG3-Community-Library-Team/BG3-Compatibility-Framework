@@ -61,10 +61,14 @@ local function BuildSelectAbilitiesTable(params)
 end
 
 local function BuildSelectAbilityBonusTable(params)
+  local defaultAmount = "2"
+  if params.Amounts then
+    defaultAmount = tostring(#(params.Amounts))
+  end
   return {
     UUID = params.Guid or params.UUID,
-    Amount = params.Amount or "1",
     BonusType = params.BonusType or "AbilityBonus",
+    Amount = params.Amount or defaultAmount,
     Amounts = params.Amounts or { "2", "1" }
   }
 end
