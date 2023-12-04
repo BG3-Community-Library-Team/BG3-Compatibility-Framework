@@ -36,14 +36,15 @@ end
 local function AddSpellString(payload)
   Utils.Info("Entering AddSpellString")
   local target = Ext.Stats.Get(payload.Target)
-  local separator = ";"
-
-  local baseSpells = Utils.createTableFromString(target[payload.Type], separator)
+  local baseSpells = {}
+  for _, value in pairs(target[payload.Type]) do
+    table.insert(baseSpells, value)
+  end
   for _, spell in pairs(payload.SubSpells) do
     table.insert(baseSpells, spell)
   end
 
-  target[payload.Type] = table.concat(baseSpells, separator)
+  target[payload.Type] = baseSpells
   Ext.Stats.Sync(payload.Target)
 end
 
@@ -59,10 +60,14 @@ end
 function RemoveSpellString(payload)
   Utils.Info("Entering RemoveSpellString")
   local target = Ext.Stats.Get(payload.Target)
-  local separator = ";"
+
   if target ~= nil then
-    local fieldStrings = Utils.createTableFromString(target[payload.Type], separator)
+    local fieldStrings = {}
     local result = {}
+
+    for _, value in pairs(target[payload.Type]) do
+      table.insert(fieldStrings, value)
+    end
 
     for _, value in pairs(fieldStrings) do
       if not Utils.IsInTable(payload.SubSpells, value) then
@@ -70,7 +75,7 @@ function RemoveSpellString(payload)
       end
     end
 
-    target[payload.Type] = table.concat(result, separator)
+    target[payload.Type] = result
     Ext.Stats.Sync(payload.Target)
   else
     Utils.Error(Strings.ERROR_TARGET_NOT_FOUND)
