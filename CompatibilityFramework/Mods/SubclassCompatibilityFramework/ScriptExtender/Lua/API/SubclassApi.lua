@@ -1,15 +1,15 @@
 -- For adding Support to 1 or more Subclasses
 function Api.InsertSubClasses(payloads)
   for _, payload in pairs(payloads) do
-    local err = DoValidation(payload,
+    local err = CLUtils.DoValidation(payload,
       {
-        Validators = { IsPayloadEmpty = Strings.ERROR_EMPTY_PAYLOAD, IsModLoaded = Strings.ERROR_MOD_NOT_LOADED },
+        Validators = { IsPayloadEmpty = CLStrings.ERROR_EMPTY_PAYLOAD, IsModLoaded = CLStrings.ERROR_MOD_NOT_LOADED },
         IsIntegrated = payload.isIntegrated
       })
 
     if err ~= nil then
       if not payload.isIntegrated then
-        Utils.Warn(err)
+        CLUtils.Warn(err)
       end
 
       return
@@ -23,7 +23,7 @@ end
 
 -- For adding support to a Custom Class. TODO: Reduce Risk of Collisions
 function Api.InsertClass(className, classGuid)
-  Globals.ClassUUIDs[className] = classGuid
+  CLGlobals.ClassUUIDs[className] = classGuid
 end
 
 -- Additional endpoint to ensure support for classes with a level 1 subclass choice

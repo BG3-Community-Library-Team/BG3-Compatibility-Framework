@@ -1,7 +1,7 @@
 function Api.InsertSelectors(payloads)
   if payloads ~= nil then
     for _, payload in pairs(payloads) do
-      Utils.Info(Utils.Stringify(payload))
+      CLUtils.Info(CLUtils.Stringify(payload))
 
       if Ext.Mod.IsModLoaded(payload.modGuid) then
         if not Globals.AllowPayloads then
@@ -16,7 +16,7 @@ end
 function Api.RemoveSelectors(payloads)
   if payloads ~= nil then
     for _, payload in pairs(payloads) do
-      Utils.Info(Utils.Stringify(payload))
+      CLUtils.Info(CLUtils.Stringify(payload))
 
       if Ext.Mod.IsModLoaded(payload.modGuid) then
         if not Globals.AllowPayloads then

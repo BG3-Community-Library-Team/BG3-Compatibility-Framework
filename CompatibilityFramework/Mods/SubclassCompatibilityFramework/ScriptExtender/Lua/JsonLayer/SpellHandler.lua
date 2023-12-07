@@ -1,5 +1,5 @@
 function JsonUtils.BuildSpellStringPayload(spells, target, modGuid, stringType)
-  Utils.Info("Entering BuildSpellStringPayload")
+  CLUtils.Info("Entering BuildSpellStringPayload")
   return {
     modGuid = modGuid,
     Target = target,
@@ -9,13 +9,13 @@ function JsonUtils.BuildSpellStringPayload(spells, target, modGuid, stringType)
 end
 
 function JsonUtils.ParseAndSubmitSpellStrings(spells, target, modGuid, stringType, action)
-  Utils.Info("Entering ParseAndSubmitSpellStrings")
+  CLUtils.Info("Entering ParseAndSubmitSpellStrings")
   local payloads = {
     Insert = JsonUtils.BuildSpellStringPayload(spells, target, modGuid, stringType),
     Remove = JsonUtils.BuildSpellStringPayload(spells, target, modGuid, stringType)
   }
 
-    if payloads[action] ~= nil then
+  if payloads[action] ~= nil then
     JsonUtils.Endpoints[action].SpellData({ payloads[action] })
   end
 end
@@ -31,7 +31,7 @@ function SpellSubsectionHandler(data, modGuid)
 end
 
 function SpellJsonHandler(data, modGuid)
-  Utils.Info("Entering SpellJsonHandler")
+  CLUtils.Info("Entering SpellJsonHandler")
   for _, spell in pairs(data) do
     SpellSubsectionHandler(spell, modGuid)
   end

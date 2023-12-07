@@ -2,13 +2,13 @@ local function OnStatsLoaded()
   LoadConfigFiles()
 
   Queue.Commit()
-  Utils.Warn(Strings.WARN_LAST_CALL)
+  CLUtils.Warn(Strings.WARN_LAST_CALL)
 end
 
 Ext.Events.StatsLoaded:Subscribe(OnStatsLoaded)
 
 local function CloseRegistration()
-  Utils.Info("Closing Registration")
+  CLUtils.Info("Closing Registration")
   Globals.AllowPayloads = false
 end
 

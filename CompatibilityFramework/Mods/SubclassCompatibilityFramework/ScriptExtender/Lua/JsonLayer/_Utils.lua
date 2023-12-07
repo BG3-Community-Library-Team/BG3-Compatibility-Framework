@@ -21,18 +21,18 @@ JsonUtils.Endpoints = {
 }
 
 function JsonUtils.BuildRacePayloads(data, modGuid, child)
-  Utils.Info("Entering BuildPayloads")
+  CLUtils.Info("Entering BuildPayloads")
   local result = {
     modGuid = data.modGuid or modGuid,
     raceGuid = data.UUID,
-    children = {child}
+    children = { child }
   }
 
   return result
 end
 
 function JsonUtils.BuildSubclassPayload(data, classId, modGuid, subclassGuid)
-  Utils.Info("Entering BuildSubclassPayload")
+  CLUtils.Info("Entering BuildSubclassPayload")
   subclassGuid = subclassGuid or data.UUID
   return {
     modGuid = data.modGuid or modGuid,
@@ -44,7 +44,7 @@ function JsonUtils.BuildSubclassPayload(data, classId, modGuid, subclassGuid)
 end
 
 function JsonUtils.BuildAddSelectorPayload(data, modGuid, target, type)
-  Utils.Info("Entering BuildAddSelectorPayload")
+  CLUtils.Info("Entering BuildAddSelectorPayload")
 
   return {
     modGuid = data.modGuid or modGuid,
@@ -57,7 +57,7 @@ function JsonUtils.BuildAddSelectorPayload(data, modGuid, target, type)
 end
 
 function JsonUtils.BuildRemoveSelectorPayload(data, modGuid, target, type)
-  Utils.Info("Entering BuildRemoveSelectorPayload")
+  CLUtils.Info("Entering BuildRemoveSelectorPayload")
 
   return {
     modGuid = data.modGuid or modGuid,
@@ -69,7 +69,7 @@ function JsonUtils.BuildRemoveSelectorPayload(data, modGuid, target, type)
 end
 
 function JsonUtils.BuildStringPayload(data, modGuid, target, type)
-  Utils.Info("Entering BuildStringPayload")
+  CLUtils.Info("Entering BuildStringPayload")
   local count = 0
   local result = {
     modGuid = data.modGuid or modGuid,
@@ -88,7 +88,7 @@ function JsonUtils.BuildStringPayload(data, modGuid, target, type)
 end
 
 function JsonUtils.BuildBooleanPayload(data, modGuid, target, type)
-  Utils.Info("Entering BuildBooleanPayload")
+  CLUtils.Info("Entering BuildBooleanPayload")
   return {
     modGuid = data.modGuid or modGuid,
     FileType = type,
@@ -99,7 +99,7 @@ function JsonUtils.BuildBooleanPayload(data, modGuid, target, type)
 end
 
 function JsonUtils.BuildListPayload(data, modGuid, listId)
-  Utils.Info("Entering BuildListPayload")
+  CLUtils.Info("Entering BuildListPayload")
   listId = listId or data.UUID
   local count = 0
   local result = {
@@ -118,7 +118,7 @@ function JsonUtils.BuildListPayload(data, modGuid, listId)
 end
 
 function JsonUtils.BuildActionResourceGroupPayload(data, modGuid)
-  Utils.Info("Entering BuildActionResourceGroupPayload")
+  CLUtils.Info("Entering BuildActionResourceGroupPayload")
   local count = 0
   local result = {
     modGuid = data.modGuid or modGuid,
@@ -135,7 +135,7 @@ function JsonUtils.BuildActionResourceGroupPayload(data, modGuid)
 end
 
 function JsonUtils.ParseAndSubmitSelectors(data, target, modGuid, fileType)
-  Utils.Info("Entering ParseAndSubmitSelectors")
+  CLUtils.Info("Entering ParseAndSubmitSelectors")
   local payloadBuilders = {
     Insert = JsonUtils.BuildAddSelectorPayload,
     Remove = JsonUtils.BuildRemoveSelectorPayload
@@ -145,14 +145,14 @@ function JsonUtils.ParseAndSubmitSelectors(data, target, modGuid, fileType)
 end
 
 function JsonUtils.ParseAndSubmitStrings(data, target, modGuid, fileType)
-  Utils.Info("Entering ParseAndSubmitStrings")
+  CLUtils.Info("Entering ParseAndSubmitStrings")
   local payloads = JsonUtils.BuildStringPayload(data, modGuid, target, fileType)
 
   JsonUtils.Endpoints[data.Action].Strings({ payloads })
 end
 
 function JsonUtils.ParseAndSubmitBoolean(data, target, modGuid, fileType)
-  Utils.Info("Entering ParseAndSubmitBooleans")
+  CLUtils.Info("Entering ParseAndSubmitBooleans")
   local payloads = {
     Set = JsonUtils.BuildBooleanPayload(data, modGuid, target, fileType)
   }

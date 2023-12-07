@@ -1,6 +1,6 @@
 local function BuildSelectSpellsTable(params)
   local castingAbility = params.CastingAbility
-  if not Utils.IsInTable(Globals.Attributes, params.CastingAbility) then
+  if not CLUtils.IsInTable(CLGlobals.Attributes, params.CastingAbility) then
     castingAbility = "None"
   end
 
@@ -19,7 +19,7 @@ end
 
 local function BuildAddSpellsTable(params)
   local castingAbility = params.CastingAbility
-  if not Utils.IsInTable(Globals.Attributes, params.CastingAbility) then
+  if not CLUtils.IsInTable(CLGlobals.Attributes, params.CastingAbility) then
     castingAbility = "None"
   end
   return {
@@ -33,7 +33,7 @@ local function BuildAddSpellsTable(params)
 end
 
 local function BuildSelectPassiveTable(params)
-  Utils.Info("Entering BuildSelectPassiveTable")
+  CLUtils.Info("Entering BuildSelectPassiveTable")
   return {
     UUID = params.Guid or params.UUID,
     Amount = params.Amount or "1",
@@ -43,7 +43,7 @@ local function BuildSelectPassiveTable(params)
 end
 
 local function BuildSelectEquipmentTable(params)
-  Utils.Info("Entering BuildSelectEquipmentTable")
+  CLUtils.Info("Entering BuildSelectEquipmentTable")
   return {
     UUID = params.Guid or params.UUID,
     Amount = params.Amount or "1",
@@ -91,46 +91,46 @@ local function BuildSelectSkillsExpertiseTable(params)
 end
 
 local function BuildSelector(payload)
-  Utils.Info("Entering BuildSelector")
-  if payload.Function == Globals.SelectorFunctions.SelectSpells then
+  CLUtils.Info("Entering BuildSelector")
+  if payload.Function == CLGlobals.SelectorFunctions.SelectSpells then
     return BuildSelectSpellsTable(payload.Params)
   end
-  if payload.Function == Globals.SelectorFunctions.AddSpells then
+  if payload.Function == CLGlobals.SelectorFunctions.AddSpells then
     return BuildAddSpellsTable(payload.Params)
   end
-  if payload.Function == Globals.SelectorFunctions.SelectPassives then
+  if payload.Function == CLGlobals.SelectorFunctions.SelectPassives then
     return BuildSelectPassiveTable(payload.Params)
   end
-  if payload.Function == Globals.SelectorFunctions.ReplacePassives then
+  if payload.Function == CLGlobals.SelectorFunctions.ReplacePassives then
     return BuildSelectPassiveTable(payload.Params)
   end
-  if payload.Function == Globals.SelectorFunctions.SelectEquipment then
+  if payload.Function == CLGlobals.SelectorFunctions.SelectEquipment then
     return BuildSelectEquipmentTable(payload.Params)
   end
-  if payload.Function == Globals.SelectorFunctions.SelectAbilityBonus then
+  if payload.Function == CLGlobals.SelectorFunctions.SelectAbilityBonus then
     return BuildSelectAbilityBonusTable(payload.Params)
   end
-  if payload.Function == Globals.SelectorFunctions.SelectAbilities then
+  if payload.Function == CLGlobals.SelectorFunctions.SelectAbilities then
     return BuildSelectAbilitiesTable(payload.Params)
   end
-  if payload.Function == Globals.SelectorFunctions.SelectSkills then
+  if payload.Function == CLGlobals.SelectorFunctions.SelectSkills then
     return BuildSelectSkillsTable(payload.Params)
   end
-  if payload.Function == Globals.SelectorFunctions.SelectSkillsExpertise then
+  if payload.Function == CLGlobals.SelectorFunctions.SelectSkillsExpertise then
     return BuildSelectSkillsExpertiseTable(payload.Params)
   end
 end
 
 local function AddSelector(payload)
-  Utils.Info("Entering AddSelector for " .. Utils.RetrieveModHandleAndAuthor(payload.modGuid))
+  CLUtils.Info("Entering AddSelector for " .. CLUtils.RetrieveModHandleAndAuthor(payload.modGuid))
   Utils.ShipToQueue(payload, BuildSelector(payload), "Selectors", payload.Function)
 end
 
 function HandleSelector(payload)
   if payload ~= nil then
-    Utils.Info("Entering HandleSelector")
+    CLUtils.Info("Entering HandleSelector")
     AddSelector(payload)
   else
-    Utils.Error(Strings.ERROR_EMPTY_PAYLOAD)
+    CLUtils.Error(CLStrings.ERROR_EMPTY_PAYLOAD)
   end
 end

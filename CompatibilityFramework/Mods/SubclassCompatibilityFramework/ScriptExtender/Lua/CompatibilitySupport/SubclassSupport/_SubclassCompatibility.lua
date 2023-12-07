@@ -1,27 +1,27 @@
 -- Insert Subclass into Progression Nodes
 local function AttachSubClass(subClassGuid, classGuid)
-  Utils.Info("Entering AttachSubClass")
+  CLUtils.Info("Entering AttachSubClass")
   Utils.BuildQueueEntry("Progressions", classGuid, "SubClasses")
-  Utils.AddToTable(Queue.Progressions[classGuid].SubClasses, subClassGuid)
+  CLUtils.AddToTable(Queue.Progressions[classGuid].SubClasses, subClassGuid)
 end
 
 -- Check if our classname is already a guid
 local function ClassNameToGuid(parentClass)
-  Utils.Info("Entering ClassNameToGuid")
-  if Utils.IsGuid(parentClass) then
+  CLUtils.Info("Entering ClassNameToGuid")
+  if CLUtils.IsGuid(parentClass) then
     return parentClass
   end
 
-  return Globals.ClassUUIDs[parentClass] or nil
+  return CLGlobals.ClassUUIDs[parentClass] or nil
 end
 
 local function AddSubClass(guid, parentClass)
-  Utils.Info("Entering AddSubClass")
+  CLUtils.Info("Entering AddSubClass")
   if parentClass ~= nil then
     local classGuid = ClassNameToGuid(parentClass)
 
     if classGuid == nil then
-      Utils.Error(Strings.INVALID_CLASS_PROVIDED .. parentClass)
+      CLUtils.Error(Strings.ERROR_INVALID_CLASS_PROVIDED .. parentClass)
       return
     end
 
@@ -30,7 +30,7 @@ local function AddSubClass(guid, parentClass)
 end
 
 function SubClassHandler(payload)
-  Utils.Info("Entering SubClassHandler")
+  CLUtils.Info("Entering SubClassHandler")
   AddSubClass(payload.subClassGuid, payload.class)
   AddSubClass(payload.subClassGuid, Globals.MulticlassClasses[payload.class])
 end

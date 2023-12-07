@@ -1,5 +1,5 @@
 function Queue.Commit()
-  Utils.Info("Entering Queue.Commit")
+  CLUtils.Info("Entering Queue.Commit")
   Queue.CommitLists()
   Queue.CommitFeatsAndProgressions()
   Queue.CommitRaces()
@@ -7,37 +7,37 @@ function Queue.Commit()
 end
 
 function Queue.CommitLists()
-  Utils.Info("Entering Queue.CommitLists")
+  CLUtils.Info("Entering Queue.CommitLists")
   for type, listList in pairs(Queue.Lists) do
     for listId, list in pairs(listList) do
-      local gameList = Utils.CacheOrRetrieve(listId, type)
-      for _, item in pairs(gameList[Globals.ListNodes[type]]) do
-        if not Utils.IsInTable(list, item) then
+      local gameList = CLUtils.CacheOrRetrieve(listId, type)
+      for _, item in pairs(gameList[CLGlobals.ListNodes[type]]) do
+        if not CLUtils.IsInTable(list, item) then
           table.insert(list, item)
         end
       end
       local res = Utils.StripInvalidStatData(list)
-      gameList[Globals.ListNodes[type]] = res
+      gameList[CLGlobals.ListNodes[type]] = res
     end
   end
 end
 
 function Queue.CommitProgressions_Subclasses(progression, subclasses)
-  Utils.Info("Entering Queue.CommitProgressions_Subclasses")
+  CLUtils.Info("Entering Queue.CommitProgressions_Subclasses")
   local strippedList = Utils.StripInvalidStaticData(subclasses, "ClassDescription")
   for _, vanillaEntry in pairs(progression.SubClasses) do
-    Utils.AddToTable(strippedList, vanillaEntry)
+    CLUtils.AddToTable(strippedList, vanillaEntry)
   end
 
   progression.SubClasses = Utils.SortStaticData(strippedList, "ClassDescription", "DisplayName")
 end
 
 function Queue.Commit_Strings(gameObject, stringArr)
-  Utils.Info("Entering Queue.Commit_Strings")
+  CLUtils.Info("Entering Queue.Commit_Strings")
 
   for stringType, addSet in pairs(stringArr) do
-    local separator = Globals.FieldSeparator[stringType]
-    local set, result = Utils.createSetFromString(gameObject[stringType], separator)
+    local separator = CLGlobals.FieldSeparator[stringType]
+    local set, result = CLUtils.createSetFromString(gameObject[stringType], separator)
 
     for element, _ in pairs(addSet) do
       if not set[element] then
@@ -51,11 +51,11 @@ function Queue.Commit_Strings(gameObject, stringArr)
 end
 
 function Queue.Commit_StringRemoval(gameObject, stringArr)
-  Utils.Info("Entering Queue.Commit_StringRemoval")
+  CLUtils.Info("Entering Queue.Commit_StringRemoval")
 
   for stringType, removeSet in pairs(stringArr) do
-    local separator = Globals.FieldSeparator[stringType]
-    local set, _ = Utils.createSetFromString(gameObject[stringType], separator)
+    local separator = CLGlobals.FieldSeparator[stringType]
+    local set, _ = CLUtils.createSetFromString(gameObject[stringType], separator)
     local result = {}
 
     for element, _ in pairs(removeSet) do
@@ -75,7 +75,7 @@ function Queue.Commit_StringRemoval(gameObject, stringArr)
 end
 
 function Queue.ParseInsertSelectors(tempArr, selectorGroup, selectorFunction)
-  Utils.Info("Entering Queue.ParseInsertSelectors")
+  CLUtils.Info("Entering Queue.ParseInsertSelectors")
   for _, selector in pairs(selectorGroup) do
     if not Utils.IsPayloadInSelector(tempArr, selector, selectorFunction) then
       table.insert(tempArr, selector)
@@ -84,26 +84,26 @@ function Queue.ParseInsertSelectors(tempArr, selectorGroup, selectorFunction)
 end
 
 function Queue.Commit_Selectors(gameObject, selectors)
-  Utils.Info("Entering Queue.Commit_Selectors")
+  CLUtils.Info("Entering Queue.Commit_Selectors")
   for selectorFunction, selectorGroup in pairs(selectors) do
     local res = {}
-    Queue.ParseInsertSelectors(res, selectorGroup, Globals.SelectorIdTypes[selectorFunction])
-    Queue.ParseInsertSelectors(res, gameObject[selectorFunction], Globals.SelectorIdTypes[selectorFunction])
+    Queue.ParseInsertSelectors(res, selectorGroup, CLGlobals.SelectorIdTypes[selectorFunction])
+    Queue.ParseInsertSelectors(res, gameObject[selectorFunction], CLGlobals.SelectorIdTypes[selectorFunction])
 
     gameObject[selectorFunction] = res
   end
 end
 
 function Queue.Commit_SelectorRemoval(gameObject, selectors)
-  Utils.Info("Entering Queue.Commit_SelectorRemoval")
+  CLUtils.Info("Entering Queue.Commit_SelectorRemoval")
   for selectorFunction, selectorIds in pairs(selectors) do
     local res = {}
     local count = 1
     for _, selector in pairs(gameObject[selectorFunction]) do
-      local selectorUUID = selector[Globals.SelectorIdTypes[selectorFunction]]
+      local selectorUUID = selector[CLGlobals.SelectorIdTypes[selectorFunction]]
 
-      if selectorUUID ~= nil and not Utils.IsInTable(selectorIds, selectorUUID) then
-        Utils.AddKeyValueToTable(res, tostring(count), selector)
+      if selectorUUID ~= nil and not CLUtils.IsInTable(selectorIds, selectorUUID) then
+        CLUtils.AddKeyValueToTable(res, tostring(count), selector)
       end
     end
     gameObject[selectorFunction] = res
@@ -111,7 +111,7 @@ function Queue.Commit_SelectorRemoval(gameObject, selectors)
 end
 
 function Queue.Commit_Booleans(gameObject, booleans)
-  Utils.Info("Entering Queue.Commit_Booleans")
+  CLUtils.Info("Entering Queue.Commit_Booleans")
   for key, value in pairs(booleans) do
     if gameObject[key] ~= nil then
       gameObject[key] = value
@@ -120,10 +120,10 @@ function Queue.Commit_Booleans(gameObject, booleans)
 end
 
 function Queue.CommitFeatsAndProgressions()
-  Utils.Info("Entering Queue.CommitFeatsAndProgressions")
-  for _, objectType in pairs(Globals.CacheTypes) do
+  CLUtils.Info("Entering Queue.CommitFeatsAndProgressions")
+  for _, objectType in pairs(CLGlobals.CacheTypes) do
     for objectId, objectTable in pairs(Queue[Globals.ModuleTypes[objectType]]) do
-      local gameObject = Utils.CacheOrRetrieve(objectId, objectType)
+      local gameObject = CLUtils.CacheOrRetrieve(objectId, objectType)
       if gameObject ~= nil then
         if objectTable.SubClasses ~= nil then
           Queue.CommitProgressions_Subclasses(gameObject, objectTable.SubClasses)
@@ -155,7 +155,7 @@ end
 
 function Queue.Commit_ChildNodes(gameObject, childNodes)
   for key, value in pairs(childNodes) do
-    local res = Utils.InsertFromTableToTable(gameObject[key], {})
+    local res = CLUtils.InsertFromTableToTable(gameObject[key], {})
     for _, val in pairs(value) do
       table.insert(res, val)
     end
@@ -165,9 +165,9 @@ function Queue.Commit_ChildNodes(gameObject, childNodes)
 end
 
 function Queue.CommitRaces()
-  Utils.Info("Entering Queue.CommitRaces")
+  CLUtils.Info("Entering Queue.CommitRaces")
   for objectId, objectTable in pairs(Queue.Races) do
-    local gameObject = Utils.CacheOrRetrieve(objectId, "Race")
+    local gameObject = CLUtils.CacheOrRetrieve(objectId, "Race")
     if gameObject ~= nil and objectTable ~= nil then
       Queue.Commit_ChildNodes(gameObject, objectTable)
     end
@@ -175,5 +175,5 @@ function Queue.CommitRaces()
 end
 
 function Queue.CommitSpellData()
-  Utils.Info("Entering Queue.CommitSpellData")
+  CLUtils.Info("Entering Queue.CommitSpellData")
 end

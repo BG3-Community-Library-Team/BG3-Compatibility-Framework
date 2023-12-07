@@ -1,7 +1,11 @@
 local function ParseAndSubmitSubclasses(data, classId, modGuid)
-  Utils.Info("Entering ParseAndSubmitSubclasses")
-  if Utils.IsGuid(classId) then
-    classId = string.lower(DictUtils.RetrieveClassNameFromProgression(classId))
+  CLUtils.Info("Entering ParseAndSubmitSubclasses")
+  if CLUtils.IsGuid(classId) then
+    local className = CLDictUtils.RetrieveClassNameFromProgression(classId)
+
+    if className and type(className) ~= "nil" then
+      classId = string.lower(className)
+    end
   end
   if data.UUIDs ~= nil then
     for _, subclass in pairs(data.UUIDs) do
@@ -39,7 +43,7 @@ local function ProgressionSubSectionHandler(data, progUUID, modGuid)
 end
 
 function ProgressionJsonHandler(data, modGuid)
-  Utils.Info("Entering ProgressionJsonHandler")
+  CLUtils.Info("Entering ProgressionJsonHandler")
   for _, progressions in pairs(data) do
     if progressions.UUIDs ~= nil then
       for _, uuid in pairs(progressions.UUIDs) do

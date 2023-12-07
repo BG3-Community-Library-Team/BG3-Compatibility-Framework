@@ -4,7 +4,7 @@ Ext.Require("Globals/_init.lua")
 Ext.Require("CompatibilitySupport/_init.lua")
 Ext.Require("API/_init.lua")
 
-Utils.Info(Strings.LOADED_REQUIRED_FILES)
+CLUtils.Info(CLStrings.LOADED_REQUIRED_FILES)
 
 Ext.Require("Init/_InitClasses.lua")
 Ext.Require("JsonLayer/_init.lua")

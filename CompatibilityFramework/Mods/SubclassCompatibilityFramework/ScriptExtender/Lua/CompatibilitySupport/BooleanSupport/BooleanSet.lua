@@ -1,7 +1,7 @@
 local function SetBoolean(payload)
-  if Utils.IsInTable(Globals.BooleanTypes, payload.Key) then
-    Utils.Info("Key is in table: " .. Utils.RetrieveModHandleAndAuthor(payload.modGuid))
-    local fleshedObject = Utils.CacheOrRetrieve(payload.Target, payload.FileType)
+  if CLUtils.IsInTable(CLGlobals.BooleanTypes, payload.Key) then
+    CLUtils.Info("Key is in table: " .. CLUtils.RetrieveModHandleAndAuthor(payload.modGuid))
+    local fleshedObject = CLUtils.CacheOrRetrieve(payload.Target, payload.FileType)
     local queueType = Globals.ModuleTypes[payload.FileType]
 
     if fleshedObject ~= nil then
@@ -9,15 +9,15 @@ local function SetBoolean(payload)
       Queue[queueType][payload.Target].Booleans[payload.Key] = payload.Value
     end
   else
-    Utils.Error(Strings.ERROR_INVALID_BOOLEAN_TYPE .. payload.Key)
+    CLUtils.Error(CLStrings.ERROR_INVALID_BOOLEAN_TYPE .. payload.Key)
   end
 end
 
 function HandleBoolean(payload)
   if payload ~= nil then
-    Utils.Info("Entering HandleBoolean")
+    CLUtils.Info("Entering HandleBoolean")
     SetBoolean(payload)
   else
-    Utils.Error(Strings.ERROR_EMPTY_PAYLOAD)
+    CLUtils.Error(CLStrings.ERROR_EMPTY_PAYLOAD)
   end
 end

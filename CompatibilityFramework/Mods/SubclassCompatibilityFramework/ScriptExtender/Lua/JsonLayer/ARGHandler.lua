@@ -1,5 +1,5 @@
 function ParseAndSubmitActionResourceGroups(data, modGuid)
-  Utils.Info("Entering ParseAndSubmitActionResourceGroups")
+  CLUtils.Info("Entering ParseAndSubmitActionResourceGroups")
 
   local payloads = {
     Insert = JsonUtils.BuildActionResourceGroupPayload(data, modGuid)
@@ -14,7 +14,7 @@ function ParseAndSubmitActionResourceGroups(data, modGuid)
 end
 
 function ActionResourceGroupJsonHandler(data, modGuid)
-  Utils.Info("Entering ActionResourceGroupJsonHandler")
+  CLUtils.Info("Entering ActionResourceGroupJsonHandler")
   for _, actionResourceGroup in pairs(data) do
     ParseAndSubmitActionResourceGroups(actionResourceGroup, modGuid)
   end

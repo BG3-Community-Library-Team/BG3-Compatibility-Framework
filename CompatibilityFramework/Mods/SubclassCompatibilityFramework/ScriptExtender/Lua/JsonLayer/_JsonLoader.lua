@@ -1,7 +1,7 @@
 local configFilePathPattern = string.gsub("Mods/%s/ScriptExtender/CompatibilityFrameworkConfig.json", "'", "\'")
 
 local function SubmitData(data, modGUID)
-  Utils.Info("Entering SubmitData")
+  CLUtils.Info("Entering SubmitData")
   if data.Progressions ~= nil then
     ProgressionJsonHandler(data.Progressions, modGUID)
   end
@@ -30,7 +30,7 @@ end
 ---@param configStr string
 ---@param modGUID GUIDSTRING
 local function TryLoadConfig(configStr, modGUID)
-  Utils.Info("Entering TryLoadConfig")
+  CLUtils.Info("Entering TryLoadConfig")
   local data = Ext.Json.Parse(configStr)
   if data ~= nil then
     SubmitData(data, modGUID)
@@ -38,16 +38,16 @@ local function TryLoadConfig(configStr, modGUID)
 end
 
 function LoadConfigFiles()
-  Utils.Info("Entering LoadConfigFiles")
+  CLUtils.Info("Entering LoadConfigFiles")
   for _, uuid in pairs(Ext.Mod.GetLoadOrder()) do
     local modData = Ext.Mod.GetMod(uuid)
     local filePath = configFilePathPattern:format(modData.Info.Directory)
     local config = Ext.IO.LoadFile(filePath, "data")
     if config ~= nil and config ~= "" then
-      Utils.Info("Found config for Mod: " .. Ext.Mod.GetMod(uuid).Info.Name)
+      CLUtils.Info("Found config for Mod: " .. Ext.Mod.GetMod(uuid).Info.Name)
       local b, err = xpcall(TryLoadConfig, debug.traceback, config, uuid)
       if not b then
-        Utils.Error(err)
+        CLUtils.Error(err)
       end
     end
   end

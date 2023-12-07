@@ -1,5 +1,5 @@
 local function StringHandler(payload, addRemove)
-  Utils.Info("Entering StringHandler")
+  CLUtils.Info("Entering StringHandler")
 
   local queueType = Globals.ModuleTypes[payload.FileType or "Progression"]
   local target = payload.Target
@@ -26,15 +26,15 @@ end
 
 function HandleString(payload, type)
   if payload ~= nil then
-    Utils.Info("Entering HandleString")
+    CLUtils.Info("Entering HandleString")
     StringHandler(payload, type)
   else
-    Utils.Error(Strings.ERROR_EMPTY_PAYLOAD)
+    CLUtils.Error(CLStrings.ERROR_EMPTY_PAYLOAD)
   end
 end
 
 local function AddSpellString(payload)
-  Utils.Info("Entering AddSpellString")
+  CLUtils.Info("Entering AddSpellString")
   local target = Ext.Stats.Get(payload.Target)
   local baseSpells = {}
   for _, value in pairs(target[payload.Type]) do
@@ -50,15 +50,15 @@ end
 
 function HandleSpellString(payload)
   if payload ~= nil then
-    Utils.Info("Entering HandleSpellString")
+    CLUtils.Info("Entering HandleSpellString")
     AddSpellString(payload)
   else
-    Utils.Error(Strings.ERROR_EMPTY_PAYLOAD)
+    CLUtils.Error(CLStrings.ERROR_EMPTY_PAYLOAD)
   end
 end
 
 function RemoveSpellString(payload)
-  Utils.Info("Entering RemoveSpellString")
+  CLUtils.Info("Entering RemoveSpellString")
   local target = Ext.Stats.Get(payload.Target)
 
   if target ~= nil then
@@ -70,7 +70,7 @@ function RemoveSpellString(payload)
     end
 
     for _, value in pairs(fieldStrings) do
-      if not Utils.IsInTable(payload.SubSpells, value) then
+      if not CLUtils.IsInTable(payload.SubSpells, value) then
         table.insert(result, value)
       end
     end
@@ -78,15 +78,15 @@ function RemoveSpellString(payload)
     target[payload.Type] = result
     Ext.Stats.Sync(payload.Target)
   else
-    Utils.Error(Strings.ERROR_TARGET_NOT_FOUND)
+    CLUtils.Error(CLStrings.ERROR_TARGET_NOT_FOUND)
   end
 end
 
 function HandleRemoveSpellString(payload)
   if payload ~= nil then
-    Utils.Info("Entering HandleRemoveSpellString")
+    CLUtils.Info("Entering HandleRemoveSpellString")
     RemoveSpellString(payload)
   else
-    Utils.Error(Strings.ERROR_EMPTY_PAYLOAD)
+    CLUtils.Error(CLStrings.ERROR_EMPTY_PAYLOAD)
   end
 end
