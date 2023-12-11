@@ -45,7 +45,6 @@ local function AddSpellString(payload)
   end
 
   target[payload.Type] = baseSpells
-  Ext.Stats.Sync(payload.Target)
 end
 
 function HandleSpellString(payload)
@@ -76,7 +75,6 @@ function RemoveSpellString(payload)
     end
 
     target[payload.Type] = result
-    Ext.Stats.Sync(payload.Target)
   else
     CLUtils.Error(CLStrings.ERROR_TARGET_NOT_FOUND)
   end

@@ -12,6 +12,4 @@ local function CloseRegistration()
   Globals.AllowPayloads = false
 end
 
-Ext.Events.SessionLoading:Subscribe(CloseRegistration, {
-  Priority = 0
-})
+Ext.Events.SessionLoading:Subscribe(CloseRegistration)
