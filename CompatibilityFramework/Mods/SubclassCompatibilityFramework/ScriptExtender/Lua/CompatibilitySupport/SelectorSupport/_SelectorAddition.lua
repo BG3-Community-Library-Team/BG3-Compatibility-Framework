@@ -24,7 +24,7 @@ local function BuildAddSpellsTable(params)
   end
   return {
     SpellUUID = params.Guid or params.UUID,
-    SelectorId = params.Descriptor or "",
+    SelectorId = params.SelectorId or "",
     Ability = castingAbility or "None",
     ActionResource = params.ActionResource or "d136c5d9-0ff0-43da-acce-a74a07f8d6bf",
     PrepareType = params.PrepareType or "Unknown",
