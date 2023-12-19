@@ -147,11 +147,11 @@ end
 function Queue.Commit_ChildNodes(gameObject, childNodes)
   for key, value in pairs(childNodes) do
     local res = CLUtils.InsertFromTableToTable(gameObject[key], {})
+    local count = #gameObject[key] + 1
     for _, val in pairs(value) do
-      table.insert(res, val)
+      gameObject[key][count] = val
+      count = count + 1
     end
-
-    gameObject[key] = res
   end
 end
 
