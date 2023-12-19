@@ -1,3 +1,4 @@
+Strings = {}
 
 Strings.LOADED_MAIN_CLASSES = "Main Classes Added."
 Strings.GENERATING_LATE_LOADERS = "Building Late Loader String."
@@ -9,3 +10,4 @@ Strings.WARN_LAST_CALL =
 "StatsLoaded Complete. Any mods calling the CF API after this point may not appear. Please contact the developer of any missing mods and inform them to switch their CF API call to happen on StatsLoaded instead of on SessionLoaded."
 Strings.LATE_LOADER_PREFIX =
 "The following mods are attempting to call Compatibility Framework API too late for it to take effect: "
+Strings.ERR_CL_NOT_LOADED = "Community Library is required for Compatibility Framework to function."

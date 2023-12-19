@@ -1,5 +1,4 @@
 Globals = {}
-Strings = {}
 Queue = {}
 
 Globals.MulticlassClasses = {}
