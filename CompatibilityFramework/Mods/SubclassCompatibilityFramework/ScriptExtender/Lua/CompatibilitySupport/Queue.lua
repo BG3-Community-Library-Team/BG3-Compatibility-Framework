@@ -74,23 +74,14 @@ function Queue.Commit_StringRemoval(gameObject, stringArr)
   end
 end
 
-function Queue.ParseInsertSelectors(tempArr, selectorGroup, selectorFunction)
-  CLUtils.Info("Entering Queue.ParseInsertSelectors")
-  for _, selector in pairs(selectorGroup) do
-    if not Utils.IsPayloadInSelector(tempArr, selector, selectorFunction) then
-      table.insert(tempArr, selector)
-    end
-  end
-end
-
 function Queue.Commit_Selectors(gameObject, selectors)
   CLUtils.Info("Entering Queue.Commit_Selectors")
   for selectorFunction, selectorGroup in pairs(selectors) do
-    local res = {}
-    Queue.ParseInsertSelectors(res, selectorGroup, CLGlobals.SelectorIdTypes[selectorFunction])
-    Queue.ParseInsertSelectors(res, gameObject[selectorFunction], CLGlobals.SelectorIdTypes[selectorFunction])
-
-    gameObject[selectorFunction] = res
+    local count = #gameObject[selectorFunction] + 1
+    for _, selector in pairs(selectorGroup) do
+      gameObject[selectorFunction][count] = selector
+      count = count + 1
+    end
   end
 end
 

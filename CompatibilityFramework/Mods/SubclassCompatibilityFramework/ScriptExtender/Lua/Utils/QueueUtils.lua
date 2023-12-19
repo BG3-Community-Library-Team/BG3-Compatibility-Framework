@@ -56,6 +56,7 @@ function Utils.SortStaticData(arr, type, handle)
 end
 
 function Utils.IsPayloadInSelector(selectorField, selectorToInsert, idType)
+  CLUtils.Info("Entering IsPayloadInSelector")
   local found = false
 
   local newSelectorID = selectorToInsert[idType]
