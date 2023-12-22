@@ -8,7 +8,7 @@ local function BuildSelectSpellsTable(params)
     SpellUUID = params.Guid or params.UUID,
     Amount = params.Amount or "1",
     Arg3 = params.SwapAmount or params.Prepared or "0",
-    SelectorId = params.SelectorId or "",
+    SelectorId = params.SelectorId or params.Descriptor or "",
     CastingAbility = castingAbility,
     ClassUUID = params.ClassUUID or "00000000-0000-0000-0000-000000000000",
     ActionResource = params.ActionResource or "d136c5d9-0ff0-43da-acce-a74a07f8d6bf",
@@ -24,7 +24,7 @@ local function BuildAddSpellsTable(params)
   end
   return {
     SpellUUID = params.Guid or params.UUID,
-    SelectorId = params.SelectorId or "",
+    SelectorId = params.SelectorId or params.Descriptor or  "",
     Ability = castingAbility or "None",
     ActionResource = params.ActionResource or "d136c5d9-0ff0-43da-acce-a74a07f8d6bf",
     PrepareType = params.PrepareType or "Unknown",
@@ -38,7 +38,7 @@ local function BuildSelectPassiveTable(params)
     UUID = params.Guid or params.UUID,
     Amount = params.Amount or "1",
     Amount2 = params.ReplaceAmount or "0",
-    Arg3 = params.SelectorId or ""
+    Arg3 = params.SelectorId or params.Descriptor or  ""
   }
 end
 
@@ -47,7 +47,7 @@ local function BuildSelectEquipmentTable(params)
   return {
     UUID = params.Guid or params.UUID,
     Amount = params.Amount or "1",
-    Arg3 = params.SelectorId or ""
+    Arg3 = params.SelectorId or params.Descriptor or  ""
   }
 end
 
@@ -56,7 +56,7 @@ local function BuildSelectAbilitiesTable(params)
     UUID = params.Guid or params.UUID,
     Arg2 = params.Amount or "1",
     Arg3 = params.AbilityAmount or "1",
-    Arg4 = params.SelectorId or ""
+    Arg4 = params.SelectorId or params.Descriptor or  ""
   }
 end
 
@@ -77,7 +77,7 @@ local function BuildSelectSkillsTable(params)
   return {
     UUID = params.Guid or params.UUID,
     Amount = params.Amount or "1",
-    Arg3 = params.SelectorId or ""
+    Arg3 = params.SelectorId or params.Descriptor or  ""
   }
 end
 
@@ -86,7 +86,7 @@ local function BuildSelectSkillsExpertiseTable(params)
     UUID = params.Guid or params.UUID,
     Amount = params.Amount or "1",
     Arg3 = params.LimitToProficiency or params.Arg3 or true,
-    Arg4 = params.SelectorId or params.Arg4 or ""
+    Arg4 = params.SelectorId or params.Descriptor or  params.Arg4 or ""
   }
 end
 
