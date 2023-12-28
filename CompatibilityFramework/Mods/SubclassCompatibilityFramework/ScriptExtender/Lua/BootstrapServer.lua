@@ -1,4 +1,4 @@
-Ext.Require("Init/Strings.lua")
+Ext.Require("Globals/Strings.lua")
 
 -- Require Community Library to function
 if Ext.Mod.IsModLoaded("396c5966-09b0-40a1-af3f-93a5e9ce71c0") then
