@@ -48,7 +48,7 @@ local function AddSpellString(payload)
     table.insert(baseSpells, spell)
   end
 
-  target[payload.Type] = baseSpells
+  target[payload.Type] = table.concat(baseSpells, ";")
 end
 
 function HandleSpellString(payload)
