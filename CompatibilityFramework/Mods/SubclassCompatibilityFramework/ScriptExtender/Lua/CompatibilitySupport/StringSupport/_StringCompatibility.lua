@@ -37,8 +37,12 @@ local function AddSpellString(payload)
   CLUtils.Info("Entering AddSpellString")
   local target = Ext.Stats.Get(payload.Target)
   local baseSpells = {}
-  for _, value in pairs(target[payload.Type]) do
-    table.insert(baseSpells, value)
+  if type(target[payload.Type]) == "table" then
+    for _, value in pairs(target[payload.Type]) do
+      table.insert(baseSpells, value)
+    end
+  else
+    table.insert(baseSpells, target[payload.Type])
   end
   for _, spell in pairs(payload.SubSpells) do
     table.insert(baseSpells, spell)
