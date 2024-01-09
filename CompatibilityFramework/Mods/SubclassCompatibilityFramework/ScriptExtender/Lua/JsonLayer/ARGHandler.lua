@@ -8,7 +8,7 @@ function ParseAndSubmitActionResourceGroups(data, modGuid)
 
   for action, payload in pairs(payloads) do
     if payload ~= nil then
-      JsonUtils.Endpoints[action].List({ payload })
+      JsonUtils.Endpoints[action].ActionResourceGroup ({ payload })
     end
   end
 end
