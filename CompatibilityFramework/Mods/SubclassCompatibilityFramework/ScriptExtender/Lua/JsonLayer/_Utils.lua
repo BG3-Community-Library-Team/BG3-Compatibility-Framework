@@ -122,7 +122,7 @@ function JsonUtils.BuildActionResourceGroupPayload(data, modGuid)
   local count = 0
   local result = {
     modGuid = data.modGuid or modGuid,
-    Type = data.Type,
+    TargetUUID = data.UUID,
     Definitions = {}
   }
 
