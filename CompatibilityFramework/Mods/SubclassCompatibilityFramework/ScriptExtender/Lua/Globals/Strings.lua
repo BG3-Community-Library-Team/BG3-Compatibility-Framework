@@ -11,3 +11,4 @@ Strings.WARN_LAST_CALL =
 Strings.LATE_LOADER_PREFIX =
 "The following mods are attempting to call Compatibility Framework API too late for it to take effect: "
 Strings.ERR_CL_NOT_LOADED = "Community Library is required for Compatibility Framework to function."
+Strings.ERR_JSON_PARSE_FAIL = "Couldn't Parse CF JSON Configuration File from "

@@ -31,9 +31,15 @@ end
 ---@param modGUID GUIDSTRING
 local function TryLoadConfig(configStr, modGUID)
   CLUtils.Info("Entering TryLoadConfig")
-  local data = Ext.Json.Parse(configStr)
-  if data ~= nil then
-    SubmitData(data, modGUID)
+  local success, data = pcall(function ()
+    return Ext.Json.Parse(configStr)
+  end)
+  if success then
+    if data ~= nil then
+      SubmitData(data, modGUID)
+    end
+  else
+    CLUtils.Error(Strings.ERR_JSON_PARSE_FAIL .. CLUtils.RetrieveModHandleAndAuthor(modGUID))
   end
 end
 
