@@ -117,7 +117,7 @@ function Utils.ShipToQueue(payload, items, itemsType, itemsSubType)
       table.insert(Queue[queueType][target][itemsType][itemsSubType], items)
     else
       CLUtils.Error(CLStrings.ERROR_TARGET_NOT_FOUND ..
-        " " .. type .. ": " .. target .. CLStrings.FRAG_PROVIDED_BY .. Utils.RetrieveModHandleAndAuthor(payload.modGuid))
+        " " .. type .. ": " .. target .. CLStrings.FRAG_PROVIDED_BY .. CLUtils.RetrieveModHandleAndAuthor(payload.modGuid))
     end
   end
 end
