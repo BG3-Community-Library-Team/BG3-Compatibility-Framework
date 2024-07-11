@@ -22,7 +22,7 @@ end
 
 function SpellSubsectionHandler(data, modGuid)
   modGuid = data.modGuid or modGuid
-  local blacklistedKeys = { ["modGuid"] = true, ["UUID"] = true, ["ID"] = true, ["Action"] = true }
+  local blacklistedKeys = { ["modGuid"] = true, ["UUID"] = true, ["ID"] = true, ["Action"] = true, ["Comment"] = true }
   for key, val in pairs(data) do
     if not blacklistedKeys[key] then
       JsonUtils.ParseAndSubmitSpellStrings(val, data.ID, modGuid, key, data.Action)
