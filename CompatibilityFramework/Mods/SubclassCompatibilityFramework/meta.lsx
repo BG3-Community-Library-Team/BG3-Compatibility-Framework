@@ -7,14 +7,6 @@
         <node id="Dependencies">
           <children>
             <node id="ModuleShortDesc">
-              <attribute id="Folder" type="LSString" value="GustavX" />
-              <attribute id="MD5" type="LSString" value="2d8a0b173133a4bf66708c3ef2a9bd1b" />
-              <attribute id="Name" type="LSString" value="GustavX" />
-              <attribute id="PublishHandle" type="uint64" value="0" />
-              <attribute id="UUID" type="guid" value="cb555efe-2d9e-131f-8195-a89329d218ea" />
-              <attribute id="Version64" type="int64" value="145241109464168144" />
-            </node>
-            <node id="ModuleShortDesc">
               <attribute id="Folder" type="LSWString" value="CommunityLibrary" />
               <attribute id="MD5" type="LSString" value="" />
               <attribute id="Name" type="FixedString" value="CommunityLibrary" />
