@@ -7,6 +7,14 @@
         <node id="Dependencies">
           <children>
             <node id="ModuleShortDesc">
+              <attribute id="Folder" type="LSString" value="GustavX" />
+              <attribute id="MD5" type="LSString" value="2d8a0b173133a4bf66708c3ef2a9bd1b" />
+              <attribute id="Name" type="LSString" value="GustavX" />
+              <attribute id="PublishHandle" type="uint64" value="0" />
+              <attribute id="UUID" type="guid" value="cb555efe-2d9e-131f-8195-a89329d218ea" />
+              <attribute id="Version64" type="int64" value="145241109464168144" />
+            </node>
+            <node id="ModuleShortDesc">
               <attribute id="Folder" type="LSWString" value="CommunityLibrary" />
               <attribute id="MD5" type="LSString" value="" />
               <attribute id="Name" type="FixedString" value="CommunityLibrary" />
@@ -29,13 +37,13 @@
           <attribute id="NumPlayers" type="uint8" value="4" />
           <attribute id="PhotoBooth" type="FixedString" value="" />
           <attribute id="StartupLevelName" type="FixedString" value="" />
-          <attribute id="Tags" type="LSWString" value="CMTY;Framework" />
+          <attribute id="Tags" type="LSWString" value="CMTY;Framework;API" />
           <attribute id="Type" type="FixedString" value="Patch" />
           <attribute id="UUID" type="FixedString" value="67fbbd53-7c7d-4cfa-9409-6d737b4d92a9" />
-          <attribute id="Version64" type="int64" value="72902025410510861" />
+          <attribute id="Version64" type="int64" value="72902027557994496" />
           <children>
             <node id="PublishVersion">
-              <attribute id="Version64" type="int64" value="72902025410510861" />
+              <attribute id="Version64" type="int64" value="72902027557994496" />
             </node>
             <node id="Scripts" />
             <node id="TargetModes">
