@@ -10,6 +10,7 @@ JsonUtils.Endpoints = {
   },
   Remove = {
     ActionResourceGroup = Api.RemoveResourceFromGroup,
+    List = Api.RemoveFromList,
     Race = Api.RemoveRaceChildData,
     Strings = Api.RemoveStrings,
     Selector = Api.RemoveSelectors,

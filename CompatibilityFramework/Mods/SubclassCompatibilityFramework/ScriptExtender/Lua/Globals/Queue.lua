@@ -13,5 +13,10 @@ Queue.Lists = {
   SkillList = {},
   PassiveList = {}
 }
+Queue.Lists_Remove = {
+  SpellList = {},
+  SkillList = {},
+  PassiveList = {}
+}
 Queue.Races = {}
 Queue.Stats = {}

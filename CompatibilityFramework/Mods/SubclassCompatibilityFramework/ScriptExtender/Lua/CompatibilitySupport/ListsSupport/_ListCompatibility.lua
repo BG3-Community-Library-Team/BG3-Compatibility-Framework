@@ -1,4 +1,5 @@
 local function AddToTempTable(tempTable, arr)
+  CLUtils.Info("Entering AddToTempTable")
   for _, item in pairs(arr) do
     if not CLUtils.IsInTable(tempTable, item) then
       table.insert(tempTable, item)
@@ -6,15 +7,24 @@ local function AddToTempTable(tempTable, arr)
   end
 end
 
-function AddList(payload)
+local function PrepareQueueTable(tempTable, listType, targetList)
+  if tempTable[listType][targetList] == nil then
+    tempTable[listType][targetList] = {}
+  end
+end
+
+function ListToQueue(payload, actionType)
   CLUtils.Info("Entering AddList")
   if CLUtils.IsKeyInTable(CLGlobals.ListTypes, payload.ListType) and payload.ListItems ~= nil then
     local list = CLUtils.CacheOrRetrieve(payload.TargetList, payload.ListType)
     if list ~= nil then
-      if Queue.Lists[payload.ListType][payload.TargetList] == nil then
-        Queue.Lists[payload.ListType][payload.TargetList] = {}
+      if actionType == 'Add' then
+        PrepareQueueTable(Queue.Lists, payload.ListType, payload.TargetList)
+        AddToTempTable(Queue.Lists[payload.ListType][payload.TargetList], payload.ListItems)
+      else
+        PrepareQueueTable(Queue.Lists_Remove, payload.ListType, payload.TargetList)
+        AddToTempTable(Queue.Lists_Remove[payload.ListType][payload.TargetList], payload.ListItems)
       end
-      AddToTempTable(Queue.Lists[payload.ListType][payload.TargetList], payload.ListItems)
     else
       CLUtils.Error(CLStrings.ERROR_LIST_NOT_FOUND)
     end
@@ -23,10 +33,12 @@ function AddList(payload)
   end
 end
 
-function HandleList(payload)
+function HandleList(payload, actionType)
+  CLUtils.Info(CLUtils.Stringify(payload), true)
+  CLUtils.Info(" ^ Payload with action: " .. actionType, true)
   if payload ~= nil then
     CLUtils.Info("Entering HandleList")
-    AddList(payload)
+    ListToQueue(payload, actionType)
   else
     CLUtils.Error(CLStrings.ERROR_EMPTY_PAYLOAD)
   end

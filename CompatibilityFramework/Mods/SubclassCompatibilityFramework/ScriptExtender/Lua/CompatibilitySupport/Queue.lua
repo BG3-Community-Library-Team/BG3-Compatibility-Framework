@@ -6,6 +6,22 @@ function Queue.Commit()
   --Queue.CommitSpellData()
 end
 
+
+function Queue.CommitListItemRemoval(queueTable)
+  for type, listList in pairs(queueTable) do
+    for listId, list in pairs(listList) do
+      local gameList = CLUtils.CacheOrRetrieve(listId, type)
+      for _, item in pairs(gameList[CLGlobals.ListNodes[type]]) do
+        if CLUtils.IsInTable(list, item) then
+          table.remove(list, item)
+        end
+      end
+      local res = Utils.StripInvalidStatData(list)
+      gameList[CLGlobals.ListNodes[type]] = res
+    end
+  end
+end
+
 function Queue.CommitLists()
   CLUtils.Info("Entering Queue.CommitLists")
   for type, listList in pairs(Queue.Lists) do
@@ -21,6 +37,7 @@ function Queue.CommitLists()
     end
   end
 end
+
 
 function Queue.CommitProgressions_Subclasses(progression, subclasses)
   CLUtils.Info("Entering Queue.CommitProgressions_Subclasses")
