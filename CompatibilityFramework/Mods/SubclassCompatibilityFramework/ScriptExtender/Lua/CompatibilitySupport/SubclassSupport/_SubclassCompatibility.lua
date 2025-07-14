@@ -29,8 +29,25 @@ local function AddSubClass(guid, parentClass)
   end
 end
 
+
+local function GetMulticlassNode(payload)
+  CLUtils.Info("Entering GetMulticlassNode")
+  local targetProgression = CLUtils.CacheOrRetrieve(payload.UUID, "Progression")
+  local res = {}
+  if Globals.ProgressionDict[targetProgression.Name] and Globals.ProgressionDict[targetProgression.Name][targetProgression.Level] then
+    for _, v in pairs(Globals.ProgressionDict) do
+      if v.IsMulticlass == true then
+        res = v.UUID
+      end
+    end
+  end
+
+  return res
+end
+
 function SubClassHandler(payload)
   CLUtils.Info("Entering SubClassHandler")
   AddSubClass(payload.subClassGuid, payload.class)
-  AddSubClass(payload.subClassGuid, Globals.MulticlassClasses[payload.class])
+  GetMulticlassNode(payload)
+  AddSubClass(payload.subClassGuid, GetMulticlassNode(payload))
 end
