@@ -15,39 +15,31 @@ local function ClassNameToGuid(parentClass)
   return CLGlobals.ClassUUIDs[parentClass] or nil
 end
 
-local function AddSubClass(guid, parentClass)
-  CLUtils.Info("Entering AddSubClass")
-  if parentClass ~= nil then
-    local classGuid = ClassNameToGuid(parentClass)
-
-    if classGuid == nil then
-      CLUtils.Error(Strings.ERROR_INVALID_CLASS_PROVIDED .. parentClass)
-      return
-    end
-
-    AttachSubClass(guid, classGuid)
-  end
-end
-
-
-local function GetMulticlassNode(payload)
+local function GetMulticlassNode(classProgGuid)
   CLUtils.Info("Entering GetMulticlassNode")
-  local targetProgression = CLUtils.CacheOrRetrieve(payload.UUID, "Progression")
-  local res = {}
+  local targetProgression = CLUtils.CacheOrRetrieve(classProgGuid, "Progression")
   if Globals.ProgressionDict[targetProgression.Name] and Globals.ProgressionDict[targetProgression.Name][targetProgression.Level] then
-    for _, v in pairs(Globals.ProgressionDict) do
+    for _, v in pairs(Globals.ProgressionDict[targetProgression.Name][targetProgression.Level]) do
       if v.IsMulticlass == true then
-        res = v.UUID
+        return v.ResourceUUID
       end
     end
   end
 
-  return res
 end
 
 function SubClassHandler(payload)
   CLUtils.Info("Entering SubClassHandler")
-  AddSubClass(payload.subClassGuid, payload.class)
-  GetMulticlassNode(payload)
-  AddSubClass(payload.subClassGuid, GetMulticlassNode(payload))
+  local classProgGuid = ClassNameToGuid(payload.class)
+  if classProgGuid == nil then
+    CLUtils.Error(Strings.ERROR_INVALID_CLASS_PROVIDED .. payload.class)
+    return
+  end
+
+  AttachSubClass(payload.subClassGuid, classProgGuid)
+  local mc = GetMulticlassNode(classProgGuid)
+
+  if mc then
+    AttachSubClass(payload.subClassGuid, mc)
+  end
 end
