@@ -34,8 +34,6 @@ function ListToQueue(payload, actionType)
 end
 
 function HandleList(payload, actionType)
-  CLUtils.Info(CLUtils.Stringify(payload), true)
-  CLUtils.Info(" ^ Payload with action: " .. actionType, true)
   if payload ~= nil then
     CLUtils.Info("Entering HandleList")
     ListToQueue(payload, actionType)

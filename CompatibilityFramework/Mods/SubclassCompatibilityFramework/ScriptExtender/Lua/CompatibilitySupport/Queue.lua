@@ -1,43 +1,60 @@
 function Queue.Commit()
   CLUtils.Info("Entering Queue.Commit")
-  Queue.CommitLists()
+  Queue.CommitListItems()
   Queue.CommitFeatsAndProgressions()
   Queue.CommitRaces()
   --Queue.CommitSpellData()
 end
 
+-- Some quick & dirty jank, refactor to actually be good code when time allows
+local function CombineIterableLists(arrA, arrB)
+  local res = {}
 
-function Queue.CommitListItemRemoval(queueTable)
-  for type, listList in pairs(queueTable) do
-    for listId, list in pairs(listList) do
-      local gameList = CLUtils.CacheOrRetrieve(listId, type)
-      for _, item in pairs(gameList[CLGlobals.ListNodes[type]]) do
-        if CLUtils.IsInTable(list, item) then
-          table.remove(list, item)
+  for key, _ in pairs(arrA) do
+    table.insert(res, key)
+  end
+
+  for key, _ in pairs(arrB) do
+    if not CLUtils.IsInTable(res, key) then
+      table.insert(res, key)
+    end
+  end
+
+  return res
+end
+
+function Queue.CommitListItems()
+  CLUtils.Info("Entering Queue.CommitListItems")
+  for _, objectType in pairs(CLGlobals.ListTypes) do
+    if Queue.Lists_Remove[objectType] or #Queue.Lists[objectType] > 0 then
+      listsToiterate = CombineIterableLists(Queue.Lists_Remove[objectType], Queue.Lists[objectType])
+      for _, listId in pairs(listsToiterate) do
+        local gameList = CLUtils.CacheOrRetrieve(listId, objectType)
+        list = Queue.Lists[objectType][listId] or {}
+
+        for _, item in pairs(gameList[CLGlobals.ListNodes[objectType]]) do
+          if not CLUtils.IsInTable(list, item) then
+            table.insert(list, item)
+          end
+          if Queue.Lists_Remove[objectType][listId] then
+            localItemKey = CLUtils.GetKeyFromvalue(list, item)
+            if localItemKey and CLUtils.IsInTable(Queue.Lists_Remove[objectType][listId], item) then
+              CLUtils.Info("Removing " .. item .. " from " .. objectType .. " " .. listId)
+              table.remove(list, localItemKey)
+            end
+          end
+        end
+
+        if list and #list > 0 then
+          local res = Utils.StripInvalidStatData(list)
+          gameList[CLGlobals.ListNodes[objectType]] = res
+        else
+          CLUtils.Warn("List " .. listId .. " cannot be empty", true)
         end
       end
-      local res = Utils.StripInvalidStatData(list)
-      gameList[CLGlobals.ListNodes[type]] = res
     end
   end
 end
-
-function Queue.CommitLists()
-  CLUtils.Info("Entering Queue.CommitLists")
-  for type, listList in pairs(Queue.Lists) do
-    for listId, list in pairs(listList) do
-      local gameList = CLUtils.CacheOrRetrieve(listId, type)
-      for _, item in pairs(gameList[CLGlobals.ListNodes[type]]) do
-        if not CLUtils.IsInTable(list, item) then
-          table.insert(list, item)
-        end
-      end
-      local res = Utils.StripInvalidStatData(list)
-      gameList[CLGlobals.ListNodes[type]] = res
-    end
-  end
-end
-
 
 function Queue.CommitProgressions_Subclasses(progression, subclasses)
   CLUtils.Info("Entering Queue.CommitProgressions_Subclasses")

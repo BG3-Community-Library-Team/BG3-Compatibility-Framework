@@ -11,12 +11,16 @@ Queue.Feats = {}
 Queue.Lists = {
   SpellList = {},
   SkillList = {},
-  PassiveList = {}
+  PassiveList = {},
+  AbilityList = {},
+  EquipmentList = {}
 }
 Queue.Lists_Remove = {
   SpellList = {},
   SkillList = {},
-  PassiveList = {}
+  PassiveList = {},
+  AbilityList = {},
+  EquipmentList = {}
 }
 Queue.Races = {}
 Queue.Stats = {}
