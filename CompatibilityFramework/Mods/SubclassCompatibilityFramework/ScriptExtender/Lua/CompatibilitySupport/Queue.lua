@@ -26,7 +26,7 @@ end
 function Queue.CommitListItems()
   CLUtils.Info("Entering Queue.CommitListItems")
   for _, objectType in pairs(CLGlobals.ListTypes) do
-    if Queue.Lists_Remove[objectType] or #Queue.Lists[objectType] > 0 then
+    if Queue.Lists_Remove[objectType] or Queue.Lists[objectType] then
       listsToiterate = CombineIterableLists(Queue.Lists_Remove[objectType], Queue.Lists[objectType])
       for _, listId in pairs(listsToiterate) do
         local gameList = CLUtils.CacheOrRetrieve(listId, objectType)
