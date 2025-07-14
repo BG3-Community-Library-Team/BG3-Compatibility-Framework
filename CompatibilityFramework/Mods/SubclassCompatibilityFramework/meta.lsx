@@ -11,7 +11,7 @@
               <attribute id="MD5" type="LSString" value="" />
               <attribute id="Name" type="FixedString" value="CommunityLibrary" />
               <attribute id="UUID" type="FixedString" value="396c5966-09b0-40a1-af3f-93a5e9ce71c0" />
-              <attribute id="Version64" type="int64" value="72339086194507781" />
+              <attribute id="Version64" type="int64" value="72479806502993920" />
             </node>
           </children>
         </node>
@@ -32,10 +32,10 @@
           <attribute id="Tags" type="LSWString" value="CMTY;Framework;API" />
           <attribute id="Type" type="FixedString" value="Patch" />
           <attribute id="UUID" type="FixedString" value="67fbbd53-7c7d-4cfa-9409-6d737b4d92a9" />
-          <attribute id="Version64" type="int64" value="72620546138832896" />
+          <attribute id="Version64" type="int64" value="72902027557994496" />
           <children>
             <node id="PublishVersion">
-              <attribute id="Version64" type="int64" value="72620546138832896" />
+              <attribute id="Version64" type="int64" value="72902027557994496" />
             </node>
             <node id="Scripts" />
             <node id="TargetModes">
