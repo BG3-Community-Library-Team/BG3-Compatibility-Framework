@@ -41,8 +41,8 @@ function SubClassHandler(payload)
   AttachSubClass(payload.subClassGuid, classProgGuid)
   local mc_nodes = GetMulticlassNodes(classProgGuid)
 
-  if mc_nodes and #mc_nodes > 0 then
-    for node in mc_nodes do
+  if mc_nodes and #mc_nodes then
+    for _,node in pairs(mc_nodes) do
       AttachSubClass(payload.subClassGuid, node)
     end
   end
