@@ -15,17 +15,19 @@ local function ClassNameToGuid(parentClass)
   return CLGlobals.ClassUUIDs[parentClass] or nil
 end
 
-local function GetMulticlassNode(classProgGuid)
+local function GetMulticlassNodes(classProgGuid)
   CLUtils.Info("Entering GetMulticlassNode")
+  res = {}
   local targetProgression = CLUtils.CacheOrRetrieve(classProgGuid, "Progression")
   if Globals.ProgressionDict[targetProgression.Name] and Globals.ProgressionDict[targetProgression.Name][targetProgression.Level] then
     for _, v in pairs(Globals.ProgressionDict[targetProgression.Name][targetProgression.Level]) do
       if v.IsMulticlass == true then
-        return v.ResourceUUID
+        table.insert(res, v.ResourceUUID)
       end
     end
   end
 
+  return res
 end
 
 function SubClassHandler(payload)
@@ -37,9 +39,11 @@ function SubClassHandler(payload)
   end
 
   AttachSubClass(payload.subClassGuid, classProgGuid)
-  local mc = GetMulticlassNode(classProgGuid)
+  local mc_nodes = GetMulticlassNodes(classProgGuid)
 
-  if mc then
-    AttachSubClass(payload.subClassGuid, mc)
+  if mc_nodes and #mc_nodes > 0 then
+    for node in mc_nodes do
+      AttachSubClass(payload.subClassGuid, node)
+    end
   end
 end
