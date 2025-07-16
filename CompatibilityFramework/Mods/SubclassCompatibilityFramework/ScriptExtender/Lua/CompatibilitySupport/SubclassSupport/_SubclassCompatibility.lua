@@ -21,9 +21,7 @@ local function GetMulticlassNodes(classProgGuid)
   local targetProgression = CLUtils.CacheOrRetrieve(classProgGuid, "Progression")
   if Globals.ProgressionDict[targetProgression.Name] and Globals.ProgressionDict[targetProgression.Name][targetProgression.Level] then
     for _, v in pairs(Globals.ProgressionDict[targetProgression.Name][targetProgression.Level]) do
-      if v.IsMulticlass == true then
-        table.insert(res, v.ResourceUUID)
-      end
+      table.insert(res, v.ResourceUUID)
     end
   end
 

@@ -16,14 +16,16 @@ for _, uuid in pairs(progUUIDs) do
   local prog = Ext.StaticData.Get(uuid, "Progression")
 
   -- Filter out ones with no reason to do this with
-  if prog.Level and prog.Name then
-    if not Globals.ProgressionDict[prog.Name] then
-      Globals.ProgressionDict[prog.Name] = {}
-    end
-    if not Globals.ProgressionDict[prog.Name][prog.Level] then
-      Globals.ProgressionDict[prog.Name][prog.Level] = {}
-    end
+  if prog.IsMulticlass then
+    if prog.Level and prog.Name then
+      if not Globals.ProgressionDict[prog.Name] then
+        Globals.ProgressionDict[prog.Name] = {}
+      end
+      if not Globals.ProgressionDict[prog.Name][prog.Level] then
+        Globals.ProgressionDict[prog.Name][prog.Level] = {}
+      end
 
-    table.insert(Globals.ProgressionDict[prog.Name][prog.Level], prog)
+      table.insert(Globals.ProgressionDict[prog.Name][prog.Level], prog)
+    end
   end
 end
