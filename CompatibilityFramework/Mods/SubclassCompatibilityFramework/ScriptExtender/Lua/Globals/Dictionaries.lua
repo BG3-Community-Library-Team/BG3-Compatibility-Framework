@@ -11,21 +11,20 @@ Globals.LateLoaders = {}
 -- God help me
 -- This should only happen once so performance impact should be minimal but ajdlskdfhsdkjhfksjafhslkjdfhjksldfg
 Globals.ProgressionDict = {}
+Globals.MC_ProgressionDict = {}
 local progUUIDs = Ext.StaticData.GetAll("Progression")
 for _, uuid in pairs(progUUIDs) do
   local prog = Ext.StaticData.Get(uuid, "Progression")
 
-  -- Filter out ones with no reason to do this with
-  if prog.IsMulticlass == true then
-    if prog.Level and prog.Name then
-      if not Globals.ProgressionDict[prog.Name] then
-        Globals.ProgressionDict[prog.Name] = {}
-      end
-      if not Globals.ProgressionDict[prog.Name][prog.Level] then
-        Globals.ProgressionDict[prog.Name][prog.Level] = {}
-      end
+  if prog.ProgressionType == "Class" then
+    Globals.ProgressionDict[prog.Name] = {}
+    Globals.ProgressionDict[prog.Name][prog.Level] = {}
+    table.insert(Globals.ProgressionDict[prog.Name][prog.Level], prog)
 
-      table.insert(Globals.ProgressionDict[prog.Name][prog.Level], prog)
+    if prog.IsMulticlass == true then
+      Globals.MC_ProgressionDict[prog.Name] = {}
+      Globals.MC_ProgressionDict[prog.Name][prog.Level] = {}
+      table.insert(Globals.MC_ProgressionDict[prog.Name][prog.Level], prog)
     end
   end
 end
