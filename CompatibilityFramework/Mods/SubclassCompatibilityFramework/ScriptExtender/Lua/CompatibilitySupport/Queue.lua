@@ -66,6 +66,16 @@ function Queue.CommitProgressions_Subclasses(progression, subclasses)
   progression.SubClasses = Utils.SortStaticData(strippedList, "ClassDescription", "DisplayName")
 end
 
+function Queue.CommitProgressions_Subclasses_Remove(progression, subclasses)
+  CLUtils.Info("Entering Queue.CommitProgressions_Subclasses_Remove")
+  -- local strippedList = Utils.StripInvalidStaticData(subclasses, "ClassDescription")
+  -- for _, vanillaEntry in pairs(progression.SubClasses) do
+  --   CLUtils.AddToTable(strippedList, vanillaEntry)
+  -- end
+
+  -- progression.SubClasses = Utils.SortStaticData(strippedList, "ClassDescription", "DisplayName")
+end
+
 function Queue.Commit_Strings(gameObject, stringArr)
   CLUtils.Info("Entering Queue.Commit_Strings")
 
@@ -152,6 +162,10 @@ function Queue.CommitFeatsAndProgressions()
       if gameObject ~= nil then
         if objectTable.SubClasses ~= nil then
           Queue.CommitProgressions_Subclasses(gameObject, objectTable.SubClasses)
+        end
+
+        if objectTable.SubClasses_Remove ~= nil then
+          Queue.CommitProgressions_Subclasses_Remove(gameObject, objectTable.SubClasses_Remove)
         end
 
         if objectTable.Selectors_Remove ~= nil then

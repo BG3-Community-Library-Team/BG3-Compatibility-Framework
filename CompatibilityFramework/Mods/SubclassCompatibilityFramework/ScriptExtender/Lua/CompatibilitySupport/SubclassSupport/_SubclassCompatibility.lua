@@ -5,6 +5,12 @@ local function AttachSubClass(subClassGuid, classGuid)
   CLUtils.AddToTable(Queue.Progressions[classGuid].SubClasses, subClassGuid)
 end
 
+local function DetachSubClass(subClassGuid, classGuid)
+  CLUtils.Info("Entering DetachSubClass")
+  Utils.BuildQueueEntry("Progressions", classGuid, "SubClasses_Remove")
+  CLUtils.AddToTable(Queue.Progressions[classGuid].SubClasses_Remove, subClassGuid)
+end
+
 -- Check if our classname is already a guid
 local function ClassNameToGuid(parentClass)
   CLUtils.Info("Entering ClassNameToGuid")
@@ -28,7 +34,7 @@ local function GetMulticlassNodes(classProgGuid)
   return res
 end
 
-function SubClassHandler(payload)
+function SubClassHandler(payload, action)
   CLUtils.Info("Entering SubClassHandler")
   local classProgGuid = ClassNameToGuid(payload.class)
   if classProgGuid == nil then
@@ -40,7 +46,7 @@ function SubClassHandler(payload)
   local mc_nodes = GetMulticlassNodes(classProgGuid)
 
   if mc_nodes and #mc_nodes then
-    for _,node in pairs(mc_nodes) do
+    for _, node in pairs(mc_nodes) do
       AttachSubClass(payload.subClassGuid, node)
     end
   end

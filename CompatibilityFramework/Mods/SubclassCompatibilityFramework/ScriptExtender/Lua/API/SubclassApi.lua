@@ -17,7 +17,29 @@ function Api.InsertSubClasses(payloads)
     if not Globals.AllowPayloads then
       Utils.AddToLateLoaders(payload.modGuid)
     end
-    SubClassHandler(payload)
+    SubClassHandler(payload, "Insert")
+  end
+end
+
+function Api.RemoveSubClasses(payloads)
+  for _, payload in pairs(payloads) do
+    local err = CLUtils.DoValidation(payload,
+      {
+        Validators = { IsPayloadEmpty = CLStrings.ERROR_EMPTY_PAYLOAD, IsModLoaded = CLStrings.ERROR_MOD_NOT_LOADED },
+        IsIntegrated = payload.isIntegrated
+      })
+
+    if err ~= nil then
+      if not payload.isIntegrated then
+        CLUtils.Warn(err)
+      end
+
+      return
+    end
+    if not Globals.AllowPayloads then
+      Utils.AddToLateLoaders(payload.modGuid)
+    end
+    SubClassHandler(payload, "Remove")
   end
 end
 
