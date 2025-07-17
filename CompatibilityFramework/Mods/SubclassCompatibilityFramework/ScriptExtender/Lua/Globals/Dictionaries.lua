@@ -16,7 +16,7 @@ for _, uuid in pairs(progUUIDs) do
   local prog = Ext.StaticData.Get(uuid, "Progression")
 
   -- Filter out ones with no reason to do this with
-  if prog.IsMulticlass then
+  if prog.IsMulticlass == true then
     if prog.Level and prog.Name then
       if not Globals.ProgressionDict[prog.Name] then
         Globals.ProgressionDict[prog.Name] = {}
