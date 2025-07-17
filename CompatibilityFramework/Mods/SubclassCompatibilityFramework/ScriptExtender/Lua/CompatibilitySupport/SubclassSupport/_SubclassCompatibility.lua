@@ -20,31 +20,23 @@ local function ClassNameToGuid(parentClass)
 
   return CLGlobals.ClassUUIDs[parentClass] or nil
 end
+local function AddSubClass(guid, parentClass)
+  CLUtils.Info("Entering AddSubClass")
+  if parentClass ~= nil then
+    local classGuid = ClassNameToGuid(parentClass)
 
-local function GetSubclassSelectionNodes(dict, classProgGuid)
-  CLUtils.Info("Entering GetSubclassSelectionNodes")
-  res = {}
-  local targetProgression = CLUtils.CacheOrRetrieve(classProgGuid, "Progression")
-  if dict[targetProgression.Name] and dict[targetProgression.Name][targetProgression.Level] then
-    for _, v in pairs(dict[targetProgression.Name][targetProgression.Level]) do
-      table.insert(res, v.ResourceUUID)
+    if classGuid == nil then
+      CLUtils.Error(Strings.ERROR_INVALID_CLASS_PROVIDED .. parentClass)
+      return
     end
-  end
 
-  return res
+    AttachSubClass(guid, classGuid)
+  end
 end
 
 function SubClassHandler(payload, action)
   CLUtils.Info("Entering SubClassHandler")
-  local classProgGuid = ClassNameToGuid(payload.class)
-  if classProgGuid == nil then
-    CLUtils.Error(Strings.ERROR_INVALID_CLASS_PROVIDED .. payload.class)
-    return
-  end
 
-  local base_nodes = GetSubclassSelectionNodes(Globals.ProgressionDict, classProgGuid) or {}
+  AddSubClass(payload.subClassGuid, payload.class)
 
-  for _, node in pairs(base_nodes) do
-    AttachSubClass(payload.subClassGuid, node)
-  end
 end
