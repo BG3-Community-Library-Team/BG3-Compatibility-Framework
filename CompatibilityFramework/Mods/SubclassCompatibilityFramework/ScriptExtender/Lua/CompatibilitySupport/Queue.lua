@@ -65,6 +65,11 @@ function Queue.CommitProgressions_Subclasses(progression, subclasses)
 
   if Globals.ProgressionDict[progression.Name] and Globals.ProgressionDict[progression.Name][progression.Level] then
     for _, v in pairs(Globals.ProgressionDict[progression.Name][progression.Level]) do
+      for _, subClass in pairs(v.SubClasses) do
+        CLUtils.AddToTable(strippedList, subClass)
+      end
+    end
+    for _, v in pairs(Globals.ProgressionDict[progression.Name][progression.Level]) do
       v.SubClasses = Utils.SortStaticData(strippedList, "ClassDescription", "DisplayName")
     end
   end
