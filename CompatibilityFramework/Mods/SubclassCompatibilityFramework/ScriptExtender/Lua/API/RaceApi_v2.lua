@@ -3,11 +3,11 @@ function Api.InsertRaceChildData(payloads)
   CLUtils.Info("Entering API.InsertRaceChildData")
 
   for _, payload in pairs(payloads) do
-    local err = CLUtils.DoValidation(payload, {
-      Validators = { IsPayloadEmpty = CLStrings.ERROR_EMPTY_PAYLOAD } })
+    local err = CLUtils.DoValidation(payload,
+      { Validators = { IsPayloadEmpty = CLStrings.ERROR_EMPTY_PAYLOAD, IsModLoaded = CLStrings.ERROR_MOD_NOT_LOADED } })
 
     if err ~= nil then
-      CLUtils.Error(error)
+      Globals.ValidationErrors:insert(err)
       return
     end
 
@@ -26,7 +26,7 @@ function Api.RemoveRaceChildData(payloads)
       { Validators = { IsPayloadEmpty = CLStrings.ERROR_EMPTY_PAYLOAD, IsModLoaded = CLStrings.ERROR_MOD_NOT_LOADED } })
 
     if err ~= nil then
-      CLUtils.Warn(err)
+      Globals.ValidationErrors:insert(err)
       return
     end
 

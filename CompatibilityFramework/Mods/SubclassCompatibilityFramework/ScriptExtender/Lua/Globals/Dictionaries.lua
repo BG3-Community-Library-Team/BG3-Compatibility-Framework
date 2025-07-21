@@ -7,6 +7,7 @@ Globals.ModuleTypes = {
 
 -- Mods that loaded too late to join the queue
 Globals.LateLoaders = {}
+Globals.ValidationErrors = {}
 
 Globals.ProgressionDict = {}
 -- God help me

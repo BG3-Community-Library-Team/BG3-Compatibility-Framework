@@ -1,9 +1,20 @@
 function Queue.Commit()
   CLUtils.Info("Entering Queue.Commit")
+  Queue.DeclareModValidationFailures()
   Queue.CommitListItems()
   Queue.CommitFeatsAndProgressions()
   Queue.CommitRaces()
   --Queue.CommitSpellData()
+end
+
+function Queue.DeclareModValidationFailures()
+  CLUtils.Info("Entering Queue.DeclareModValidationFailures")
+  if #Globals.ValidationErrors > 0 then
+    local errStr = Strings.VAL_ERR_MOD_NOT_LOADED .. #Globals.ValidationErrors .. Strings.VAL_ERR_MOD_NOT_LOADED_B .. "\n" .. Strings.VAL_ERR_USER_REASSURANCE .. "\n"
+    errStr = Globals.ValidationErrors:join(",")
+
+    CLUtils.Warn(errStr)
+  end
 end
 
 -- Some quick & dirty jank, refactor to actually be good code when time allows

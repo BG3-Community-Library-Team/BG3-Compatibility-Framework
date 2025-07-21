@@ -1,7 +1,13 @@
 function Api.InsertSelectors(payloads)
   if payloads ~= nil then
     for _, payload in pairs(payloads) do
-      CLUtils.Info(CLUtils.Stringify(payload))
+      local err = CLUtils.DoValidation(payload,
+        { Validators = { IsPayloadEmpty = CLStrings.ERROR_EMPTY_PAYLOAD, IsModLoaded = CLStrings.ERROR_MOD_NOT_LOADED } })
+
+      if err ~= nil then
+        Globals.ValidationErrors:insert(err)
+        return
+      end
 
       if Ext.Mod.IsModLoaded(payload.modGuid) then
         if not Globals.AllowPayloads then
@@ -16,7 +22,13 @@ end
 function Api.RemoveSelectors(payloads)
   if payloads ~= nil then
     for _, payload in pairs(payloads) do
-      CLUtils.Info(CLUtils.Stringify(payload))
+      local err = CLUtils.DoValidation(payload,
+        { Validators = { IsPayloadEmpty = CLStrings.ERROR_EMPTY_PAYLOAD, IsModLoaded = CLStrings.ERROR_MOD_NOT_LOADED } })
+
+      if err ~= nil then
+        Globals.ValidationErrors:insert(err)
+        return
+      end
 
       if Ext.Mod.IsModLoaded(payload.modGuid) then
         if not Globals.AllowPayloads then

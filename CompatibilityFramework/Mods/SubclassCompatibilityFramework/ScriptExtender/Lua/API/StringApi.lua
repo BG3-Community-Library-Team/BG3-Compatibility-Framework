@@ -2,7 +2,13 @@
 function Api.InsertStrings(payloads)
   if payloads ~= nil then
     for _, payload in pairs(payloads) do
-      CLUtils.Info(CLUtils.Stringify(payload))
+      local err = CLUtils.DoValidation(payload,
+        { Validators = { IsPayloadEmpty = CLStrings.ERROR_EMPTY_PAYLOAD, IsModLoaded = CLStrings.ERROR_MOD_NOT_LOADED } })
+
+      if err ~= nil then
+        Globals.ValidationErrors:insert(err)
+        return
+      end
 
       if Ext.Mod.IsModLoaded(payload.modGuid) then
         HandleString(payload, "Strings")
@@ -15,8 +21,13 @@ end
 function Api.RemoveStrings(payloads)
   if payloads ~= nil then
     for _, payload in pairs(payloads) do
-      CLUtils.Info(CLUtils.Stringify(payload))
+      local err = CLUtils.DoValidation(payload,
+        { Validators = { IsPayloadEmpty = CLStrings.ERROR_EMPTY_PAYLOAD, IsModLoaded = CLStrings.ERROR_MOD_NOT_LOADED } })
 
+      if err ~= nil then
+        Globals.ValidationErrors:insert(err)
+        return
+      end
       if Ext.Mod.IsModLoaded(payload.modGuid) then
         HandleString(payload, "Strings_Remove")
       end
@@ -30,7 +41,7 @@ function Api.InsertSpellStrings(payloads)
       { Validators = { IsPayloadEmpty = CLStrings.ERROR_EMPTY_PAYLOAD, IsModLoaded = CLStrings.ERROR_MOD_NOT_LOADED } })
 
     if err ~= nil then
-      CLUtils.Warn(err)
+      Globals.ValidationErrors:insert(err)
       return
     end
 
@@ -44,7 +55,7 @@ function Api.RemoveSpellStrings(payloads)
       { Validators = { IsPayloadEmpty = CLStrings.ERROR_EMPTY_PAYLOAD, IsModLoaded = CLStrings.ERROR_MOD_NOT_LOADED } })
 
     if err ~= nil then
-      CLUtils.Warn(err)
+      Globals.ValidationErrors:insert(err)
       return
     end
 

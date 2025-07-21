@@ -20,3 +20,6 @@ Strings.ERR_DID_NOT_PROVIDE_LIST_TYPE = " did not provide a valid List Type in C
 Strings.ERR_DID_NOT_PROVIDE_AR_DEFINITIONS = " did not provide a valid Action Resource Definitions table in CF config for target Action Resource Group UUID: "
 Strings.ERR_DID_NOT_PROVIDE_SELECTOR_FUNCTION = " did not provide a valid Selector Function value in CF config for target UUID:"
 Strings.ERR_DID_NOT_PROVIDE_PARAMS = " did not provide a valid Params table in CF config for target Selector:  "
+Strings.VAL_ERR_MOD_NOT_LOADED = "CF Detected Configurations for "
+Strings.VAL_ERR_MOD_NOT_LOADED_B = " mods that aren't loated: "
+Strings.VAL_ERR_USER_REASSURANCE = "Mod Users: ignore this warning. This is for authors only."
