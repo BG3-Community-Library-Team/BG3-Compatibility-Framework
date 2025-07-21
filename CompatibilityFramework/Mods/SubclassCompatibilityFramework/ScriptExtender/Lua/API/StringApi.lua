@@ -1,12 +1,13 @@
 -- Add support for Custom Strings
 function Api.InsertStrings(payloads)
+  CLUtils.Info("Entering Api.InsertStrings")
   if payloads ~= nil then
     for _, payload in pairs(payloads) do
       local err = CLUtils.DoValidation(payload,
         { Validators = { IsPayloadEmpty = CLStrings.ERROR_EMPTY_PAYLOAD, IsModLoaded = CLStrings.ERROR_MOD_NOT_LOADED } })
 
       if err ~= nil then
-        Globals.ValidationErrors:insert(err)
+        table.insert(Globals.ValidationErrors, err)
         return
       end
 
@@ -19,13 +20,14 @@ end
 
 -- Add support for Custom Boosts
 function Api.RemoveStrings(payloads)
+  CLUtils.Info("Entering Api.RemoveStrings")
   if payloads ~= nil then
     for _, payload in pairs(payloads) do
       local err = CLUtils.DoValidation(payload,
         { Validators = { IsPayloadEmpty = CLStrings.ERROR_EMPTY_PAYLOAD, IsModLoaded = CLStrings.ERROR_MOD_NOT_LOADED } })
 
       if err ~= nil then
-        Globals.ValidationErrors:insert(err)
+        table.insert(Globals.ValidationErrors, err)
         return
       end
       if Ext.Mod.IsModLoaded(payload.modGuid) then
@@ -41,7 +43,7 @@ function Api.InsertSpellStrings(payloads)
       { Validators = { IsPayloadEmpty = CLStrings.ERROR_EMPTY_PAYLOAD, IsModLoaded = CLStrings.ERROR_MOD_NOT_LOADED } })
 
     if err ~= nil then
-      Globals.ValidationErrors:insert(err)
+      table.insert(Globals.ValidationErrors, err)
       return
     end
 
@@ -55,7 +57,7 @@ function Api.RemoveSpellStrings(payloads)
       { Validators = { IsPayloadEmpty = CLStrings.ERROR_EMPTY_PAYLOAD, IsModLoaded = CLStrings.ERROR_MOD_NOT_LOADED } })
 
     if err ~= nil then
-      Globals.ValidationErrors:insert(err)
+      table.insert(Globals.ValidationErrors, err)
       return
     end
 

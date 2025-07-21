@@ -23,7 +23,7 @@ JsonUtils.Endpoints = {
 
 function JsonUtils.DataValidator(modGuid, dataToValidate, target, fileType, errStr)
   CLUtils.Info("Entering DataValidator")
-  local errString = "Mod" .. CLUtils.RetrieveModHandleAndAuthor(modGuid) .. errStr
+  local errString = "Mod " .. CLUtils.RetrieveModHandleAndAuthor(modGuid) .. errStr
   if fileType then
     errString = errString .. " in " .. fileType
   end
@@ -34,8 +34,10 @@ function JsonUtils.DataValidator(modGuid, dataToValidate, target, fileType, errS
   errString = errString .. ". " .. Strings.CHANGES_NOT_APPLIED
   if not dataToValidate then
     CLUtils.Error(errString)
-    return 0
+    return false
   end
+
+  return true
 end
 
 function JsonUtils.BuildRacePayloads(data, modGuid, child)
@@ -158,7 +160,7 @@ end
 function JsonUtils.ParseAndSubmitSelectors(data, target, modGuid, fileType)
   CLUtils.Info("Entering ParseAndSubmitSelectors")
   if not JsonUtils.DataValidator(modGuid, data.Function, target, fileType, Strings.ERR_DID_NOT_PROVIDE_SELECTOR_FUNCTION)
-    or not JsonUtils.DataValidator(modGuid, data.Params, target, fileType, Strings.ERR_DID_NOT_PROVIDE_PARAMS) then
+    or (not JsonUtils.DataValidator(modGuid, data.Params, target, fileType, Strings.ERR_DID_NOT_PROVIDE_PARAMS) and data.Action ~= "Remove") then
     return nil
   end
   local payloadBuilders = {

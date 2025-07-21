@@ -11,7 +11,7 @@ function Queue.DeclareModValidationFailures()
   CLUtils.Info("Entering Queue.DeclareModValidationFailures")
   if #Globals.ValidationErrors > 0 then
     local errStr = Strings.VAL_ERR_MOD_NOT_LOADED .. #Globals.ValidationErrors .. Strings.VAL_ERR_MOD_NOT_LOADED_B .. "\n" .. Strings.VAL_ERR_USER_REASSURANCE .. "\n"
-    errStr = Globals.ValidationErrors:join(",")
+    errStr = Globals.ValidationErrors:concat(", ")
 
     CLUtils.Warn(errStr)
   end

@@ -23,3 +23,5 @@ Strings.ERR_DID_NOT_PROVIDE_PARAMS = " did not provide a valid Params table in C
 Strings.VAL_ERR_MOD_NOT_LOADED = "CF Detected Configurations for "
 Strings.VAL_ERR_MOD_NOT_LOADED_B = " mods that aren't loated: "
 Strings.VAL_ERR_USER_REASSURANCE = "Mod Users: ignore this warning. This is for authors only."
+Strings.VAL_ERR_UUID_IS_TABLE = " provided a table for UUID for progression IDs: "
+Strings.VAL_ERR_UUID_IS_TABLE_B = ". Please use 'UUIDs' instead."

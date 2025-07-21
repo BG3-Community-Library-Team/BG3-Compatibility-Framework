@@ -7,7 +7,7 @@ function Api.InsertRaceChildData(payloads)
       { Validators = { IsPayloadEmpty = CLStrings.ERROR_EMPTY_PAYLOAD, IsModLoaded = CLStrings.ERROR_MOD_NOT_LOADED } })
 
     if err ~= nil then
-      Globals.ValidationErrors:insert(err)
+      table.insert(Globals.ValidationErrors, err)
       return
     end
 
@@ -26,7 +26,7 @@ function Api.RemoveRaceChildData(payloads)
       { Validators = { IsPayloadEmpty = CLStrings.ERROR_EMPTY_PAYLOAD, IsModLoaded = CLStrings.ERROR_MOD_NOT_LOADED } })
 
     if err ~= nil then
-      Globals.ValidationErrors:insert(err)
+      table.insert(Globals.ValidationErrors, err)
       return
     end
 
