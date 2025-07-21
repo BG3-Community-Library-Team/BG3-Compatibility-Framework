@@ -2,8 +2,6 @@ function ParseAndSubmitLists(data, listId, modGuid)
   CLUtils.Info("Entering ParseAndSubmitLists")
   if data.Action == "Insert" or data.Action == "Remove" then
     JsonUtils.Endpoints[data.Action].List({ JsonUtils.BuildListPayload(data, modGuid, listId) })
-  else
-
   end
 end
 
