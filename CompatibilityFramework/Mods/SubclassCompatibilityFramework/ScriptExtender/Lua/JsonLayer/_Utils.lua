@@ -71,6 +71,7 @@ end
 
 function JsonUtils.BuildStringPayload(data, modGuid, target, type)
   CLUtils.Info("Entering BuildStringPayload")
+
   local count = 0
   local result = {
     modGuid = data.modGuid or modGuid,
@@ -101,6 +102,18 @@ end
 
 function JsonUtils.BuildListPayload(data, modGuid, listId)
   CLUtils.Info("Entering BuildListPayload")
+  if not data.Type then
+    CLUtils.Error("Mod" ..
+      CLUtils.RetrieveModHandleAndAuthor(modGuid) ..
+      Strings.ERR_DID_NOT_PROVIDE_LIST_TYPE " " .. Strings.CHANGES_NOT_APPLIED)
+    return nil
+  elseif not data.Items then
+    CLUtils.Error("Mod" ..
+      CLUtils.RetrieveModHandleAndAuthor(modGuid) ..
+      Strings.ERR_DID_NOT_PROVIDE_LIST .. data.Type .. " in CF config. " .. Strings.CHANGES_NOT_APPLIED)
+    return nil
+  end
+
   listId = listId or data.UUID
   local count = 0
   local result = {
@@ -120,6 +133,7 @@ end
 
 function JsonUtils.BuildActionResourceGroupPayload(data, modGuid)
   CLUtils.Info("Entering BuildActionResourceGroupPayload")
+
   local count = 0
   local result = {
     modGuid = data.modGuid or modGuid,
@@ -137,6 +151,17 @@ end
 
 function JsonUtils.ParseAndSubmitSelectors(data, target, modGuid, fileType)
   CLUtils.Info("Entering ParseAndSubmitSelectors")
+  if not data.Function then
+    CLUtils.Error("Mod" ..
+      CLUtils.RetrieveModHandleAndAuthor(modGuid) ..
+      Strings.ERR_DID_NOT_PROVIDE_SELECTOR_FUNCTION .. target .. ". " .. Strings.CHANGES_NOT_APPLIED)
+    return nil
+  elseif not data.Params then
+    CLUtils.Error("Mod" ..
+      CLUtils.RetrieveModHandleAndAuthor(modGuid) ..
+      Strings.ERR_DID_NOT_PROVIDE_PARAMS .. data.Function .. " in " .. target .. " " .. Strings.CHANGES_NOT_APPLIED)
+    return nil
+  end
   local payloadBuilders = {
     Insert = JsonUtils.BuildAddSelectorPayload,
     Remove = JsonUtils.BuildRemoveSelectorPayload
@@ -147,6 +172,13 @@ end
 
 function JsonUtils.ParseAndSubmitStrings(data, target, modGuid, fileType)
   CLUtils.Info("Entering ParseAndSubmitStrings")
+  if not data.Strings then
+    CLUtils.Error("Mod" ..
+      CLUtils.RetrieveModHandleAndAuthor(modGuid) ..
+      Strings.ERR_DID_NOT_PROVIDE_STRINGS .. fileType .. " " .. target .. " " .. Strings.CHANGES_NOT_APPLIED)
+    return nil
+  end
+
   local payloads = JsonUtils.BuildStringPayload(data, modGuid, target, fileType)
 
   JsonUtils.Endpoints[data.Action].Strings({ payloads })
@@ -154,6 +186,12 @@ end
 
 function JsonUtils.ParseAndSubmitBoolean(data, target, modGuid, fileType)
   CLUtils.Info("Entering ParseAndSubmitBooleans")
+  if not data.Key or not data.Value then
+    CLUtils.Error("Mod" ..
+      CLUtils.RetrieveModHandleAndAuthor(modGuid) ..
+      Strings.ERR_DID_NOT_PROVIDE_BOOLEANS .. fileType .. " " .. target .. ". " .. Strings.CHANGES_NOT_APPLIED)
+    return nil
+  end
   local payloads = {
     Set = JsonUtils.BuildBooleanPayload(data, modGuid, target, fileType)
   }
