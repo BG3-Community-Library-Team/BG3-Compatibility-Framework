@@ -1,7 +1,14 @@
 function ParseAndSubmitLists(data, listId, modGuid)
   CLUtils.Info("Entering ParseAndSubmitLists")
   if data.Action == "Insert" or data.Action == "Remove" then
-    JsonUtils.Endpoints[data.Action].List({ JsonUtils.BuildListPayload(data, modGuid, listId) })
+    if not JsonUtils.DataValidator(modGuid, data.Type, data.UUID, nil, Strings.ERR_DID_NOT_PROVIDE_LIST_TYPE)
+      or not JsonUtils.DataValidator(modGuid, data.Items, data.UUID, data.Type, Strings.ERR_DID_ERR_DID_NOT_PROVIDE_LISTNOT_PROVIDE_LIST_TYPE) then
+      return nil
+    end
+    payload = JsonUtils.BuildListPayload(data, modGuid, listId)
+    if payload then
+      JsonUtils.Endpoints[data.Action].List({ payload })
+    end
   end
 end
 

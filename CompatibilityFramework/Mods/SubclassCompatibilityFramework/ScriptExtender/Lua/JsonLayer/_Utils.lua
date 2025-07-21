@@ -21,6 +21,23 @@ JsonUtils.Endpoints = {
   }
 }
 
+function JsonUtils.DataValidator(modGuid, dataToValidate, target, fileType, errStr)
+  CLUtils.Info("Entering DataValidator")
+  local errString = "Mod" .. CLUtils.RetrieveModHandleAndAuthor(modGuid) .. errStr
+  if fileType then
+    errString = errString .. " in " .. fileType
+  end
+  if target then
+    errString = errString .. " with UUID: " .. target
+  end
+
+  errString = errString .. ". " .. Strings.CHANGES_NOT_APPLIED
+  if not dataToValidate then
+    CLUtils.Error(errString)
+    return 0
+  end
+end
+
 function JsonUtils.BuildRacePayloads(data, modGuid, child)
   CLUtils.Info("Entering BuildPayloads")
   local result = {
@@ -102,17 +119,6 @@ end
 
 function JsonUtils.BuildListPayload(data, modGuid, listId)
   CLUtils.Info("Entering BuildListPayload")
-  if not data.Type then
-    CLUtils.Error("Mod" ..
-      CLUtils.RetrieveModHandleAndAuthor(modGuid) ..
-      Strings.ERR_DID_NOT_PROVIDE_LIST_TYPE " " .. Strings.CHANGES_NOT_APPLIED)
-    return nil
-  elseif not data.Items then
-    CLUtils.Error("Mod" ..
-      CLUtils.RetrieveModHandleAndAuthor(modGuid) ..
-      Strings.ERR_DID_NOT_PROVIDE_LIST .. data.Type .. " in CF config. " .. Strings.CHANGES_NOT_APPLIED)
-    return nil
-  end
 
   listId = listId or data.UUID
   local count = 0
@@ -151,15 +157,8 @@ end
 
 function JsonUtils.ParseAndSubmitSelectors(data, target, modGuid, fileType)
   CLUtils.Info("Entering ParseAndSubmitSelectors")
-  if not data.Function then
-    CLUtils.Error("Mod" ..
-      CLUtils.RetrieveModHandleAndAuthor(modGuid) ..
-      Strings.ERR_DID_NOT_PROVIDE_SELECTOR_FUNCTION .. target .. ". " .. Strings.CHANGES_NOT_APPLIED)
-    return nil
-  elseif not data.Params then
-    CLUtils.Error("Mod" ..
-      CLUtils.RetrieveModHandleAndAuthor(modGuid) ..
-      Strings.ERR_DID_NOT_PROVIDE_PARAMS .. data.Function .. " in " .. target .. " " .. Strings.CHANGES_NOT_APPLIED)
+  if not JsonUtils.DataValidator(modGuid, data.Function, target, fileType, Strings.ERR_DID_NOT_PROVIDE_SELECTOR_FUNCTION)
+    or not JsonUtils.DataValidator(modGuid, data.Params, target, fileType, Strings.ERR_DID_NOT_PROVIDE_PARAMS) then
     return nil
   end
   local payloadBuilders = {
@@ -172,10 +171,7 @@ end
 
 function JsonUtils.ParseAndSubmitStrings(data, target, modGuid, fileType)
   CLUtils.Info("Entering ParseAndSubmitStrings")
-  if not data.Strings then
-    CLUtils.Error("Mod" ..
-      CLUtils.RetrieveModHandleAndAuthor(modGuid) ..
-      Strings.ERR_DID_NOT_PROVIDE_STRINGS .. fileType .. " " .. target .. " " .. Strings.CHANGES_NOT_APPLIED)
+  if not JsonUtils.DataValidator(modGuid, data.Strings, target, fileType, Strings.ERR_DID_NOT_PROVIDE_STRINGS) then
     return nil
   end
 
@@ -186,12 +182,11 @@ end
 
 function JsonUtils.ParseAndSubmitBoolean(data, target, modGuid, fileType)
   CLUtils.Info("Entering ParseAndSubmitBooleans")
-  if not data.Key or not data.Value then
-    CLUtils.Error("Mod" ..
-      CLUtils.RetrieveModHandleAndAuthor(modGuid) ..
-      Strings.ERR_DID_NOT_PROVIDE_BOOLEANS .. fileType .. " " .. target .. ". " .. Strings.CHANGES_NOT_APPLIED)
+  if not JsonUtils.DataValidator(modGuid, data.Key, target, fileType, Strings.ERR_DID_NOT_PROVIDE_BOOLEANS)
+    or not JsonUtils.DataValidator(modGuid, data.Value, target, fileType, Strings.ERR_DID_NOT_PROVIDE_BOOLEANS) then
     return nil
   end
+
   local payloads = {
     Set = JsonUtils.BuildBooleanPayload(data, modGuid, target, fileType)
   }

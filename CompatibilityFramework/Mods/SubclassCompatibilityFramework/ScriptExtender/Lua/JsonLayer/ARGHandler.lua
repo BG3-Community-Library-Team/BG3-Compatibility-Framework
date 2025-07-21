@@ -1,19 +1,13 @@
 function ParseAndSubmitActionResourceGroups(data, modGuid)
   CLUtils.Info("Entering ParseAndSubmitActionResourceGroups")
-  if not data.Definitions then
-    CLUtils.Error("Mod" ..
-      CLUtils.RetrieveModHandleAndAuthor(modGuid) ..
-      Strings.ERR_DID_NOT_PROVIDE_AR_DEFINITIONS .. data.UUID .. ". " .. Strings.CHANGES_NOT_APPLIED)
+  if not JsonUtils.DataValidator(modGuid, data.Definitions, data.UUID, nil, Strings.ERR_DID_NOT_PROVIDE_AR_DEFINITIONS) then
     return nil
   end
-  local payloads = {
-    Insert = JsonUtils.BuildActionResourceGroupPayload(data, modGuid)
-    -- Remove = JsonUtils.BuildActionResourceGroupPayload(data, modGuid)
-  }
 
-  for action, payload in pairs(payloads) do
-    if payload ~= nil then
-      JsonUtils.Endpoints[action].ActionResourceGroup({ payload })
+  if data.Action == "Insert" or data.Action == "Remove" then
+    payload = JsonUtils.BuildActionResourceGroupPayload(data, modGuid)
+    if payload then
+      JsonUtils.Endpoints[data.Action].ActionResourceGroup({ payload })
     end
   end
 end
