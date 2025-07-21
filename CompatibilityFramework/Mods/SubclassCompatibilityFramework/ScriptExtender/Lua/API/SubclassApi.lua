@@ -8,7 +8,7 @@ function Api.InsertSubClasses(payloads)
       })
 
     if err ~= nil then
-      table.insert(Globals.ValidationErrors, err)
+      table.insert(Globals.ValidationErrors, payload.modGuid)
       return
     end
 
@@ -27,7 +27,7 @@ function Api.RemoveSubClasses(payloads)
         IsIntegrated = payload.isIntegrated
       })
     if err ~= nil then
-      table.insert(Globals.ValidationErrors, err)
+      table.insert(Globals.ValidationErrors, payload.modGuid)
       return
     end
     if not Globals.AllowPayloads then

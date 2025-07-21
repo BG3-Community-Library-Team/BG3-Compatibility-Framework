@@ -160,7 +160,7 @@ end
 function JsonUtils.ParseAndSubmitSelectors(data, target, modGuid, fileType)
   CLUtils.Info("Entering ParseAndSubmitSelectors")
   if not JsonUtils.DataValidator(modGuid, data.Function, target, fileType, Strings.ERR_DID_NOT_PROVIDE_SELECTOR_FUNCTION)
-    or (not JsonUtils.DataValidator(modGuid, data.Params, target, fileType, Strings.ERR_DID_NOT_PROVIDE_PARAMS) and data.Action ~= "Remove") then
+    or (data.Action ~= "Remove" and not JsonUtils.DataValidator(modGuid, data.Params, target, fileType, Strings.ERR_DID_NOT_PROVIDE_PARAMS)) then
     return nil
   end
   local payloadBuilders = {
