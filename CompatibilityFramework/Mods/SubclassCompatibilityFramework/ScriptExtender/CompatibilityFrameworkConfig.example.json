@@ -19,14 +19,18 @@
   ],
   "Progressions": [
     {
-      "UUID": "0d4a6b4b-8162-414b-81ef-1838e36e778a",
+      "UUID": "b60618d1-c262-42b5-9fdd-2c0f7aa5e5af",
       "Subclasses": [
         {
-          "UUID": "5b3cd5ec-4234-434e-a6c5-da5fc01183cd",
-          "SubClassName": "Brute",
-          "Class": "barbarian"
+          "Action": "Remove",
+          "UUID": "6fb3831e-45d8-4b30-9714-6fe73988921b",
+          "SubClassName": "Oathbreaker",
+          "Class": "paladin"
         }
-      ],
+      ]
+    },
+    {
+      "UUID": "0d4a6b4b-8162-414b-81ef-1838e36e778a",
       "Booleans": [
         {
           "Key": "AllowImprovement",
