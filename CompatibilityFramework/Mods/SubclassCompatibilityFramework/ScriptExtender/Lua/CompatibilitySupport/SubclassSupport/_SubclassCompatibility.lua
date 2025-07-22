@@ -1,10 +1,4 @@
 -- Insert Subclass into Progression Nodes
-local function AttachSubClass(subClassGuid, classGuid)
-  CLUtils.Info("Entering AttachSubClass")
-  Utils.BuildQueueEntry("Progressions", classGuid, "SubClasses")
-  CLUtils.AddToTable(Queue.Progressions[classGuid].SubClasses, subClassGuid)
-end
-
 local function DetachSubClass(subClassGuid, classGuid)
   CLUtils.Info("Entering DetachSubClass")
   Utils.BuildQueueEntry("Progressions", classGuid, "SubClasses_Remove")
@@ -20,7 +14,7 @@ local function ClassNameToGuid(parentClass)
 
   return CLGlobals.ClassUUIDs[parentClass] or nil
 end
-local function AddSubClass(guid, parentClass)
+local function RemoveSubClass(guid, parentClass)
   CLUtils.Info("Entering AddSubClass")
   if parentClass ~= nil then
     local classGuid = ClassNameToGuid(parentClass)
@@ -30,13 +24,14 @@ local function AddSubClass(guid, parentClass)
       return
     end
 
-    AttachSubClass(guid, classGuid)
+    DetachSubClass(guid, classGuid)
   end
 end
 
 function SubClassHandler(payload, action)
   CLUtils.Info("Entering SubClassHandler")
-
-  AddSubClass(payload.subClassGuid, payload.class)
+  if action == "Remove" then
+    RemoveSubClass(payload.subClassGuid, payload.class)
+  end
 
 end

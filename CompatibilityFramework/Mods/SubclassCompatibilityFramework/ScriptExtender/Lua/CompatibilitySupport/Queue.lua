@@ -1,6 +1,9 @@
 function Queue.Commit()
   CLUtils.Info("Entering Queue.Commit")
   Queue.DeclareModValidationFailures()
+  Queue.DeclareDeprecatedMods()
+  Queue.populateClassDescriptionDict()
+  Queue.populateProgressionDict()
   Queue.CommitListItems()
   Queue.CommitSubclasses()
   Queue.CommitFeatsAndProgressions()
@@ -16,6 +19,24 @@ function Queue.DeclareModValidationFailures()
 
     errStr = errStr .. table.concat(Globals.ValidationErrors, ", ")
 
+    CLUtils.Warn(errStr)
+  end
+end
+
+function Queue.DeclareDeprecatedMods()
+  CLUtils.Info("Entering Queue.DelcareDeprecatedMods")
+  if #Globals.Deprecated.SubclassAPI > 0 then
+    local errStr = #Globals.Deprecated.SubclassAPI .. " " .. Strings.DEP_SUBCLASS_API
+
+    errStr = errStr .. table.concat(Globals.Deprecated.SubclassAPI, ", ") .. "\n"
+    errStr = errStr .. Strings.DEP_ERR_USER_REASSURANCE
+    CLUtils.Warn(errStr)
+  end
+  if #Globals.Deprecated.SubclassJSON > 0 then
+    local errStr = #Globals.Deprecated.SubclassJSON .. " " .. Strings.DEP_SUBCLASS_JSON
+
+    errStr = errStr .. table.concat(Globals.Deprecated.SubclassJSON, ", ") .. "\n"
+    errStr = errStr .. Strings.DEP_ERR_USER_REASSURANCE
     CLUtils.Warn(errStr)
   end
 end
@@ -70,7 +91,7 @@ function Queue.CommitListItems()
   end
 end
 
-local function populateClassDescriptionDict()
+function Queue.populateClassDescriptionDict()
   local classDescUUIDs = Ext.StaticData.GetAll("ClassDescription")
   for _, uuid in pairs(classDescUUIDs) do
     local classDesc = Ext.StaticData.Get(uuid, "ClassDescription")
@@ -88,7 +109,7 @@ local function populateClassDescriptionDict()
   end
 end
 
-local function populateProgressionDict()
+function Queue.populateProgressionDict()
   local progUUIDs = Ext.StaticData.GetAll("Progression")
   for _, uuid in pairs(progUUIDs) do
     local prog = Ext.StaticData.Get(uuid, "Progression")
@@ -103,8 +124,6 @@ end
 --- Separating out Subclass population from main progression population to allow for more comprehensive subclass handling
 function Queue.CommitSubclasses()
   CLUtils.Info("Entering Queue.CommitSubclasses")
-  populateClassDescriptionDict()
-  populateProgressionDict()
   for className, _ in pairs(Globals.ClassDescriptionDict) do
     local sortedList = Utils.SortStaticData(Globals.ClassDescriptionDict[className], "ClassDescription", "DisplayName")
 
@@ -120,12 +139,27 @@ end
 
 function Queue.CommitProgressions_Subclasses_Remove(progression, subclasses)
   CLUtils.Info("Entering Queue.CommitProgressions_Subclasses_Remove")
-  -- local strippedList = Utils.StripInvalidStaticData(subclasses, "ClassDescription")
-  -- for _, vanillaEntry in pairs(progression.SubClasses) do
-  --   CLUtils.AddToTable(strippedList, vanillaEntry)
-  -- end
+  local currSubclasses = {}
+  for _, v in ipairs(progression.SubClasses) do
+    table.insert(currSubclasses, v)
+  end
 
-  -- progression.SubClasses = Utils.SortStaticData(strippedList, "ClassDescription", "DisplayName")
+  for _, v in pairs(subclasses) do
+    for i = 1, #currSubclasses do
+      if currSubclasses[i] == v then
+        table.remove(currSubclasses, i)
+        break
+      end
+    end
+  end
+
+  if Globals.ProgressionDict[progression.Name] and #currSubclasses > 0 then
+    for _, progression in pairs(Globals.ProgressionDict[progression.Name]) do
+      if progression.SubClasses ~= nil and #progression.SubClasses > 0 then
+        progression.SubClasses = currSubclasses
+      end
+    end
+  end
 end
 
 function Queue.Commit_Strings(gameObject, stringArr)
@@ -212,9 +246,6 @@ function Queue.CommitFeatsAndProgressions()
     for objectId, objectTable in pairs(Queue[Globals.ModuleTypes[objectType]]) do
       local gameObject = CLUtils.CacheOrRetrieve(objectId, objectType)
       if gameObject ~= nil then
-        -- if objectTable.SubClasses ~= nil then
-        --   Queue.CommitProgressions_Subclasses(gameObject, objectTable.SubClasses)
-        -- end
 
         if objectTable.SubClasses_Remove ~= nil then
           Queue.CommitProgressions_Subclasses_Remove(gameObject, objectTable.SubClasses_Remove)

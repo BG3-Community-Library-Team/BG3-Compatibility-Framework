@@ -1,21 +1,10 @@
 -- For adding Support to 1 or more Subclasses
 function Api.InsertSubClasses(payloads)
-  for _, payload in pairs(payloads) do
-    local err = CLUtils.DoValidation(payload,
-      {
-        Validators = { IsPayloadEmpty = CLStrings.ERROR_EMPTY_PAYLOAD, IsModLoaded = CLStrings.VAL_ERR_MOD_NOT_LOADED },
-        IsIntegrated = payload.isIntegrated
-      })
-
-    if err ~= nil then
-      table.insert(Globals.ValidationErrors, payload.modGuid)
-      return
+  if not CLUtils.IsInTable(Globals.Deprecated.SubclassAPI, payloads.modGuid) then
+    local modHandle = CLUtils.RetrieveModHandleAndAuthor(payloads.modGuid)
+    if modHandle ~= CLStrings.WARN_GUID_NOT_DEFINED then
+      table.insert(Globals.Deprecated.SubclassAPI, CLUtils.RetrieveModHandleAndAuthor(payloads.modGuid))
     end
-
-    if not Globals.AllowPayloads then
-      Utils.AddToLateLoaders(payload.modGuid)
-    end
-    SubClassHandler(payload, "Insert")
   end
 end
 

@@ -1,5 +1,13 @@
 local function ParseAndSubmitSubclasses(data, classId, modGuid)
   CLUtils.Info("Entering ParseAndSubmitSubclasses")
+  if data.Action ~= "Remove" then
+    local modGuidVal = modGuid or data.modGuid
+    local modHandle = CLUtils.RetrieveModHandleAndAuthor(modGuidVal)
+    if modGuidVal ~= nil and not modHandle ~= CLStrings.WARN_GUID_NOT_DEFINED and not CLUtils.IsInTable(Globals.Deprecated.SubclassJSON, modHandle) then
+      table.insert(Globals.Deprecated.SubclassJSON, modHandle)
+    end
+    return
+  end
   if CLUtils.IsGuid(classId) then
     local className = CLDictUtils.RetrieveClassNameFromProgression(classId)
 
@@ -9,10 +17,10 @@ local function ParseAndSubmitSubclasses(data, classId, modGuid)
   end
   if data.UUIDs ~= nil then
     for _, subclass in pairs(data.UUIDs) do
-      JsonUtils.Endpoints.Insert.Subclass({ JsonUtils.BuildSubclassPayload(data, classId, modGuid, subclass) })
+      JsonUtils.Endpoints.Remove.Subclass({ JsonUtils.BuildSubclassPayload(data, classId, modGuid, subclass) })
     end
   else
-    JsonUtils.Endpoints.Insert.Subclass({ JsonUtils.BuildSubclassPayload(data, classId, modGuid) })
+    JsonUtils.Endpoints.Remove.Subclass({ JsonUtils.BuildSubclassPayload(data, classId, modGuid) })
   end
 end
 
