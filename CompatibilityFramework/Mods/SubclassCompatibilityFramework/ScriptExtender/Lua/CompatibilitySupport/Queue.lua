@@ -2,6 +2,7 @@ function Queue.Commit()
   CLUtils.Info("Entering Queue.Commit")
   Queue.DeclareModValidationFailures()
   Queue.CommitListItems()
+  Queue.CommitSubclasses()
   Queue.CommitFeatsAndProgressions()
   Queue.CommitRaces()
   --Queue.CommitSpellData()
@@ -10,7 +11,8 @@ end
 function Queue.DeclareModValidationFailures()
   CLUtils.Info("Entering Queue.DeclareModValidationFailures")
   if #Globals.ValidationErrors > 0 then
-    local errStr = Strings.VAL_ERR_MOD_NOT_LOADED .. #Globals.ValidationErrors .. Strings.VAL_ERR_MOD_NOT_LOADED_B .. "\n" .. Strings.VAL_ERR_USER_REASSURANCE .. "\n"
+    local errStr = Strings.VAL_ERR_MOD_NOT_LOADED ..
+      #Globals.ValidationErrors .. Strings.VAL_ERR_MOD_NOT_LOADED_B .. "\n" .. Strings.VAL_ERR_USER_REASSURANCE .. "\n"
 
     errStr = errStr .. table.concat(Globals.ValidationErrors, ", ")
 
@@ -68,24 +70,52 @@ function Queue.CommitListItems()
   end
 end
 
-function Queue.CommitProgressions_Subclasses(progression, subclasses)
-  CLUtils.Info("Entering Queue.CommitProgressions_Subclasses")
-  local strippedList = Utils.StripInvalidStaticData(subclasses, "ClassDescription")
-  for _, vanillaEntry in pairs(progression.SubClasses) do
-    CLUtils.AddToTable(strippedList, vanillaEntry)
-  end
-
-  if Globals.ProgressionDict[progression.Name] and Globals.ProgressionDict[progression.Name][progression.Level] then
-    for _, v in pairs(Globals.ProgressionDict[progression.Name][progression.Level]) do
-      for _, subClass in pairs(v.SubClasses) do
-        CLUtils.AddToTable(strippedList, subClass)
+local function populateClassDescriptionDict()
+  local classDescUUIDs = Ext.StaticData.GetAll("ClassDescription")
+  for _, uuid in pairs(classDescUUIDs) do
+    local classDesc = Ext.StaticData.Get(uuid, "ClassDescription")
+    if classDesc.ParentGuid == "00000000-0000-0000-0000-000000000000" then
+      Globals.ClassDescriptionDict[classDesc.Name] = Globals.ClassDescriptionDict[classDesc.Name] or {}
+    else
+      local parent = Ext.StaticData.Get(classDesc.ParentGuid, "ClassDescription")
+      if parent == nil then
+        CLUtils.Error(classDesc.Name .. Strings.VAL_ERR_CLASS_DESCRIPTION_INVALID_PARENT)
+      else
+        Globals.ClassDescriptionDict[parent.Name] = Globals.ClassDescriptionDict[parent.Name] or {}
+        table.insert(Globals.ClassDescriptionDict[parent.Name], classDesc.ResourceUUID)
       end
     end
-    for _, v in pairs(Globals.ProgressionDict[progression.Name][progression.Level]) do
-      v.SubClasses = Utils.SortStaticData(strippedList, "ClassDescription", "DisplayName")
+  end
+end
+
+local function populateProgressionDict()
+  local progUUIDs = Ext.StaticData.GetAll("Progression")
+  for _, uuid in pairs(progUUIDs) do
+    local prog = Ext.StaticData.Get(uuid, "Progression")
+
+    if prog.ProgressionType == "Class" then
+      Globals.ProgressionDict[prog.Name] = Globals.ProgressionDict[prog.Name] or {}
+      table.insert(Globals.ProgressionDict[prog.Name], prog)
     end
   end
-  progression.SubClasses = Utils.SortStaticData(strippedList, "ClassDescription", "DisplayName")
+end
+
+--- Separating out Subclass population from main progression population to allow for more comprehensive subclass handling
+function Queue.CommitSubclasses()
+  CLUtils.Info("Entering Queue.CommitSubclasses")
+  populateClassDescriptionDict()
+  populateProgressionDict()
+  for className, _ in pairs(Globals.ClassDescriptionDict) do
+    local sortedList = Utils.SortStaticData(Globals.ClassDescriptionDict[className], "ClassDescription", "DisplayName")
+
+    if Globals.ProgressionDict[className] then
+      for _, progression in pairs(Globals.ProgressionDict[className]) do
+        if progression.SubClasses ~= nil and #progression.SubClasses > 0 then
+          progression.SubClasses = sortedList
+        end
+      end
+    end
+  end
 end
 
 function Queue.CommitProgressions_Subclasses_Remove(progression, subclasses)
@@ -182,9 +212,9 @@ function Queue.CommitFeatsAndProgressions()
     for objectId, objectTable in pairs(Queue[Globals.ModuleTypes[objectType]]) do
       local gameObject = CLUtils.CacheOrRetrieve(objectId, objectType)
       if gameObject ~= nil then
-        if objectTable.SubClasses ~= nil then
-          Queue.CommitProgressions_Subclasses(gameObject, objectTable.SubClasses)
-        end
+        -- if objectTable.SubClasses ~= nil then
+        --   Queue.CommitProgressions_Subclasses(gameObject, objectTable.SubClasses)
+        -- end
 
         if objectTable.SubClasses_Remove ~= nil then
           Queue.CommitProgressions_Subclasses_Remove(gameObject, objectTable.SubClasses_Remove)
