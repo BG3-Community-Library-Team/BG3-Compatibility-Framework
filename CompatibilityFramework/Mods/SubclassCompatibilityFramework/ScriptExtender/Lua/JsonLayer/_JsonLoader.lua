@@ -2,6 +2,14 @@ local configFilePathPattern = string.gsub("Mods/%s/ScriptExtender/CompatibilityF
 
 local function SubmitData(data, modGUID)
   CLUtils.Info("Entering SubmitData")
+  if data.Origins ~= nil then
+    OriginJsonHandler(data.Origins, modGUID)
+  end
+
+  if data.ClassDescriptions ~= nil then
+    ClassDescriptionJsonHandler(data.ClassDescriptions, modGUID)
+  end
+
   if data.Progressions ~= nil then
     ProgressionJsonHandler(data.Progressions, modGUID)
   end

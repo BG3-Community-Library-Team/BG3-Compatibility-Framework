@@ -5,7 +5,8 @@ JsonUtils.Endpoints = {
     Race = Api.InsertRaceChildData,
     Strings = Api.InsertStrings,
     Selector = Api.InsertSelectors,
-    SpellData = Api.InsertSpellStrings
+    SpellData = Api.InsertSpellStrings,
+    Tags = Api.InsertTags
   },
   Remove = {
     ActionResourceGroup = Api.RemoveResourceFromGroup,
@@ -14,10 +15,12 @@ JsonUtils.Endpoints = {
     Subclass = Api.RemoveSubClasses,
     Strings = Api.RemoveStrings,
     Selector = Api.RemoveSelectors,
-    SpellData = Api.RemoveSpellStrings
+    SpellData = Api.RemoveSpellStrings,
+    Tags = Api.InsertTags
   },
   Set = {
-    Booleans = Api.SetBoolean
+    Booleans = Api.SetBoolean,
+    Fields = Api.SetField
   }
 }
 
@@ -198,4 +201,31 @@ function JsonUtils.ParseAndSubmitBoolean(data, target, modGuid, fileType)
       JsonUtils.Endpoints[action].Booleans({ payload })
     end
   end
+end
+
+function JsonUtils.BuildTagPayload(data, target, modGuid, fileType)
+  CLUtils.Info("Entering BuildTagPayload")
+
+  local count = 0
+  local result = {
+    modGuid = data.modGuid or modGuid,
+    TargetUUID = target,
+    TagType = data.Type,
+    TagList = {},
+    FileType = fileType
+  }
+
+  for _, item in pairs(data.UUIDs) do
+    result.TagList[tostring(count)] = item
+    count = count + 1
+  end
+end
+
+function JsonUtils.ParseAndSubmitTags(data, target, modGuid, fileType)
+  CLUtils.Info("Entering ParseAndSubmitTags")
+  if data.Action == "Insert" and not JsonUtils.DataValidator(modGuid, data.UUIDs, target, fileType, Strings.ERR_DID_NOT_PROVIDE_TAGS) then
+    return nil
+  end
+
+  JsonUtils[data.Action].Tags({ JsonUtils.BuildTagPayload(data, target, modGuid, fileType) })
 end

@@ -17,6 +17,40 @@
       ]
     }
   ],
+  "ClassDescriptions": [
+    {
+      "UUID": "b60618d1-c262-42b5-9fdd-2c0f7aa5e5af",
+    }
+  ],
+  "Origins": [
+    {
+      "UUID": "b60618d1-c262-42b5-9fdd-2c0f7aa5e5af", // Support "UUIDs": []
+      "Tags": [
+        {
+          "UUID": "tag-uuid",
+          "Action": "Insert or Remove",
+          "Type": "Really, Appearance, Regular (optional - default to Regular)"
+        }
+      ],
+      "Fields": [ // Piggyback off Booleans here somehow
+        {
+          "Key": "FieldName",
+          "Value": "Field Value",
+          "modGuid": "UUID of required mod"
+        }
+        // Background UUID, ClassEquipmentOverride, ClassUUID, CloseUpA, CloseUpB, DefaultsTemplate, AvailableInCharacterCreation,
+        // BodyShape, BodyType, ExcludesOriginUUID, GlobalTemplate, GodUUID, Identity, IntroDialogUUID, RaceUUID, SubRaceUUID,
+        // VoiceTableUUID, IsHenchman, LockBody, LockClass, LockRace
+      ],
+      "Strings": [
+        { // No "Type" as it's always Passives
+          "Action": "Insert or Remove",
+          "modGuid": "UUID of required mod",
+          "Strings": ["stringA", "stringB"]
+        }
+      ]
+    }
+  ],
   "Progressions": [
     {
       "UUID": "b60618d1-c262-42b5-9fdd-2c0f7aa5e5af",
