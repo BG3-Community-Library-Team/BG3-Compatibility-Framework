@@ -1,5 +1,5 @@
 local function AddToTempTable(tempTable, arr)
-  CLUtils.Info("Entering AddToTempTable")
+  CLUtils.Info(Strings.PREFIX .. "Entering AddToTempTable")
   for _, item in pairs(arr) do
     if not CLUtils.IsInTable(tempTable, item) then
       table.insert(tempTable, item)
@@ -14,7 +14,7 @@ local function PrepareQueueTable(tempTable, listType, targetList)
 end
 
 function ListToQueue(payload, actionType)
-  CLUtils.Info("Entering AddList")
+  CLUtils.Info(Strings.PREFIX .. "Entering AddList")
   if CLUtils.IsKeyInTable(CLGlobals.ListTypes, payload.ListType) and payload.ListItems ~= nil then
     local list = CLUtils.CacheOrRetrieve(payload.TargetList, payload.ListType)
     if list ~= nil then
@@ -26,18 +26,18 @@ function ListToQueue(payload, actionType)
         AddToTempTable(Queue.Lists_Remove[payload.ListType][payload.TargetList], payload.ListItems)
       end
     else
-      CLUtils.Error(CLStrings.ERROR_LIST_NOT_FOUND)
+      CLUtils.Error(Strings.PREFIX .. CLStrings.ERROR_LIST_NOT_FOUND)
     end
   else
-    CLUtils.Error(CLStrings.ERROR_INVALID_LIST_TYPE)
+    CLUtils.Error(Strings.PREFIX .. CLStrings.ERROR_INVALID_LIST_TYPE)
   end
 end
 
 function HandleList(payload, actionType)
   if payload ~= nil then
-    CLUtils.Info("Entering HandleList")
+    CLUtils.Info(Strings.PREFIX .. "Entering HandleList")
     ListToQueue(payload, actionType)
   else
-    CLUtils.Error(CLStrings.ERROR_EMPTY_PAYLOAD)
+    CLUtils.Error(Strings.PREFIX .. CLStrings.ERROR_EMPTY_PAYLOAD)
   end
 end

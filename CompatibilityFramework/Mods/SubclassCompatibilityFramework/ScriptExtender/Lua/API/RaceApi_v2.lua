@@ -1,6 +1,6 @@
 -- For inserting children nodes into a Race
 function Api.InsertRaceChildData(payloads)
-  CLUtils.Info("Entering API.InsertRaceChildData")
+  CLUtils.Info(Strings.PREFIX .. "Entering API.InsertRaceChildData")
 
   for _, payload in pairs(payloads) do
     local err = CLUtils.DoValidation(payload,
@@ -19,7 +19,7 @@ function Api.InsertRaceChildData(payloads)
 end
 
 function Api.RemoveRaceChildData(payloads)
-  CLUtils.Info("Entering API.RemoveRaceChildData")
+  CLUtils.Info(Strings.PREFIX .. "Entering API.RemoveRaceChildData")
 
   for _, payload in pairs(payloads) do
     local err = CLUtils.DoValidation(payload,

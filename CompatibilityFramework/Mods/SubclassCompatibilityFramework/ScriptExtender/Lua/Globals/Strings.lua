@@ -1,5 +1,5 @@
 Strings = {}
-
+Strings.PREFIX = "[CF] "
 Strings.LOADED_MAIN_CLASSES = "Main Classes Added."
 Strings.GENERATING_LATE_LOADERS = "Building Late Loader String."
 Strings.WARN_INVALID_SPELLDATA_SUPPLIED =

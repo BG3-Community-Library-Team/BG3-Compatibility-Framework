@@ -56,7 +56,7 @@ function Utils.SortStaticData(arr, type, handle)
 end
 
 function Utils.IsPayloadInSelector(selectorField, selectorToInsert, idType)
-  CLUtils.Info("Entering IsPayloadInSelector")
+  CLUtils.Info(Strings.PREFIX .. "Entering IsPayloadInSelector")
   local found = false
 
   local newSelectorID = selectorToInsert[idType]
@@ -103,20 +103,20 @@ function Utils.stringTypeArrToSet(stringTypeArr)
 end
 
 function Utils.ShipToQueue(payload, items, itemsType, itemsSubType)
-  CLUtils.Info("Entering ShipToQueue for " .. CLUtils.RetrieveModHandleAndAuthor(payload.modGuid))
+  CLUtils.Info(Strings.PREFIX .. "Entering ShipToQueue for " .. CLUtils.RetrieveModHandleAndAuthor(payload.modGuid))
   local type = payload.FileType or payload.Type or "Progression"
   local target = payload.Target or payload.TargetProgression
 
   if CLUtils.IsKeyInTable(Globals.ModuleTypes, type) and items ~= nil then
-    CLUtils.Info(CLStrings.FRAG_KEY_IS_IN_TABLE .. CLUtils.RetrieveModHandleAndAuthor(payload.modGuid))
+    CLUtils.Info(Strings.PREFIX .. CLStrings.FRAG_KEY_IS_IN_TABLE .. CLUtils.RetrieveModHandleAndAuthor(payload.modGuid))
     local queueType = Globals.ModuleTypes[type]
     local fleshedObject = CLUtils.CacheOrRetrieve(target, type)
     if fleshedObject ~= nil then
-      CLUtils.Info(CLStrings.FRAG_FLESHED_OBJECT_EXISTS .. CLUtils.RetrieveModHandleAndAuthor(payload.modGuid))
+      CLUtils.Info(Strings.PREFIX .. CLStrings.FRAG_FLESHED_OBJECT_EXISTS .. CLUtils.RetrieveModHandleAndAuthor(payload.modGuid))
       Utils.BuildQueueEntry(queueType, target, itemsType, itemsSubType)
       table.insert(Queue[queueType][target][itemsType][itemsSubType], items)
     else
-      CLUtils.Error(CLStrings.ERROR_TARGET_NOT_FOUND ..
+      CLUtils.Error(Strings.PREFIX .. CLStrings.ERROR_TARGET_NOT_FOUND ..
         " " .. type .. ": " .. target .. CLStrings.FRAG_PROVIDED_BY .. CLUtils.RetrieveModHandleAndAuthor(payload.modGuid))
     end
   end

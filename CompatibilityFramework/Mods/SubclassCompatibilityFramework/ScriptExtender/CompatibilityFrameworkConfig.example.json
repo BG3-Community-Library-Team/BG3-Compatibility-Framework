@@ -27,7 +27,7 @@
       "UUID": "b60618d1-c262-42b5-9fdd-2c0f7aa5e5af", // Support "UUIDs": []
       "Tags": [
         {
-          "UUID": "tag-uuid",
+          "UUIDs": ["tag-uuidA", "tag-uuidB"],
           "Action": "Insert or Remove",
           "Type": "Really, Appearance, Regular (optional - default to Regular)"
         }

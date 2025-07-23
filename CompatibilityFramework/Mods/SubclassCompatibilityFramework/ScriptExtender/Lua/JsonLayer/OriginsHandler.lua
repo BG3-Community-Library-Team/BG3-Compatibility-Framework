@@ -1,6 +1,6 @@
 
 function OriginsSubSectionHandler(data, originUUID, modGuid)
-  CLUtils.Info("Entering OriginsSubSectionHandler")
+  CLUtils.Info(Strings.PREFIX .. "Entering OriginsSubSectionHandler")
   if data.Tags ~= nil then
     for _, tag in pairs(data.Tags) do
       JsonUtils.ParseAndSubmitTags(tag, originUUID, modGuid, "Origin")
@@ -21,7 +21,7 @@ function OriginsSubSectionHandler(data, originUUID, modGuid)
 end
 
 function OriginJsonHandler(data, modGuid)
-  CLUtils.Info("Entering OriginsHandler")
+  CLUtils.Info(Strings.PREFIX .. "Entering OriginsHandler")
 
   for _, origin in pairs(data) do
     if origin.UUIDs ~= nil then

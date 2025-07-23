@@ -1,5 +1,5 @@
 local function StringHandler(payload, addRemove)
-  CLUtils.Info("Entering StringHandler")
+  CLUtils.Info(Strings.PREFIX .. "Entering StringHandler")
 
   local queueType = Globals.ModuleTypes[payload.FileType or "Progression"]
   local target = payload.Target
@@ -26,15 +26,15 @@ end
 
 function HandleString(payload, type)
   if payload ~= nil then
-    CLUtils.Info("Entering HandleString")
+    CLUtils.Info(Strings.PREFIX .. "Entering HandleString")
     StringHandler(payload, type)
   else
-    CLUtils.Error(CLStrings.ERROR_EMPTY_PAYLOAD)
+    CLUtils.Error(Strings.PREFIX .. CLStrings.ERROR_EMPTY_PAYLOAD)
   end
 end
 
 local function AddSpellString(payload)
-  CLUtils.Info("Entering AddSpellString")
+  CLUtils.Info(Strings.PREFIX .. "Entering AddSpellString")
   local target = Ext.Stats.Get(payload.Target)
   local baseSpells = {}
   if type(target[payload.Type]) == "table" then
@@ -53,15 +53,15 @@ end
 
 function HandleSpellString(payload)
   if payload ~= nil then
-    CLUtils.Info("Entering HandleSpellString")
+    CLUtils.Info(Strings.PREFIX .. "Entering HandleSpellString")
     AddSpellString(payload)
   else
-    CLUtils.Error(CLStrings.ERROR_EMPTY_PAYLOAD)
+    CLUtils.Error(Strings.PREFIX .. CLStrings.ERROR_EMPTY_PAYLOAD)
   end
 end
 
 function RemoveSpellString(payload)
-  CLUtils.Info("Entering RemoveSpellString")
+  CLUtils.Info(Strings.PREFIX .. "Entering RemoveSpellString")
   local target = Ext.Stats.Get(payload.Target)
 
   if target ~= nil then
@@ -80,15 +80,15 @@ function RemoveSpellString(payload)
 
     target[payload.Type] = result
   else
-    CLUtils.Error(CLStrings.ERROR_TARGET_NOT_FOUND)
+    CLUtils.Error(Strings.PREFIX .. CLStrings.ERROR_TARGET_NOT_FOUND)
   end
 end
 
 function HandleRemoveSpellString(payload)
   if payload ~= nil then
-    CLUtils.Info("Entering HandleRemoveSpellString")
+    CLUtils.Info(Strings.PREFIX .. "Entering HandleRemoveSpellString")
     RemoveSpellString(payload)
   else
-    CLUtils.Error(CLStrings.ERROR_EMPTY_PAYLOAD)
+    CLUtils.Error(Strings.PREFIX .. CLStrings.ERROR_EMPTY_PAYLOAD)
   end
 end

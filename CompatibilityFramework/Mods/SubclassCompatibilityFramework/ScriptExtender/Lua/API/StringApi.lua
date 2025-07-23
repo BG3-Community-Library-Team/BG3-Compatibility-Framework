@@ -1,6 +1,6 @@
 -- Add support for Custom Strings
 function Api.InsertStrings(payloads)
-  CLUtils.Info("Entering Api.InsertStrings")
+  CLUtils.Info(Strings.PREFIX .. "Entering Api.InsertStrings")
   if payloads ~= nil then
     for _, payload in pairs(payloads) do
       local err = CLUtils.DoValidation(payload,
@@ -20,7 +20,7 @@ end
 
 -- Add support for Custom Boosts
 function Api.RemoveStrings(payloads)
-  CLUtils.Info("Entering Api.RemoveStrings")
+  CLUtils.Info(Strings.PREFIX .. "Entering Api.RemoveStrings")
   if payloads ~= nil then
     for _, payload in pairs(payloads) do
       local err = CLUtils.DoValidation(payload,

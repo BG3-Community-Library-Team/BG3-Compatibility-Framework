@@ -3,7 +3,7 @@ function Utils.AddToLateLoaders(guid)
 end
 
 function Utils.BuildLateLoaderString()
-  CLUtils.Info(Strings.GENERATING_LATE_LOADERS)
+  CLUtils.Info(Strings.PREFIX .. Strings.GENERATING_LATE_LOADERS)
   local handleTable = {}
   for _, handle in pairs(Globals.LateLoaders) do
     if not CLUtils.IsInTable(handleTable, handle) then

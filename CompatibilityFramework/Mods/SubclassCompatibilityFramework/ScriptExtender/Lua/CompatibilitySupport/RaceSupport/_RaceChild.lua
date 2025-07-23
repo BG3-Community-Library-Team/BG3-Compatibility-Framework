@@ -1,5 +1,5 @@
 local function AddRaceChildren(payload)
-  CLUtils.Info("Entering AddRaceChildren")
+  CLUtils.Info(Strings.PREFIX .. "Entering AddRaceChildren")
   local fleshedObject = CLUtils.CacheOrRetrieve(payload.raceGuid, "Race")
   if fleshedObject ~= nil then
     for _, child in pairs(payload.children) do
@@ -7,18 +7,18 @@ local function AddRaceChildren(payload)
       CLUtils.AddToTable(Queue[Globals.ModuleTypes["Race"]][payload.raceGuid][child.Type], child.Value)
     end
   else
-    CLUtils.Error(Strings.ERROR_RACE_DATA_NOT_FOUND)
+    CLUtils.Error(Strings.PREFIX .. Strings.ERROR_RACE_DATA_NOT_FOUND)
   end
 end
 
 function RaceChildHandler(payload)
-  CLUtils.Info("Entering RaceChildHandler")
+  CLUtils.Info(Strings.PREFIX .. "Entering RaceChildHandler")
 
   AddRaceChildren(payload)
 end
 
 local function RemoveRaceChildren(payload)
-  CLUtils.Info("Entering RemoveRaceChildren")
+  CLUtils.Info(Strings.PREFIX .. "Entering RemoveRaceChildren")
   local raceData = CLUtils.CacheOrRetrieve(payload.raceGuid, "Race")
 
   for _, entry in pairs(payload.children) do
@@ -32,6 +32,6 @@ local function RemoveRaceChildren(payload)
 end
 
 function RaceChildRemovalHandler(payload)
-  CLUtils.Info("Entering RaceChildHandler")
+  CLUtils.Info(Strings.PREFIX .. "Entering RaceChildHandler")
   RemoveRaceChildren(payload)
 end

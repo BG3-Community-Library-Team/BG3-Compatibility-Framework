@@ -1,5 +1,5 @@
 function Api.SetBoolean(payloads)
-  CLUtils.Info("Entering API.SetBoolean")
+  CLUtils.Info(Strings.PREFIX .. "Entering API.SetBoolean")
 
   for _, payload in pairs(payloads) do
     local err = CLUtils.DoValidation(payload,

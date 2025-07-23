@@ -33,7 +33,7 @@ local function BuildAddSpellsTable(params)
 end
 
 local function BuildSelectPassiveTable(params)
-  CLUtils.Info("Entering BuildSelectPassiveTable")
+  CLUtils.Info(Strings.PREFIX .. "Entering BuildSelectPassiveTable")
   return {
     UUID = params.Guid or params.UUID,
     Amount = params.Amount or "1",
@@ -43,7 +43,7 @@ local function BuildSelectPassiveTable(params)
 end
 
 local function BuildSelectEquipmentTable(params)
-  CLUtils.Info("Entering BuildSelectEquipmentTable")
+  CLUtils.Info(Strings.PREFIX .. "Entering BuildSelectEquipmentTable")
   return {
     UUID = params.Guid or params.UUID,
     Amount = params.Amount or "1",
@@ -91,7 +91,7 @@ local function BuildSelectSkillsExpertiseTable(params)
 end
 
 local function BuildSelector(payload)
-  CLUtils.Info("Entering BuildSelector")
+  CLUtils.Info(Strings.PREFIX .. "Entering BuildSelector")
   if payload.Function == CLGlobals.SelectorFunctions.SelectSpells then
     return BuildSelectSpellsTable(payload.Params)
   end
@@ -122,15 +122,15 @@ local function BuildSelector(payload)
 end
 
 local function AddSelector(payload)
-  CLUtils.Info("Entering AddSelector for " .. CLUtils.RetrieveModHandleAndAuthor(payload.modGuid))
+  CLUtils.Info(Strings.PREFIX .. "Entering AddSelector for " .. CLUtils.RetrieveModHandleAndAuthor(payload.modGuid))
   Utils.ShipToQueue(payload, BuildSelector(payload), "Selectors", payload.Function)
 end
 
 function HandleSelector(payload)
   if payload ~= nil then
-    CLUtils.Info("Entering HandleSelector")
+    CLUtils.Info(Strings.PREFIX .. "Entering HandleSelector")
     AddSelector(payload)
   else
-    CLUtils.Error(CLStrings.ERROR_EMPTY_PAYLOAD)
+    CLUtils.Error(Strings.PREFIX .. CLStrings.ERROR_EMPTY_PAYLOAD)
   end
 end

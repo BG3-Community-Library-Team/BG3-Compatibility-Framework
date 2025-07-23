@@ -2,7 +2,7 @@ local function RemoveActionResourceGroup(payload)
   local resourceGroupArr = CLUtils.CacheOrRetrieve(payload.TargetUUID, "ActionResourceGroup").ActionResourceDefinitions
   local result = {}
   if resourceGroupArr == nil then
-    CLUtils.Error(CLStrings.ERROR_TARGET_NOT_FOUND)
+    CLUtils.Error(Strings.PREFIX .. CLStrings.ERROR_TARGET_NOT_FOUND)
   end
   if resourceGroupArr ~= nil then
     for _, uuid in resourceGroupArr do
@@ -19,6 +19,6 @@ function HandleActionResourceGroupRemoval(payload)
   if payload ~= nil then
     RemoveActionResourceGroup(payload)
   else
-    CLUtils.Error(CLStrings.ERROR_EMPTY_PAYLOAD)
+    CLUtils.Error(Strings.PREFIX .. CLStrings.ERROR_EMPTY_PAYLOAD)
   end
 end

@@ -12,7 +12,7 @@ local function Register(payload, params)
   local err = ValidateApiCall(payload, params)
 
   if err ~= nil then
-    CLUtils.Error(err)
+    CLUtils.Error(Strings.PREFIX .. err)
     return
   end
   if params.Type == "complex" then
@@ -30,7 +30,7 @@ local function Retrieve(payload, params)
   local err = ValidateApiCall(payload, params)
 
   if err ~= nil then
-    CLUtils.Error(err)
+    CLUtils.Error(Strings.PREFIX .. err)
     return
   end
 

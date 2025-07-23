@@ -1,5 +1,5 @@
 local function ParseAndSubmitSubclasses(data, classId, modGuid)
-  CLUtils.Info("Entering ParseAndSubmitSubclasses")
+  CLUtils.Info(Strings.PREFIX .. "Entering ParseAndSubmitSubclasses")
   if data.Action ~= "Remove" then
     local modGuidVal = modGuid or data.modGuid
     local modHandle = CLUtils.RetrieveModHandleAndAuthor(modGuidVal)
@@ -51,7 +51,7 @@ local function ProgressionSubSectionHandler(data, progUUID, modGuid)
 end
 
 function ProgressionJsonHandler(data, modGuid)
-  CLUtils.Info("Entering ProgressionJsonHandler")
+  CLUtils.Info(Strings.PREFIX .. "Entering ProgressionJsonHandler")
   for _, progressions in pairs(data) do
     if progressions.UUIDs ~= nil then
       for _, uuid in pairs(progressions.UUIDs) do
@@ -59,7 +59,7 @@ function ProgressionJsonHandler(data, modGuid)
       end
     elseif type(progressions.UUID) == "table" then
       -- Error in JSON  Config format, we'll catch it gracefully, but inform users/authors that it's an error
-      CLUtils.Warn("Mod " .. CLUtils.RetrieveModHandleAndAuthor(modGuid) .. Strings.VAL_ERR_UUID_IS_TABLE .. progressions.UUID:concat(", ") .. Strings.VAL_ERR_UUID_IS_TABLE_B)
+      CLUtils.Warn(Strings.PREFIX .. "Mod " .. CLUtils.RetrieveModHandleAndAuthor(modGuid) .. Strings.VAL_ERR_UUID_IS_TABLE .. progressions.UUID:concat(", ") .. Strings.VAL_ERR_UUID_IS_TABLE_B)
       for _, uuid in pairs(progressions.UUID) do
         ProgressionSubSectionHandler(progressions, uuid, modGuid)
       end

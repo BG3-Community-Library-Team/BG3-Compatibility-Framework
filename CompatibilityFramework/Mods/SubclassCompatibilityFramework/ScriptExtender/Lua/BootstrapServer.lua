@@ -13,7 +13,7 @@ if Ext.Mod.IsModLoaded("396c5966-09b0-40a1-af3f-93a5e9ce71c0") then
   Ext.Osiris.RegisterListener("CharacterCreationStarted", 0, "after", function ()
     if #Globals.LateLoaders > 0 then
       local warnStr = Utils.BuildLateLoaderString()
-      CLUtils.Warn(warnStr)
+      CLUtils.Warn(Strings.PREFIX .. warnStr)
       Osi.OpenMessageBox(GetHostCharacter(), warnStr)
     end
   end)

@@ -25,7 +25,7 @@ JsonUtils.Endpoints = {
 }
 
 function JsonUtils.DataValidator(modGuid, dataToValidate, target, fileType, errStr)
-  CLUtils.Info("Entering DataValidator")
+  CLUtils.Info(Strings.PREFIX .. "Entering DataValidator")
   local errString = "Mod " .. CLUtils.RetrieveModHandleAndAuthor(modGuid) .. errStr
   if fileType then
     errString = errString .. " in " .. fileType
@@ -36,7 +36,7 @@ function JsonUtils.DataValidator(modGuid, dataToValidate, target, fileType, errS
 
   errString = errString .. ". " .. Strings.CHANGES_NOT_APPLIED
   if not dataToValidate then
-    CLUtils.Error(errString)
+    CLUtils.Error(Strings.PREFIX .. errString)
     return false
   end
 
@@ -44,7 +44,7 @@ function JsonUtils.DataValidator(modGuid, dataToValidate, target, fileType, errS
 end
 
 function JsonUtils.BuildRacePayloads(data, modGuid, child)
-  CLUtils.Info("Entering BuildPayloads")
+  CLUtils.Info(Strings.PREFIX .. "Entering BuildPayloads")
   local result = {
     modGuid = data.modGuid or modGuid,
     raceGuid = data.UUID,
@@ -55,7 +55,7 @@ function JsonUtils.BuildRacePayloads(data, modGuid, child)
 end
 
 function JsonUtils.BuildSubclassPayload(data, classId, modGuid, subclassGuid)
-  CLUtils.Info("Entering BuildSubclassPayload")
+  CLUtils.Info(Strings.PREFIX .. "Entering BuildSubclassPayload")
   subclassGuid = subclassGuid or data.UUID
   return {
     modGuid = data.modGuid or modGuid,
@@ -67,7 +67,7 @@ function JsonUtils.BuildSubclassPayload(data, classId, modGuid, subclassGuid)
 end
 
 function JsonUtils.BuildAddSelectorPayload(data, modGuid, target, type)
-  CLUtils.Info("Entering BuildAddSelectorPayload")
+  CLUtils.Info(Strings.PREFIX .. "Entering BuildAddSelectorPayload")
 
   return {
     modGuid = data.modGuid or modGuid,
@@ -80,7 +80,7 @@ function JsonUtils.BuildAddSelectorPayload(data, modGuid, target, type)
 end
 
 function JsonUtils.BuildRemoveSelectorPayload(data, modGuid, target, type)
-  CLUtils.Info("Entering BuildRemoveSelectorPayload")
+  CLUtils.Info(Strings.PREFIX .. "Entering BuildRemoveSelectorPayload")
 
   return {
     modGuid = data.modGuid or modGuid,
@@ -92,7 +92,7 @@ function JsonUtils.BuildRemoveSelectorPayload(data, modGuid, target, type)
 end
 
 function JsonUtils.BuildStringPayload(data, modGuid, target, type)
-  CLUtils.Info("Entering BuildStringPayload")
+  CLUtils.Info(Strings.PREFIX .. "Entering BuildStringPayload")
 
   local count = 0
   local result = {
@@ -112,7 +112,7 @@ function JsonUtils.BuildStringPayload(data, modGuid, target, type)
 end
 
 function JsonUtils.BuildBooleanPayload(data, modGuid, target, type)
-  CLUtils.Info("Entering BuildBooleanPayload")
+  CLUtils.Info(Strings.PREFIX .. "Entering BuildBooleanPayload")
   return {
     modGuid = data.modGuid or modGuid,
     FileType = type,
@@ -123,7 +123,7 @@ function JsonUtils.BuildBooleanPayload(data, modGuid, target, type)
 end
 
 function JsonUtils.BuildListPayload(data, modGuid, listId)
-  CLUtils.Info("Entering BuildListPayload")
+  CLUtils.Info(Strings.PREFIX .. "Entering BuildListPayload")
 
   listId = listId or data.UUID
   local count = 0
@@ -143,7 +143,7 @@ function JsonUtils.BuildListPayload(data, modGuid, listId)
 end
 
 function JsonUtils.BuildActionResourceGroupPayload(data, modGuid)
-  CLUtils.Info("Entering BuildActionResourceGroupPayload")
+  CLUtils.Info(Strings.PREFIX .. "Entering BuildActionResourceGroupPayload")
 
   local count = 0
   local result = {
@@ -161,7 +161,7 @@ function JsonUtils.BuildActionResourceGroupPayload(data, modGuid)
 end
 
 function JsonUtils.ParseAndSubmitSelectors(data, target, modGuid, fileType)
-  CLUtils.Info("Entering ParseAndSubmitSelectors")
+  CLUtils.Info(Strings.PREFIX .. "Entering ParseAndSubmitSelectors")
   if not JsonUtils.DataValidator(modGuid, data.Function, target, fileType, Strings.ERR_DID_NOT_PROVIDE_SELECTOR_FUNCTION)
     or (data.Action ~= "Remove" and not JsonUtils.DataValidator(modGuid, data.Params, target, fileType, Strings.ERR_DID_NOT_PROVIDE_PARAMS)) then
     return nil
@@ -175,7 +175,7 @@ function JsonUtils.ParseAndSubmitSelectors(data, target, modGuid, fileType)
 end
 
 function JsonUtils.ParseAndSubmitStrings(data, target, modGuid, fileType)
-  CLUtils.Info("Entering ParseAndSubmitStrings")
+  CLUtils.Info(Strings.PREFIX .. "Entering ParseAndSubmitStrings")
   if not JsonUtils.DataValidator(modGuid, data.Strings, target, fileType, Strings.ERR_DID_NOT_PROVIDE_STRINGS) then
     return nil
   end
@@ -186,7 +186,7 @@ function JsonUtils.ParseAndSubmitStrings(data, target, modGuid, fileType)
 end
 
 function JsonUtils.ParseAndSubmitBoolean(data, target, modGuid, fileType)
-  CLUtils.Info("Entering ParseAndSubmitBooleans")
+  CLUtils.Info(Strings.PREFIX .. "Entering ParseAndSubmitBooleans")
   if not JsonUtils.DataValidator(modGuid, data.Key, target, fileType, Strings.ERR_DID_NOT_PROVIDE_BOOLEANS)
     or not JsonUtils.DataValidator(modGuid, data.Value, target, fileType, Strings.ERR_DID_NOT_PROVIDE_BOOLEANS) then
     return nil
@@ -204,7 +204,7 @@ function JsonUtils.ParseAndSubmitBoolean(data, target, modGuid, fileType)
 end
 
 function JsonUtils.BuildTagPayload(data, target, modGuid, fileType)
-  CLUtils.Info("Entering BuildTagPayload")
+  CLUtils.Info(Strings.PREFIX .. "Entering BuildTagPayload")
 
   local count = 0
   local result = {
@@ -222,7 +222,7 @@ function JsonUtils.BuildTagPayload(data, target, modGuid, fileType)
 end
 
 function JsonUtils.ParseAndSubmitTags(data, target, modGuid, fileType)
-  CLUtils.Info("Entering ParseAndSubmitTags")
+  CLUtils.Info(Strings.PREFIX .. "Entering ParseAndSubmitTags")
   if data.Action == "Insert" and not JsonUtils.DataValidator(modGuid, data.UUIDs, target, fileType, Strings.ERR_DID_NOT_PROVIDE_TAGS) then
     return nil
   end

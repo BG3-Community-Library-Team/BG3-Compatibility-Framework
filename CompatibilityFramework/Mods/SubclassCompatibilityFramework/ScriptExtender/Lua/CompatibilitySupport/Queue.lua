@@ -1,5 +1,5 @@
 function Queue.Commit()
-  CLUtils.Info("Entering Queue.Commit")
+  CLUtils.Info(Strings.PREFIX .. "Entering Queue.Commit")
   Queue.DeclareModValidationFailures()
   Queue.DeclareDeprecatedMods()
   Queue.populateClassDescriptionDict()
@@ -12,32 +12,32 @@ function Queue.Commit()
 end
 
 function Queue.DeclareModValidationFailures()
-  CLUtils.Info("Entering Queue.DeclareModValidationFailures")
+  CLUtils.Info(Strings.PREFIX .. "Entering Queue.DeclareModValidationFailures")
   if #Globals.ValidationErrors > 0 then
     local errStr = Strings.VAL_ERR_MOD_NOT_LOADED ..
       #Globals.ValidationErrors .. Strings.VAL_ERR_MOD_NOT_LOADED_B .. "\n" .. Strings.VAL_ERR_USER_REASSURANCE .. "\n"
 
     errStr = errStr .. table.concat(Globals.ValidationErrors, ", ")
 
-    CLUtils.Warn(errStr)
+    CLUtils.Warn(Strings.PREFIX .. errStr)
   end
 end
 
 function Queue.DeclareDeprecatedMods()
-  CLUtils.Info("Entering Queue.DelcareDeprecatedMods")
+  CLUtils.Info(Strings.PREFIX .. "Entering Queue.DelcareDeprecatedMods")
   if #Globals.Deprecated.SubclassAPI > 0 then
     local errStr = #Globals.Deprecated.SubclassAPI .. " " .. Strings.DEP_SUBCLASS_API
 
     errStr = errStr .. table.concat(Globals.Deprecated.SubclassAPI, ", ") .. "\n"
     errStr = errStr .. Strings.DEP_ERR_USER_REASSURANCE
-    CLUtils.Warn(errStr)
+    CLUtils.Warn(Strings.PREFIX .. errStr)
   end
   if #Globals.Deprecated.SubclassJSON > 0 then
     local errStr = #Globals.Deprecated.SubclassJSON .. " " .. Strings.DEP_SUBCLASS_JSON
 
     errStr = errStr .. table.concat(Globals.Deprecated.SubclassJSON, ", ") .. "\n"
     errStr = errStr .. Strings.DEP_ERR_USER_REASSURANCE
-    CLUtils.Warn(errStr)
+    CLUtils.Warn(Strings.PREFIX .. errStr)
   end
 end
 
@@ -59,7 +59,7 @@ local function CombineIterableLists(arrA, arrB)
 end
 
 function Queue.CommitListItems()
-  CLUtils.Info("Entering Queue.CommitListItems")
+  CLUtils.Info(Strings.PREFIX .. "Entering Queue.CommitListItems")
   for _, objectType in pairs(CLGlobals.ListTypes) do
     if Queue.Lists_Remove[objectType] or Queue.Lists[objectType] then
       listsToiterate = CombineIterableLists(Queue.Lists_Remove[objectType], Queue.Lists[objectType])
@@ -74,7 +74,7 @@ function Queue.CommitListItems()
           if Queue.Lists_Remove[objectType][listId] then
             localItemKey = CLUtils.GetKeyFromvalue(list, item)
             if localItemKey and CLUtils.IsInTable(Queue.Lists_Remove[objectType][listId], item) then
-              CLUtils.Info("Removing " .. item .. " from " .. objectType .. " " .. listId)
+              CLUtils.Info(Strings.PREFIX .. "Removing " .. item .. " from " .. objectType .. " " .. listId)
               table.remove(list, localItemKey)
             end
           end
@@ -84,7 +84,7 @@ function Queue.CommitListItems()
           local res = Utils.StripInvalidStatData(list)
           gameList[CLGlobals.ListNodes[objectType]] = res
         else
-          CLUtils.Warn("List " .. listId .. " cannot be empty", true)
+          CLUtils.Warn(Strings.PREFIX .. "List " .. listId .. " cannot be empty", true)
         end
       end
     end
@@ -100,7 +100,7 @@ function Queue.populateClassDescriptionDict()
     else
       local parent = Ext.StaticData.Get(classDesc.ParentGuid, "ClassDescription")
       if parent == nil then
-        CLUtils.Error(classDesc.Name .. Strings.VAL_ERR_CLASS_DESCRIPTION_INVALID_PARENT)
+        CLUtils.Error(Strings.PREFIX .. classDesc.Name .. Strings.VAL_ERR_CLASS_DESCRIPTION_INVALID_PARENT)
       else
         Globals.ClassDescriptionDict[parent.Name] = Globals.ClassDescriptionDict[parent.Name] or {}
         table.insert(Globals.ClassDescriptionDict[parent.Name], classDesc.ResourceUUID)
@@ -123,7 +123,7 @@ end
 
 --- Separating out Subclass population from main progression population to allow for more comprehensive subclass handling
 function Queue.CommitSubclasses()
-  CLUtils.Info("Entering Queue.CommitSubclasses")
+  CLUtils.Info(Strings.PREFIX .. "Entering Queue.CommitSubclasses")
   for className, _ in pairs(Globals.ClassDescriptionDict) do
     local sortedList = Utils.SortStaticData(Globals.ClassDescriptionDict[className], "ClassDescription", "DisplayName")
 
@@ -138,7 +138,7 @@ function Queue.CommitSubclasses()
 end
 
 function Queue.CommitProgressions_Subclasses_Remove(progression, subclasses)
-  CLUtils.Info("Entering Queue.CommitProgressions_Subclasses_Remove")
+  CLUtils.Info(Strings.PREFIX .. "Entering Queue.CommitProgressions_Subclasses_Remove")
   local currSubclasses = {}
   for _, v in ipairs(progression.SubClasses) do
     table.insert(currSubclasses, v)
@@ -163,7 +163,7 @@ function Queue.CommitProgressions_Subclasses_Remove(progression, subclasses)
 end
 
 function Queue.Commit_Strings(gameObject, stringArr)
-  CLUtils.Info("Entering Queue.Commit_Strings")
+  CLUtils.Info(Strings.PREFIX .. "Entering Queue.Commit_Strings")
 
   for stringType, addSet in pairs(stringArr) do
     local separator = CLGlobals.FieldSeparator[stringType]
@@ -181,7 +181,7 @@ function Queue.Commit_Strings(gameObject, stringArr)
 end
 
 function Queue.Commit_StringRemoval(gameObject, stringArr)
-  CLUtils.Info("Entering Queue.Commit_StringRemoval")
+  CLUtils.Info(Strings.PREFIX .. "Entering Queue.Commit_StringRemoval")
 
   for stringType, removeSet in pairs(stringArr) do
     local separator = CLGlobals.FieldSeparator[stringType]
@@ -205,7 +205,7 @@ function Queue.Commit_StringRemoval(gameObject, stringArr)
 end
 
 function Queue.Commit_Selectors(gameObject, selectors)
-  CLUtils.Info("Entering Queue.Commit_Selectors")
+  CLUtils.Info(Strings.PREFIX .. "Entering Queue.Commit_Selectors")
   for selectorFunction, selectorGroup in pairs(selectors) do
     local count = #gameObject[selectorFunction] + 1
     for _, selector in pairs(selectorGroup) do
@@ -216,7 +216,7 @@ function Queue.Commit_Selectors(gameObject, selectors)
 end
 
 function Queue.Commit_SelectorRemoval(gameObject, selectors)
-  CLUtils.Info("Entering Queue.Commit_SelectorRemoval")
+  CLUtils.Info(Strings.PREFIX .. "Entering Queue.Commit_SelectorRemoval")
   for selectorFunction, selectorIds in pairs(selectors) do
     local res = {}
     local count = 1
@@ -232,7 +232,7 @@ function Queue.Commit_SelectorRemoval(gameObject, selectors)
 end
 
 function Queue.Commit_Booleans(gameObject, booleans)
-  CLUtils.Info("Entering Queue.Commit_Booleans")
+  CLUtils.Info(Strings.PREFIX .. "Entering Queue.Commit_Booleans")
   for key, value in pairs(booleans) do
     if gameObject[key] ~= nil then
       gameObject[key] = value
@@ -241,7 +241,7 @@ function Queue.Commit_Booleans(gameObject, booleans)
 end
 
 function Queue.CommitFeatsAndProgressions()
-  CLUtils.Info("Entering Queue.CommitFeatsAndProgressions")
+  CLUtils.Info(Strings.PREFIX .. "Entering Queue.CommitFeatsAndProgressions")
   for _, objectType in pairs(CLGlobals.CacheTypes) do
     for objectId, objectTable in pairs(Queue[Globals.ModuleTypes[objectType]]) do
       local gameObject = CLUtils.CacheOrRetrieve(objectId, objectType)
@@ -287,7 +287,7 @@ function Queue.Commit_ChildNodes(gameObject, childNodes)
 end
 
 function Queue.CommitRaces()
-  CLUtils.Info("Entering Queue.CommitRaces")
+  CLUtils.Info(Strings.PREFIX .. "Entering Queue.CommitRaces")
   for objectId, objectTable in pairs(Queue.Races) do
     local gameObject = CLUtils.CacheOrRetrieve(objectId, "Race")
     if gameObject ~= nil and objectTable ~= nil then
@@ -297,5 +297,5 @@ function Queue.CommitRaces()
 end
 
 function Queue.CommitSpellData()
-  CLUtils.Info("Entering Queue.CommitSpellData")
+  CLUtils.Info(Strings.PREFIX .. "Entering Queue.CommitSpellData")
 end
