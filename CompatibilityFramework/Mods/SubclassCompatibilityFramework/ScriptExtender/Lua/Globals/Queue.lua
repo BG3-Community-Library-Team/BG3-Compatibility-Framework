@@ -22,5 +22,25 @@ Queue.Lists_Remove = {
   AbilityList = {},
   EquipmentList = {}
 }
+Queue.Tags = {
+  Origin = {
+    Really  = {},
+    Appearance = {}
+  },
+  ClassDescriptions = {
+    Tags = {}
+  }
+}
+
+Queue.Tags_Remove = {
+  Origin = {
+    Really  = {},
+    Appearance = {}
+  },
+  ClassDescriptions = {
+    Tags = {}
+  }
+}
+
 Queue.Races = {}
 Queue.Stats = {}
