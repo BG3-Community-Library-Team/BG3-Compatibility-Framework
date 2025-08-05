@@ -44,6 +44,9 @@ local function AddSpellString(payload)
   else
     table.insert(baseSpells, target[payload.Type])
   end
+  if type(payload.SubSpells) == 'string' then
+    payload.SubSpells = { payload.SubSpells }
+  end
   for _, spell in pairs(payload.SubSpells) do
     table.insert(baseSpells, spell)
   end
