@@ -13,8 +13,6 @@ local function RemoveSelector(payload)
         end
       end
     end
-  else
-    CLUtils.Error(Strings.PREFIX .. CLStrings.ERROR_TARGET_NOT_FOUND)
   end
 end
 

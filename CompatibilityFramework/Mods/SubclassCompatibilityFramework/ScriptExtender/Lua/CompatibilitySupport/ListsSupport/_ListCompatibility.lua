@@ -26,7 +26,7 @@ function ListToQueue(payload, actionType)
         AddToTempTable(Queue.Lists_Remove[payload.ListType][payload.TargetList], payload.ListItems)
       end
     else
-      CLUtils.Error(Strings.PREFIX .. CLStrings.ERROR_LIST_NOT_FOUND)
+      -- CLUtils.Error(Strings.PREFIX .. CLStrings.ERROR_LIST_NOT_FOUND)
     end
   else
     CLUtils.Error(Strings.PREFIX .. CLStrings.ERROR_INVALID_LIST_TYPE)

@@ -115,9 +115,10 @@ function Utils.ShipToQueue(payload, items, itemsType, itemsSubType)
       CLUtils.Info(Strings.PREFIX .. CLStrings.FRAG_FLESHED_OBJECT_EXISTS .. CLUtils.RetrieveModHandleAndAuthor(payload.modGuid))
       Utils.BuildQueueEntry(queueType, target, itemsType, itemsSubType)
       table.insert(Queue[queueType][target][itemsType][itemsSubType], items)
-    else
-      CLUtils.Error(Strings.PREFIX .. CLStrings.ERROR_TARGET_NOT_FOUND ..
-        " " .. type .. ": " .. target .. CLStrings.FRAG_PROVIDED_BY .. CLUtils.RetrieveModHandleAndAuthor(payload.modGuid))
+    -- At this stage we don't really need this error. Maybe earlier on we can get the information and prevent it from showing up?
+      -- else
+    --   CLUtils.Error(Strings.PREFIX .. CLStrings.ERROR_TARGET_NOT_FOUND ..
+    --     " " .. type .. ": " .. target .. CLStrings.FRAG_PROVIDED_BY .. CLUtils.RetrieveModHandleAndAuthor(payload.modGuid))
     end
   end
 end

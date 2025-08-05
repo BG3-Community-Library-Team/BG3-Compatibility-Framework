@@ -6,8 +6,8 @@ local function AddRaceChildren(payload)
       Utils.BuildQueueEntry(Globals.ModuleTypes["Race"], payload.raceGuid, child.Type)
       CLUtils.AddToTable(Queue[Globals.ModuleTypes["Race"]][payload.raceGuid][child.Type], child.Value)
     end
-  else
-    CLUtils.Error(Strings.PREFIX .. Strings.ERROR_RACE_DATA_NOT_FOUND)
+  -- else
+  --   CLUtils.Error(Strings.PREFIX .. Strings.ERROR_RACE_DATA_NOT_FOUND)
   end
 end
 

@@ -79,8 +79,8 @@ function RemoveSpellString(payload)
     end
 
     target[payload.Type] = result
-  else
-    CLUtils.Error(Strings.PREFIX .. CLStrings.ERROR_TARGET_NOT_FOUND)
+  -- else
+  --   CLUtils.Error(Strings.PREFIX .. CLStrings.ERROR_TARGET_NOT_FOUND)
   end
 end
 

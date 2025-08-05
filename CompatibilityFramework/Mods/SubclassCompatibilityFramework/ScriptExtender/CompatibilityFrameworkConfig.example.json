@@ -20,9 +20,10 @@
   "ClassDescriptions": [
     {
       "UUID": "b60618d1-c262-42b5-9fdd-2c0f7aa5e5af",
+      "Blacklist": true
     }
   ],
-  "Origins": [
+  "Origins": [ // Not fully Implemented yet
     {
       "UUID": "b60618d1-c262-42b5-9fdd-2c0f7aa5e5af", // Support "UUIDs": []
       "Tags": [

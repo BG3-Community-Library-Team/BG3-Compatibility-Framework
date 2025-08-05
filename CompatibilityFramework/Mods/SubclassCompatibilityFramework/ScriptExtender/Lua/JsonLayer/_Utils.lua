@@ -21,6 +21,9 @@ JsonUtils.Endpoints = {
   Set = {
     Booleans = Api.SetBoolean,
     Fields = Api.SetField
+  },
+  Blacklist = {
+    Class = Api.ClassBlacklist
   }
 }
 
@@ -228,4 +231,15 @@ function JsonUtils.ParseAndSubmitTags(data, target, modGuid, fileType)
   end
 
   JsonUtils[data.Action].Tags({ JsonUtils.BuildTagPayload(data, target, modGuid, fileType) })
+end
+
+function JsonUtils.ParseAndSubmitClassBlacklist(classUUID, data, modGuid)
+  CLUtils.Info(Strings.PREFIX .. "Entering ParseAndSubmitClassBlacklist")
+  local payload = {
+    modGuid = modGuid,
+    ClassUUID = classUUID,
+    Blacklist = data.Blacklist
+  }
+
+  JsonUtils.Endpoints.Blacklist.Class({ payload })
 end

@@ -32,3 +32,4 @@ Strings.DEP_SUBCLASS_API = "Deprecated Subclass API call(s) made. Compatibility 
 Strings.DEP_SUBCLASS_JSON = "Deprecated Subclass Configuration(s) detected. Compatibility Framework no longer requires JSON configuration for adding Subclasses to a class - CF now handles this automatically. Please inform the authors of the following mods: "
 Strings.DEP_ERR_USER_REASSURANCE = "Mod Users: Do not worry, this will not affect the stability of your game."
 Strings.UNKNOWNGUID = "unknown - guid not defined"
+Strings.BLACKLISTING_CLASS = "Blacklisting Class: "

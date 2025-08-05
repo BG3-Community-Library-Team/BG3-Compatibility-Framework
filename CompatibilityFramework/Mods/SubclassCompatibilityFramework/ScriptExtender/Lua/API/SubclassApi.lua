@@ -16,7 +16,7 @@ function Api.RemoveSubClasses(payloads)
         IsIntegrated = payload.isIntegrated
       })
     if err ~= nil then
-      table.insert(Globals.ValidationErrors, payload.modGuid)
+      Globals.ValidationErrors[payload.modGuid] = CLUtils.RetrieveModHandleAndAuthor(payload.modGuid)
       return
     end
     if not Globals.AllowPayloads then

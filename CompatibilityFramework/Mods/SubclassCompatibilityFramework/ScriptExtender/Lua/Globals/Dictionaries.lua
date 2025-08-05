@@ -13,3 +13,4 @@ Globals.Deprecated.SubclassAPI = {}
 Globals.Deprecated.SubclassJSON = {}
 Globals.ProgressionDict = {}
 Globals.ClassDescriptionDict = {}
+Globals.SubclassBlacklist = {}

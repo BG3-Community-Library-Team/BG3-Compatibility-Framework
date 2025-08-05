@@ -8,6 +8,7 @@ function Queue.Commit()
   Queue.CommitSubclasses()
   Queue.CommitFeatsAndProgressions()
   Queue.CommitRaces()
+  -- Queue.CommitOriginsAndClassDescriptions()
   --Queue.CommitSpellData()
 end
 
@@ -95,15 +96,19 @@ function Queue.populateClassDescriptionDict()
   local classDescUUIDs = Ext.StaticData.GetAll("ClassDescription")
   for _, uuid in pairs(classDescUUIDs) do
     local classDesc = Ext.StaticData.Get(uuid, "ClassDescription")
-    if classDesc.ParentGuid == "00000000-0000-0000-0000-000000000000" then
-      Globals.ClassDescriptionDict[classDesc.Name] = Globals.ClassDescriptionDict[classDesc.Name] or {}
+    if Globals.SubclassBlacklist[classDesc.Name] then
+      CLUtils.Info(Strings.PREFIX .. classDesc.Name .. " found in blacklist, skipping.")
     else
-      local parent = Ext.StaticData.Get(classDesc.ParentGuid, "ClassDescription")
-      if parent == nil then
-        CLUtils.Error(Strings.PREFIX .. classDesc.Name .. Strings.VAL_ERR_CLASS_DESCRIPTION_INVALID_PARENT)
+      if classDesc.ParentGuid == "00000000-0000-0000-0000-000000000000" then
+        Globals.ClassDescriptionDict[classDesc.Name] = Globals.ClassDescriptionDict[classDesc.Name] or {}
       else
-        Globals.ClassDescriptionDict[parent.Name] = Globals.ClassDescriptionDict[parent.Name] or {}
-        table.insert(Globals.ClassDescriptionDict[parent.Name], classDesc.ResourceUUID)
+        local parent = Ext.StaticData.Get(classDesc.ParentGuid, "ClassDescription")
+        if parent == nil then
+          CLUtils.Error(Strings.PREFIX .. classDesc.Name .. Strings.VAL_ERR_CLASS_DESCRIPTION_INVALID_PARENT)
+        else
+          Globals.ClassDescriptionDict[parent.Name] = Globals.ClassDescriptionDict[parent.Name] or {}
+          table.insert(Globals.ClassDescriptionDict[parent.Name], classDesc.ResourceUUID)
+        end
       end
     end
   end
@@ -126,8 +131,7 @@ function Queue.CommitSubclasses()
   CLUtils.Info(Strings.PREFIX .. "Entering Queue.CommitSubclasses")
   for className, _ in pairs(Globals.ClassDescriptionDict) do
     local sortedList = Utils.SortStaticData(Globals.ClassDescriptionDict[className], "ClassDescription", "DisplayName")
-
-    if Globals.ProgressionDict[className] then
+    if Globals.ProgressionDict[className] and (not Globals.SubclassBlacklist[className] or #Globals.SubclassBlacklist[className] == 0) then
       for _, progression in pairs(Globals.ProgressionDict[className]) do
         if progression.SubClasses ~= nil and #progression.SubClasses > 0 then
           progression.SubClasses = sortedList
@@ -215,9 +219,9 @@ function Queue.Commit_Selectors(gameObject, selectors)
   end
 end
 
-function Queue.Commit_SelectorRemoval(gameObject, selectors)
+function Queue.Commit_SelectorRemoval(gameObject, selectors_to_remove)
   CLUtils.Info(Strings.PREFIX .. "Entering Queue.Commit_SelectorRemoval")
-  for selectorFunction, selectorIds in pairs(selectors) do
+  for selectorFunction, selectorIds in pairs(selectors_to_remove) do
     local res = {}
     local count = 1
     for _, selector in pairs(gameObject[selectorFunction]) do
@@ -225,6 +229,7 @@ function Queue.Commit_SelectorRemoval(gameObject, selectors)
 
       if selectorUUID ~= nil and not CLUtils.IsInTable(selectorIds, selectorUUID) then
         CLUtils.AddKeyValueToTable(res, tostring(count), selector)
+        count = count + 1
       end
     end
     gameObject[selectorFunction] = res
