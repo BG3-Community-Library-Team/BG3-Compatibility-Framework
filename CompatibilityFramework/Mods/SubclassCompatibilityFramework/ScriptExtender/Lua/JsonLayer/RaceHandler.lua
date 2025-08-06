@@ -1,7 +1,9 @@
 local function ParseAndSubmitEntries(data, modGuid)
   CLUtils.Info(Strings.PREFIX .. "Entering ParseAndSubmitEntries")
-  for _, child in pairs(data.Children) do
-    JsonUtils.Endpoints[child.Action].Race({ JsonUtils.BuildRacePayloads(data, modGuid, child) })
+    for _, child in pairs(data.Children) do
+    for _, value in pairs(child.Values) do
+      JsonUtils.Endpoints[child.Action].Race({ JsonUtils.BuildRacePayloads(data, modGuid, { Type = child.Type, Value = value }) })
+    end
   end
 end
 
