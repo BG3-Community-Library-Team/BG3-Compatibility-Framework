@@ -158,9 +158,9 @@ function Queue.CommitProgressions_Subclasses_Remove(progression, subclasses)
   end
 
   if Globals.ProgressionDict[progression.Name] and #currSubclasses > 0 then
-    for _, progression in pairs(Globals.ProgressionDict[progression.Name]) do
-      if progression.SubClasses ~= nil and #progression.SubClasses > 0 then
-        progression.SubClasses = currSubclasses
+    for _, prog in pairs(Globals.ProgressionDict[progression.Name]) do
+      if prog.SubClasses ~= nil and #prog.SubClasses > 0 then
+        prog.SubClasses = currSubclasses
       end
     end
   end
