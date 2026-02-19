@@ -15,3 +15,13 @@ Globals.Deprecated.SubclassJSON = {}
 Globals.ProgressionDict = {}
 Globals.ClassDescriptionDict = {}
 Globals.SubclassBlacklist = {}
+
+Globals.TagFileTargets = {
+  Origin = {
+    Really = "ReallyTags",
+    Appearance = "AppearanceTags"
+  },
+  ClassDescription = {
+    Tags = "Tags"
+  }
+}

@@ -8,7 +8,7 @@ function Queue.Commit()
   Queue.CommitSubclasses()
   Queue.CommitFeatsAndProgressions()
   Queue.CommitRaces()
-  -- Queue.CommitOriginsAndClassDescriptions()
+  Queue.CommitOriginsAndClassDescriptions()
   --Queue.CommitSpellData()
 end
 
@@ -304,6 +304,72 @@ function Queue.CommitRaces()
     if gameObject ~= nil and objectTable ~= nil then
       Queue.Commit_ChildNodes(gameObject, objectTable)
     end
+  end
+end
+
+function Queue.Commit_TagRemoval(gameObject, fieldName, tags)
+  CLUtils.Info(Strings.PREFIX .. "Entering Queue.Commit_TagRemoval")
+  local result = {}
+  for _, tag in pairs(gameObject[fieldName]) do
+    if not CLUtils.IsInTable(tags, tag) then
+      table.insert(result, tag)
+    end
+  end
+  gameObject[fieldName] = result
+end
+
+function Queue.Commit_TagInsert(gameObject, fieldName, tags)
+  CLUtils.Info(Strings.PREFIX .. "Entering Queue.Commit_TagInsert")
+  for _, tag in pairs(tags) do
+    if not CLUtils.IsInTable(gameObject[fieldName], tag) then
+      table.insert(gameObject[fieldName], tag)
+    end
+  end
+end
+
+function Queue.CommitResourceTags(fileType)
+  CLUtils.Info(Strings.PREFIX .. "Entering Queue.CommitResourceTags for " .. fileType)
+
+  local tagMapping = Globals.TagFileTargets[fileType]
+  if not tagMapping then
+    CLUtils.Warn(Strings.PREFIX .. "No TagFileTargets mapping for " .. fileType)
+    return
+  end
+
+  local uuidsToProcess = {}
+
+  for tagType, _ in pairs(tagMapping) do
+    if Queue.Tags[fileType] then
+      for uuid, _ in pairs(Queue.Tags[fileType][tagType]) do
+        uuidsToProcess[uuid] = true
+      end
+      for uuid, _ in pairs(Queue.Tags_Remove[fileType][tagType]) do
+        uuidsToProcess[uuid] = true
+      end
+    end
+  end
+
+  for uuid, _ in pairs(uuidsToProcess) do
+    local gameObject = Ext.StaticData.Get(uuid, fileType)
+    if gameObject ~= nil then
+      for tagType, fieldName in pairs(tagMapping) do
+        if Queue.Tags_Remove[fileType][tagType][uuid] ~= nil then
+          Queue.Commit_TagRemoval(gameObject, fieldName, Queue.Tags_Remove[fileType][tagType][uuid])
+        end
+        if Queue.Tags[fileType][tagType][uuid] ~= nil then
+          Queue.Commit_TagInsert(gameObject, fieldName, Queue.Tags[fileType][tagType][uuid])
+        end
+      end
+    else
+      CLUtils.Warn(Strings.PREFIX .. fileType .. " not found: " .. uuid)
+    end
+  end
+end
+
+function Queue.CommitOriginsAndClassDescriptions()
+  CLUtils.Info(Strings.PREFIX .. "Entering Queue.CommitOriginsAndClassDescriptions")
+  for fileType, _ in pairs(Globals.TagFileTargets) do
+    Queue.CommitResourceTags(fileType)
   end
 end
 

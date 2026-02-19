@@ -1,20 +1,3 @@
--- local result = {
---   modGuid = data.modGuid or modGuid,
---   TargetUUID = target,
---   TagType = data.Type,
---   TagList = {"UUID","UUID"},
---   FileType = fileType
--- }
-local TagFileTargets = {
-  Origin = {
-    Really = "ReallyTags",
-    Appearance = "AppearanceTags"
-  },
-  ClassDescriptions = {
-    Tags = "Tags"
-  }
-}
-
 local function AddToTempTable(tempTable, arr)
   CLUtils.Info(Strings.PREFIX .. "Entering AddToTempTable")
   for _, item in pairs(arr) do
