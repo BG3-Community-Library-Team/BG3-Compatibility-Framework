@@ -297,12 +297,59 @@ function Queue.Commit_ChildNodes(gameObject, childNodes)
   end
 end
 
+function Queue.Commit_RemoveChildNodes(gameObject, childNodes)
+  CLUtils.Info(Strings.PREFIX .. "Entering Queue.Commit_RemoveChildNodes")
+  for key, values in pairs(childNodes) do
+    if gameObject[key] ~= nil then
+      for _, valToRemove in pairs(values) do
+        if CLUtils.IsInTable(gameObject[key], valToRemove) then
+          local idx = CLUtils.GetKeyFromvalue(gameObject[key], valToRemove)
+          if idx then
+            table.remove(gameObject[key], idx)
+          end
+        end
+      end
+    end
+  end
+end
+
 function Queue.CommitRaces()
   CLUtils.Info(Strings.PREFIX .. "Entering Queue.CommitRaces")
+
+  -- Phase 1: Expand "ALL" sentinel to every loaded race
+  local allInsertData = Queue.Races["ALL"]
+  local allRemoveData = Queue.Races_Remove["ALL"]
+
+  if allInsertData or allRemoveData then
+    CLUtils.Info(Strings.PREFIX .. "Expanding ApplyToAllRaces entries")
+    local allRaceUUIDs = Ext.StaticData.GetAll("Race")
+
+    for _, raceUUID in pairs(allRaceUUIDs) do
+      local gameObject = CLUtils.CacheOrRetrieve(raceUUID, "Race")
+      if gameObject ~= nil then
+        -- Apply removals first (so inserts take precedence)
+        if allRemoveData then
+          Queue.Commit_RemoveChildNodes(gameObject, allRemoveData)
+        end
+        -- Then apply insertions
+        if allInsertData then
+          Queue.Commit_ChildNodes(gameObject, allInsertData)
+        end
+      end
+    end
+  end
+
+  -- Phase 2: Process per-race entries (applied after "ALL" for override capability)
   for objectId, objectTable in pairs(Queue.Races) do
-    local gameObject = CLUtils.CacheOrRetrieve(objectId, "Race")
-    if gameObject ~= nil and objectTable ~= nil then
-      Queue.Commit_ChildNodes(gameObject, objectTable)
+    if objectId ~= "ALL" then
+      local gameObject = CLUtils.CacheOrRetrieve(objectId, "Race")
+      if gameObject ~= nil and objectTable ~= nil then
+        -- Apply per-race removals first
+        if Queue.Races_Remove[objectId] then
+          Queue.Commit_RemoveChildNodes(gameObject, Queue.Races_Remove[objectId])
+        end
+        Queue.Commit_ChildNodes(gameObject, objectTable)
+      end
     end
   end
 end

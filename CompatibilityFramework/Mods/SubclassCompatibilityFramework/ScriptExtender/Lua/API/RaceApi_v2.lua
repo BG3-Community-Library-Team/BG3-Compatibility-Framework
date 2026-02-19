@@ -36,3 +36,25 @@ function Api.RemoveRaceChildData(payloads)
     RaceChildRemovalHandler(payload)
   end
 end
+
+-- Convenience function: insert children into ALL loaded races
+function Api.InsertRaceChildDataAll(payloads)
+  CLUtils.Info(Strings.PREFIX .. "Entering API.InsertRaceChildDataAll")
+
+  for _, payload in pairs(payloads) do
+    payload.raceGuid = "ALL"
+  end
+
+  Api.InsertRaceChildData(payloads)
+end
+
+-- Convenience function: remove children from ALL loaded races
+function Api.RemoveRaceChildDataAll(payloads)
+  CLUtils.Info(Strings.PREFIX .. "Entering API.RemoveRaceChildDataAll")
+
+  for _, payload in pairs(payloads) do
+    payload.raceGuid = "ALL"
+  end
+
+  Api.RemoveRaceChildData(payloads)
+end

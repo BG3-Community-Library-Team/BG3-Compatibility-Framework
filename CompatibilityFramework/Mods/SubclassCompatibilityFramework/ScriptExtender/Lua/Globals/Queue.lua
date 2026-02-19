@@ -44,6 +44,7 @@ Queue.Tags_Remove = {
 }
 
 Queue.Races = {}
+Queue.Races_Remove = {}
 Queue.Stats = {}
 
 QueueTils = {}
