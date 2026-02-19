@@ -8,7 +8,7 @@ function Queue.Commit()
   Queue.CommitSubclasses()
   Queue.CommitFeatsAndProgressions()
   Queue.CommitRaces()
-  -- Queue.CommitOriginsAndClassDescriptions()
+  Queue.CommitOriginsAndClassDescriptions()
   --Queue.CommitSpellData()
 end
 
@@ -247,7 +247,7 @@ end
 
 function Queue.CommitFeatsAndProgressions()
   CLUtils.Info(Strings.PREFIX .. "Entering Queue.CommitFeatsAndProgressions")
-  for _, objectType in pairs(CLGlobals.CacheTypes) do
+  for _, objectType in pairs(QueueTils.CacheTypes) do
     for objectId, objectTable in pairs(Queue[Globals.ModuleTypes[objectType]]) do
       local gameObject = CLUtils.CacheOrRetrieve(objectId, objectType)
       if gameObject ~= nil then
@@ -274,6 +274,14 @@ function Queue.CommitFeatsAndProgressions()
 
         if objectTable.Booleans ~= nil then
           Queue.Commit_Booleans(gameObject, objectTable.Booleans)
+        end
+
+        if objectTable.Fields ~= nil then
+          for key, value in pairs(objectTable.Fields) do
+            if gameObject[key] ~= nil then
+              gameObject[key] = value
+            end
+          end
         end
       end
     end
@@ -304,3 +312,4 @@ end
 function Queue.CommitSpellData()
   CLUtils.Info(Strings.PREFIX .. "Entering Queue.CommitSpellData")
 end
+

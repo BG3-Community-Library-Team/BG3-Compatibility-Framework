@@ -45,3 +45,10 @@ Queue.Tags_Remove = {
 
 Queue.Races = {}
 Queue.Stats = {}
+
+QueueTils = {}
+QueueTils.CacheTypes = {
+  "Feat",
+  "Progression",
+  "Origin"
+}
