@@ -8,7 +8,7 @@ function Queue.Commit()
   Queue.CommitSubclasses()
   Queue.CommitFeatsAndProgressions()
   Queue.CommitRaces()
-  Queue.CommitOriginsAndClassDescriptions()
+  -- Queue.CommitOriginsAndClassDescriptions()
   --Queue.CommitSpellData()
 end
 

@@ -1,0 +1,156 @@
+# ============================================================
+# Compatibility Framework — Example YAML Configuration
+# ============================================================
+# Place this file at:
+#   Mods/<YourMod>/ScriptExtender/CompatibilityFrameworkConfig.yaml
+#
+# This is the YAML equivalent of CompatibilityFrameworkConfig.example.json.
+# Lines beginning with '#' are comments and are ignored by the parser.
+# Indentation MUST use spaces (never tabs).
+# ============================================================
+
+FileVersion: 1
+
+# ----------------------------------------------------------
+# Races
+# ----------------------------------------------------------
+# Add or remove cosmetic options (eye colours, makeup, etc.)
+# for a given race UUID.
+#
+#   Type   — the cosmetic category to modify
+#   Value  — the UUID of the cosmetic entry
+#   Action — "Insert" to add, "Remove" to remove
+# ----------------------------------------------------------
+Races:
+  - UUID: "9c61a74a-20df-4119-89c5-d996956b6c66"
+    Children:
+      - Type: EyeColors
+        Value: "bdf9b779-002c-4077-b377-8ea7c1faa795"
+        Action: Insert
+      - Type: LipsMakeupColors
+        Value: "bdf9b779-002c-4077-b377-8ea7c1faa795"
+        Action: Remove
+
+# ----------------------------------------------------------
+# Progressions
+# ----------------------------------------------------------
+# Modify a progression node identified by its UUID.
+# Each entry can contain any combination of the sections below.
+# ----------------------------------------------------------
+Progressions:
+  - UUID: "0d4a6b4b-8162-414b-81ef-1838e36e778a"
+
+    # --- Subclasses ---
+    # Register or remove subclass entries for this progression.
+    #   UUID         — the subclass progression UUID
+    #   SubClassName — display name used in logs / UI
+    #   Class        — parent class identifier (lowercase)
+    Subclasses:
+      - UUID: "5b3cd5ec-4234-434e-a6c5-da5fc01183cd"
+        SubClassName: Brute
+        Class: barbarian
+
+    # --- Booleans ---
+    # Toggle boolean flags on the progression.
+    #   Key   — the flag name (e.g. AllowImprovement)
+    #   Value — true or false
+    Booleans:
+      - Key: AllowImprovement
+        Value: true
+
+    # --- Selectors ---
+    # Insert or remove selector entries.
+    #   Action    — "Insert" or "Remove"
+    #   Function  — selector function name (e.g. SelectSpells)
+    #   Overwrite — whether to replace an existing selector
+    #   UUID      — optional UUID reference
+    #   Params    — additional parameters (empty mapping if none)
+    Selectors:
+      - Action: Insert
+        Function: SelectSpells
+        Overwrite: false
+        UUID: ""
+        Params: {}
+
+    # --- Strings ---
+    # Insert or remove string-list entries (Boosts, Passives, etc.)
+    #   Action  — "Insert" or "Remove"
+    #   Type    — the string category (e.g. Boosts)
+    #   Strings — list of string values
+    Strings:
+      - Action: Remove
+        Type: Boosts
+        Strings: ["test", "test2"]
+
+# ----------------------------------------------------------
+# Lists
+# ----------------------------------------------------------
+# Manipulate named lists (spell lists, equipment lists, etc.)
+#   Action — "Insert" or "Remove"
+#   UUID   — list UUID
+#   Type   — list type identifier
+#   Items  — array of item UUIDs / values
+# ----------------------------------------------------------
+Lists:
+  - Action: Insert
+    UUID: ""
+    Type: ""
+    Items: ["", "", ""]
+
+# ----------------------------------------------------------
+# ActionResourceGroups
+# ----------------------------------------------------------
+# Insert or remove action-resource definitions.
+#   UUID        — the action resource group UUID
+#   Definitions — array of resource definition UUIDs
+#   Action      — "Insert" or "Remove"
+# ----------------------------------------------------------
+ActionResourceGroups:
+  - UUID: ""
+    Definitions: ["", "", ""]
+    Action: Insert
+
+# ----------------------------------------------------------
+# Anchors & Aliases  (optional convenience feature)
+# ----------------------------------------------------------
+# You can define reusable blocks with "&name" and reference
+# them later with "*name". This avoids copy-pasting identical
+# sections across entries.
+#
+# Each alias produces an independent deep copy, so modifying
+# one reference does not affect others.
+#
+# Scalar anchor — reuse a UUID across multiple entries:
+#   base_uuid: &my_uuid "b60618d1-c262-42b5-9fdd-2c0f7aa5e5af"
+#   other_ref:  *my_uuid
+#
+# Block anchor — reuse an entire mapping:
+#   _boost_template: &boost_block
+#     Action: Insert
+#     Type: Boosts
+#     Strings: ["ProficiencyBonus(SavingThrow,Constitution)"]
+#
+#   Progressions:
+#     - UUID: "..."
+#       Strings:
+#         - *boost_block
+#
+# Below is a working example that shares a palette of eye
+# colours between two race entries using an anchor & alias.
+# ----------------------------------------------------------
+
+# Define the shared children list once with an anchor
+_shared_eye_colors: &eye_colors
+  - Type: EyeColors
+    Value: "bdf9b779-002c-4077-b377-8ea7c1faa795"
+    Action: Insert
+  - Type: EyeColors
+    Value: "aabb0011-2233-4455-6677-8899aabbccdd"
+    Action: Insert
+
+# Reuse it in multiple race entries via alias
+AnchorAliasExample:
+  - UUID: "9c61a74a-20df-4119-89c5-d996956b6c66"
+    Children: *eye_colors
+  - UUID: "0ab83885-cdb6-44e2-8b56-91a387287e5d"
+    Children: *eye_colors

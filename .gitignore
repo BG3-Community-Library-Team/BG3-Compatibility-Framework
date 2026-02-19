@@ -4,3 +4,5 @@
 *.loca
 *.lsf
 *.pak
+*.spec.lua
+planned_features

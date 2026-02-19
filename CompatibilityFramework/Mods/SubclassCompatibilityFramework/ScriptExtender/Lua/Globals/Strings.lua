@@ -34,3 +34,15 @@ Strings.DEP_SUBCLASS_JSON = "Deprecated Subclass Configuration(s) detected. Comp
 Strings.DEP_ERR_USER_REASSURANCE = "Mod Users: Do not worry, this will not affect the stability of your game."
 Strings.UNKNOWNGUID = "unknown - guid not defined"
 Strings.BLACKLISTING_CLASS = "Blacklisting Class: "
+
+-- YAML Parser
+Strings.ERR_YAML_PARSE_FAIL       = "Couldn't parse CF YAML Configuration File from "
+Strings.ERR_YAML_TAB_INDENT       = "Tabs are not allowed for YAML indentation, use spaces"
+Strings.ERR_YAML_UNTERMINATED_STR  = "Unterminated quoted string in YAML config"
+Strings.ERR_YAML_BAD_INDENT       = "Inconsistent indentation in YAML config"
+Strings.ERR_YAML_EXPECTED_MAP_KEY = "Expected mapping key in YAML config"
+Strings.ERR_YAML_UNDEFINED_ALIAS  = "Undefined YAML alias: "
+Strings.WARN_YAML_ANCHOR_REDEF    = "YAML anchor redefined: "
+
+-- Generic (format-agnostic loader)
+Strings.ERR_CONFIG_PARSE_FAIL     = "Couldn't parse CF Configuration File from "
