@@ -278,9 +278,7 @@ function Queue.CommitFeatsAndProgressions()
 
         if objectTable.Fields ~= nil then
           for key, value in pairs(objectTable.Fields) do
-            if gameObject[key] ~= nil then
-              gameObject[key] = value
-            end
+            gameObject[key] = value
           end
         end
       end

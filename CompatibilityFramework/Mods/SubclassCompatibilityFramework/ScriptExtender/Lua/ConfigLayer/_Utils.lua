@@ -251,6 +251,8 @@ function JsonUtils.BuildTagPayload(data, target, modGuid, fileType)
     result.TagList[tostring(count)] = item
     count = count + 1
   end
+
+  return result
 end
 
 function JsonUtils.ParseAndSubmitTags(data, target, modGuid, fileType)
@@ -259,7 +261,7 @@ function JsonUtils.ParseAndSubmitTags(data, target, modGuid, fileType)
     return nil
   end
 
-  JsonUtils[data.Action].Tags({ JsonUtils.BuildTagPayload(data, target, modGuid, fileType) })
+  JsonUtils.Endpoints[data.Action].Tags({ JsonUtils.BuildTagPayload(data, target, modGuid, fileType) })
 end
 
 function JsonUtils.ParseAndSubmitClassBlacklist(classUUID, data, modGuid)
