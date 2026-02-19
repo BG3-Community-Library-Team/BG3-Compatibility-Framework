@@ -6,8 +6,8 @@ function ClassDescriptionSubSectionHandler(data, classUUID, modGuid)
   end
 end
 
-function ClassDescriptionJsonHandler(data, modGuid)
-  CLUtils.Info(Strings.PREFIX .. "Entering ClassDescriptionJsonHandler")
+function ClassDescriptionDataHandler(data, modGuid)
+  CLUtils.Info(Strings.PREFIX .. "Entering ClassDescriptionDataHandler")
 
   for _, class in pairs(data) do
     if class.UUIDs ~= nil then

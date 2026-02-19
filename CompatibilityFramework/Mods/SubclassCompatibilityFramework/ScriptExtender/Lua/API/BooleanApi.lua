@@ -17,7 +17,7 @@ function Api.SetBoolean(payloads)
 end
 
 -- TODO: Merge this and SetBoolean eventually, they're very similar
-function Api.SetField()
+function Api.SetField(payloads)
   CLUtils.Info(Strings.PREFIX .. "Entering Api.SetField")
 
   for _, payload in pairs(payloads) do

@@ -12,8 +12,8 @@ function ParseAndSubmitLists(data, listId, modGuid)
   end
 end
 
-function ListJsonHandler(data, modGuid)
-  CLUtils.Info(Strings.PREFIX .. "Entering ListJsonHandler")
+function ListDataHandler(data, modGuid)
+  CLUtils.Info(Strings.PREFIX .. "Entering ListDataHandler")
 
   for _, list in pairs(data) do
     if list.UUIDs ~= nil then

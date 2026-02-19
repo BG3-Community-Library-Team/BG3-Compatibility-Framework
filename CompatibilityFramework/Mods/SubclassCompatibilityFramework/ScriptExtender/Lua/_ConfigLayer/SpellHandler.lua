@@ -30,8 +30,8 @@ function SpellSubsectionHandler(data, modGuid)
   end
 end
 
-function SpellJsonHandler(data, modGuid)
-  CLUtils.Info(Strings.PREFIX .. "Entering SpellJsonHandler")
+function SpellDataHandler(data, modGuid)
+  CLUtils.Info(Strings.PREFIX .. "Entering SpellDataHandler")
   for _, spell in pairs(data) do
     SpellSubsectionHandler(spell, modGuid)
   end

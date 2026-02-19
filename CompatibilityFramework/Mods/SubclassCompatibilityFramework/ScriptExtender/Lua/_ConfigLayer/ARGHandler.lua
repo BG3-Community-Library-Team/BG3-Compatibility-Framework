@@ -12,8 +12,8 @@ function ParseAndSubmitActionResourceGroups(data, modGuid)
   end
 end
 
-function ActionResourceGroupJsonHandler(data, modGuid)
-  CLUtils.Info(Strings.PREFIX .. "Entering ActionResourceGroupJsonHandler")
+function ActionResourceGroupDataHandler(data, modGuid)
+  CLUtils.Info(Strings.PREFIX .. "Entering ActionResourceGroupDataHandler")
   for _, actionResourceGroup in pairs(data) do
     ParseAndSubmitActionResourceGroups(actionResourceGroup, modGuid)
   end

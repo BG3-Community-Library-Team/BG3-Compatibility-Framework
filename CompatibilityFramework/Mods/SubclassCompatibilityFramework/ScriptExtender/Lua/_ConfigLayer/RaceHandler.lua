@@ -7,8 +7,8 @@ local function ParseAndSubmitEntries(data, modGuid)
   end
 end
 
-function RaceJsonHandler(data, modGuid)
-  CLUtils.Info(Strings.PREFIX .. "Entering RaceJsonHandler")
+function RaceDataHandler(data, modGuid)
+  CLUtils.Info(Strings.PREFIX .. "Entering RaceDataHandler")
   for _, race in pairs(data) do
     ParseAndSubmitEntries(race, modGuid)
   end

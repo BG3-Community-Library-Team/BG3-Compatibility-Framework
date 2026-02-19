@@ -20,7 +20,7 @@ function OriginsSubSectionHandler(data, originUUID, modGuid)
   end
 end
 
-function OriginJsonHandler(data, modGuid)
+function OriginDataHandler(data, modGuid)
   CLUtils.Info(Strings.PREFIX .. "Entering OriginsHandler")
 
   for _, origin in pairs(data) do

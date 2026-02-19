@@ -11,35 +11,35 @@ local configFormats = {
 local function SubmitData(data, modGUID)
   CLUtils.Info(Strings.PREFIX .. "Entering SubmitData")
   if data.Origins ~= nil then
-    OriginJsonHandler(data.Origins, modGUID)
+    OriginDataHandler(data.Origins, modGUID)
   end
 
   if data.ClassDescriptions ~= nil then
-    ClassDescriptionJsonHandler(data.ClassDescriptions, modGUID)
+    ClassDescriptionDataHandler(data.ClassDescriptions, modGUID)
   end
 
   if data.Progressions ~= nil then
-    ProgressionJsonHandler(data.Progressions, modGUID)
+    ProgressionDataHandler(data.Progressions, modGUID)
   end
 
   if data.Feats ~= nil then
-    FeatJsonHandler(data.Feats, modGUID)
+    FeatDataHandler(data.Feats, modGUID)
   end
 
   if data.Races ~= nil then
-    RaceJsonHandler(data.Races, modGUID)
+    RaceDataHandler(data.Races, modGUID)
   end
 
   if data.Lists ~= nil then
-    ListJsonHandler(data.Lists, modGUID)
+    ListDataHandler(data.Lists, modGUID)
   end
 
   if data.ActionResourceGroups ~= nil then
-    ActionResourceGroupJsonHandler(data.ActionResourceGroups, modGUID)
+    ActionResourceGroupDataHandler(data.ActionResourceGroups, modGUID)
   end
 
   if data.Spells ~= nil then
-    SpellJsonHandler(data.Spells, modGUID)
+    SpellDataHandler(data.Spells, modGUID)
   end
 end
 

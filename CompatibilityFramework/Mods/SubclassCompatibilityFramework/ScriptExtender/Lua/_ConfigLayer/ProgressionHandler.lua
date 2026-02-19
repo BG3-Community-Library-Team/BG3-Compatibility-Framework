@@ -50,8 +50,8 @@ local function ProgressionSubSectionHandler(data, progUUID, modGuid)
   end
 end
 
-function ProgressionJsonHandler(data, modGuid)
-  CLUtils.Info(Strings.PREFIX .. "Entering ProgressionJsonHandler")
+function ProgressionDataHandler(data, modGuid)
+  CLUtils.Info(Strings.PREFIX .. "Entering ProgressionDataHandler")
   for _, progressions in pairs(data) do
     if progressions.UUIDs ~= nil then
       for _, uuid in pairs(progressions.UUIDs) do
