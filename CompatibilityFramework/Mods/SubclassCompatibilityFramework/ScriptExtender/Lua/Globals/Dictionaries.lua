@@ -2,7 +2,8 @@ Globals.ModuleTypes = {
   Progression = "Progressions",
   Feat = "Feats",
   List = "Lists",
-  Race = "Races"
+  Race = "Races",
+  Origin = "Origins"
 }
 
 -- Mods that loaded too late to join the queue

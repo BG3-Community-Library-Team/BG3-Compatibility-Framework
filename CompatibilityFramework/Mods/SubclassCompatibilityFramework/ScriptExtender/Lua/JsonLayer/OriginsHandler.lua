@@ -25,7 +25,7 @@ function OriginJsonHandler(data, modGuid)
 
   for _, origin in pairs(data) do
     if origin.UUIDs ~= nil then
-      for _, uuid in pairs(list.UUIDs) do
+      for _, uuid in pairs(origin.UUIDs) do
         OriginsSubSectionHandler(origin, uuid, modGuid)
       end
     else

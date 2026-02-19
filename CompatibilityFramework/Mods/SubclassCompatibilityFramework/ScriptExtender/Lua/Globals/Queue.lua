@@ -7,6 +7,7 @@ Queue.Progressions = {
   -- Selectors = {},
   -- SubClasses = {},
 }
+Queue.Origins = {}
 Queue.Feats = {}
 Queue.Lists = {
   SpellList = {},

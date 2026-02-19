@@ -17,7 +17,8 @@ Strings.ERR_DID_NOT_PROVIDE_STRINGS = " did not provide a valid Strings table in
 Strings.ERR_DID_NOT_PROVIDE_LIST = " did not provide a valid List Items table for list type "
 Strings.ERR_DID_NOT_PROVIDE_BOOLEANS = " did not provide a valid Boolean values in CF config for target "
 Strings.ERR_DID_NOT_PROVIDE_TAGS = " did not provide valid Tag UUID in CF config for target "
-
+Strings.ERR_DID_NOT_PROVIDE_FIELD_KEY = " did not provide a valid Field Key in CF config for target "
+Strings.ERR_DID_NOT_PROVIDE_FIELD_VALUE = " did not provide a valid Field Value in CF config for target "
 Strings.ERR_DID_NOT_PROVIDE_LIST_TYPE = " did not provide a valid List Type in CF config."
 Strings.ERR_DID_NOT_PROVIDE_AR_DEFINITIONS = " did not provide a valid Action Resource Definitions table in CF config for target Action Resource Group UUID: "
 Strings.ERR_DID_NOT_PROVIDE_SELECTOR_FUNCTION = " did not provide a valid Selector Function value in CF config for target UUID:"

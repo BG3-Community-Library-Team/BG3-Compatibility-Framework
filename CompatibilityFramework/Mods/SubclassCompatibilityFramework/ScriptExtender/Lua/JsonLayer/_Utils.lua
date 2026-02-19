@@ -206,6 +206,35 @@ function JsonUtils.ParseAndSubmitBoolean(data, target, modGuid, fileType)
   end
 end
 
+function JsonUtils.BuildFieldPayload(data, modGuid, target, type)
+  CLUtils.Info(Strings.PREFIX .. "Entering BuildFieldPayload")
+  return {
+    modGuid = data.modGuid or modGuid,
+    FileType = type,
+    Target = target,
+    Key = data.Key,
+    Value = data.Value
+  }
+end
+
+function JsonUtils.ParseAndSubmitFields(data, target, modGuid, fileType)
+  CLUtils.Info(Strings.PREFIX .. "Entering ParseAndSubmitFields")
+  if not JsonUtils.DataValidator(modGuid, data.Key, target, fileType, Strings.ERR_DID_NOT_PROVIDE_FIELD_KEY)
+    or not JsonUtils.DataValidator(modGuid, data.Value, target, fileType, Strings.ERR_DID_NOT_PROVIDE_FIELD_VALUE) then
+    return nil
+  end
+
+  local payloads = {
+    Set = JsonUtils.BuildFieldPayload(data, modGuid, target, fileType)
+  }
+
+  for action, payload in pairs(payloads) do
+    if payload ~= nil then
+      JsonUtils.Endpoints[action].Fields({ payload })
+    end
+  end
+end
+
 function JsonUtils.BuildTagPayload(data, target, modGuid, fileType)
   CLUtils.Info(Strings.PREFIX .. "Entering BuildTagPayload")
 
