@@ -18,17 +18,17 @@ FileVersion: 1
 # for a given race UUID.
 #
 #   Type   — the cosmetic category to modify
-#   Value  — the UUID of the cosmetic entry
+#   Values — the UUID(s) of the cosmetic entry(ies)
 #   Action — "Insert" to add, "Remove" to remove
 # ----------------------------------------------------------
 Races:
   - UUID: "9c61a74a-20df-4119-89c5-d996956b6c66"
     Children:
       - Type: EyeColors
-        Value: "bdf9b779-002c-4077-b377-8ea7c1faa795"
+        Values: "bdf9b779-002c-4077-b377-8ea7c1faa795"
         Action: Insert
       - Type: LipsMakeupColors
-        Value: "bdf9b779-002c-4077-b377-8ea7c1faa795"
+        Values: "bdf9b779-002c-4077-b377-8ea7c1faa795"
         Action: Remove
 
 # ----------------------------------------------------------
