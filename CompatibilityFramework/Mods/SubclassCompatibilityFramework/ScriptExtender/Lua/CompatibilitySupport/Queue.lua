@@ -170,7 +170,7 @@ function Queue.Commit_Strings(gameObject, stringArr)
   CLUtils.Info(Strings.PREFIX .. "Entering Queue.Commit_Strings")
 
   for stringType, addSet in pairs(stringArr) do
-    local separator = CLGlobals.FieldSeparator[stringType]
+    local separator = QueueTils.FieldSeparators[stringType]
     local set, result = CLUtils.createSetFromString(gameObject[stringType], separator)
 
     for element, _ in pairs(addSet) do
@@ -188,7 +188,7 @@ function Queue.Commit_StringRemoval(gameObject, stringArr)
   CLUtils.Info(Strings.PREFIX .. "Entering Queue.Commit_StringRemoval")
 
   for stringType, removeSet in pairs(stringArr) do
-    local separator = CLGlobals.FieldSeparator[stringType]
+    local separator = QueueTils.FieldSeparators[stringType]
     local set, _ = CLUtils.createSetFromString(gameObject[stringType], separator)
     local result = {}
 

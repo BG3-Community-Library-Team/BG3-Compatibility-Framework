@@ -53,3 +53,10 @@ QueueTils.CacheTypes = {
   "Progression",
   "Origin"
 }
+QueueTils.FieldSeparators = {
+  Boosts = ";",
+  PassivesAdded = ";",
+  PassivesRemoved = ";",
+  Requirements = ";",
+  Passives = ";"
+}
