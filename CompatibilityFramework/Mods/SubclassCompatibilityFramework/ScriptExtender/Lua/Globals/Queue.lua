@@ -28,7 +28,7 @@ Queue.Tags = {
     Really  = {},
     Appearance = {}
   },
-  ClassDescriptions = {
+  ClassDescription = {
     Tags = {}
   },
   Background = {
@@ -41,7 +41,7 @@ Queue.Tags_Remove = {
     Really  = {},
     Appearance = {}
   },
-  ClassDescriptions = {
+  ClassDescription = {
     Tags = {}
   },
   Background = {
@@ -54,6 +54,7 @@ Queue.Races_Remove = {}
 Queue.Backgrounds = {}
 Queue.BackgroundGoals = {}
 Queue.ActionResources = {}
+Queue.ClassDescriptions = {}
 Queue.Stats = {}
 
 QueueTils = {}
@@ -63,7 +64,8 @@ QueueTils.CacheTypes = {
   "Origin",
   "Background",
   "BackgroundGoal",
-  "ActionResource"
+  "ActionResource",
+  "ClassDescription"
 }
 QueueTils.FieldSeparators = {
   Boosts = ";",

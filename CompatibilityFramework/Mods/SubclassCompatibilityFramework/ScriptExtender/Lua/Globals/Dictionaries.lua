@@ -6,7 +6,8 @@ Globals.ModuleTypes = {
   Origin = "Origins",
   Background = "Backgrounds",
   BackgroundGoal = "BackgroundGoals",
-  ActionResource = "ActionResources"
+  ActionResource = "ActionResources",
+  ClassDescription = "ClassDescriptions"
 }
 
 -- Mods that loaded too late to join the queue

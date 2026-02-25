@@ -112,6 +112,41 @@ ActionResourceGroups:
 
 
 # ----------------------------------------------------------
+# ClassDescriptions
+# ----------------------------------------------------------
+# Modify class definitions at runtime.
+# Each entry targets a ClassDescription by UUID.
+#
+# Supported sections:
+#   Blacklist — prevent subclass sorting for this class
+#   Fields    — set arbitrary key-value fields (BaseHp, HpPerLevel, etc.)
+#   Booleans  — toggle boolean flags (CanLearnSpells, MustPrepareSpells, etc.)
+#   Tags      — insert or remove tag UUIDs
+# ----------------------------------------------------------
+ClassDescriptions:
+  - UUID: "b60618d1-c262-42b5-9fdd-2c0f7aa5e5af"
+    Blacklist: true
+
+  - UUID: "d8cadb42-0ff9-4049-afaf-e5d78d06a399"
+    Fields:
+      - Key: BaseHp
+        Value: 10
+      - Key: HpPerLevel
+        Value: 6
+      - Key: SpellCastingAbility
+        Value: Intelligence
+    Booleans:
+      - Key: CanLearnSpells
+        Value: true
+      - Key: MustPrepareSpells
+        Value: true
+    Tags:
+      - UUIDs:
+          - "02913f9a-f696-40cf-acdf-32032afab32c"
+        Action: Insert
+        Type: Tags
+
+# ----------------------------------------------------------
 # Origins
 # ----------------------------------------------------------
 # Insert or remove origin definitions.

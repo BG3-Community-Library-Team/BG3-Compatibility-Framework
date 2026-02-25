@@ -21,6 +21,40 @@
     {
       "UUID": "b60618d1-c262-42b5-9fdd-2c0f7aa5e5af",
       "Blacklist": true
+    },
+    {
+      "UUID": "d8cadb42-0ff9-4049-afaf-e5d78d06a399",
+      "Fields": [
+        {
+          "Key": "BaseHp",
+          "Value": 10
+        },
+        {
+          "Key": "HpPerLevel",
+          "Value": 6
+        },
+        {
+          "Key": "SpellCastingAbility",
+          "Value": "Intelligence"
+        }
+      ],
+      "Booleans": [
+        {
+          "Key": "CanLearnSpells",
+          "Value": true
+        },
+        {
+          "Key": "MustPrepareSpells",
+          "Value": true
+        }
+      ],
+      "Tags": [
+        {
+          "UUIDs": ["02913f9a-f696-40cf-acdf-32032afab32c"],
+          "Action": "Insert",
+          "Type": "Tags"
+        }
+      ]
     }
   ],
   "Origins": [
