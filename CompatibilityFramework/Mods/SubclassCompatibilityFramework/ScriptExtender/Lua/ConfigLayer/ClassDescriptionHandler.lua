@@ -29,19 +29,8 @@ function ClassDescriptionDataHandler(data, modGuid)
   CLUtils.Info(Strings.PREFIX .. "Entering ClassDescriptionDataHandler")
 
   for _, class in pairs(data) do
-    if class.UUIDs ~= nil then
-      for _, uuid in pairs(class.UUIDs) do
-        ClassDescriptionSubSectionHandler(class, uuid, modGuid)
-      end
-    elseif type(class.UUID) == "table" then
-      CLUtils.Warn(Strings.PREFIX .. "Mod " .. CLUtils.RetrieveModHandleAndAuthor(modGuid) ..
-        Strings.VAL_ERR_UUID_IS_TABLE .. table.concat(class.UUID, ", ") ..
-        Strings.VAL_ERR_UUID_IS_TABLE_B)
-      for _, uuid in pairs(class.UUID) do
-        ClassDescriptionSubSectionHandler(class, uuid, modGuid)
-      end
-    elseif class.UUID ~= nil then
-      ClassDescriptionSubSectionHandler(class, class.UUID, modGuid)
+    for _, uuid in pairs(JsonUtils.ResolveUUIDs(class, modGuid)) do
+      ClassDescriptionSubSectionHandler(class, uuid, modGuid)
     end
   end
 end

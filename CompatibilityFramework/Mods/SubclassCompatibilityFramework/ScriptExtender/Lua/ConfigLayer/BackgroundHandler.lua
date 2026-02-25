@@ -30,19 +30,8 @@ function BackgroundDataHandler(data, modGuid)
   CLUtils.Info(Strings.PREFIX .. "Entering BackgroundDataHandler")
 
   for _, background in pairs(data) do
-    if background.UUIDs ~= nil then
-      for _, uuid in pairs(background.UUIDs) do
-        BackgroundSubSectionHandler(background, uuid, modGuid)
-      end
-    elseif type(background.UUID) == "table" then
-      CLUtils.Warn(Strings.PREFIX .. "Mod " .. CLUtils.RetrieveModHandleAndAuthor(modGuid) ..
-        Strings.VAL_ERR_UUID_IS_TABLE .. table.concat(background.UUID, ", ") ..
-        Strings.VAL_ERR_UUID_IS_TABLE_B)
-      for _, uuid in pairs(background.UUID) do
-        BackgroundSubSectionHandler(background, uuid, modGuid)
-      end
-    elseif background.UUID ~= nil then
-      BackgroundSubSectionHandler(background, background.UUID, modGuid)
+    for _, uuid in pairs(JsonUtils.ResolveUUIDs(background, modGuid)) do
+      BackgroundSubSectionHandler(background, uuid, modGuid)
     end
   end
 end

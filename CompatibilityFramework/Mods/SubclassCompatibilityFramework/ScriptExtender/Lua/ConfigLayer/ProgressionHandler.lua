@@ -53,18 +53,8 @@ end
 function ProgressionDataHandler(data, modGuid)
   CLUtils.Info(Strings.PREFIX .. "Entering ProgressionDataHandler")
   for _, progressions in pairs(data) do
-    if progressions.UUIDs ~= nil then
-      for _, uuid in pairs(progressions.UUIDs) do
-        ProgressionSubSectionHandler(progressions, uuid, modGuid)
-      end
-    elseif type(progressions.UUID) == "table" then
-      -- Error in JSON  Config format, we'll catch it gracefully, but inform users/authors that it's an error
-      CLUtils.Warn(Strings.PREFIX .. "Mod " .. CLUtils.RetrieveModHandleAndAuthor(modGuid) .. Strings.VAL_ERR_UUID_IS_TABLE .. table.concat(progressions.UUID, (", ")) .. Strings.VAL_ERR_UUID_IS_TABLE_B)
-      for _, uuid in pairs(progressions.UUID) do
-        ProgressionSubSectionHandler(progressions, uuid, modGuid)
-      end
-    elseif progressions.UUID ~= nil then
-      ProgressionSubSectionHandler(progressions, progressions.UUID, modGuid)
+    for _, uuid in pairs(JsonUtils.ResolveUUIDs(progressions, modGuid)) do
+      ProgressionSubSectionHandler(progressions, uuid, modGuid)
     end
   end
 end

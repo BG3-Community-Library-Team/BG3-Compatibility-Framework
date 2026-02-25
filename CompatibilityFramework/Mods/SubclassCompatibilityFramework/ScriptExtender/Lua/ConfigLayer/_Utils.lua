@@ -46,11 +46,12 @@ function JsonUtils.DataValidator(modGuid, dataToValidate, target, fileType, errS
   return true
 end
 
-function JsonUtils.BuildRacePayloads(data, modGuid, child)
+function JsonUtils.BuildRacePayloads(data, modGuid, child, raceGuid)
   CLUtils.Info(Strings.PREFIX .. "Entering BuildPayloads")
+  raceGuid = raceGuid or data.UUID
   local result = {
     modGuid = data.modGuid or modGuid,
-    raceGuid = data.UUID,
+    raceGuid = raceGuid,
     children = { child }
   }
 
@@ -132,6 +133,32 @@ function JsonUtils.NormaliseToArray(value)
   return nil
 end
 
+--- Resolves the entity-level UUID(s) from a config entry.
+--- Accepts either `UUIDs` or `UUID` field, each as a string or array.
+--- Returns a flat array of UUID strings. `UUIDs` takes priority over `UUID`.
+---
+--- @param entry table      The config entry (e.g., a single Progression, Race, etc.)
+--- @param modGuid string   The mod's GUID, used for warning messages
+--- @return string[]        Array of resolved UUID strings (may be empty)
+function JsonUtils.ResolveUUIDs(entry, modGuid)
+  local raw = entry.UUIDs or entry.UUID
+  local result = JsonUtils.NormaliseToArray(raw)
+
+  if result ~= nil then
+    return result
+  end
+
+  if raw == nil then
+    CLUtils.Warn(Strings.PREFIX .. "Mod " .. CLUtils.RetrieveModHandleAndAuthor(modGuid)
+      .. " has an entry with no UUID or UUIDs field. " .. Strings.CHANGES_NOT_APPLIED)
+  else
+    CLUtils.Warn(Strings.PREFIX .. "Mod " .. CLUtils.RetrieveModHandleAndAuthor(modGuid)
+      .. " provided an invalid UUID value (type: " .. type(raw) .. "). " .. Strings.CHANGES_NOT_APPLIED)
+  end
+
+  return {}
+end
+
 function JsonUtils.BuildListPayload(data, modGuid, listId)
   CLUtils.Info(Strings.PREFIX .. "Entering BuildListPayload")
 
@@ -156,13 +183,14 @@ function JsonUtils.BuildListPayload(data, modGuid, listId)
   return result
 end
 
-function JsonUtils.BuildActionResourceGroupPayload(data, modGuid)
+function JsonUtils.BuildActionResourceGroupPayload(data, modGuid, targetUUID)
   CLUtils.Info(Strings.PREFIX .. "Entering BuildActionResourceGroupPayload")
 
+  targetUUID = targetUUID or data.UUID
   local count = 0
   local result = {
     modGuid = data.modGuid or modGuid,
-    TargetUUID = data.UUID,
+    TargetUUID = targetUUID,
     Definitions = {}
   }
 

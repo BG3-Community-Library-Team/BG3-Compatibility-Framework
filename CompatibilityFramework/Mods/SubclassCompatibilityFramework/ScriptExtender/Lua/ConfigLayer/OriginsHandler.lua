@@ -24,12 +24,8 @@ function OriginDataHandler(data, modGuid)
   CLUtils.Info(Strings.PREFIX .. "Entering OriginsHandler")
 
   for _, origin in pairs(data) do
-    if origin.UUIDs ~= nil then
-      for _, uuid in pairs(origin.UUIDs) do
-        OriginsSubSectionHandler(origin, uuid, modGuid)
-      end
-    else
-      OriginsSubSectionHandler(origin, origin.UUID, modGuid)
+    for _, uuid in pairs(JsonUtils.ResolveUUIDs(origin, modGuid)) do
+      OriginsSubSectionHandler(origin, uuid, modGuid)
     end
   end
 end

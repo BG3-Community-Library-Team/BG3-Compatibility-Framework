@@ -40,12 +40,8 @@ function ListDataHandler(data, modGuid)
   CLUtils.Info(Strings.PREFIX .. "Entering ListDataHandler")
 
   for _, list in pairs(data) do
-    if list.UUIDs ~= nil then
-      for _, uuid in pairs(list.UUIDs) do
-        ParseAndSubmitLists(list, uuid, modGuid)
-      end
-    else
-      ParseAndSubmitLists(list, list.UUID, modGuid)
+    for _, uuid in pairs(JsonUtils.ResolveUUIDs(list, modGuid)) do
+      ParseAndSubmitLists(list, uuid, modGuid)
     end
   end
 end
