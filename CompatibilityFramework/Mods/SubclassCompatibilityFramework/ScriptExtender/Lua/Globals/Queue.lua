@@ -53,6 +53,7 @@ Queue.Races = {}
 Queue.Races_Remove = {}
 Queue.Backgrounds = {}
 Queue.BackgroundGoals = {}
+Queue.ActionResources = {}
 Queue.Stats = {}
 
 QueueTils = {}
@@ -61,7 +62,8 @@ QueueTils.CacheTypes = {
   "Progression",
   "Origin",
   "Background",
-  "BackgroundGoal"
+  "BackgroundGoal",
+  "ActionResource"
 }
 QueueTils.FieldSeparators = {
   Boosts = ";",

@@ -5,7 +5,8 @@ Globals.ModuleTypes = {
   Race = "Races",
   Origin = "Origins",
   Background = "Backgrounds",
-  BackgroundGoal = "BackgroundGoals"
+  BackgroundGoal = "BackgroundGoals",
+  ActionResource = "ActionResources"
 }
 
 -- Mods that loaded too late to join the queue
