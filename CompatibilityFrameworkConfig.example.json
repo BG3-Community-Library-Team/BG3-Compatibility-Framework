@@ -132,6 +132,86 @@
       "Items": ["", "", ""]
     }
   ],
+  "Backgrounds": [
+    {
+      "UUID": "20d865ea-03bd-47bf-97d3-777e1b36b073",
+      "Booleans": [
+        {
+          "Key": "Hidden",
+          "Value": false
+        }
+      ],
+      "Strings": [
+        {
+          "Action": "Insert",
+          "Type": "Passives",
+          "Strings": ["Background_Custom", "Background_Bonus"]
+        }
+      ],
+      "Tags": [
+        {
+          "Action": "Insert",
+          "UUIDs": ["ce00b3b6-238e-4524-851b-3d1f2d2b1189"]
+        }
+      ]
+    }
+  ],
+  "BackgroundGoals": [
+    {
+      "UUID": "fc8b0dcc-01fc-4d18-818e-457f37a2516b",
+      "Fields": [
+        {
+          "Key": "BackgroundUuid",
+          "Value": "633aa4be-365f-4358-ba56-e2b85f9a88ec"
+        },
+        {
+          "Key": "ExperienceReward",
+          "Value": "90f636c0-2d85-46d8-9760-30b57c664f4b"
+        },
+        {
+          "Key": "InspirationPoints",
+          "Value": 2
+        },
+        {
+          "Key": "RewardLevel",
+          "Value": 3
+        }
+      ]
+    }
+  ],
+  "ActionResources": [
+    {
+      "UUID": "d136c5d9-0ff0-43da-acce-a74a07f8d6bf",
+      "Fields": [
+        {
+          "Key": "Name",
+          "Value": "SpellSlot"
+        },
+        {
+          "Key": "MaxLevel",
+          "Value": 9
+        },
+        {
+          "Key": "ReplenishType",
+          "Value": ["Rest"]
+        }
+      ],
+      "Booleans": [
+        {
+          "Key": "IsSpellResource",
+          "Value": true
+        },
+        {
+          "Key": "ShowOnActionResourcePanel",
+          "Value": true
+        },
+        {
+          "Key": "UpdatesSpellPowerLevel",
+          "Value": true
+        }
+      ]
+    }
+  ],
   "ActionResourceGroups": [
     {
       "UUID": "",
