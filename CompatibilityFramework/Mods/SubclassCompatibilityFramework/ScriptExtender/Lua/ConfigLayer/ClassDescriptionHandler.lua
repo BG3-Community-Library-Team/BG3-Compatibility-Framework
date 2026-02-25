@@ -11,7 +11,7 @@ function ClassDescriptionDataHandler(data, modGuid)
 
   for _, class in pairs(data) do
     if class.UUIDs ~= nil then
-      for _, uuid in pairs(list.UUIDs) do
+      for _, uuid in pairs(class.UUIDs) do
         ClassDescriptionSubSectionHandler(class, uuid, modGuid)
       end
     else
