@@ -4,7 +4,7 @@
 [![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/O5O8PG8RF)
 
 
-This is the Compatibility Framework. Split off from BG3 Community Library, this mod provides an API for other mods to use improve compatibility. Initially designed for Subclass Compatibility, the Framework has API endpoints that Script-Extender Enabled mods can hook into to insert values into Progressions and Spell/Skill/PassiveLists at Runtime. What this means is that a mod author can inject their mod's data into existing Progressions or Lists without overwriting data, allowing for total compatibility. If you want to know which subclasses are currently supported, [check out this list](https://github.com/BG3-Community-Library-Team/BG3-Subclass-Compatibility-Framework/wiki/Supported-Mods).
+This is the Compatibility Framework. Split off from BG3 Community Library, this mod provides an API for other mods to use improve compatibility. Initially designed for Subclass Compatibility, the Framework has API endpoints that Script-Extender Enabled mods can hook into to insert values into Progressions and Spell/Skill/PassiveLists at Runtime. What this means is that a mod author can inject their mod's data into existing Progressions or Lists without overwriting data, allowing for total compatibility.
 
 ## Contributing
 If you'd like to contribute to the Compatibility Framework, make a Fork of this project: [![GitHub forks](https://img.shields.io/github/forks/BG3-Community-Library-Team/BG3-Subclass-Compatibility-Framework)](https://GitHub.com/BG3-Community-Library-Team/BG3-Subclass-Compatibility-Framework/network/)
@@ -26,10 +26,6 @@ Installations. BG3 Mod Managers is by far the simplest method, and as such is re
 #### Load Order
 
 Compatibility Framework should be loaded at the bottom of your mods list. 
-
-Subclass Compatibility Framework should be removed in place of Compatibility Framework. The scope of the mod has increased drastically, so the name has had to shift a bit.
-
-Subclass Compatibility Framework Dummies is no longer required as of version 2.0.0, but you will need to install BG3 Script Extender.
 
 ### BG3 Mod Manager
 1. Download the latest release, and unzip the .pak file.
