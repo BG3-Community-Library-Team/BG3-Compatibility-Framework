@@ -3,7 +3,8 @@ Globals.ModuleTypes = {
   Feat = "Feats",
   List = "Lists",
   Race = "Races",
-  Origin = "Origins"
+  Origin = "Origins",
+  Background = "Backgrounds"
 }
 
 -- Mods that loaded too late to join the queue
@@ -22,6 +23,9 @@ Globals.TagFileTargets = {
     Appearance = "AppearanceTags"
   },
   ClassDescription = {
+    Tags = "Tags"
+  },
+  Background = {
     Tags = "Tags"
   }
 }

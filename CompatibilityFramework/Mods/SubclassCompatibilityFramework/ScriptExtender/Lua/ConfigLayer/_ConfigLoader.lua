@@ -41,6 +41,10 @@ local function SubmitData(data, modGUID)
   if data.Spells ~= nil then
     SpellDataHandler(data.Spells, modGUID)
   end
+
+  if data.Backgrounds ~= nil then
+    BackgroundDataHandler(data.Backgrounds, modGUID)
+  end
 end
 
 ---@param configStr string

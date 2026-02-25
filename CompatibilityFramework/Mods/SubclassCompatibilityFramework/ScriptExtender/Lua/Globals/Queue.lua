@@ -30,6 +30,9 @@ Queue.Tags = {
   },
   ClassDescriptions = {
     Tags = {}
+  },
+  Background = {
+    Tags = {}
   }
 }
 
@@ -40,18 +43,23 @@ Queue.Tags_Remove = {
   },
   ClassDescriptions = {
     Tags = {}
+  },
+  Background = {
+    Tags = {}
   }
 }
 
 Queue.Races = {}
 Queue.Races_Remove = {}
+Queue.Backgrounds = {}
 Queue.Stats = {}
 
 QueueTils = {}
 QueueTils.CacheTypes = {
   "Feat",
   "Progression",
-  "Origin"
+  "Origin",
+  "Background"
 }
 QueueTils.FieldSeparators = {
   Boosts = ";",
