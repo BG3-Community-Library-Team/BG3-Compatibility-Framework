@@ -125,6 +125,13 @@ function JsonUtils.BuildBooleanPayload(data, modGuid, target, type)
   }
 end
 
+function JsonUtils.NormaliseToArray(value)
+  if value == nil then return nil end
+  if type(value) == "string" then return { value } end
+  if type(value) == "table" then return value end
+  return nil
+end
+
 function JsonUtils.BuildListPayload(data, modGuid, listId)
   CLUtils.Info(Strings.PREFIX .. "Entering BuildListPayload")
 
@@ -134,12 +141,16 @@ function JsonUtils.BuildListPayload(data, modGuid, listId)
     modGuid = data.modGuid or modGuid,
     TargetList = listId,
     ListType = data.Type,
-    ListItems = {}
+    ListItems = {},
+    InheritFrom = JsonUtils.NormaliseToArray(data.Inherit),
+    ExcludeFrom = JsonUtils.NormaliseToArray(data.Exclude)
   }
 
-  for _, item in pairs(data.Items) do
-    result.ListItems[tostring(count)] = item
-    count = count + 1
+  if data.Items then
+    for _, item in pairs(data.Items) do
+      result.ListItems[tostring(count)] = item
+      count = count + 1
+    end
   end
 
   return result

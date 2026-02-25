@@ -23,6 +23,20 @@ Queue.Lists_Remove = {
   AbilityList = {},
   EquipmentList = {}
 }
+Queue.Lists_Inherit = {
+  SpellList = {},
+  SkillList = {},
+  PassiveList = {},
+  AbilityList = {},
+  EquipmentList = {}
+}
+Queue.Lists_Exclude = {
+  SpellList = {},
+  SkillList = {},
+  PassiveList = {},
+  AbilityList = {},
+  EquipmentList = {}
+}
 Queue.Tags = {
   Origin = {
     Really  = {},

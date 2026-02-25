@@ -130,6 +130,22 @@
       "UUID": "",
       "Type": "",
       "Items": ["", "", ""]
+    },
+    {
+      "Comment": "Inherit all items from another list into this one",
+      "Action": "Insert",
+      "UUID": "target-list-uuid",
+      "Type": "SpellList",
+      "Inherit": "source-list-uuid"
+    },
+    {
+      "Comment": "Inherit from multiple lists and exclude from another",
+      "Action": "Insert",
+      "UUID": "target-list-uuid",
+      "Type": "SpellList",
+      "Items": ["extra-spell-uuid"],
+      "Inherit": ["source-list-A", "source-list-B"],
+      "Exclude": ["unwanted-list-uuid-1", "unwanted-list-uuid-2"]
     }
   ],
   "Backgrounds": [

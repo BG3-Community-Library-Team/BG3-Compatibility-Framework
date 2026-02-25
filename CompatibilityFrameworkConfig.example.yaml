@@ -86,16 +86,42 @@ Progressions:
 # Lists
 # ----------------------------------------------------------
 # Manipulate named lists (spell lists, equipment lists, etc.)
-#   Action — "Insert" or "Remove"
-#   UUID   — list UUID
-#   Type   — list type identifier
-#   Items  — array of item UUIDs / values
+#   Action  — "Insert" or "Remove"
+#   UUID    — list UUID
+#   Type    — list type identifier
+#   Items   — array of item UUIDs / values
+#   Inherit — UUID or array of UUIDs of existing lists whose
+#             items should be added to this list (always Insert)
+#   Exclude — UUID or array of UUIDs of existing lists whose
+#             items should be removed from this list (always Remove)
+#
+# Items, Inherit, and Exclude are each optional, but at least
+# one must be provided. They can be combined freely.
 # ----------------------------------------------------------
 Lists:
   - Action: Insert
     UUID: ""
     Type: ""
     Items: ["", "", ""]
+
+  # Inherit all items from another list
+  - Action: Insert
+    UUID: "target-list-uuid"
+    Type: SpellList
+    Inherit: "source-list-uuid"
+
+  # Inherit from multiple lists, add explicit items, and exclude
+  - Action: Insert
+    UUID: "target-list-uuid"
+    Type: SpellList
+    Items:
+      - "extra-spell-uuid"
+    Inherit:
+      - "source-list-A"
+      - "source-list-B"
+    Exclude:
+      - "unwanted-list-uuid-1"
+      - "unwanted-list-uuid-2"
 
 # ----------------------------------------------------------
 # Backgrounds

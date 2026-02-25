@@ -7,6 +7,16 @@ function Api.RemoveFromList(payloads)
   Api.HandleListPayload(payloads, 'Remove')
 end
 
+-- Convenience method: inherit items from source list(s) into target list
+function Api.InheritList(payloads)
+  Api.HandleListPayload(payloads, 'Add')
+end
+
+-- Convenience method: exclude items belonging to source list(s) from target list
+function Api.ExcludeFromList(payloads)
+  Api.HandleListPayload(payloads, 'Remove')
+end
+
 function Api.HandleListPayload(payloads, actionType)
   for _, payload in pairs(payloads) do
     local err = CLUtils.DoValidation(payload,

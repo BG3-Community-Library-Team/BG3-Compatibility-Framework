@@ -59,34 +59,181 @@ local function CombineIterableLists(arrA, arrB)
   return res
 end
 
+local function CombineAllListSources(objectType)
+  local res = {}
+  local seen = {}
+  local sources = {
+    Queue.Lists[objectType],
+    Queue.Lists_Remove[objectType],
+    Queue.Lists_Inherit[objectType],
+    Queue.Lists_Exclude[objectType]
+  }
+  for _, source in ipairs(sources) do
+    if source then
+      for key, _ in pairs(source) do
+        if not seen[key] then
+          seen[key] = true
+          table.insert(res, key)
+        end
+      end
+    end
+  end
+  return res
+end
+
+local function ResolveInheritedItems(targetId, objectType, visited)
+  visited = visited or {}
+  if visited[targetId] then
+    CLUtils.Warn(Strings.PREFIX .. Strings.WARN_CIRCULAR_INHERIT .. targetId)
+    return {}
+  end
+  visited[targetId] = true
+
+  local items = {}
+  local itemSet = {}
+  local inheritSources = Queue.Lists_Inherit[objectType][targetId]
+  if inheritSources == nil then return items end
+
+  for _, sourceId in pairs(inheritSources) do
+    -- Get base game items from source list
+    local sourceGameList = CLUtils.CacheOrRetrieve(sourceId, objectType)
+    if sourceGameList ~= nil then
+      for _, item in pairs(sourceGameList[CLGlobals.ListNodes[objectType]]) do
+        if not itemSet[item] then
+          itemSet[item] = true
+          table.insert(items, item)
+        end
+      end
+    end
+
+    -- Also include items added to the source list by other CF payloads
+    local sourceCFItems = Queue.Lists[objectType][sourceId]
+    if sourceCFItems ~= nil then
+      for _, item in pairs(sourceCFItems) do
+        if not itemSet[item] then
+          itemSet[item] = true
+          table.insert(items, item)
+        end
+      end
+    end
+
+    -- Recursively resolve if the source also inherits (transitive)
+    local transitive = ResolveInheritedItems(sourceId, objectType, visited)
+    for _, item in pairs(transitive) do
+      if not itemSet[item] then
+        itemSet[item] = true
+        table.insert(items, item)
+      end
+    end
+  end
+
+  return items
+end
+
+local function ResolveExcludedItems(targetId, objectType)
+  local excludeSet = {}
+  local excludeSources = Queue.Lists_Exclude[objectType][targetId]
+  if excludeSources == nil then return excludeSet end
+
+  for _, sourceId in pairs(excludeSources) do
+    local sourceGameList = CLUtils.CacheOrRetrieve(sourceId, objectType)
+    if sourceGameList ~= nil then
+      for _, item in pairs(sourceGameList[CLGlobals.ListNodes[objectType]]) do
+        excludeSet[item] = true
+      end
+    end
+
+    -- Also exclude items that CF added to the source list
+    local sourceCFItems = Queue.Lists[objectType][sourceId]
+    if sourceCFItems ~= nil then
+      for _, item in pairs(sourceCFItems) do
+        excludeSet[item] = true
+      end
+    end
+  end
+
+  return excludeSet
+end
+
 function Queue.CommitListItems()
   CLUtils.Info(Strings.PREFIX .. "Entering Queue.CommitListItems")
   for _, objectType in pairs(CLGlobals.ListTypes) do
-    if Queue.Lists_Remove[objectType] or Queue.Lists[objectType] then
-      listsToiterate = CombineIterableLists(Queue.Lists_Remove[objectType], Queue.Lists[objectType])
-      for _, listId in pairs(listsToiterate) do
+    local hasAny = Queue.Lists[objectType] or Queue.Lists_Remove[objectType]
+                   or Queue.Lists_Inherit[objectType] or Queue.Lists_Exclude[objectType]
+    if hasAny then
+      local listsToIterate = CombineAllListSources(objectType)
+      for _, listId in pairs(listsToIterate) do
         local gameList = CLUtils.CacheOrRetrieve(listId, objectType)
-        list = Queue.Lists[objectType][listId] or {}
+        if gameList == nil then goto continue end
 
-        for _, item in pairs(gameList[CLGlobals.ListNodes[objectType]]) do
-          if not CLUtils.IsInTable(list, item) then
+        -- Build the final item list using set-based dedup
+        local list = {}
+        local listSet = {}
+
+        -- Helper to add items with dedup
+        local function addItem(item)
+          if not listSet[item] then
+            listSet[item] = true
             table.insert(list, item)
-          end
-          if Queue.Lists_Remove[objectType][listId] then
-            localItemKey = CLUtils.GetKeyFromvalue(list, item)
-            if localItemKey and CLUtils.IsInTable(Queue.Lists_Remove[objectType][listId], item) then
-              CLUtils.Info(Strings.PREFIX .. "Removing " .. item .. " from " .. objectType .. " " .. listId)
-              table.remove(list, localItemKey)
-            end
           end
         end
 
+        -- 1. Start with base game items
+        for _, item in pairs(gameList[CLGlobals.ListNodes[objectType]]) do
+          addItem(item)
+        end
+
+        -- 2. Merge inherited items
+        local inherited = ResolveInheritedItems(listId, objectType)
+        for _, item in pairs(inherited) do
+          addItem(item)
+        end
+
+        -- 3. Merge explicit CF additions
+        local cfItems = Queue.Lists[objectType][listId]
+        if cfItems then
+          for _, item in pairs(cfItems) do
+            addItem(item)
+          end
+        end
+
+        -- 4. Remove excluded items (from ExcludeFrom source lists)
+        local excludeSet = ResolveExcludedItems(listId, objectType)
+        if next(excludeSet) ~= nil then
+          local filtered = {}
+          for _, item in pairs(list) do
+            if not excludeSet[item] then
+              table.insert(filtered, item)
+            end
+          end
+          list = filtered
+        end
+
+        -- 5. Remove explicit removals (Queue.Lists_Remove)
+        local removeItems = Queue.Lists_Remove[objectType][listId]
+        if removeItems then
+          local removeSet = {}
+          for _, item in pairs(removeItems) do
+            removeSet[item] = true
+          end
+          local filtered = {}
+          for _, item in pairs(list) do
+            if not removeSet[item] then
+              table.insert(filtered, item)
+            end
+          end
+          list = filtered
+        end
+
+        -- 6. Validate and write back
         if list and #list > 0 then
           local res = Utils.StripInvalidStatData(list)
           gameList[CLGlobals.ListNodes[objectType]] = res
         else
           CLUtils.Warn(Strings.PREFIX .. "List " .. listId .. " cannot be empty", true)
         end
+
+        ::continue::
       end
     end
   end

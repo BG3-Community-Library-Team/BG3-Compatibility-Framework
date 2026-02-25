@@ -44,5 +44,13 @@ Strings.ERR_YAML_EXPECTED_MAP_KEY = "Expected mapping key in YAML config"
 Strings.ERR_YAML_UNDEFINED_ALIAS  = "Undefined YAML alias: "
 Strings.WARN_YAML_ANCHOR_REDEF    = "YAML anchor redefined: "
 
+-- List Inheritance & Exclusion
+Strings.ERR_DID_NOT_PROVIDE_LIST_CONTENT =
+  " did not provide Items, Inherit, or Exclude for list type "
+Strings.WARN_SOURCE_LIST_NOT_FOUND = "Inherit/Exclude source list not found: "
+Strings.WARN_INHERIT_WRONG_ACTION = " provided InheritFrom on a Remove action for list "
+Strings.WARN_EXCLUDE_WRONG_ACTION = " provided ExcludeFrom on an Add action for list "
+Strings.WARN_CIRCULAR_INHERIT = "Circular list inheritance detected for list: "
+
 -- Generic (format-agnostic loader)
 Strings.ERR_CONFIG_PARSE_FAIL     = "Couldn't parse CF Configuration File from "
