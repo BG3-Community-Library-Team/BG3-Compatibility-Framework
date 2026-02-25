@@ -45,6 +45,10 @@ local function SubmitData(data, modGUID)
   if data.Backgrounds ~= nil then
     BackgroundDataHandler(data.Backgrounds, modGUID)
   end
+
+  if data.BackgroundGoals ~= nil then
+    BackgroundGoalDataHandler(data.BackgroundGoals, modGUID)
+  end
 end
 
 ---@param configStr string
