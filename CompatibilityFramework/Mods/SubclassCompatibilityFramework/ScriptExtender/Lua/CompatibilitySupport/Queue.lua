@@ -268,6 +268,7 @@ function Queue.populateProgressionDict()
 
     if prog.ProgressionType == "Class" then
       Globals.ProgressionDict[prog.Name] = Globals.ProgressionDict[prog.Name] or {}
+      Api.InsertClass(prog.Name:lower(), prog.ResourceUUID)
       table.insert(Globals.ProgressionDict[prog.Name], prog)
     end
   end
@@ -448,14 +449,13 @@ function Queue.Commit_RemoveChildNodes(gameObject, childNodes)
   CLUtils.Info(Strings.PREFIX .. "Entering Queue.Commit_RemoveChildNodes")
   for key, values in pairs(childNodes) do
     if gameObject[key] ~= nil then
-      for _, valToRemove in pairs(values) do
-        if CLUtils.IsInTable(gameObject[key], valToRemove) then
-          local idx = CLUtils.GetKeyFromvalue(gameObject[key], valToRemove)
-          if idx then
-            table.remove(gameObject[key], idx)
-          end
+      local result = {}
+      for _, existing in pairs(gameObject[key]) do
+        if not CLUtils.IsInTable(values, existing) then
+          table.insert(result, existing)
         end
       end
+      gameObject[key] = result
     end
   end
 end
@@ -487,8 +487,10 @@ function Queue.CommitRaces()
   end
 
   -- Phase 2: Process per-race entries (applied after "ALL" for override capability)
+  local processedRaces = {}
   for objectId, objectTable in pairs(Queue.Races) do
     if objectId ~= "ALL" then
+      processedRaces[objectId] = true
       local gameObject = CLUtils.CacheOrRetrieve(objectId, "Race")
       if gameObject ~= nil and objectTable ~= nil then
         -- Apply per-race removals first
@@ -496,6 +498,16 @@ function Queue.CommitRaces()
           Queue.Commit_RemoveChildNodes(gameObject, Queue.Races_Remove[objectId])
         end
         Queue.Commit_ChildNodes(gameObject, objectTable)
+      end
+    end
+  end
+
+  -- Phase 3: Process removal-only per-race entries not already handled above
+  for objectId, removeData in pairs(Queue.Races_Remove) do
+    if objectId ~= "ALL" and not processedRaces[objectId] then
+      local gameObject = CLUtils.CacheOrRetrieve(objectId, "Race")
+      if gameObject ~= nil then
+        Queue.Commit_RemoveChildNodes(gameObject, removeData)
       end
     end
   end

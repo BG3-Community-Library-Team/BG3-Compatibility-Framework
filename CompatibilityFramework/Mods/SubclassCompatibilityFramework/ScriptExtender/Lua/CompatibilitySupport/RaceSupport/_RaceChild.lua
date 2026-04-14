@@ -28,7 +28,7 @@ end
 
 local function RemoveRaceChildren(payload)
   CLUtils.Info(Strings.PREFIX .. "Entering RemoveRaceChildren")
-
+  CLUtils.Warn(payload.raceGuid)
   if payload.raceGuid == "ALL" then
     CLUtils.Info(Strings.PREFIX .. "ApplyToAllRaces: queuing removal for all races")
     Queue.Races_Remove["ALL"] = Queue.Races_Remove["ALL"] or {}
@@ -37,15 +37,14 @@ local function RemoveRaceChildren(payload)
       CLUtils.AddToTable(Queue.Races_Remove["ALL"][entry.Type], entry.Value)
     end
   else
-    local raceData = CLUtils.CacheOrRetrieve(payload.raceGuid, "Race")
-
+    if payload.raceGuid == nil then
+      CLUtils.Warn(Strings.PREFIX .. "RemoveRaceChildren: payload has no raceGuid, skipping")
+      return
+    end
+    Queue.Races_Remove[payload.raceGuid] = Queue.Races_Remove[payload.raceGuid] or {}
     for _, entry in pairs(payload.children) do
-      if raceData[entry.Type] ~= nil then
-        if CLUtils.IsInTable(raceData[entry.Type], entry.Value) then
-          local idx = CLUtils.GetKeyFromvalue(raceData[entry.Type], entry.Value)
-          raceData[entry.Type][idx] = nil
-        end
-      end
+      Queue.Races_Remove[payload.raceGuid][entry.Type] = Queue.Races_Remove[payload.raceGuid][entry.Type] or {}
+      CLUtils.AddToTable(Queue.Races_Remove[payload.raceGuid][entry.Type], entry.Value)
     end
   end
 end
