@@ -319,7 +319,8 @@ function Queue.Commit_Strings(gameObject, stringArr)
 
   for stringType, addSet in pairs(stringArr) do
     local separator = QueueTils.FieldSeparators[stringType]
-    local set, result = CLUtils.createSetFromString(gameObject[stringType], separator)
+    local existing = gameObject[stringType] or ""
+    local set, result = CLUtils.createSetFromString(existing, separator)
 
     for element, _ in pairs(addSet) do
       if not set[element] then
@@ -337,7 +338,8 @@ function Queue.Commit_StringRemoval(gameObject, stringArr)
 
   for stringType, removeSet in pairs(stringArr) do
     local separator = QueueTils.FieldSeparators[stringType]
-    local set, _ = CLUtils.createSetFromString(gameObject[stringType], separator)
+    local existing = gameObject[stringType] or ""
+    local set, _ = CLUtils.createSetFromString(existing, separator)
     local result = {}
 
     for element, _ in pairs(removeSet) do
